@@ -8,14 +8,17 @@
 
 #import "KHTabBarController.h"
 #import "KHGamesViewController.h"
+#import "KHPurchasesViewController.h"
 
 typedef NS_ENUM(NSInteger, KHTabViewControllerTag) {
-    KHGamesViewControllerTag
+    KHGamesViewControllerTag,
+    KHPurchasesViewControllerTag
 };
 
 @interface KHTabBarController ()
 
 @property (nonatomic, strong) KHGamesViewController *gamesViewController;
+@property (nonatomic, strong) KHPurchasesViewController *purchasesViewController;
 
 @end
 
@@ -28,7 +31,11 @@ typedef NS_ENUM(NSInteger, KHTabViewControllerTag) {
         self.gamesViewController = [[KHGamesViewController alloc] initWithStyle:UITableViewStylePlain];
         self.gamesViewController.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemContacts tag:KHGamesViewControllerTag];
         
-        NSArray *viewControllers = @[self.gamesViewController];
+        self.purchasesViewController = [[KHPurchasesViewController alloc] init];
+        self.purchasesViewController.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemHistory tag:KHPurchasesViewControllerTag];
+        
+        
+        NSArray *viewControllers = @[self.gamesViewController, self.purchasesViewController];
         [self setViewControllers:viewControllers];
     }
     return self;
