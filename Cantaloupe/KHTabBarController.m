@@ -7,20 +7,28 @@
 //
 
 #import "KHTabBarController.h"
+#import "KHGamesViewController.h"
 
 @interface KHTabBarController ()
+
+@property (nonatomic, strong) KHGamesViewController *gamesViewController;
 
 @end
 
 @implementation KHTabBarController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)init
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super init];
     if (self) {
-        // Custom initialization
+        self.gamesViewController = [[KHGamesViewController alloc] initWithStyle:UITableViewStylePlain];
+        
+        NSArray *viewControllers = @[self.gamesViewController];
+        
+        [self setViewControllers:viewControllers];
     }
     return self;
 }
+
 
 @end
