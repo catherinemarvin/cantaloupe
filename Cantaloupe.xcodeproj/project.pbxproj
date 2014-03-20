@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E068B2F18DA742A00885A95 /* KHLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E068B2E18DA742A00885A95 /* KHLoginViewController.m */; };
+		6E068B3418DA76CB00885A95 /* KHLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E068B3318DA76CB00885A95 /* KHLoginView.m */; };
 		6E8C78E718D81C3500741704 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E8C78E618D81C3500741704 /* Foundation.framework */; };
 		6E8C78E918D81C3500741704 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E8C78E818D81C3500741704 /* CoreGraphics.framework */; };
 		6E8C78EB18D81C3500741704 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E8C78EA18D81C3500741704 /* UIKit.framework */; };
@@ -37,6 +39,10 @@
 
 /* Begin PBXFileReference section */
 		6D4BEF05F9154C3798AA8603 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		6E068B2D18DA742A00885A95 /* KHLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHLoginViewController.h; sourceTree = "<group>"; };
+		6E068B2E18DA742A00885A95 /* KHLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHLoginViewController.m; sourceTree = "<group>"; };
+		6E068B3218DA76CB00885A95 /* KHLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHLoginView.h; sourceTree = "<group>"; };
+		6E068B3318DA76CB00885A95 /* KHLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHLoginView.m; sourceTree = "<group>"; };
 		6E8C78E318D81C3500741704 /* Cantaloupe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cantaloupe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E8C78E618D81C3500741704 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6E8C78E818D81C3500741704 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -87,6 +93,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6E068B3018DA76AE00885A95 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6E068B3218DA76CB00885A95 /* KHLoginView.h */,
+				6E068B3318DA76CB00885A95 /* KHLoginView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		6E068B3118DA76B500885A95 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				6E8C796A18D9761000741704 /* KHTabBarController.h */,
+				6E8C796B18D9761000741704 /* KHTabBarController.m */,
+				6E8C796D18D977DF00741704 /* KHGamesViewController.h */,
+				6E8C796E18D977DF00741704 /* KHGamesViewController.m */,
+				6E8C797118D97BBA00741704 /* KHPurchasesViewController.h */,
+				6E8C797218D97BBA00741704 /* KHPurchasesViewController.m */,
+				6E068B2D18DA742A00885A95 /* KHLoginViewController.h */,
+				6E068B2E18DA742A00885A95 /* KHLoginViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
 		6E8C78DA18D81C3500741704 = {
 			isa = PBXGroup;
 			children = (
@@ -122,16 +152,12 @@
 		6E8C78EC18D81C3500741704 /* Cantaloupe */ = {
 			isa = PBXGroup;
 			children = (
+				6E068B3118DA76B500885A95 /* View Controllers */,
+				6E068B3018DA76AE00885A95 /* Views */,
 				6E8C78F518D81C3500741704 /* KHAppDelegate.h */,
 				6E8C78F618D81C3500741704 /* KHAppDelegate.m */,
 				6E8C78F818D81C3500741704 /* Images.xcassets */,
 				6E8C78ED18D81C3500741704 /* Supporting Files */,
-				6E8C796A18D9761000741704 /* KHTabBarController.h */,
-				6E8C796B18D9761000741704 /* KHTabBarController.m */,
-				6E8C796D18D977DF00741704 /* KHGamesViewController.h */,
-				6E8C796E18D977DF00741704 /* KHGamesViewController.m */,
-				6E8C797118D97BBA00741704 /* KHPurchasesViewController.h */,
-				6E8C797218D97BBA00741704 /* KHPurchasesViewController.m */,
 			);
 			path = Cantaloupe;
 			sourceTree = "<group>";
@@ -297,8 +323,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E8C78F318D81C3500741704 /* main.m in Sources */,
+				6E068B3418DA76CB00885A95 /* KHLoginView.m in Sources */,
 				6E8C797318D97BBA00741704 /* KHPurchasesViewController.m in Sources */,
 				6E8C796F18D977DF00741704 /* KHGamesViewController.m in Sources */,
+				6E068B2F18DA742A00885A95 /* KHLoginViewController.m in Sources */,
 				6E8C78F718D81C3500741704 /* KHAppDelegate.m in Sources */,
 				6E8C796C18D9761000741704 /* KHTabBarController.m in Sources */,
 			);

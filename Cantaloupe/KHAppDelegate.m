@@ -7,7 +7,7 @@
 //
 
 #import "KHAppDelegate.h"
-#import "KHTabBarController.h"
+#import "KHLoginViewController.h"
 
 @implementation KHAppDelegate
 
@@ -15,7 +15,7 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    KHTabBarController *mainController = [[KHTabBarController alloc] init];
+    KHLoginViewController *mainController = [[KHLoginViewController alloc] init];
     
     self.window.rootViewController = mainController;
     

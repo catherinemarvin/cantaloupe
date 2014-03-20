@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>64107397-3DA8-4D36-A36E-D7DA5472D282</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Cantaloupe</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>0607AB69-6AE8-472E-BD3B-160C6813B72D</key>
+		<string>ssh://github.com/khwang/cantaloupe.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Cantaloupe.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>0607AB69-6AE8-472E-BD3B-160C6813B72D</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/khwang/cantaloupe.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>0607AB69-6AE8-472E-BD3B-160C6813B72D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>0607AB69-6AE8-472E-BD3B-160C6813B72D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Cantaloupe</string>
+		</dict>
+	</array>
+</dict>
+</plist>
