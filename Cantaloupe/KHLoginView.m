@@ -10,7 +10,6 @@
 
 @interface KHLoginView()
 
-@property (nonatomic, strong) UIButton *loginButton;
 @end
 
 @implementation KHLoginView
@@ -19,7 +18,18 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.loginButton = [[UIButton alloc] init];
+        self.backgroundColor = [UIColor grayColor];
+        
+        self.usernameField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, 20.0f)];
+        self.usernameField.placeholder = @"Username";
+        [self addSubview:self.usernameField];
+        
+        self.passwordField = [[UITextField alloc] initWithFrame:CGRectMake(0, 40.0f, frame.size.width, 20.0f)];
+        self.passwordField.placeholder = @"Password";
+        self.passwordField.secureTextEntry = YES;
+        [self addSubview:self.passwordField];
+        
+        self.loginButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 60.0f, frame.size.width, 20.0f)];
         [self.loginButton setTitle:@"Login" forState:UIControlStateNormal];
         [self addSubview:self.loginButton];
     }
@@ -27,6 +37,8 @@
 }
 
 - (void)layoutSubviews {
+    [self.usernameField sizeToFit];
+    [self.passwordField sizeToFit];
     [self.loginButton sizeToFit];
 }
 
