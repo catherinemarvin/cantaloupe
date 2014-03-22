@@ -29,6 +29,13 @@
 - (void)loadView {
     self.loginView = [[KHLoginView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.view = self.loginView;
+    [self.loginView.loginButton addTarget:self action:@selector(loginTapped:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+#pragma mark - Button press
+
+- (void)loginTapped:(id)sender {
+    NSLog(@"Hello");
 }
 
 

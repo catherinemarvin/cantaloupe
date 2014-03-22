@@ -20,7 +20,7 @@
     if (self) {
         self.backgroundColor = [UIColor grayColor];
         
-        self.usernameField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, 20.0f)];
+        self.usernameField = [[UITextField alloc] initWithFrame:CGRectMake(0, 20.0f, frame.size.width, 20.0f)];
         self.usernameField.placeholder = @"Username";
         [self addSubview:self.usernameField];
         
