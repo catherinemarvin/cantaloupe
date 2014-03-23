@@ -8,6 +8,7 @@
 
 #import "KHLoginViewController.h"
 #import "KHLoginView.h"
+#import "AFNetworking.h"
 
 @interface KHLoginViewController ()
 
@@ -36,6 +37,13 @@
 
 - (void)loginTapped:(id)sender {
     NSLog(@"Hello");
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSDictionary *parameters = @{@"username": @"username", @"password": @"password"};
+    [manager POST:@"http://itch.io/api/1/login" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
 }
 
 
