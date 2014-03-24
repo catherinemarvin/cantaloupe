@@ -38,7 +38,7 @@
 - (void)loginTapped:(id)sender {
     NSLog(@"Hello");
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    NSDictionary *parameters = @{@"username": @"username", @"password": @"password", @"source": @"android"};
+    NSDictionary *parameters = @{@"username": [self.loginView.usernameField text], @"password": [self.loginView.passwordField text], @"source": @"android"};
     [manager POST:@"http://itch.io/api/1/login" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
