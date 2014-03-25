@@ -10,4 +10,6 @@
 
 @interface KHTabBarController : UITabBarController
 
+- (id)initWithKey:(NSString *)key;
+
 @end

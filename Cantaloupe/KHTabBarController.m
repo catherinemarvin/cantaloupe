@@ -17,6 +17,7 @@ typedef NS_ENUM(NSInteger, KHTabViewControllerTag) {
 
 @interface KHTabBarController ()
 
+@property (nonatomic, strong) NSString *key;
 @property (nonatomic, strong) KHGamesViewController *gamesViewController;
 @property (nonatomic, strong) KHPurchasesViewController *purchasesViewController;
 
@@ -24,10 +25,11 @@ typedef NS_ENUM(NSInteger, KHTabViewControllerTag) {
 
 @implementation KHTabBarController
 
-- (id)init
+- (id)initWithKey:(NSString *)key;
 {
     self = [super init];
     if (self) {
+        self.key = key;
         self.gamesViewController = [[KHGamesViewController alloc] initWithStyle:UITableViewStylePlain];
         self.gamesViewController.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemContacts tag:KHGamesViewControllerTag];
         
