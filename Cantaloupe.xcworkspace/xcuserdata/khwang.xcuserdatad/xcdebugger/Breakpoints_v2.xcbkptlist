@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cantaloupe/KHLoginViewController.m"
-            timestampString = "417236415.934781"
+            timestampString = "417411562.337605"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
             landmarkName = "-loadView"
             landmarkType = "5">
          </BreakpointContent>

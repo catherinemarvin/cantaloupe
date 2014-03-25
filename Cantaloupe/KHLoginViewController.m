@@ -9,6 +9,7 @@
 #import "KHLoginViewController.h"
 #import "KHLoginView.h"
 #import "AFNetworking.h"
+#import "KHTabBarController.h"
 
 @interface KHLoginViewController ()
 
@@ -41,6 +42,8 @@
     NSDictionary *parameters = @{@"username": [self.loginView.usernameField text], @"password": [self.loginView.passwordField text], @"source": @"android"};
     [manager POST:@"http://itch.io/api/1/login" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
+        KHTabBarController *controller = [[KHTabBarController alloc] init];
+        [self presentViewController:controller animated:YES completion:nil];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
