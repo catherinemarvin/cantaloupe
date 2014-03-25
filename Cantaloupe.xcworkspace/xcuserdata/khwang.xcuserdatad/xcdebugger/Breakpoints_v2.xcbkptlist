@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cantaloupe/KHLoginViewController.m"
-            timestampString = "417413656.162818"
+            timestampString = "417414039.726152"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
             landmarkName = "-loginTapped:"
             landmarkType = "5">
          </BreakpointContent>
