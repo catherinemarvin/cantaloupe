@@ -13,6 +13,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // Core data
+    [MagicalRecord setErrorHandlerTarget:self action:@selector(_magicalRecordError:)];
+    [MagicalRecord setupAutoMigratingCoreDataStack];
+    
+    
+    // Create and display view
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     KHLoginViewController *mainController = [[KHLoginViewController alloc] init];
@@ -21,6 +27,12 @@
     
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+#pragma mark - MagicalRecord
+
+- (void)_magicalRecordError:(NSError *)error {
+    NSLog(@"Bad stuff: %@", [error description]);
 }
 
 @end
