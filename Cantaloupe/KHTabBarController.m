@@ -31,11 +31,10 @@ typedef NS_ENUM(NSInteger, KHTabViewControllerTag) {
     if (self) {
         self.key = key;
         self.gamesViewController = [[KHGamesViewController alloc] initWithStyle:UITableViewStylePlain];
-        self.gamesViewController.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemContacts tag:KHGamesViewControllerTag];
+        self.gamesViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Games" image:[UIImage imageNamed:@"gamesIcon"] tag:KHGamesViewControllerTag];
         
         self.purchasesViewController = [[KHPurchasesViewController alloc] init];
-        self.purchasesViewController.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemHistory tag:KHPurchasesViewControllerTag];
-        
+        self.purchasesViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Purchases" image:[UIImage imageNamed:@"purchasesIcon"] tag:KHPurchasesViewControllerTag];
         
         NSArray *viewControllers = @[self.gamesViewController, self.purchasesViewController];
         [self setViewControllers:viewControllers];
