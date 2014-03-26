@@ -31,7 +31,22 @@
 - (void)loadView {
     self.loginView = [[KHLoginView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.view = self.loginView;
+    self.loginView.usernameField.delegate = self;
+    self.loginView.passwordField.delegate = self;
     [self.loginView.loginButton addTarget:self action:@selector(loginTapped:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField == self.loginView.usernameField) {
+        [self.loginView.passwordField becomeFirstResponder];
+        return NO;
+    } else {
+        [textField resignFirstResponder];
+        [self loginTapped:nil];
+        return YES;
+    }
 }
 
 #pragma mark - Button press

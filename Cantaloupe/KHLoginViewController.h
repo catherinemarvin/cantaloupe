@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KHLoginViewController : UIViewController
+@interface KHLoginViewController : UIViewController<UITextFieldDelegate>
 
 @end

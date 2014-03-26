@@ -23,12 +23,14 @@
         self.usernameField = [[UITextField alloc] initWithFrame:CGRectMake(0, 20.0f, frame.size.width, 20.0f)];
         self.usernameField.placeholder = @"Username";
         self.usernameField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+        self.usernameField.returnKeyType = UIReturnKeyNext;
         [self addSubview:self.usernameField];
         
         self.passwordField = [[UITextField alloc] initWithFrame:CGRectMake(0, 40.0f, frame.size.width, 20.0f)];
         self.passwordField.placeholder = @"Password";
         self.passwordField.secureTextEntry = YES;
         self.passwordField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+        self.passwordField.returnKeyType = UIReturnKeyGo;
         [self addSubview:self.passwordField];
         
         self.loginButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 60.0f, frame.size.width, 20.0f)];
