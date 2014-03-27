@@ -7,20 +7,35 @@
 //
 
 #import "KHGamesViewController.h"
+#import "AFNetworking.h"
 
 @interface KHGamesViewController ()
+
+@property (nonatomic, strong) NSString *key;
 
 @end
 
 @implementation KHGamesViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)initWithStyle:(UITableViewStyle)style key:(NSString *)key
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
+        self.key = key;
+        [self _requestGames];
     }
     return self;
+}
+
+- (void)_requestGames {
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    NSString *url = [NSString stringWithFormat:@"http://itch.io/api/1/%@/my-games", self.key];
+    [manager POST:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
 }
 
 - (void)viewDidLoad
@@ -34,11 +49,6 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 #pragma mark - Table view data source
 

@@ -10,4 +10,6 @@
 
 @interface KHGamesViewController : UITableViewController
 
+-(id)initWithStyle:(UITableViewStyle)style key:(NSString *)key;
+
 @end
