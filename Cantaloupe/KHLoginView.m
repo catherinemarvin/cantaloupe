@@ -18,7 +18,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor grayColor];
+        self.backgroundColor = [UIColor whiteColor];
         
         self.usernameField = [[UITextField alloc] initWithFrame:CGRectMake(0, 20.0f, frame.size.width, 20.0f)];
         self.usernameField.placeholder = @"Username";

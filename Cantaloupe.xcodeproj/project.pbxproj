@@ -26,6 +26,7 @@
 		6E8C796C18D9761000741704 /* KHTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8C796B18D9761000741704 /* KHTabBarController.m */; };
 		6E8C796F18D977DF00741704 /* KHGamesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8C796E18D977DF00741704 /* KHGamesViewController.m */; };
 		6E8C797318D97BBA00741704 /* KHPurchasesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8C797218D97BBA00741704 /* KHPurchasesViewController.m */; };
+		6EE7FBCD18E54F3D008AF5FF /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EE7FBCC18E54F3D008AF5FF /* Reveal.framework */; };
 		6EFE170A18E2965B0000C6FE /* gamesIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EFE170918E2965B0000C6FE /* gamesIcon.png */; };
 		6EFE170C18E2966A0000C6FE /* purchasesIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EFE170B18E2966A0000C6FE /* purchasesIcon.png */; };
 		80ECE71DA3B64FF1B774964C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF3C06EFF674E0381459280 /* libPods.a */; };
@@ -71,6 +72,7 @@
 		6E8C796E18D977DF00741704 /* KHGamesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHGamesViewController.m; sourceTree = "<group>"; };
 		6E8C797118D97BBA00741704 /* KHPurchasesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHPurchasesViewController.h; sourceTree = "<group>"; };
 		6E8C797218D97BBA00741704 /* KHPurchasesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHPurchasesViewController.m; sourceTree = "<group>"; };
+		6EE7FBCC18E54F3D008AF5FF /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		6EFE170918E2965B0000C6FE /* gamesIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gamesIcon.png; sourceTree = "<group>"; };
 		6EFE170B18E2966A0000C6FE /* purchasesIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = purchasesIcon.png; sourceTree = "<group>"; };
 		7FF3C06EFF674E0381459280 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,6 +86,7 @@
 				6E4FD82918E144B500EC8B11 /* CoreData.framework in Frameworks */,
 				6E8C78E918D81C3500741704 /* CoreGraphics.framework in Frameworks */,
 				6E8C78EB18D81C3500741704 /* UIKit.framework in Frameworks */,
+				6EE7FBCD18E54F3D008AF5FF /* Reveal.framework in Frameworks */,
 				6E8C78E718D81C3500741704 /* Foundation.framework in Frameworks */,
 				80ECE71DA3B64FF1B774964C /* libPods.a in Frameworks */,
 			);
@@ -138,6 +141,7 @@
 		6E8C78DA18D81C3500741704 = {
 			isa = PBXGroup;
 			children = (
+				6EE7FBCC18E54F3D008AF5FF /* Reveal.framework */,
 				6E8C78EC18D81C3500741704 /* Cantaloupe */,
 				6E8C790518D81C3500741704 /* CantaloupeTests */,
 				6E8C78E518D81C3500741704 /* Frameworks */,
@@ -480,6 +484,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Cantaloupe/Cantaloupe-Prefix.pch";
 				INFOPLIST_FILE = "Cantaloupe/Cantaloupe-Info.plist";
@@ -494,6 +502,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Cantaloupe/Cantaloupe-Prefix.pch";
 				INFOPLIST_FILE = "Cantaloupe/Cantaloupe-Info.plist";
