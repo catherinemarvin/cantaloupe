@@ -51,7 +51,7 @@ static NSString *kCellIdentifier = @"loginCell";
     CGFloat xMargin = 20.0f;
     CGFloat yMargin = 20.0f;
     
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(xMargin, yMargin, floorf(view.bounds.size.width - 2 * xMargin), 150.0f) style:UITableViewStyleGrouped];
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(xMargin, yMargin, floorf(view.bounds.size.width - 2 * xMargin), 88.0f) style:UITableViewStyleGrouped];
     tableView.layer.cornerRadius = 10.0f;
     tableView.separatorInset = UIEdgeInsetsZero;
     tableView.delegate = self;
@@ -59,6 +59,8 @@ static NSString *kCellIdentifier = @"loginCell";
     tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     tableView.layer.borderWidth = 1.0f;
     tableView.layer.borderColor = tableView.separatorColor.CGColor;
+    tableView.backgroundColor = [UIColor clearColor];
+    tableView.scrollEnabled = NO;
     [view addSubview:tableView];
     
     self.loginButton.frame = CGRectMake(20.0f, 200.0f, tableView.frame.size.width, 20.0f);
@@ -82,6 +84,22 @@ static NSString *kCellIdentifier = @"loginCell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 2;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 1;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 0.01f;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    return [[UIView alloc] initWithFrame:CGRectZero];
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    return [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
