@@ -26,15 +26,17 @@ static NSString *kCellIdentifier = @"loginCell";
     self = [super init];
     if (self) {
         self.usernameField = [[UITextField alloc] initWithFrame:CGRectZero];
-        self.usernameField.placeholder = @"Username";
+        self.usernameField.placeholder = NSLocalizedString(@"Username", nil);
         self.usernameField.autocapitalizationType = UITextAutocapitalizationTypeNone;
         self.usernameField.returnKeyType = UIReturnKeyNext;
+        self.usernameField.delegate = self;
         
         self.passwordField = [[UITextField alloc] initWithFrame:CGRectZero];
-        self.passwordField.placeholder = @"Password";
+        self.passwordField.placeholder = NSLocalizedString(@"Password", nil);
         self.passwordField.secureTextEntry = YES;
         self.passwordField.autocapitalizationType = UITextAutocapitalizationTypeNone;
         self.passwordField.returnKeyType = UIReturnKeyGo;
+        self.passwordField.delegate = self;
         
         self.loginButton = [[UIButton alloc] initWithFrame:CGRectZero];
         [self.loginButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
