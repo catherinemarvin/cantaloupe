@@ -51,7 +51,7 @@ static NSString *kCellIdentifier = @"loginCell";
     CGFloat xMargin = 20.0f;
     CGFloat yMargin = 20.0f;
     
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(xMargin, yMargin, floorf(view.bounds.size.width - 2 * xMargin), 88.0f) style:UITableViewStyleGrouped];
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(xMargin, yMargin, floorf(view.bounds.size.width - 2 * xMargin), 132.0f) style:UITableViewStyleGrouped];
     tableView.layer.cornerRadius = 10.0f;
     tableView.separatorInset = UIEdgeInsetsZero;
     tableView.delegate = self;
@@ -63,7 +63,7 @@ static NSString *kCellIdentifier = @"loginCell";
     tableView.scrollEnabled = NO;
     [view addSubview:tableView];
     
-    self.loginButton.frame = CGRectMake(20.0f, 200.0f, tableView.frame.size.width, 20.0f);
+    self.loginButton.frame = CGRectZero;
     [view addSubview:self.loginButton];
     
     self.view = view;
@@ -83,7 +83,7 @@ static NSString *kCellIdentifier = @"loginCell";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return 3;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
@@ -115,16 +115,21 @@ static NSString *kCellIdentifier = @"loginCell";
     CGFloat xOffset = 20.0f;
     switch (indexPath.row) {
         case 0:
-            self.usernameField.frame = CGRectMake(xOffset, cell.frame.origin.y, cell.frame.size.width - 2 * xOffset, cell.frame.size.height);
+            self.usernameField.frame = CGRectMake(xOffset, cell.frame.origin.y, tableView.frame.size.width - 2 * xOffset, cell.frame.size.height);
             [cell.contentView addSubview:self.usernameField];
             break;
         case 1:
-            self.passwordField.frame = CGRectMake(xOffset, cell.frame.origin.y, cell.frame.size.width - 2 * xOffset, cell.frame.size.height);
+            self.passwordField.frame = CGRectMake(xOffset, cell.frame.origin.y, tableView.frame.size.width - 2 * xOffset, cell.frame.size.height);
             [cell.contentView addSubview:self.passwordField];
+            break;
+        case 2:
+            self.loginButton.frame = CGRectMake(cell.frame.origin.x, cell.frame.origin.y, tableView.frame.size.width, cell.frame.size.height);
+            [cell.contentView addSubview:self.loginButton];
             break;
         default:
             break;
     }
+    cell.frame = CGRectMake(cell.frame.origin.x, cell.frame.origin.y, tableView.frame.size.width, cell.frame.size.height);
     cell.contentView.frame = CGRectMake(cell.contentView.frame.origin.x, cell.contentView.frame.origin.y, tableView.frame.size.width, cell.contentView.frame.size.height);
     return cell;
 }
