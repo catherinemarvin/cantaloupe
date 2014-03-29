@@ -152,19 +152,43 @@ static NSString *kCellIdentifier = @"loginCell";
 #pragma mark - Button press
 
 - (void)loginTapped:(id)sender {
-    NSLog(@"Hello");
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    NSDictionary *parameters = @{@"username": [self.usernameField text], @"password": [self.passwordField text], @"source": @"android"};
-    [manager POST:@"http://itch.io/api/1/login" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
-        NSDictionary *responseDict = (NSDictionary *) responseObject;
-        NSString *key = [[responseDict valueForKey:@"key"] valueForKey:@"key"];
-        
-        KHTabBarController *controller = [[KHTabBarController alloc] initWithKey:key];
-        [self presentViewController:controller animated:YES completion:nil];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
-    }];
+    if ([self _validateFields]) {
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        NSDictionary *parameters = @{@"username": [self.usernameField text], @"password": [self.passwordField text], @"source": @"android"};
+        [manager POST:@"http://itch.io/api/1/login" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSLog(@"JSON: %@", responseObject);
+            NSDictionary *responseDict = (NSDictionary *) responseObject;
+            
+            NSArray *errors = [responseDict valueForKey:@"errors"];
+            
+            if (errors) {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Sorry", nil) message:NSLocalizedString(@"Something went wrong.", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Ok", nil) otherButtonTitles:nil];
+                [alert show];
+                return;
+            }
+            NSString *key = [[responseDict valueForKey:@"key"] valueForKey:@"key"];
+            
+            KHTabBarController *controller = [[KHTabBarController alloc] initWithKey:key];
+            [self presentViewController:controller animated:YES completion:nil];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"Error: %@", error);
+        }];
+    }
+}
+
+- (BOOL)_validateFields {
+    NSString *error;
+    
+    if (!self.usernameField.text || !self.passwordField.text || [self.usernameField.text isEqualToString:@""] || [self.passwordField.text isEqualToString:@""]) {
+        error = NSLocalizedString(@"Username and password cannot be blank.", nil);
+    }
+    
+    if (error) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry" message:error delegate:self cancelButtonTitle:NSLocalizedString(@"Ok", nil) otherButtonTitles: nil];
+        [alert show];
+    }
+    
+    return error == nil;
 }
 
 
