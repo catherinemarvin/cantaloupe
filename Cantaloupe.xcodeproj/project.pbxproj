@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		6E068B2F18DA742A00885A95 /* KHLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E068B2E18DA742A00885A95 /* KHLoginViewController.m */; };
-		6E068B3418DA76CB00885A95 /* KHLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E068B3318DA76CB00885A95 /* KHLoginView.m */; };
 		6E4FD82918E144B500EC8B11 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4FD82818E144B500EC8B11 /* CoreData.framework */; };
 		6E4FD82D18E1450600EC8B11 /* Cantaloupe.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6E4FD82B18E1450600EC8B11 /* Cantaloupe.xcdatamodeld */; };
 		6E8C78E718D81C3500741704 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E8C78E618D81C3500741704 /* Foundation.framework */; };
@@ -46,8 +45,6 @@
 		6D4BEF05F9154C3798AA8603 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		6E068B2D18DA742A00885A95 /* KHLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHLoginViewController.h; sourceTree = "<group>"; };
 		6E068B2E18DA742A00885A95 /* KHLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHLoginViewController.m; sourceTree = "<group>"; };
-		6E068B3218DA76CB00885A95 /* KHLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHLoginView.h; sourceTree = "<group>"; };
-		6E068B3318DA76CB00885A95 /* KHLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHLoginView.m; sourceTree = "<group>"; };
 		6E4FD82818E144B500EC8B11 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		6E4FD82C18E1450600EC8B11 /* Cantaloupe.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Cantaloupe.xcdatamodel; sourceTree = "<group>"; };
 		6E8C78E318D81C3500741704 /* Cantaloupe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cantaloupe.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,8 +105,6 @@
 		6E068B3018DA76AE00885A95 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				6E068B3218DA76CB00885A95 /* KHLoginView.h */,
-				6E068B3318DA76CB00885A95 /* KHLoginView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -358,7 +353,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E8C78F318D81C3500741704 /* main.m in Sources */,
-				6E068B3418DA76CB00885A95 /* KHLoginView.m in Sources */,
 				6E8C797318D97BBA00741704 /* KHPurchasesViewController.m in Sources */,
 				6E4FD82D18E1450600EC8B11 /* Cantaloupe.xcdatamodeld in Sources */,
 				6E8C796F18D977DF00741704 /* KHGamesViewController.m in Sources */,
