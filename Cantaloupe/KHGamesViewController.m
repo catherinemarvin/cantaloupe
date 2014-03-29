@@ -26,6 +26,7 @@ static NSString *kGameCellIdentifier = @"gameCellIdentifier";
     if (self) {
         self.key = key;
         [self.tableView registerClass:[KHGameViewCell class] forCellReuseIdentifier:kGameCellIdentifier];
+        self.tableView.separatorInset = UIEdgeInsetsZero;
         [self _requestGames];
     }
     return self;
