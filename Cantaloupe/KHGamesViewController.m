@@ -9,6 +9,7 @@
 #import "KHGamesViewController.h"
 #import "AFNetworking.h"
 #import "KHGameViewCell.h"
+#import "KHDetailedGameViewController.h"
 
 @interface KHGamesViewController ()
 
@@ -92,7 +93,11 @@ static NSString *kGameCellIdentifier = @"gameCellIdentifier";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    KHDetailedGameViewController *detailedView = [[KHDetailedGameViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    NSDictionary *gameData = [self.games objectAtIndex:[indexPath row]];
+    [detailedView configureWithData:gameData];
     
+    [self.navigationController pushViewController:detailedView animated:YES];
 }
 
 @end

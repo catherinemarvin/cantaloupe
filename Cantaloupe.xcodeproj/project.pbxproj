@@ -25,6 +25,7 @@
 		6E8C796C18D9761000741704 /* KHTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8C796B18D9761000741704 /* KHTabBarController.m */; };
 		6E8C796F18D977DF00741704 /* KHGamesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8C796E18D977DF00741704 /* KHGamesViewController.m */; };
 		6E8C797318D97BBA00741704 /* KHPurchasesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8C797218D97BBA00741704 /* KHPurchasesViewController.m */; };
+		6E94B62D18E7BE9500153B52 /* KHDetailedGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E94B62C18E7BE9500153B52 /* KHDetailedGameViewController.m */; };
 		6EE7FBCF18E557CA008AF5FF /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EE7FBCE18E557CA008AF5FF /* Reveal.framework */; };
 		6EE7FC7718E697B8008AF5FF /* KHGameViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE7FC7618E697B8008AF5FF /* KHGameViewCell.m */; };
 		6EFE170A18E2965B0000C6FE /* gamesIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EFE170918E2965B0000C6FE /* gamesIcon.png */; };
@@ -70,6 +71,8 @@
 		6E8C796E18D977DF00741704 /* KHGamesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHGamesViewController.m; sourceTree = "<group>"; };
 		6E8C797118D97BBA00741704 /* KHPurchasesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHPurchasesViewController.h; sourceTree = "<group>"; };
 		6E8C797218D97BBA00741704 /* KHPurchasesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHPurchasesViewController.m; sourceTree = "<group>"; };
+		6E94B62B18E7BE9500153B52 /* KHDetailedGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHDetailedGameViewController.h; sourceTree = "<group>"; };
+		6E94B62C18E7BE9500153B52 /* KHDetailedGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHDetailedGameViewController.m; sourceTree = "<group>"; };
 		6EE7FBCE18E557CA008AF5FF /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		6EE7FC7518E697B8008AF5FF /* KHGameViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHGameViewCell.h; sourceTree = "<group>"; };
 		6EE7FC7618E697B8008AF5FF /* KHGameViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHGameViewCell.m; sourceTree = "<group>"; };
@@ -117,14 +120,16 @@
 		6E068B3118DA76B500885A95 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				6E8C796A18D9761000741704 /* KHTabBarController.h */,
-				6E8C796B18D9761000741704 /* KHTabBarController.m */,
+				6E94B62B18E7BE9500153B52 /* KHDetailedGameViewController.h */,
+				6E94B62C18E7BE9500153B52 /* KHDetailedGameViewController.m */,
 				6E8C796D18D977DF00741704 /* KHGamesViewController.h */,
 				6E8C796E18D977DF00741704 /* KHGamesViewController.m */,
-				6E8C797118D97BBA00741704 /* KHPurchasesViewController.h */,
-				6E8C797218D97BBA00741704 /* KHPurchasesViewController.m */,
 				6E068B2D18DA742A00885A95 /* KHLoginViewController.h */,
 				6E068B2E18DA742A00885A95 /* KHLoginViewController.m */,
+				6E8C797118D97BBA00741704 /* KHPurchasesViewController.h */,
+				6E8C797218D97BBA00741704 /* KHPurchasesViewController.m */,
+				6E8C796A18D9761000741704 /* KHTabBarController.h */,
+				6E8C796B18D9761000741704 /* KHTabBarController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -365,6 +370,7 @@
 				6E068B2F18DA742A00885A95 /* KHLoginViewController.m in Sources */,
 				6E8C78F718D81C3500741704 /* KHAppDelegate.m in Sources */,
 				6E8C796C18D9761000741704 /* KHTabBarController.m in Sources */,
+				6E94B62D18E7BE9500153B52 /* KHDetailedGameViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
