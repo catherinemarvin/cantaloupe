@@ -12,6 +12,7 @@
 @interface KHDetailedGameViewController ()
 
 @property (nonatomic, strong) NSDictionary *gameData;
+@property (nonatomic, strong) NSArray *backingKeys;
 
 @end
 
@@ -24,7 +25,6 @@ static NSString *kCellIdentifier = @"kDetailedGameViewCellIdentifier";
     self = [super initWithStyle:style];
     if (self) {
         [self.tableView registerClass:[KHDetailedGameViewCell class] forCellReuseIdentifier:kCellIdentifier];
-        // Custom initialization
     }
     return self;
 }
@@ -33,6 +33,7 @@ static NSString *kCellIdentifier = @"kDetailedGameViewCellIdentifier";
 
 - (void)configureWithData:(NSDictionary *)gameData {
     self.gameData = gameData;
+    self.backingKeys = [[self.gameData allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
     [self.tableView reloadData];
 }
 
@@ -50,7 +51,12 @@ static NSString *kCellIdentifier = @"kDetailedGameViewCellIdentifier";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier forIndexPath:indexPath];
+    KHDetailedGameViewCell *cell = (KHDetailedGameViewCell *) [tableView dequeueReusableCellWithIdentifier:kCellIdentifier forIndexPath:indexPath];
+    
+    NSString *key = [self.backingKeys objectAtIndex:[indexPath row]];
+    id data = [self.gameData objectForKey:key];
+    
+    [cell configureWithData:@{key: data}];
     return cell;
 }
 

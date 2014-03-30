@@ -10,4 +10,6 @@
 
 @interface KHDetailedGameViewCell : UITableViewCell
 
+- (void)configureWithData:(NSDictionary *)data;
+
 @end

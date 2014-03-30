@@ -31,4 +31,13 @@
     // Configure the view for the selected state
 }
 
+- (void)configureWithData:(NSDictionary *)data {
+    NSString *title = [[data allKeys] objectAtIndex:0];
+    NSString *contents = [[data allValues] objectAtIndex:0];
+    
+    UILabel *info = [[UILabel alloc] initWithFrame:self.frame];
+    info.text = [NSString stringWithFormat:@"%@: %@", title, contents];
+    [self.contentView addSubview:info];
+}
+
 @end
