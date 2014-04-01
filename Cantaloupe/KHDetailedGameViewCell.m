@@ -8,18 +8,11 @@
 
 #import "KHDetailedGameViewCell.h"
 
-@interface KHDetailedGameViewCell()
-
-@property (nonatomic, strong) UILabel *infoView;
-
-@end
-
 @implementation KHDetailedGameViewCell
 
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        self.infoView = [[UILabel alloc] initWithFrame:self.frame];
-        [self.contentView addSubview:self.infoView];
+    // Override the style argument with our own.
+    if (self = [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseIdentifier]) {
     }
     return self;
 }
@@ -28,7 +21,8 @@
     NSString *title = [[data allKeys] objectAtIndex:0];
     NSString *contents = [[data allValues] objectAtIndex:0];
     
-    self.infoView.text = [NSString stringWithFormat:@"%@: %@", title, contents];
+    self.textLabel.text = title;
+    self.detailTextLabel.text = [NSString stringWithFormat:@"%@", contents];
 }
 
 @end

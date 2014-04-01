@@ -53,14 +53,35 @@ static NSString *kCellIdentifier = @"kDetailedGameViewCellIdentifier";
 {
     KHDetailedGameViewCell *cell = (KHDetailedGameViewCell *) [tableView dequeueReusableCellWithIdentifier:kCellIdentifier];
     if (!cell) {
-        cell = [[KHDetailedGameViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kCellIdentifier];
+        cell = [[KHDetailedGameViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:kCellIdentifier];
     }
     
     NSString *key = [self.backingKeys objectAtIndex:[indexPath row]];
     id data = [self.gameData objectForKey:key];
     
-    [cell configureWithData:@{key: data}];
+    [cell configureWithData:@{[[self keyToLabel] objectForKey:key]: data}];
     return cell;
+}
+
+- (NSDictionary *)keyToLabel {
+    return @{@"cover_url": NSLocalizedString(@"Cover Image", nil),
+             @"created_at": NSLocalizedString(@"Created At", nil),
+             @"downloads_count": NSLocalizedString(@"Number of downloads", nil),
+             @"id": NSLocalizedString(@"Game ID", nil),
+             @"min_price": NSLocalizedString(@"Minimum price", nil),
+             @"p_android": NSLocalizedString(@"Android availibility", nil),
+             @"p_linux": NSLocalizedString(@"Linux availability", nil),
+             @"p_osx": NSLocalizedString(@"OSX availability", nil),
+             @"p_windows": NSLocalizedString(@"Windows availability", nil),
+             @"published": NSLocalizedString(@"Published", nil),
+             @"published_at": NSLocalizedString(@"Publish date", nil),
+             @"purchases_count": NSLocalizedString(@"Number of purchases", nil),
+             @"short_text": NSLocalizedString(@"Short description", nil),
+             @"title": NSLocalizedString(@"Title", nil),
+             @"type": NSLocalizedString(@"Type", nil),
+             @"url": NSLocalizedString(@"URL", nil),
+             @"views_count": NSLocalizedString(@"Number of views", nil),
+             @"earnings": NSLocalizedString(@"Earnings", nil)};
 }
 
 @end
