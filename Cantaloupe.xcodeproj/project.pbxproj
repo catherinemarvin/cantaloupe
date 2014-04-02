@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		6E068B2F18DA742A00885A95 /* KHLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E068B2E18DA742A00885A95 /* KHLoginViewController.m */; };
 		6E32C9F318EBCE7300156EAD /* KHSessionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E32C9F218EBCE7300156EAD /* KHSessionController.m */; };
+		6E32CA0018EBDC9000156EAD /* gamesIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E32C9FD18EBDC9000156EAD /* gamesIcon.png */; };
+		6E32CA0118EBDC9000156EAD /* purchasesIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E32C9FE18EBDC9000156EAD /* purchasesIcon.png */; };
+		6E32CA0218EBDC9000156EAD /* settingsIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E32C9FF18EBDC9000156EAD /* settingsIcon.png */; };
+		6E32CA0518EBDCE300156EAD /* KHSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E32CA0418EBDCE300156EAD /* KHSettingsViewController.m */; };
 		6E4FD82918E144B500EC8B11 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4FD82818E144B500EC8B11 /* CoreData.framework */; };
 		6E4FD82D18E1450600EC8B11 /* Cantaloupe.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6E4FD82B18E1450600EC8B11 /* Cantaloupe.xcdatamodeld */; };
 		6E83B46B18E8A81800EDE66A /* KHDetailedGameViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E83B46A18E8A81800EDE66A /* KHDetailedGameViewCell.m */; };
@@ -30,8 +34,6 @@
 		6E94B62D18E7BE9500153B52 /* KHDetailedGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E94B62C18E7BE9500153B52 /* KHDetailedGameViewController.m */; };
 		6EE7FBCF18E557CA008AF5FF /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EE7FBCE18E557CA008AF5FF /* Reveal.framework */; };
 		6EE7FC7718E697B8008AF5FF /* KHGameViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE7FC7618E697B8008AF5FF /* KHGameViewCell.m */; };
-		6EFE170A18E2965B0000C6FE /* gamesIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EFE170918E2965B0000C6FE /* gamesIcon.png */; };
-		6EFE170C18E2966A0000C6FE /* purchasesIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EFE170B18E2966A0000C6FE /* purchasesIcon.png */; };
 		80ECE71DA3B64FF1B774964C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF3C06EFF674E0381459280 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +53,11 @@
 		6E068B2E18DA742A00885A95 /* KHLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHLoginViewController.m; sourceTree = "<group>"; };
 		6E32C9F118EBCE7300156EAD /* KHSessionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHSessionController.h; sourceTree = "<group>"; };
 		6E32C9F218EBCE7300156EAD /* KHSessionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHSessionController.m; sourceTree = "<group>"; };
+		6E32C9FD18EBDC9000156EAD /* gamesIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gamesIcon.png; sourceTree = "<group>"; };
+		6E32C9FE18EBDC9000156EAD /* purchasesIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = purchasesIcon.png; sourceTree = "<group>"; };
+		6E32C9FF18EBDC9000156EAD /* settingsIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingsIcon.png; sourceTree = "<group>"; };
+		6E32CA0318EBDCE300156EAD /* KHSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHSettingsViewController.h; sourceTree = "<group>"; };
+		6E32CA0418EBDCE300156EAD /* KHSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHSettingsViewController.m; sourceTree = "<group>"; };
 		6E4FD82818E144B500EC8B11 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		6E4FD82C18E1450600EC8B11 /* Cantaloupe.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Cantaloupe.xcdatamodel; sourceTree = "<group>"; };
 		6E83B46918E8A81800EDE66A /* KHDetailedGameViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHDetailedGameViewCell.h; sourceTree = "<group>"; };
@@ -82,8 +89,6 @@
 		6EE7FBCE18E557CA008AF5FF /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		6EE7FC7518E697B8008AF5FF /* KHGameViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHGameViewCell.h; sourceTree = "<group>"; };
 		6EE7FC7618E697B8008AF5FF /* KHGameViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHGameViewCell.m; sourceTree = "<group>"; };
-		6EFE170918E2965B0000C6FE /* gamesIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gamesIcon.png; sourceTree = "<group>"; };
-		6EFE170B18E2966A0000C6FE /* purchasesIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = purchasesIcon.png; sourceTree = "<group>"; };
 		7FF3C06EFF674E0381459280 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -138,6 +143,8 @@
 				6E8C797218D97BBA00741704 /* KHPurchasesViewController.m */,
 				6E8C796A18D9761000741704 /* KHTabBarController.h */,
 				6E8C796B18D9761000741704 /* KHTabBarController.m */,
+				6E32CA0318EBDCE300156EAD /* KHSettingsViewController.h */,
+				6E32CA0418EBDCE300156EAD /* KHSettingsViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -241,8 +248,9 @@
 		6EFE170818E295300000C6FE /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				6EFE170918E2965B0000C6FE /* gamesIcon.png */,
-				6EFE170B18E2966A0000C6FE /* purchasesIcon.png */,
+				6E32C9FD18EBDC9000156EAD /* gamesIcon.png */,
+				6E32C9FE18EBDC9000156EAD /* purchasesIcon.png */,
+				6E32C9FF18EBDC9000156EAD /* settingsIcon.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -325,10 +333,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6EFE170A18E2965B0000C6FE /* gamesIcon.png in Resources */,
+				6E32CA0018EBDC9000156EAD /* gamesIcon.png in Resources */,
+				6E32CA0218EBDC9000156EAD /* settingsIcon.png in Resources */,
 				6E8C78F118D81C3500741704 /* InfoPlist.strings in Resources */,
 				6E8C78F918D81C3500741704 /* Images.xcassets in Resources */,
-				6EFE170C18E2966A0000C6FE /* purchasesIcon.png in Resources */,
+				6E32CA0118EBDC9000156EAD /* purchasesIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,6 +397,7 @@
 				6E8C796F18D977DF00741704 /* KHGamesViewController.m in Sources */,
 				6E068B2F18DA742A00885A95 /* KHLoginViewController.m in Sources */,
 				6E8C78F718D81C3500741704 /* KHAppDelegate.m in Sources */,
+				6E32CA0518EBDCE300156EAD /* KHSettingsViewController.m in Sources */,
 				6E8C796C18D9761000741704 /* KHTabBarController.m in Sources */,
 				6E94B62D18E7BE9500153B52 /* KHDetailedGameViewController.m in Sources */,
 				6E83B46B18E8A81800EDE66A /* KHDetailedGameViewCell.m in Sources */,
