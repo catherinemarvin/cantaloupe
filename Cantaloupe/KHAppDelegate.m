@@ -8,6 +8,8 @@
 
 #import "KHAppDelegate.h"
 #import "KHLoginViewController.h"
+#import "KHSessionController.h"
+#import "KHTabBarController.h"
 
 @implementation KHAppDelegate
 
@@ -21,7 +23,14 @@
     // Create and display view
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    KHLoginViewController *mainController = [[KHLoginViewController alloc] init];
+    KHSessionController *session = [KHSessionController sharedInstance];
+    
+    UIViewController *mainController;
+    if (session.loggedIn) {
+        mainController = [[KHTabBarController alloc] initWithKey:session.key];
+    } else {
+        mainController = [[KHLoginViewController alloc] init];
+    }
     
     self.window.rootViewController = mainController;
     

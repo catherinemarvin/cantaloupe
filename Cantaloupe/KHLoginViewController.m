@@ -10,6 +10,7 @@
 #import "AFNetworking.h"
 #import "KHTabBarController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "SSKeychain.h"
 
 @interface KHLoginViewController ()
 
@@ -18,6 +19,9 @@
 @end
 
 static NSString *kCellIdentifier = @"loginCell";
+static NSString *kKeychainServiceKey = @"com.khwang.Cantaloupe";
+static NSString *kUserKey = @"kCantaloupeCurrentUser";
+
 
 @implementation KHLoginViewController
 
@@ -154,7 +158,8 @@ static NSString *kCellIdentifier = @"loginCell";
 - (void)loginTapped:(id)sender {
     if ([self _validateFields]) {
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-        NSDictionary *parameters = @{@"username": [self.usernameField text], @"password": [self.passwordField text], @"source": @"android"};
+        NSString *username = [self.usernameField text];
+        NSDictionary *parameters = @{@"username": username, @"password": [self.passwordField text], @"source": @"android"};
         [manager POST:@"http://itch.io/api/1/login" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSLog(@"JSON: %@", responseObject);
             NSDictionary *responseDict = (NSDictionary *) responseObject;
@@ -170,6 +175,21 @@ static NSString *kCellIdentifier = @"loginCell";
             
             KHTabBarController *controller = [[KHTabBarController alloc] initWithKey:key];
             [self presentViewController:controller animated:YES completion:nil];
+            
+            // Save in defaults
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setObject:username forKey:kUserKey];
+            [defaults synchronize];
+            // Save key in keychain so we don't have to relogin.
+            
+            NSError *error = nil;
+            if ([SSKeychain setPassword:key forService:kKeychainServiceKey account:username error:&error] && !error) {
+                // No error, save Core data perhaps?
+                
+            } else {
+                NSLog(@"Failed to set key: %@", error.debugDescription);
+            }
+            
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"Error: %@", error);
         }];
@@ -190,6 +210,5 @@ static NSString *kCellIdentifier = @"loginCell";
     
     return error == nil;
 }
-
 
 @end
