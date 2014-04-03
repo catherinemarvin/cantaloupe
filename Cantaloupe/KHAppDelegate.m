@@ -13,6 +13,9 @@
 
 @implementation KHAppDelegate
 
+- (void)dealloc {
+    [[KHSessionController sharedInstance] removeObserver:self forKeyPath:@"loggedIn"];
+}
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Core data
@@ -32,6 +35,8 @@
         mainController = [[KHLoginViewController alloc] init];
     }
     
+    [session addObserver:self forKeyPath:@"loggedIn" options:0 context:nil];
+    
     self.window.rootViewController = mainController;
     
     [self.window makeKeyAndVisible];
@@ -42,6 +47,17 @@
 
 - (void)_magicalRecordError:(NSError *)error {
     NSLog(@"Bad stuff: %@", [error description]);
+}
+
+#pragma mark - KVO
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"loggedIn"]) {
+        if (![KHSessionController sharedInstance].loggedIn) {
+            // If you logged out, quit everything and get dumped back to the login screen.
+            self.window.rootViewController = [[KHLoginViewController alloc] init];
+        }
+    }
 }
 
 @end

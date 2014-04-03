@@ -8,6 +8,7 @@
 
 #import "KHSettingsViewController.h"
 #import "KHSettingsViewCell.h"
+#import "KHSessionController.h"
 
 static NSString *kSettingsCellIdentifier = @"kSettingsCell";
 
@@ -86,7 +87,7 @@ typedef NS_ENUM(NSUInteger, KHSettingsCells) {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     switch (cell.tag) {
         case KHSettingCellLogout:
-            NSLog(@"Logout");
+            [[KHSessionController sharedInstance] logout];
             break;
         default:
             break;

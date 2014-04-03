@@ -57,5 +57,15 @@ static NSString *kUserKey = @"kCantaloupeCurrentUser";
     return success;
 }
 
+- (void)logout {
+    NSError *error;
+    if (![SSKeychain deletePasswordForService:kKeychainServiceKey account:self.key error:&error] || error) {
+        NSLog(@"Failed to logout: %@", error.debugDescription);
+    }
+    self.key = nil;
+    self.loggedIn = NO;
+    
+}
+
 
 @end

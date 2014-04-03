@@ -14,5 +14,6 @@
 @property (nonatomic, readonly) NSString *key;
 
 + (KHSessionController *)sharedInstance;
+- (void)logout;
 
 @end
