@@ -13,6 +13,7 @@
 		6E32CA0118EBDC9000156EAD /* purchasesIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E32C9FE18EBDC9000156EAD /* purchasesIcon.png */; };
 		6E32CA0218EBDC9000156EAD /* settingsIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E32C9FF18EBDC9000156EAD /* settingsIcon.png */; };
 		6E32CA0518EBDCE300156EAD /* KHSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E32CA0418EBDCE300156EAD /* KHSettingsViewController.m */; };
+		6E32CA2718ED02A800156EAD /* KHSettingsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E32CA2618ED02A800156EAD /* KHSettingsViewCell.m */; };
 		6E4FD82918E144B500EC8B11 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4FD82818E144B500EC8B11 /* CoreData.framework */; };
 		6E4FD82D18E1450600EC8B11 /* Cantaloupe.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6E4FD82B18E1450600EC8B11 /* Cantaloupe.xcdatamodeld */; };
 		6E83B46B18E8A81800EDE66A /* KHDetailedGameViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E83B46A18E8A81800EDE66A /* KHDetailedGameViewCell.m */; };
@@ -58,6 +59,8 @@
 		6E32C9FF18EBDC9000156EAD /* settingsIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingsIcon.png; sourceTree = "<group>"; };
 		6E32CA0318EBDCE300156EAD /* KHSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHSettingsViewController.h; sourceTree = "<group>"; };
 		6E32CA0418EBDCE300156EAD /* KHSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHSettingsViewController.m; sourceTree = "<group>"; };
+		6E32CA2518ED02A800156EAD /* KHSettingsViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHSettingsViewCell.h; sourceTree = "<group>"; };
+		6E32CA2618ED02A800156EAD /* KHSettingsViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHSettingsViewCell.m; sourceTree = "<group>"; };
 		6E4FD82818E144B500EC8B11 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		6E4FD82C18E1450600EC8B11 /* Cantaloupe.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Cantaloupe.xcdatamodel; sourceTree = "<group>"; };
 		6E83B46918E8A81800EDE66A /* KHDetailedGameViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHDetailedGameViewCell.h; sourceTree = "<group>"; };
@@ -126,6 +129,8 @@
 				6EE7FC7618E697B8008AF5FF /* KHGameViewCell.m */,
 				6E83B46918E8A81800EDE66A /* KHDetailedGameViewCell.h */,
 				6E83B46A18E8A81800EDE66A /* KHDetailedGameViewCell.m */,
+				6E32CA2518ED02A800156EAD /* KHSettingsViewCell.h */,
+				6E32CA2618ED02A800156EAD /* KHSettingsViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -392,6 +397,7 @@
 				6E32C9F318EBCE7300156EAD /* KHSessionController.m in Sources */,
 				6E8C78F318D81C3500741704 /* main.m in Sources */,
 				6E8C797318D97BBA00741704 /* KHPurchasesViewController.m in Sources */,
+				6E32CA2718ED02A800156EAD /* KHSettingsViewCell.m in Sources */,
 				6E4FD82D18E1450600EC8B11 /* Cantaloupe.xcdatamodeld in Sources */,
 				6EE7FC7718E697B8008AF5FF /* KHGameViewCell.m in Sources */,
 				6E8C796F18D977DF00741704 /* KHGamesViewController.m in Sources */,
