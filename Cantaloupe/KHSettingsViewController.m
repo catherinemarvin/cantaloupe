@@ -11,6 +11,11 @@
 
 static NSString *kSettingsCellIdentifier = @"kSettingsCell";
 
+typedef NS_ENUM(NSUInteger, KHSettingsCells) {
+    KHSettingCellNone = 1,
+    KHSettingCellLogout = 2
+};
+
 @interface KHSettingsViewController ()
 
 @property (nonatomic, strong) NSArray *settingItems;
@@ -23,6 +28,7 @@ static NSString *kSettingsCellIdentifier = @"kSettingsCell";
 {
     self = [super initWithStyle:style];
     if (self) {
+        self.settingItems = @[@(KHSettingCellLogout)];
     }
     return self;
 }
@@ -42,7 +48,7 @@ static NSString *kSettingsCellIdentifier = @"kSettingsCell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return self.settingItems.count;
 }
 
 
@@ -51,63 +57,40 @@ static NSString *kSettingsCellIdentifier = @"kSettingsCell";
     KHSettingsViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSettingsCellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    [self customizeCell:cell];
+    [self customizeCell:cell atIndexPath:indexPath];
     
     return cell;
 }
 
-- (void)customizeCell:(KHSettingsViewCell *)cell {
-    cell.textLabel.text = @"LOGOUT";
+- (void)customizeCell:(KHSettingsViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    KHSettingsCells cellType = KHSettingCellNone;
+    
+    if (indexPath.section == 0) {
+        NSInteger row = indexPath.row;
+        if (row < self.settingItems.count) {
+            cellType = (KHSettingsCells) [self.settingItems[row] unsignedIntegerValue];
+        }
+    }
+    
+    switch (cellType) {
+        case KHSettingCellLogout:
+            cell.textLabel.text = @"Logout";
+            cell.tag = KHSettingCellLogout;
+            break;
+        default:
+            break;
+    }
 }
 
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    switch (cell.tag) {
+        case KHSettingCellLogout:
+            NSLog(@"Logout");
+            break;
+        default:
+            break;
+    }
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
