@@ -33,6 +33,10 @@ static NSString *kGameCellIdentifier = @"gameCellIdentifier";
     return self;
 }
 
+- (void)viewDidLoad {
+    self.navigationItem.title = NSLocalizedString(@"Games", nil);
+}
+
 - (void)_requestGames {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
@@ -72,11 +76,9 @@ static NSString *kGameCellIdentifier = @"gameCellIdentifier";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kGameCellIdentifier forIndexPath:indexPath];
+    KHGameViewCell *cell = (KHGameViewCell *) [tableView dequeueReusableCellWithIdentifier:kGameCellIdentifier forIndexPath:indexPath];
+    [cell setTitleText:[[self.games objectAtIndex:indexPath.row] valueForKey:@"title"]];
     
-    UILabel *gameTitle = [[UILabel alloc] initWithFrame:cell.frame];
-    gameTitle.text = [[self.games objectAtIndex:[indexPath row]] valueForKey:@"title"];
-    [cell.contentView addSubview:gameTitle];
     return cell;
 }
 

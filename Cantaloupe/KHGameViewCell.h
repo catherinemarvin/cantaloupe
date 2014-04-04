@@ -10,4 +10,6 @@
 
 @interface KHGameViewCell : UITableViewCell
 
+- (void)setTitleText:(NSString *)title;
+
 @end
