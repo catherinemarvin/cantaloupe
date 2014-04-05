@@ -13,13 +13,15 @@
 static NSString *kSettingsCellIdentifier = @"kSettingsCell";
 
 typedef NS_ENUM(NSUInteger, KHSettingsCells) {
-    KHSettingCellNone = 1,
-    KHSettingCellLogout = 2
+    KHSettingCellNone,
+    KHSettingCellLogout,
+    KHSettingCellUsername
 };
 
 @interface KHSettingsViewController ()
 
 @property (nonatomic, strong) NSArray *settingItems;
+@property (nonatomic, strong )NSArray *userItems;
 
 @end
 
@@ -30,6 +32,7 @@ typedef NS_ENUM(NSUInteger, KHSettingsCells) {
     self = [super initWithStyle:style];
     if (self) {
         self.settingItems = @[@(KHSettingCellLogout)];
+        self.userItems = @[@(KHSettingCellUsername)];
     }
     return self;
 }
@@ -44,12 +47,16 @@ typedef NS_ENUM(NSUInteger, KHSettingsCells) {
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.settingItems.count;
+    if (section == 0) {
+        return self.settingItems.count;
+    } else {
+        return self.userItems.count;
+    }
 }
 
 
@@ -66,17 +73,27 @@ typedef NS_ENUM(NSUInteger, KHSettingsCells) {
 - (void)customizeCell:(KHSettingsViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     KHSettingsCells cellType = KHSettingCellNone;
     
+    NSArray *backingData;
     if (indexPath.section == 0) {
-        NSInteger row = indexPath.row;
-        if (row < self.settingItems.count) {
-            cellType = (KHSettingsCells) [self.settingItems[row] unsignedIntegerValue];
-        }
+        backingData = self.settingItems;
+    } else {
+        backingData = self.userItems;
+    }
+    
+    NSInteger row = indexPath.row;
+    if (row < backingData.count) {
+        cellType = (KHSettingsCells) [backingData[row] unsignedIntegerValue];
     }
     
     switch (cellType) {
         case KHSettingCellLogout:
             cell.textLabel.text = @"Logout";
             cell.tag = KHSettingCellLogout;
+            break;
+        case KHSettingCellUsername:
+            cell.textLabel.text = NSLocalizedString(@"Username", nil);
+            cell.detailTextLabel.text = [[KHSessionController sharedInstance] username];
+            cell.tag = KHSettingCellUsername;
             break;
         default:
             break;

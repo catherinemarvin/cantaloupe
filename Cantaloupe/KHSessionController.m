@@ -39,6 +39,12 @@ static NSString *kUserKey = @"kCantaloupeCurrentUser";
     return self;
 }
 
+#pragma mark - Session control
+
+- (NSString *)username {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kUserKey];
+}
+
 - (BOOL)_restoreSession {
     BOOL success = NO;
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];

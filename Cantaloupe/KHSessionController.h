@@ -15,5 +15,6 @@
 
 + (KHSessionController *)sharedInstance;
 - (void)logout;
+- (NSString *)username;
 
 @end
