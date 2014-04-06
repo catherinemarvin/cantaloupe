@@ -11,6 +11,7 @@
 #import "KHSessionController.h"
 
 static NSString *kSettingsCellIdentifier = @"kSettingsCell";
+static CGFloat kSectionHeaderHeight = 40.0f;
 
 typedef NS_ENUM(NSUInteger, KHSettingsCells) {
     KHSettingCellNone,
@@ -60,7 +61,7 @@ typedef NS_ENUM(NSUInteger, KHSettingsCells) {
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UILabel *header = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, tableView.frame.size.width, 40.0f)];
+    UILabel *header = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, tableView.frame.size.width, kSectionHeaderHeight)];
     NSString *text;
     if (section == 0) {
         text = NSLocalizedString(@"Account management", nil);
@@ -70,6 +71,14 @@ typedef NS_ENUM(NSUInteger, KHSettingsCells) {
     
     header.text = text;
     return header;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return kSectionHeaderHeight;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 0.01f;
 }
 
 
