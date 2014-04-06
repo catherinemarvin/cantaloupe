@@ -59,6 +59,11 @@ static NSString *kGameCellIdentifier = @"gameCellIdentifier";
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
+        if (error.code == -1009) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Sorry", nil) message:NSLocalizedString(@"Please connect to the Internet and try again", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Ok", nil) otherButtonTitles:nil];
+            [alert show];
+            return;
+        }
     }];
 }
 
