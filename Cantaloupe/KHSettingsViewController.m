@@ -59,6 +59,19 @@ typedef NS_ENUM(NSUInteger, KHSettingsCells) {
     }
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UILabel *header = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, tableView.frame.size.width, 40.0f)];
+    NSString *text;
+    if (section == 0) {
+        text = NSLocalizedString(@"Account management", nil);
+    } else {
+        text = NSLocalizedString(@"Account information", nil);
+    }
+    
+    header.text = text;
+    return header;
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
