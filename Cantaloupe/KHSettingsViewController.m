@@ -41,6 +41,7 @@ typedef NS_ENUM(NSUInteger, KHSettingsCells) {
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationItem.title = NSLocalizedString(@"Settings", nil);
     [self.tableView registerClass:[KHSettingsViewCell class] forCellReuseIdentifier:kSettingsCellIdentifier];
 }
 
