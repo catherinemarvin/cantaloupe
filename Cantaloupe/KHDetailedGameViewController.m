@@ -34,6 +34,8 @@ static NSString *kCellIdentifier = @"kDetailedGameViewCellIdentifier";
 - (void)configureWithData:(NSDictionary *)gameData {
     self.gameData = gameData;
     self.backingKeys = [[self.gameData allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+    
+    self.navigationItem.title = [self.gameData objectForKey:@"title"];
     [self.tableView reloadData];
 }
 
