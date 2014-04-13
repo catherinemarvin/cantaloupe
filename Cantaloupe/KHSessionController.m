@@ -71,6 +71,11 @@ static NSString *kUserKey = @"kCantaloupeCurrentUser";
     self.key = nil;
     self.loggedIn = NO;
     
+    
+    //Clear user defaults
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults removeObjectForKey:kUserKey];
+    [defaults synchronize];
 }
 
 
