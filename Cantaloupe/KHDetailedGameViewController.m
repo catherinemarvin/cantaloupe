@@ -66,8 +66,8 @@ static NSString *kCellIdentifier = @"kDetailedGameViewCellIdentifier";
 }
 
 - (NSDictionary *)keyToLabel {
-    return @{@"cover_url": NSLocalizedString(@"Cover Image", nil),
-             @"created_at": NSLocalizedString(@"Created At", nil),
+    return @{@"cover_url": NSLocalizedString(@"Cover image", nil),
+             @"created_at": NSLocalizedString(@"Created at", nil),
              @"downloads_count": NSLocalizedString(@"Number of downloads", nil),
              @"id": NSLocalizedString(@"Game ID", nil),
              @"min_price": NSLocalizedString(@"Minimum price", nil),
