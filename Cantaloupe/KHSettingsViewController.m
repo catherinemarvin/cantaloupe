@@ -9,20 +9,23 @@
 #import "KHSettingsViewController.h"
 #import "KHSettingsViewCell.h"
 #import "KHSessionController.h"
+#import <MessageUI/MessageUI.h>
 
 static NSString *kSettingsCellIdentifier = @"kSettingsCell";
-static CGFloat kSectionHeaderHeight = 40.0f;
+static CGFloat kSectionHeaderHeight = 30.0f;
 
 typedef NS_ENUM(NSUInteger, KHSettingsCells) {
     KHSettingCellNone,
     KHSettingCellLogout,
-    KHSettingCellUsername
+    KHSettingCellUsername,
+    KHSettingCellContact
 };
 
-@interface KHSettingsViewController ()
+@interface KHSettingsViewController ()<MFMailComposeViewControllerDelegate>
 
 @property (nonatomic, strong) NSArray *settingItems;
-@property (nonatomic, strong )NSArray *userItems;
+@property (nonatomic, strong)NSArray *userItems;
+@property (nonatomic, strong) NSArray *helpItems;
 
 @end
 
@@ -34,6 +37,7 @@ typedef NS_ENUM(NSUInteger, KHSettingsCells) {
     if (self) {
         self.settingItems = @[@(KHSettingCellLogout)];
         self.userItems = @[@(KHSettingCellUsername)];
+        self.helpItems = @[@(KHSettingCellContact)];
     }
     return self;
 }
@@ -49,15 +53,19 @@ typedef NS_ENUM(NSUInteger, KHSettingsCells) {
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
         return self.settingItems.count;
-    } else {
+    } else if (section == 1) {
         return self.userItems.count;
+    } else if (section == 2) {
+        return self.helpItems.count;
+    } else {
+        return 0;
     }
 }
 
@@ -67,11 +75,14 @@ typedef NS_ENUM(NSUInteger, KHSettingsCells) {
     UILabel *header = [[UILabel alloc] initWithFrame:CGRectMake(leftPadding, 0.0f, tableView.frame.size.width - leftPadding, kSectionHeaderHeight)];
     NSString *text;
     if (section == 0) {
-        text = NSLocalizedString(@"Account management", nil);
-    } else {
-        text = NSLocalizedString(@"Account information", nil);
+        text = NSLocalizedString(@"MANAGEMENT", nil);
+    } else if (section == 1) {
+        text = NSLocalizedString(@"INFORMATION", nil);
+    } else if (section == 2) {
+        text = NSLocalizedString(@"HELP", nil);
     }
     header.text = text;
+    header.font = [header.font fontWithSize:14.0f];
     [headerView addSubview:header];
     return headerView;
 }
@@ -101,8 +112,12 @@ typedef NS_ENUM(NSUInteger, KHSettingsCells) {
     NSArray *backingData;
     if (indexPath.section == 0) {
         backingData = self.settingItems;
-    } else {
+    } else if (indexPath.section == 1) {
         backingData = self.userItems;
+    } else if (indexPath.section == 2) {
+        backingData = self.helpItems;
+    } else {
+        return;
     }
     
     NSInteger row = indexPath.row;
@@ -120,6 +135,9 @@ typedef NS_ENUM(NSUInteger, KHSettingsCells) {
             cell.detailTextLabel.text = [[KHSessionController sharedInstance] username];
             cell.tag = KHSettingCellUsername;
             break;
+        case KHSettingCellContact:
+            cell.textLabel.text = NSLocalizedString(@"Contact", nil);
+            cell.tag = KHSettingCellContact;
         default:
             break;
     }
@@ -131,9 +149,40 @@ typedef NS_ENUM(NSUInteger, KHSettingsCells) {
         case KHSettingCellLogout:
             [[KHSessionController sharedInstance] logout];
             break;
+        case KHSettingCellContact:
+            [self _composeMail];
         default:
             break;
     }
+}
+
+#pragma mark - Help methods
+
+- (void)_composeMail {
+    if (![MFMailComposeViewController canSendMail]) {
+        return;
+    }
+    MFMailComposeViewController *mailController = [[MFMailComposeViewController alloc] init];
+    mailController.mailComposeDelegate = self;
+    [mailController setToRecipients:@[@"k3vinhwang@gmail.com"]];
+    [mailController setSubject:NSLocalizedString(@"Itch.io App Feedback", nil)];
+    
+    [self presentViewController:mailController animated:YES completion:nil];
+}
+
+#pragma mark - MFMailComposeViewControllerDelegate
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
+    void (^completionBlock)(void) = nil;
+    
+    if (result == MFMailComposeResultSent) {
+        completionBlock = ^() {
+            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Thank you", nil) message:NSLocalizedString(@"Thanks for the feedback.", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"Ok", nil) otherButtonTitles:nil] show];
+        };
+        
+    }
+    
+    [self dismissViewControllerAnimated:YES completion:completionBlock];
 }
 
 @end
