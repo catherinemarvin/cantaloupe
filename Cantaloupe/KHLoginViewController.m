@@ -76,6 +76,16 @@ static NSString *kUserKey = @"kCantaloupeCurrentUser";
     self.tableView = tableView;
 }
 
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    CGRect frame = self.tableView.frame;
+    frame.size.width = floorf(self.view.bounds.size.width - 2 * 20.0f);
+    self.tableView.frame = frame;
+    
+    CGRect loginFrame = self.loginButton.frame;
+    loginFrame.size.width = frame.size.width;
+    self.loginButton.frame = loginFrame;
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
