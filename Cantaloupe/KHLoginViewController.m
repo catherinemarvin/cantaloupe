@@ -45,7 +45,7 @@ static NSString *kUserKey = @"kCantaloupeCurrentUser";
         self.passwordField.delegate = self;
         
         self.loginButton = [[UIButton alloc] initWithFrame:CGRectZero];
-        self.loginButton.font = [UIFont fontWithName:@"Lato-Regular" size:14.0f];
+        self.loginButton.titleLabel.font = [UIFont fontWithName:@"Lato-Regular" size:14.0f];
         [self.loginButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [self.loginButton setTitle:@"Login" forState:UIControlStateNormal];
         [self.loginButton addTarget:self action:@selector(loginTapped:) forControlEvents:UIControlEventTouchUpInside];

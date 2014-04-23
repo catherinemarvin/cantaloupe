@@ -35,6 +35,7 @@
 		6E87707D190766EE007841EA /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6E87706B190766EE007841EA /* Lato-Thin.ttf */; };
 		6E87707E190766EE007841EA /* Lato-HairlineItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6E87706C190766EE007841EA /* Lato-HairlineItalic.ttf */; };
 		6E87707F190766EE007841EA /* Lato-Hairline.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6E87706D190766EE007841EA /* Lato-Hairline.ttf */; };
+		6E87708419078112007841EA /* UIColor+KHAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E87708319078112007841EA /* UIColor+KHAdditions.m */; };
 		6E8C78E718D81C3500741704 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E8C78E618D81C3500741704 /* Foundation.framework */; };
 		6E8C78E918D81C3500741704 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E8C78E818D81C3500741704 /* CoreGraphics.framework */; };
 		6E8C78EB18D81C3500741704 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E8C78EA18D81C3500741704 /* UIKit.framework */; };
@@ -100,6 +101,8 @@
 		6E87706B190766EE007841EA /* Lato-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Thin.ttf"; sourceTree = "<group>"; };
 		6E87706C190766EE007841EA /* Lato-HairlineItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-HairlineItalic.ttf"; sourceTree = "<group>"; };
 		6E87706D190766EE007841EA /* Lato-Hairline.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Hairline.ttf"; sourceTree = "<group>"; };
+		6E87708219078112007841EA /* UIColor+KHAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+KHAdditions.h"; sourceTree = "<group>"; };
+		6E87708319078112007841EA /* UIColor+KHAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+KHAdditions.m"; sourceTree = "<group>"; };
 		6E8C78E318D81C3500741704 /* Cantaloupe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cantaloupe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E8C78E618D81C3500741704 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6E8C78E818D81C3500741704 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -190,6 +193,8 @@
 			children = (
 				6E32C9F118EBCE7300156EAD /* KHSessionController.h */,
 				6E32C9F218EBCE7300156EAD /* KHSessionController.m */,
+				6E87708219078112007841EA /* UIColor+KHAdditions.h */,
+				6E87708319078112007841EA /* UIColor+KHAdditions.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -480,6 +485,7 @@
 				6E32CA0518EBDCE300156EAD /* KHSettingsViewController.m in Sources */,
 				6E8C796C18D9761000741704 /* KHTabBarController.m in Sources */,
 				6E94B62D18E7BE9500153B52 /* KHDetailedGameViewController.m in Sources */,
+				6E87708419078112007841EA /* UIColor+KHAdditions.m in Sources */,
 				6E83B46B18E8A81800EDE66A /* KHDetailedGameViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
