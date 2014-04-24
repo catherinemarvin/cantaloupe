@@ -14,7 +14,7 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        // Initialization code
+        self.textLabel.font = [UIFont fontWithName:@"Lato-Regular" size:16.0f];
     }
     return self;
 }

@@ -35,6 +35,10 @@ static NSString *kGameCellIdentifier = @"gameCellIdentifier";
 
 - (void)viewDidLoad {
     self.navigationItem.title = NSLocalizedString(@"Games", nil);
+    
+    NSMutableDictionary *titleBarAttributes = [NSMutableDictionary dictionaryWithDictionary:[[UINavigationBar appearance] titleTextAttributes]];
+    [titleBarAttributes setValue:[UIFont fontWithName:@"Lato-Regular" size:24.0f] forKey:NSFontAttributeName];
+    [[UINavigationBar appearance] setTitleTextAttributes:titleBarAttributes];
 }
 
 - (void)_requestGames {
