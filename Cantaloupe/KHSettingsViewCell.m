@@ -15,6 +15,7 @@
     // Override the style argument with our own.
     self = [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseIdentifier];
     if (self) {
+        self.textLabel.font = [UIFont fontWithName:@"Lato-Regular" size:16.0f];
     }
     return self;
 }
