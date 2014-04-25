@@ -30,14 +30,14 @@ static NSString *kUserKey = @"kCantaloupeCurrentUser";
     self = [super init];
     if (self) {
         self.usernameField = [[UITextField alloc] initWithFrame:CGRectZero];
-        self.usernameField.font = [UIFont fontWithName:@"Lato-Regular" size:14.0f];
+        self.usernameField.font = [UIFont fontWithName:@"Lato-Regular" size:16.0f];
         self.usernameField.placeholder = NSLocalizedString(@"Username", nil);
         self.usernameField.autocapitalizationType = UITextAutocapitalizationTypeNone;
         self.usernameField.returnKeyType = UIReturnKeyNext;
         self.usernameField.delegate = self;
         
         self.passwordField = [[UITextField alloc] initWithFrame:CGRectZero];
-        self.passwordField.font = [UIFont fontWithName:@"Lato-Regular" size:14.0f];
+        self.passwordField.font = [UIFont fontWithName:@"Lato-Regular" size:16.0f];
         self.passwordField.placeholder = NSLocalizedString(@"Password", nil);
         self.passwordField.secureTextEntry = YES;
         self.passwordField.autocapitalizationType = UITextAutocapitalizationTypeNone;
@@ -45,7 +45,7 @@ static NSString *kUserKey = @"kCantaloupeCurrentUser";
         self.passwordField.delegate = self;
         
         self.loginButton = [[UIButton alloc] initWithFrame:CGRectZero];
-        self.loginButton.titleLabel.font = [UIFont fontWithName:@"Lato-Regular" size:14.0f];
+        self.loginButton.titleLabel.font = [UIFont fontWithName:@"Lato-Regular" size:16.0f];
         [self.loginButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [self.loginButton setTitle:@"Login" forState:UIControlStateNormal];
         [self.loginButton addTarget:self action:@selector(loginTapped:) forControlEvents:UIControlEventTouchUpInside];
@@ -205,6 +205,12 @@ static NSString *kUserKey = @"kCantaloupeCurrentUser";
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"Error: %@", error);
+            
+            if (error.code == -1004) {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"No internet", nil) message:NSLocalizedString(@"Please connect to the Internet, then try again.", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Ok", nil) otherButtonTitles:nil];
+                [alert show];
+                return;
+            }
         }];
     }
 }
