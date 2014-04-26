@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-JBChartView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-MagicalRecord.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -36,37 +41,6 @@
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>0EBB2CD2258F4D5C8F821FEB</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>1E2DB5D0545044A49B190CD4</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>2ABD8B5E193641B6B2DB3696</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>502E23A478474F01A8D1A0F5</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C7DF64FC28C2482BBF8DB84D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>CF1F3DC8DB0C4BCFB350D25B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
 </dict>
 </plist>
