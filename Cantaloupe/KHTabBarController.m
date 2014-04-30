@@ -9,10 +9,12 @@
 #import "KHTabBarController.h"
 #import "KHGamesViewController.h"
 #import "KHSettingsViewController.h"
+#import "KHGraphsViewController.h"
 
 typedef NS_ENUM(NSInteger, KHTabViewControllerTag) {
     KHGamesViewControllerTag,
-    KHSettingsViewControllerTag
+    KHSettingsViewControllerTag,
+    KHGraphsViewControllerTag
 };
 
 @interface KHTabBarController ()
@@ -20,6 +22,7 @@ typedef NS_ENUM(NSInteger, KHTabViewControllerTag) {
 @property (nonatomic, strong) NSString *key;
 @property (nonatomic, strong) KHGamesViewController *gamesViewController;
 @property (nonatomic, strong) KHSettingsViewController *settingsViewController;
+@property (nonatomic, strong) KHGraphsViewController *graphsViewController;
 
 @end
 
@@ -32,15 +35,18 @@ typedef NS_ENUM(NSInteger, KHTabViewControllerTag) {
         self.key = key;
         
         self.gamesViewController = [[KHGamesViewController alloc] initWithStyle:UITableViewStylePlain key:key];
-        self.gamesViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Games" image:[UIImage imageNamed:@"gamesIcon"] tag:KHGamesViewControllerTag];
+        self.gamesViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Games",nil) image:[UIImage imageNamed:@"gamesIcon"] tag:KHGamesViewControllerTag];
         UINavigationController *gamesNav = [[UINavigationController alloc] initWithRootViewController:self.gamesViewController];
         
         self.settingsViewController = [[KHSettingsViewController alloc] initWithStyle:UITableViewStyleGrouped];
-        self.settingsViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Settings" image:[UIImage imageNamed:@"settingsIcon"] tag:KHSettingsViewControllerTag];
+        self.settingsViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Settings", nil) image:[UIImage imageNamed:@"settingsIcon"] tag:KHSettingsViewControllerTag];
         UINavigationController *settingsNav = [[UINavigationController alloc] initWithRootViewController:self.settingsViewController];
         
+        self.graphsViewController = [[KHGraphsViewController alloc] init];
+        self.graphsViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Graphs", nil) image:[UIImage imageNamed:@"graphsIcon"] tag:KHGraphsViewControllerTag];
+        UINavigationController *graphsNav = [[UINavigationController alloc] initWithRootViewController:self.graphsViewController];
         
-        NSArray *viewControllers = @[gamesNav, settingsNav];
+        NSArray *viewControllers = @[gamesNav, graphsNav, settingsNav];
         [self setViewControllers:viewControllers];
     }
     return self;
