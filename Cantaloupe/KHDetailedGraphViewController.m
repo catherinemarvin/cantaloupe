@@ -36,7 +36,7 @@
     UIView *view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     view.backgroundColor = [UIColor whiteColor];
     
-    self.graphView = [[JBBarChartView alloc] initWithFrame:CGRectMake(30, 30, 100, 200)];
+    self.graphView = [[JBBarChartView alloc] initWithFrame:CGRectMake(20, 120, view.bounds.size.width - 40, 100)];
     self.graphView.delegate = self;
     self.graphView.dataSource = self;
     self.graphView.mininumValue = 0.0f;
@@ -60,6 +60,12 @@
     NSDictionary *data = [self.graphData objectAtIndex:index];
     NSNumber *count = [data valueForKey:@"count"];
     return [count floatValue];
+}
+
+- (void)barChartView:(JBBarChartView *)barChartView didSelectBarAtIndex:(NSUInteger)index touchPoint:(CGPoint)touchPoint {
+    NSNumber *valueNumber = [[self.graphData objectAtIndex:index] valueForKey:@"count"];
+    
+    // Update view
 }
 
 
