@@ -42,7 +42,7 @@ typedef NS_ENUM(NSInteger, KHTabViewControllerTag) {
         self.settingsViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Settings", nil) image:[UIImage imageNamed:@"settingsIcon"] tag:KHSettingsViewControllerTag];
         UINavigationController *settingsNav = [[UINavigationController alloc] initWithRootViewController:self.settingsViewController];
         
-        self.graphsViewController = [[KHGraphsViewController alloc] init];
+        self.graphsViewController = [[KHGraphsViewController alloc] initWithKey:self.key];
         self.graphsViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Graphs", nil) image:[UIImage imageNamed:@"graphsIcon"] tag:KHGraphsViewControllerTag];
         UINavigationController *graphsNav = [[UINavigationController alloc] initWithRootViewController:self.graphsViewController];
         

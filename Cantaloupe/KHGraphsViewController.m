@@ -8,12 +8,21 @@
 
 #import "KHGraphsViewController.h"
 #import "KHGraphsViewCell.h"
+#import "AFNetworking.h"
 
 static NSString *kGraphsCellIdentifier = @"kGraphsCell";
+
+typedef NS_ENUM(NSUInteger, KHGraphsCells) {
+    KHGraphsCellNone,
+    KHGraphsCellPurchases,
+    KHGraphsCellViews,
+    KHGraphsCellDownloads
+};
 
 @interface KHGraphsViewController ()
 
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSString *key;
 
 @end
 
@@ -24,6 +33,15 @@ static NSString *kGraphsCellIdentifier = @"kGraphsCell";
 - (void)dealloc {
     self.tableView.delegate = nil;
     self.tableView.dataSource = nil;
+}
+
+- (id)initWithKey:(NSString *)key {
+    self = [super init];
+    if (self) {
+        self.key = key;
+        [self _requestGraphs];
+    }
+    return self;
 }
 
 #pragma mark - UIViewController
@@ -64,17 +82,45 @@ static NSString *kGraphsCellIdentifier = @"kGraphsCell";
     
     if (row == 0) {
         cell.textLabel.text = NSLocalizedString(@"Purchases", nil);
+        cell.tag = KHGraphsCellPurchases;
         
     } else if (row == 1) {
         cell.textLabel.text = NSLocalizedString(@"Views", nil);
+        cell.tag = KHGraphsCellViews;
         
     } else if (row == 2) {
         cell.textLabel.text = NSLocalizedString(@"Downloads", nil);
+        cell.tag = KHGraphsCellDownloads;
     }
-    
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    switch (cell.tag) {
+        case KHGraphsCellPurchases:
+            break;
+        case KHGraphsCellViews:
+            break;
+        case KHGraphsCellDownloads:
+            break;
+        default:
+            break;
+    }
+}
 
+- (void)_requestGraphs {
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    NSString *url = [NSString stringWithFormat:@"http://itch.io/api/1/%@/my-games/graphs?num_days=30", self.key];
+    
+    [manager POST:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"JSON: %@", responseObject);
+    } failure:
+     ^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"Error: %@", error);
+     }];
+}
 
 
 @end
