@@ -7,43 +7,74 @@
 //
 
 #import "KHGraphsViewController.h"
+#import "KHGraphsViewCell.h"
+
+static NSString *kGraphsCellIdentifier = @"kGraphsCell";
 
 @interface KHGraphsViewController ()
+
+@property (nonatomic, strong) UITableView *tableView;
 
 @end
 
 @implementation KHGraphsViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+#pragma mark - NSObject
+
+- (void)dealloc {
+    self.tableView.delegate = nil;
+    self.tableView.dataSource = nil;
+}
+
+#pragma mark - UIViewController
+- (void)loadView {
+    self.tableView = [[UITableView alloc] initWithFrame:[[UIScreen mainScreen] bounds] style:UITableViewStyleGrouped];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.view = self.tableView;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.navigationItem.title = NSLocalizedString(@"Graphs", nil);
+    [self.tableView registerClass:[KHGraphsViewCell class] forCellReuseIdentifier:kGraphsCellIdentifier];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - UITableView protocols
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (section == 0) {
+        return 3;
+    } else {
+        return 0;
+    }
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    KHGraphsViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kGraphsCellIdentifier forIndexPath:indexPath];
+    
+    [self customizeCell:cell atIndexPath:indexPath];
+    return cell;
 }
-*/
+
+- (void)customizeCell:(KHGraphsViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    NSInteger row = indexPath.row;
+    
+    if (row == 0) {
+        cell.textLabel.text = NSLocalizedString(@"Purchases", nil);
+        
+    } else if (row == 1) {
+        cell.textLabel.text = NSLocalizedString(@"Views", nil);
+        
+    } else if (row == 2) {
+        cell.textLabel.text = NSLocalizedString(@"Downloads", nil);
+    }
+    
+}
+
+
+
 
 @end

@@ -128,7 +128,7 @@ typedef NS_ENUM(NSUInteger, KHSettingsCells) {
     
     switch (cellType) {
         case KHSettingCellLogout:
-            cell.textLabel.text = @"Logout";
+            cell.textLabel.text = NSLocalizedString(@"Logout", nil);
             cell.tag = KHSettingCellLogout;
             break;
         case KHSettingCellUsername:

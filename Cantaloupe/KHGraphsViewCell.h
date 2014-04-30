@@ -1,5 +1,5 @@
 //
-//  KHGraphsViewController.h
+//  KHGraphsViewCell.h
 //  Cantaloupe
 //
 //  Created by Kevin Hwang on 4/29/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KHGraphsViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@interface KHGraphsViewCell : UITableViewCell
 
 @end
