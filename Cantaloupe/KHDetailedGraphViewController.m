@@ -11,14 +11,15 @@
 
 @interface KHDetailedGraphViewController ()
 
-@property (nonatomic, strong) NSDictionary *graphData;
+@property (nonatomic, strong) NSArray *graphData;
+
 @property (nonatomic, strong) JBBarChartView *graphView;
 
 @end
 
 @implementation KHDetailedGraphViewController
 
-- (id)initWithData:(NSDictionary *)graphData {
+- (id)initWithData:(NSArray *)graphData {
     self = [super init];
     
     if (self) {
@@ -35,9 +36,10 @@
     UIView *view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     view.backgroundColor = [UIColor whiteColor];
     
-    self.graphView = [[JBBarChartView alloc] initWithFrame:view.frame];
+    self.graphView = [[JBBarChartView alloc] initWithFrame:CGRectMake(30, 30, 100, 200)];
     self.graphView.delegate = self;
     self.graphView.dataSource = self;
+    self.graphView.mininumValue = 0.0f;
     [view addSubview:self.graphView];
     self.view = view;
     [self.graphView reloadData];
@@ -55,11 +57,9 @@
 }
 
 - (CGFloat)barChartView:(JBBarChartView *)barChartView heightForBarViewAtAtIndex:(NSUInteger)index {
-    if (index % 2 == 0) {
-        return 50;
-    } else {
-        return 100;
-    }
+    NSDictionary *data = [self.graphData objectAtIndex:index];
+    NSNumber *count = [data valueForKey:@"count"];
+    return [count floatValue];
 }
 
 

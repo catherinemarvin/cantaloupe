@@ -115,7 +115,7 @@ typedef NS_ENUM(NSUInteger, KHGraphsCells) {
     }
     
     if (key) {
-        NSDictionary *data = [self.graphData valueForKey:key];
+        NSArray *data = [self.graphData valueForKey:key];
         
         KHDetailedGraphViewController *detailedGraphController = [[KHDetailedGraphViewController alloc] initWithData:data];
         [self.navigationController pushViewController:detailedGraphController animated:YES];

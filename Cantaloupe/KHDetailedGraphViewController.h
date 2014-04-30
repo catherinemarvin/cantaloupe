@@ -11,6 +11,6 @@
 
 @interface KHDetailedGraphViewController : UIViewController<JBBarChartViewDataSource, JBBarChartViewDelegate>
 
-- (id)initWithData:(NSDictionary *)graphData;
+- (id)initWithData:(NSArray *)graphData;
 
 @end
