@@ -39,6 +39,7 @@ typedef NS_ENUM(NSInteger, KHTabViewControllerTag) {
         self.settingsViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Settings" image:[UIImage imageNamed:@"settingsIcon"] tag:KHSettingsViewControllerTag];
         UINavigationController *settingsNav = [[UINavigationController alloc] initWithRootViewController:self.settingsViewController];
         
+        
         NSArray *viewControllers = @[gamesNav, settingsNav];
         [self setViewControllers:viewControllers];
     }
