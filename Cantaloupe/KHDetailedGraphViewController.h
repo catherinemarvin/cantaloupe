@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JBBarChartView.h"
 
-@interface KHDetailedGraphViewController : UIViewController
+@interface KHDetailedGraphViewController : UIViewController<JBBarChartViewDataSource, JBBarChartViewDelegate>
 
 - (id)initWithData:(NSDictionary *)graphData;
 

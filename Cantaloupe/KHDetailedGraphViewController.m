@@ -7,8 +7,12 @@
 //
 
 #import "KHDetailedGraphViewController.h"
+#import "JBBarChartView.h"
 
 @interface KHDetailedGraphViewController ()
+
+@property (nonatomic, strong) NSDictionary *graphData;
+@property (nonatomic, strong) JBBarChartView *graphView;
 
 @end
 
@@ -18,33 +22,45 @@
     self = [super init];
     
     if (self) {
-        
+        self.graphData = graphData;
     }
     
     return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+#pragma mark - UIViewController
+
+- (void)loadView {
+    [super loadView];
+    UIView *view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    view.backgroundColor = [UIColor whiteColor];
+    
+    self.graphView = [[JBBarChartView alloc] initWithFrame:view.frame];
+    self.graphView.delegate = self;
+    self.graphView.dataSource = self;
+    [view addSubview:self.graphView];
+    self.view = view;
+    [self.graphView reloadData];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.graphView setState:JBChartViewStateExpanded];
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - JBBarChartView
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (NSUInteger)numberOfBarsInBarChartView:(JBBarChartView *)barChartView {
+    return [self.graphData count];
 }
-*/
+
+- (CGFloat)barChartView:(JBBarChartView *)barChartView heightForBarViewAtAtIndex:(NSUInteger)index {
+    if (index % 2 == 0) {
+        return 50;
+    } else {
+        return 100;
+    }
+}
+
 
 @end
