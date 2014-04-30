@@ -9,6 +9,7 @@
 #import "KHGraphsViewController.h"
 #import "KHGraphsViewCell.h"
 #import "AFNetworking.h"
+#import "KHDetailedGraphViewController.h"
 
 static NSString *kGraphsCellIdentifier = @"kGraphsCell";
 
@@ -23,6 +24,7 @@ typedef NS_ENUM(NSUInteger, KHGraphsCells) {
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSString *key;
+@property (nonatomic, strong) NSDictionary *graphData;
 
 @end
 
@@ -97,15 +99,26 @@ typedef NS_ENUM(NSUInteger, KHGraphsCells) {
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
+    NSString *key;
     switch (cell.tag) {
         case KHGraphsCellPurchases:
+            key = @"purchases";
             break;
         case KHGraphsCellViews:
+            key = @"views";
             break;
         case KHGraphsCellDownloads:
+            key = @"downloads";
             break;
         default:
             break;
+    }
+    
+    if (key) {
+        NSDictionary *data = [self.graphData valueForKey:key];
+        
+        KHDetailedGraphViewController *detailedGraphController = [[KHDetailedGraphViewController alloc] initWithData:data];
+        [self.navigationController pushViewController:detailedGraphController animated:YES];
     }
 }
 
@@ -116,6 +129,11 @@ typedef NS_ENUM(NSUInteger, KHGraphsCells) {
     
     [manager POST:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
+        
+        NSDictionary *responseDict = (NSDictionary *)responseObject;
+        
+        self.graphData = responseDict;
+        
     } failure:
      ^(AFHTTPRequestOperation *operation, NSError *error) {
          NSLog(@"Error: %@", error);
