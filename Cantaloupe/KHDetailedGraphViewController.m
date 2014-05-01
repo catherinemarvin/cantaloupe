@@ -8,12 +8,14 @@
 
 #import "KHDetailedGraphViewController.h"
 #import "JBBarChartView.h"
+#import "KHGraphDetailView.h"
 
 @interface KHDetailedGraphViewController ()
 
 @property (nonatomic, strong) NSArray *graphData;
 
 @property (nonatomic, strong) JBBarChartView *graphView;
+@property (nonatomic, strong) KHGraphDetailView *detailView;
 
 @end
 
@@ -42,8 +44,12 @@
     self.graphView.dataSource = self;
     self.graphView.mininumValue = 0.0f;
     [view addSubview:self.graphView];
-    self.view = view;
     [self.graphView reloadData];
+    
+    self.detailView = [[KHGraphDetailView alloc] initWithFrame:CGRectMake(20, 220, view.bounds.size.width - 40, 40)];
+    self.detailView.backgroundColor = [UIColor redColor];
+    [view addSubview:self.detailView];
+    self.view = view;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -66,7 +72,7 @@
 - (void)barChartView:(JBBarChartView *)barChartView didSelectBarAtIndex:(NSUInteger)index touchPoint:(CGPoint)touchPoint {
     NSNumber *valueNumber = [[self.graphData objectAtIndex:index] valueForKey:@"count"];
     
-    // Update view
+    [self.detailView updateDetail:[valueNumber stringValue]];
 }
 
 
