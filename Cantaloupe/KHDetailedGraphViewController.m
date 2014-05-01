@@ -19,11 +19,12 @@
 
 @implementation KHDetailedGraphViewController
 
-- (id)initWithData:(NSArray *)graphData {
+- (id)initWithData:(NSArray *)graphData title:(NSString *)title {
     self = [super init];
     
     if (self) {
         self.graphData = graphData;
+        self.navigationItem.title = title;
     }
     
     return self;
