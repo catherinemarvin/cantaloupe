@@ -82,7 +82,7 @@ typedef NS_ENUM(NSUInteger, KHSettingsCells) {
         text = NSLocalizedString(@"HELP", nil);
     }
     header.text = text;
-    header.font = [header.font fontWithSize:14.0f];
+    header.font = [UIFont fontWithName:@"Lato-Regular" size:14.0f];
     header.textColor = [UIColor grayColor];
     [headerView addSubview:header];
     return headerView;
