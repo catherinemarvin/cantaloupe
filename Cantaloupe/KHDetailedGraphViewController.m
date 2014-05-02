@@ -36,6 +36,7 @@
 
 - (void)loadView {
     [super loadView];
+    
     UIView *view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     view.backgroundColor = [UIColor whiteColor];
     
@@ -49,6 +50,14 @@
     self.detailView = [[KHGraphDetailView alloc] initWithFrame:CGRectMake(20, 220, view.bounds.size.width - 40, 40)];
     self.detailView.backgroundColor = [UIColor redColor];
     [view addSubview:self.detailView];
+    
+    if (!self.graphData || [self.graphData count] == 0) {
+        UILabel *sorryLabel = [[UILabel alloc] initWithFrame:self.detailView.bounds];
+        sorryLabel.text = NSLocalizedString(@"Sorry, graph data is unavailable at this time.", nil);
+        sorryLabel.font = [UIFont fontWithName:@"Lato-Regular" size:20.0f];
+        [self.detailView addSubview:sorryLabel];
+    }
+    
     self.view = view;
 }
 
