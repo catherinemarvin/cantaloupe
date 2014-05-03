@@ -25,6 +25,7 @@
 		6E5A897C1910B4770062355C /* KHGraphsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E5A897B1910B4770062355C /* KHGraphsViewCell.m */; };
 		6E5A897F1910BD530062355C /* KHDetailedGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E5A897E1910BD530062355C /* KHDetailedGraphViewController.m */; };
 		6E5A89991912279A0062355C /* KHGraphDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E5A89981912279A0062355C /* KHGraphDetailView.m */; };
+		6E5A89BA191496B30062355C /* KHGraphFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E5A89B9191496B30062355C /* KHGraphFooterView.m */; };
 		6E83B46B18E8A81800EDE66A /* KHDetailedGameViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E83B46A18E8A81800EDE66A /* KHDetailedGameViewCell.m */; };
 		6E87706E190766EE007841EA /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6E87705C190766EE007841EA /* Lato-BoldItalic.ttf */; };
 		6E87706F190766EE007841EA /* Lato-HeavyItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6E87705D190766EE007841EA /* Lato-HeavyItalic.ttf */; };
@@ -103,6 +104,8 @@
 		6E5A897E1910BD530062355C /* KHDetailedGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHDetailedGraphViewController.m; sourceTree = "<group>"; };
 		6E5A89971912279A0062355C /* KHGraphDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHGraphDetailView.h; sourceTree = "<group>"; };
 		6E5A89981912279A0062355C /* KHGraphDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHGraphDetailView.m; sourceTree = "<group>"; };
+		6E5A89B8191496B30062355C /* KHGraphFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHGraphFooterView.h; sourceTree = "<group>"; };
+		6E5A89B9191496B30062355C /* KHGraphFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHGraphFooterView.m; sourceTree = "<group>"; };
 		6E83B46918E8A81800EDE66A /* KHDetailedGameViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHDetailedGameViewCell.h; sourceTree = "<group>"; };
 		6E83B46A18E8A81800EDE66A /* KHDetailedGameViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHDetailedGameViewCell.m; sourceTree = "<group>"; };
 		6E87705C190766EE007841EA /* Lato-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -193,6 +196,8 @@
 				6E5A897B1910B4770062355C /* KHGraphsViewCell.m */,
 				6E5A89971912279A0062355C /* KHGraphDetailView.h */,
 				6E5A89981912279A0062355C /* KHGraphDetailView.m */,
+				6E5A89B8191496B30062355C /* KHGraphFooterView.h */,
+				6E5A89B9191496B30062355C /* KHGraphFooterView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -531,6 +536,7 @@
 				6E5A89991912279A0062355C /* KHGraphDetailView.m in Sources */,
 				6E87708419078112007841EA /* UIColor+KHAdditions.m in Sources */,
 				6E83B46B18E8A81800EDE66A /* KHDetailedGameViewCell.m in Sources */,
+				6E5A89BA191496B30062355C /* KHGraphFooterView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
