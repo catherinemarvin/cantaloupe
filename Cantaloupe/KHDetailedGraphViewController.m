@@ -9,6 +9,7 @@
 #import "KHDetailedGraphViewController.h"
 #import "JBBarChartView.h"
 #import "KHGraphDetailView.h"
+#import "KHGraphFooterView.h"
 
 @interface KHDetailedGraphViewController ()
 

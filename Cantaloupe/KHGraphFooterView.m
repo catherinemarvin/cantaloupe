@@ -85,4 +85,27 @@
     }
 }
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    self.topSeparatorView.frame = CGRectMake(self.bounds.origin.x, self.bounds.origin.y, self.bounds.size.width
+                                             , 0.5f);
+    CGFloat xOffset = 0;
+    CGFloat yOffset = 1.0f;
+    CGFloat width = ceil(self.bounds.size.width * 0.5);
+    
+    self.leftLabel.frame = CGRectMake(xOffset, yOffset, width, self.bounds.size.height);
+    self.rightLabel.frame = CGRectMake(CGRectGetMaxX(self.leftLabel.frame), yOffset, width, self.bounds.size.height);
+}
+
+#pragma mark - Setters
+
+- (void)setSectionCount:(NSInteger)sectionCount {
+    _sectionCount = sectionCount;
+    [self setNeedsDisplay];
+}
+
+- (void)setFooterSeparatorColor:(UIColor *)footerSeparatorColor {
+    _footerSeparatorColor = footerSeparatorColor;
+    [self setNeedsDisplay];
+}
 @end
