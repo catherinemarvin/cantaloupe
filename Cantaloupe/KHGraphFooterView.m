@@ -47,4 +47,42 @@
     return self;
 }
 
+#pragma mark - Drawing
+
+- (void)drawRect:(CGRect)rect {
+    [super drawRect:rect];
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetStrokeColorWithColor(context, self.footerSeparatorColor.CGColor);
+    CGContextSetLineWidth(context, 0.5);
+    CGContextSetShouldAntialias(context, YES);
+    
+    CGFloat xOffset = 0;
+    CGFloat yOffset = 0.5;
+    CGFloat stepLength = ceil((self.bounds.size.width) / (self.sectionCount - 1));
+    
+    for (int i=0; i<self.sectionCount; i++)
+    {
+        CGContextSaveGState(context);
+        {
+            CGContextMoveToPoint(context, xOffset + (0.5 * 0.5), yOffset);
+            CGContextAddLineToPoint(context, xOffset + (0.5 * 0.5), yOffset + 3.0);
+            CGContextStrokePath(context);
+            xOffset += stepLength;
+        }
+        CGContextRestoreGState(context);
+    }
+    
+    if (self.sectionCount > 1)
+    {
+        CGContextSaveGState(context);
+        {
+            CGContextMoveToPoint(context, self.bounds.size.width - (0.5 * 0.5), yOffset);
+            CGContextAddLineToPoint(context, self.bounds.size.width - (0.5 * 0.5), yOffset + 3.0);
+            CGContextStrokePath(context);
+        }
+        CGContextRestoreGState(context);
+    }
+}
+
 @end
