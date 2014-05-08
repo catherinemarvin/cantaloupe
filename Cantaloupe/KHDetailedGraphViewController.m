@@ -49,7 +49,7 @@
     [self.graphView reloadData];
     
     self.detailView = [[KHGraphDetailView alloc] initWithFrame:CGRectMake(20, 220, view.bounds.size.width - 40, 40)];
-    self.detailView.backgroundColor = [UIColor redColor];
+    self.detailView.hidden = YES;
     [view addSubview:self.detailView];
     
     if (!self.graphData || [self.graphData count] == 0) {
@@ -92,8 +92,13 @@
 }
 
 - (void)lineChartView:(JBLineChartView *)lineChartView didSelectLineAtIndex:(NSUInteger)lineIndex horizontalIndex:(NSUInteger)horizontalIndex touchPoint:(CGPoint)touchPoint {
+    self.detailView.hidden = NO;
     NSNumber *valueNumber = [[self.graphData objectAtIndex:horizontalIndex] valueForKey:@"count"];
     [self.detailView updateDetail:[valueNumber stringValue]];
+}
+
+- (void)didUnselectLineInLineChartView:(JBLineChartView *)lineChartView {
+    self.detailView.hidden = YES;
 }
 
 @end
