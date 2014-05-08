@@ -59,6 +59,13 @@
         [self.detailView addSubview:sorryLabel];
     }
     
+    KHGraphFooterView *footerView = [[KHGraphFooterView alloc] initWithFrame:CGRectMake(10.0f, ceil(self.view.bounds.size.height * 0.5) - ceil(20.0f * 0.5), self.view.bounds.size.width - (10.0f * 2), 75.0f)];
+    
+    footerView.backgroundColor = [UIColor blueColor];
+    footerView.leftLabel.text = @"Foo";
+    footerView.rightLabel.text = @"Bar";
+    self.graphView.footerView = footerView;
+    
     self.view = view;
 }
 
