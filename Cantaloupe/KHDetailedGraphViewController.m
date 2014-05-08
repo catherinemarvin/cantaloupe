@@ -7,7 +7,7 @@
 //
 
 #import "KHDetailedGraphViewController.h"
-#import "JBBarChartView.h"
+#import "JBLineChartView.h"
 #import "KHGraphDetailView.h"
 #import "KHGraphFooterView.h"
 
@@ -15,7 +15,7 @@
 
 @property (nonatomic, strong) NSArray *graphData;
 
-@property (nonatomic, strong) JBBarChartView *graphView;
+@property (nonatomic, strong) JBLineChartView *graphView;
 @property (nonatomic, strong) KHGraphDetailView *detailView;
 
 @end
@@ -41,7 +41,7 @@
     UIView *view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     view.backgroundColor = [UIColor whiteColor];
     
-    self.graphView = [[JBBarChartView alloc] initWithFrame:CGRectMake(20, 120, view.bounds.size.width - 40, 100)];
+    self.graphView = [[JBLineChartView alloc] initWithFrame:CGRectMake(20, 120, view.bounds.size.width - 40, 100)];
     self.graphView.delegate = self;
     self.graphView.dataSource = self;
     self.graphView.mininumValue = 0.0f;
@@ -64,6 +64,7 @@
     footerView.backgroundColor = [UIColor blueColor];
     footerView.leftLabel.text = @"Foo";
     footerView.rightLabel.text = @"Bar";
+    footerView.sectionCount = [self.graphData count];
     self.graphView.footerView = footerView;
     
     self.view = view;
@@ -76,21 +77,23 @@
 
 #pragma mark - JBBarChartView
 
-- (NSUInteger)numberOfBarsInBarChartView:(JBBarChartView *)barChartView {
-    return [self.graphData count];
+- (NSUInteger)numberOfLinesInLineChartView:(JBLineChartView *)lineChartView {
+    return 1;
 }
 
-- (CGFloat)barChartView:(JBBarChartView *)barChartView heightForBarViewAtAtIndex:(NSUInteger)index {
-    NSDictionary *data = [self.graphData objectAtIndex:index];
+- (NSUInteger)lineChartView:(JBLineChartView *)lineChartView numberOfVerticalValuesAtLineIndex:(NSUInteger)lineIndex {
+    return 1;
+}
+
+- (CGFloat)lineChartView:(JBLineChartView *)lineChartView verticalValueForHorizontalIndex:(NSUInteger)horizontalIndex atLineIndex:(NSUInteger)lineIndex {
+    NSDictionary *data = [self.graphData objectAtIndex:horizontalIndex];
     NSNumber *count = [data valueForKey:@"count"];
     return [count floatValue];
 }
 
-- (void)barChartView:(JBBarChartView *)barChartView didSelectBarAtIndex:(NSUInteger)index touchPoint:(CGPoint)touchPoint {
-    NSNumber *valueNumber = [[self.graphData objectAtIndex:index] valueForKey:@"count"];
-    
+- (void)lineChartView:(JBLineChartView *)lineChartView didSelectLineAtIndex:(NSUInteger)lineIndex horizontalIndex:(NSUInteger)horizontalIndex touchPoint:(CGPoint)touchPoint {
+    NSNumber *valueNumber = [[self.graphData objectAtIndex:horizontalIndex] valueForKey:@"count"];
     [self.detailView updateDetail:[valueNumber stringValue]];
 }
-
 
 @end
