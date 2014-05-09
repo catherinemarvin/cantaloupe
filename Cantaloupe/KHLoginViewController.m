@@ -11,6 +11,7 @@
 #import "KHTabBarController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "SSKeychain.h"
+#import "MBProgressHUD.h"
 
 @interface KHLoginViewController ()
 
@@ -170,6 +171,9 @@ static NSString *kUserKey = @"kCantaloupeCurrentUser";
 
 - (void)loginTapped:(id)sender {
     if ([self _validateFields]) {
+        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         NSString *username = [self.usernameField text];
         NSDictionary *parameters = @{@"username": username, @"password": [self.passwordField text], @"source": @"android"};
@@ -202,6 +206,7 @@ static NSString *kUserKey = @"kCantaloupeCurrentUser";
             } else {
                 NSLog(@"Failed to set key: %@", error.debugDescription);
             }
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"Error: %@", error);
@@ -211,6 +216,7 @@ static NSString *kUserKey = @"kCantaloupeCurrentUser";
                 [alert show];
                 return;
             }
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
         }];
     }
 }
