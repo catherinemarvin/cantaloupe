@@ -16,7 +16,13 @@
 
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *descriptionLabel;
+
 @property (nonatomic, strong) UIView *dividerLabel;
+
+@property (nonatomic, strong) UILabel *earningsLabel;
+@property (nonatomic, strong) UILabel *viewsLabel;
+@property (nonatomic, strong) UILabel *purchasesLabel;
+@property (nonatomic, strong) UILabel *downloadsLabel;
 
 @end
 
@@ -53,9 +59,15 @@
         self.descriptionLabel.font = [UIFont fontWithName:@"Lato-Italic" size:14.0f];
         [self addSubview:self.descriptionLabel];
         
-        self.dividerLabel = [[UILabel alloc] init];
+        self.dividerLabel = [[UIView alloc] init];
         self.dividerLabel.backgroundColor = [UIColor whiteColor];
         [self addSubview:self.dividerLabel];
+        
+        self.earningsLabel = [[UILabel alloc] init];
+        self.earningsLabel.text = [NSString stringWithFormat: @"%@: %@", NSLocalizedString(@"Earnings", nil), [[data valueForKey:@"earnings"] valueForKey:@"amount_formatted"] ?: NSLocalizedString(@"None", @"No earnings")];
+        self.earningsLabel.textColor = [UIColor whiteColor];
+        self.earningsLabel.font = [UIFont fontWithName:@"Lato-Regular" size:12.0f];
+        [self addSubview:self.earningsLabel];
         
     }
     return self;
@@ -85,6 +97,12 @@
     dividerFrame.size.height = 1.0f;
     dividerFrame.size.width = self.frame.size.width;
     self.dividerLabel.frame = dividerFrame;
+    
+    [self.earningsLabel sizeToFit];
+    CGRect earningsFrame = self.earningsLabel.frame;
+    earningsFrame.origin.x = self.coverView.frame.origin.x;
+    earningsFrame.origin.y = self.dividerLabel.frame.origin.y + self.dividerLabel.frame.size.height + 5.0f;
+    self.earningsLabel.frame = earningsFrame;
     
 }
 
