@@ -20,7 +20,7 @@
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         self.imageView = [[UIImageView alloc] init];
-        self.imageView.backgroundColor = [UIColor grayColor];
+        self.imageView.contentMode = UIViewContentModeScaleAspectFill;
         [self.contentView addSubview:self.imageView];
         
         self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, frame.origin.y / 2, frame.size.width, 20)];
