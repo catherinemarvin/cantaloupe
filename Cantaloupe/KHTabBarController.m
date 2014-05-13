@@ -46,7 +46,8 @@ typedef NS_ENUM(NSInteger, KHTabViewControllerTag) {
         self.graphsViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Graphs", nil) image:[UIImage imageNamed:@"graphsIcon"] tag:KHGraphsViewControllerTag];
         UINavigationController *graphsNav = [[UINavigationController alloc] initWithRootViewController:self.graphsViewController];
         
-        NSArray *viewControllers = @[gamesNav, graphsNav, settingsNav];
+        //NSArray *viewControllers = @[gamesNav, graphsNav, settingsNav];
+        NSArray *viewControllers = @[gamesNav, settingsNav];
         [self setViewControllers:viewControllers];
     }
     return self;
