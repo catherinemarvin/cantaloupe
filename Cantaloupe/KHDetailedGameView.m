@@ -64,10 +64,16 @@
         [self addSubview:self.dividerLabel];
         
         self.earningsLabel = [[UILabel alloc] init];
-        self.earningsLabel.text = [NSString stringWithFormat: @"%@: %@", NSLocalizedString(@"Earnings", nil), [[data valueForKey:@"earnings"] valueForKey:@"amount_formatted"] ?: NSLocalizedString(@"None", @"No earnings")];
+        self.earningsLabel.text = [NSString stringWithFormat: @"%@: %@", NSLocalizedString(@"Earnings", nil), [[data valueForKey:@"earnings"] valueForKey:@"amount_formatted"] ?: NSLocalizedString(@"None", @"Earnings: None")];
         self.earningsLabel.textColor = [UIColor whiteColor];
         self.earningsLabel.font = [UIFont fontWithName:@"Lato-Regular" size:12.0f];
         [self addSubview:self.earningsLabel];
+        
+        self.viewsLabel = [[UILabel alloc] init];
+        self.viewsLabel.text = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Views", nil), [data valueForKey:@"views_count"]];
+        self.viewsLabel.textColor = [UIColor whiteColor];
+        self.viewsLabel.font = [UIFont fontWithName:@"Lato-Regular" size:12.0f];
+        [self addSubview:self.viewsLabel];
         
     }
     return self;
@@ -103,6 +109,11 @@
     earningsFrame.origin.x = self.coverView.frame.origin.x;
     earningsFrame.origin.y = self.dividerLabel.frame.origin.y + self.dividerLabel.frame.size.height + 5.0f;
     self.earningsLabel.frame = earningsFrame;
+    
+    [self.viewsLabel sizeToFit];
+    CGRect viewsFrame = earningsFrame;
+    viewsFrame.origin.y = earningsFrame.origin.y + earningsFrame.size.height + 5.0f;
+    self.viewsLabel.frame = viewsFrame;
     
 }
 
