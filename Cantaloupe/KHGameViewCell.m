@@ -11,6 +11,7 @@
 @interface KHGameViewCell()
 
 @property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, strong) UILabel *titleLabel;
 
 @end
 
@@ -21,6 +22,9 @@
         self.imageView = [[UIImageView alloc] init];
         self.imageView.backgroundColor = [UIColor grayColor];
         [self.contentView addSubview:self.imageView];
+        
+        self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, frame.origin.y / 2, frame.size.width, 20)];
+        [self.contentView addSubview:self.titleLabel];
     }
     return self;
 }
@@ -36,6 +40,10 @@
     }
     self.imageView.image = image;
     [self.imageView sizeToFit];
+}
+
+- (void)setTitle:(NSString *)title {
+    self.titleLabel.text = title;
 }
 
 @end
