@@ -21,13 +21,11 @@
 static NSString *kGameCellIdentifier = @"gameCellIdentifier";
 @implementation KHGamesViewController
 
-- (id)initWithStyle:(UITableViewStyle)style key:(NSString *)key
-{
-    self = [super initWithStyle:style];
+- (id)initWithCollectionViewLayout:(UICollectionViewLayout *)layout key:(NSString *)key {
+    self = [super initWithCollectionViewLayout:layout];
     if (self) {
         self.key = key;
-        [self.tableView registerClass:[KHGameViewCell class] forCellReuseIdentifier:kGameCellIdentifier];
-        self.tableView.separatorInset = UIEdgeInsetsZero;
+        [self.collectionView registerClass:[KHGameViewCell class] forCellWithReuseIdentifier:kGameCellIdentifier];
         [self _requestGames];
     }
     return self;
@@ -59,7 +57,7 @@ static NSString *kGameCellIdentifier = @"gameCellIdentifier";
         }
         NSArray *games = [responseDict valueForKey:@"games"];
         self.games = games;
-        [self.tableView reloadData];
+        [self.collectionView reloadData];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
@@ -71,27 +69,24 @@ static NSString *kGameCellIdentifier = @"gameCellIdentifier";
     }];
 }
 
-#pragma mark - Table view data source
+#pragma mark - Collection View Data Source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return [self.games count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    KHGameViewCell *cell = (KHGameViewCell *) [tableView dequeueReusableCellWithIdentifier:kGameCellIdentifier forIndexPath:indexPath];
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    KHGameViewCell *cell = (KHGameViewCell *) [collectionView dequeueReusableCellWithReuseIdentifier:kGameCellIdentifier forIndexPath:indexPath];
     [cell setTitleText:[[self.games objectAtIndex:indexPath.row] valueForKey:@"title"]];
     
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     KHDetailedGameViewController *detailedView = [[KHDetailedGameViewController alloc] initWithStyle:UITableViewStyleGrouped];
     NSDictionary *gameData = [self.games objectAtIndex:[indexPath row]];
     [detailedView configureWithData:gameData];

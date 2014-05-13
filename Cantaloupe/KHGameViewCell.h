@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KHGameViewCell : UITableViewCell
+@interface KHGameViewCell : UICollectionViewCell
 
 - (void)setTitleText:(NSString *)title;
 

@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KHGamesViewController : UITableViewController
+@interface KHGamesViewController : UICollectionViewController
 
--(id)initWithStyle:(UITableViewStyle)style key:(NSString *)key;
+- (id)initWithCollectionViewLayout:(UICollectionViewLayout *)layout key:(NSString *)key;
 
 @end

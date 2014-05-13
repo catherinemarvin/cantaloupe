@@ -8,19 +8,25 @@
 
 #import "KHGameViewCell.h"
 
+@interface KHGameViewCell()
+
+@property (nonatomic, strong) UILabel *titleView;
+
+@end
+
 @implementation KHGameViewCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        self.textLabel.font = [UIFont fontWithName:@"Lato-Regular" size:16.0f];
+- (id)initWithFrame:(CGRect)frame {
+    if (self = [super initWithFrame:frame]) {
+        self.titleView = [[UILabel alloc] init];
+        self.titleView.backgroundColor = [UIColor grayColor];
+        [self.contentView addSubview:self.titleView];
     }
     return self;
 }
-
 - (void)setTitleText:(NSString *)title {
-    self.textLabel.text = title;
+    self.titleView.text = title;
+    [self.titleView sizeToFit];
 }
 
 @end
