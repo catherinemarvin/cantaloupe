@@ -36,16 +36,20 @@
         }
         
         self.coverView = [[UIImageView alloc] initWithImage:image];
+        self.coverView.frame = CGRectMake(0, 0, frame.size.width, 200.0f);
+        self.coverView.contentMode = UIViewContentModeScaleAspectFit;
         [self addSubview:self.coverView];
         
         self.titleLabel = [[UILabel alloc] init];
         self.titleLabel.text = [data valueForKey:@"title"];
         self.titleLabel.textColor = [UIColor whiteColor];
+        self.titleLabel.font = [UIFont fontWithName:@"Lato-Regular" size:16.0f];
         [self addSubview:self.titleLabel];
         
         self.descriptionLabel = [[UILabel alloc] init];
         self.descriptionLabel.text = [data valueForKey:@"short_text"];
         self.descriptionLabel.textColor = [UIColor whiteColor];
+        self.descriptionLabel.font = [UIFont fontWithName:@"Lato-Italic" size:14.0f];
         [self addSubview:self.descriptionLabel];
     }
     return self;
