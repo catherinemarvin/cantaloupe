@@ -10,6 +10,6 @@
 
 @interface KHGameViewCell : UICollectionViewCell
 
-- (void)setTitleText:(NSString *)title;
+- (void)setGameImage:(NSString *)url;
 
 @end

@@ -10,7 +10,7 @@
 
 @interface KHGameViewCell()
 
-@property (nonatomic, strong) UILabel *titleView;
+@property (nonatomic, strong) UIImageView *imageView;
 
 @end
 
@@ -18,15 +18,22 @@
 
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        self.titleView = [[UILabel alloc] init];
-        self.titleView.backgroundColor = [UIColor grayColor];
-        [self.contentView addSubview:self.titleView];
+        self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100.0f, 100.0f)];
+        self.imageView.backgroundColor = [UIColor grayColor];
+        [self.contentView addSubview:self.imageView];
     }
     return self;
 }
-- (void)setTitleText:(NSString *)title {
-    self.titleView.text = title;
-    [self.titleView sizeToFit];
+
+- (void)setGameImage:(NSString *)url {
+    
+    UIImage *image;
+    if (url) {
+        image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:url]]];
+    } else {
+        image = [UIImage imageNamed:@"placeholder"];
+    }
+    self.imageView.image = image;
 }
 
 @end
