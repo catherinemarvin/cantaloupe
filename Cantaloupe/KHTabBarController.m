@@ -10,6 +10,7 @@
 #import "KHGamesViewController.h"
 #import "KHSettingsViewController.h"
 #import "KHGraphsViewController.h"
+#import "KHCollectionViewLayout.h"
 
 typedef NS_ENUM(NSInteger, KHTabViewControllerTag) {
     KHGamesViewControllerTag,
@@ -35,8 +36,8 @@ typedef NS_ENUM(NSInteger, KHTabViewControllerTag) {
         self.key = key;
         
 //        self.gamesViewController = [[KHGamesViewController alloc] initWithStyle:UITableViewStylePlain key:key];
-        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-        layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+        KHCollectionViewLayout *layout = [[KHCollectionViewLayout alloc] init];
+        
         self.gamesViewController = [[KHGamesViewController alloc] initWithCollectionViewLayout:layout key:key];
         self.gamesViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Games",nil) image:[UIImage imageNamed:@"gamesIcon"] tag:KHGamesViewControllerTag];
         UINavigationController *gamesNav = [[UINavigationController alloc] initWithRootViewController:self.gamesViewController];

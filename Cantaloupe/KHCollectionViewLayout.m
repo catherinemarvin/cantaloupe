@@ -10,4 +10,8 @@
 
 @implementation KHCollectionViewLayout
 
+- (CGSize)collectionViewContentSize {
+    return CGSizeMake(100.0f, 100.0f);
+}
+
 @end

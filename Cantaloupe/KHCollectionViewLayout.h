@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KHCollectionViewLayout : UICollectionViewLayout
+@interface KHCollectionViewLayout : UICollectionViewFlowLayout
 
 @end
