@@ -28,8 +28,16 @@
 - (void)loadView {
     [super loadView];
     self.navigationItem.title = [self.gameData objectForKey:@"title"];
-    KHDetailedGameView *view = [[KHDetailedGameView alloc] initWithFrame:[UIScreen mainScreen].bounds data:self.gameData];
-    self.view = view;
+    
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
+    scrollView.alwaysBounceVertical = YES;
+    
+    KHDetailedGameView *view = [[KHDetailedGameView alloc] initWithFrame:scrollView.bounds data:self.gameData];
+    
+    [scrollView addSubview:view];
+    scrollView.contentSize = view.frame.size;
+    
+    self.view = scrollView;
 }
 
 @end
