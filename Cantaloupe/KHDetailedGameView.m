@@ -16,6 +16,7 @@
 
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *descriptionLabel;
+@property (nonatomic, strong) UIView *dividerLabel;
 
 @end
 
@@ -51,6 +52,11 @@
         self.descriptionLabel.textColor = [UIColor whiteColor];
         self.descriptionLabel.font = [UIFont fontWithName:@"Lato-Italic" size:14.0f];
         [self addSubview:self.descriptionLabel];
+        
+        self.dividerLabel = [[UILabel alloc] init];
+        self.dividerLabel.backgroundColor = [UIColor whiteColor];
+        [self addSubview:self.dividerLabel];
+        
     }
     return self;
 }
@@ -72,6 +78,13 @@
     descriptionFrame.origin.x = self.coverView.frame.origin.x;
     descriptionFrame.origin.y = self.titleLabel.frame.origin.y + self.titleLabel.frame.size.height + 10;
     self.descriptionLabel.frame = descriptionFrame;
+    
+    CGRect dividerFrame = CGRectZero;
+    dividerFrame.origin.x = self.coverView.frame.origin.x;
+    dividerFrame.origin.y = self.descriptionLabel.frame.origin.y + self.descriptionLabel.frame.size.height + 5.0f;
+    dividerFrame.size.height = 1.0f;
+    dividerFrame.size.width = self.frame.size.width;
+    self.dividerLabel.frame = dividerFrame;
     
 }
 
