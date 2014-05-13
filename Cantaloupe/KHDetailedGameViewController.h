@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KHDetailedGameViewController : UITableViewController
+@interface KHDetailedGameViewController : UIViewController
 
-- (void)configureWithData:(NSDictionary *)gameData;
+- (id)initWithData:(NSDictionary *)data;
 
 @end

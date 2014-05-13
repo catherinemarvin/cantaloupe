@@ -89,9 +89,7 @@ static NSString *kGameCellIdentifier = @"gameCellIdentifier";
 #pragma mark - Collection View Delegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    KHDetailedGameViewController *detailedView = [[KHDetailedGameViewController alloc] initWithStyle:UITableViewStyleGrouped];
-    NSDictionary *gameData = [self.games objectAtIndex:[indexPath row]];
-    [detailedView configureWithData:gameData];
+    KHDetailedGameViewController *detailedView = [[KHDetailedGameViewController alloc] initWithData:[self.games objectAtIndex:indexPath.row]];
     
     [self.navigationController pushViewController:detailedView animated:YES];
 }
