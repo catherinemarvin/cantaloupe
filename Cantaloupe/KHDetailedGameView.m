@@ -75,6 +75,17 @@
         self.viewsLabel.font = [UIFont fontWithName:@"Lato-Regular" size:12.0f];
         [self addSubview:self.viewsLabel];
         
+        self.purchasesLabel = [[UILabel alloc] init];
+        self.purchasesLabel.text = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Purchases", nil), [data valueForKey:@"purchases_count"]];
+        self.purchasesLabel.textColor = [UIColor whiteColor];
+        self.purchasesLabel.font = [UIFont fontWithName:@"Lato-Regular" size:12.0f];
+        [self addSubview:self.purchasesLabel];
+        
+        self.downloadsLabel = [[UILabel alloc] init];
+        self.downloadsLabel.text = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Downloads", nil), [data valueForKey:@"downloads_count"]];
+        self.downloadsLabel.textColor = [UIColor whiteColor];
+        self.downloadsLabel.font = [UIFont fontWithName:@"Lato-Regular" size:12.0f];
+        [self addSubview:self.downloadsLabel];
     }
     return self;
 }
@@ -83,6 +94,10 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
+    
+    CGRect coverViewFrame = self.coverView.frame;
+    coverViewFrame.origin.y = 10.0f;
+    self.coverView.frame = coverViewFrame;
     
     [self.titleLabel sizeToFit];
     
@@ -114,6 +129,16 @@
     CGRect viewsFrame = earningsFrame;
     viewsFrame.origin.y = earningsFrame.origin.y + earningsFrame.size.height + 5.0f;
     self.viewsLabel.frame = viewsFrame;
+    
+    [self.purchasesLabel sizeToFit];
+    CGRect purchasesFrame = viewsFrame;
+    purchasesFrame.origin.y = viewsFrame.origin.y + viewsFrame.size.height + 5.0f;
+    self.purchasesLabel.frame = purchasesFrame;
+    
+    [self.downloadsLabel sizeToFit];
+    CGRect downloadsFrame = purchasesFrame;
+    downloadsFrame.origin.y = purchasesFrame.origin.y + purchasesFrame.size.height + 5.0f;
+    self.downloadsLabel.frame = downloadsFrame;
     
 }
 
