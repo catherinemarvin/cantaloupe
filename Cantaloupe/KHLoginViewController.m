@@ -170,6 +170,9 @@ static NSString *kUserKey = @"kCantaloupeCurrentUser";
 #pragma mark - Button press
 
 - (void)loginTapped:(id)sender {
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action" action:@"button_press" label:@"login" value:nil] build]];
+    
     if ([self _validateFields]) {
         
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
