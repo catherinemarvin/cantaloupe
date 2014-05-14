@@ -26,6 +26,13 @@
     
     [GAI sharedInstance].trackUncaughtExceptions = YES;
     [[GAI sharedInstance] trackerWithTrackingId:@"UA-50979066-1"];
+    
+#ifdef DEBUG
+    
+    [GAI sharedInstance].dryRun = YES;
+    
+#endif
+    
     // Create and display view
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
