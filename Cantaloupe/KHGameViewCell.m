@@ -43,7 +43,6 @@
         image = [UIImage imageNamed:@"placeholder"];
     }
     self.imageView.image = image;
-    [self setNeedsDisplay];
 }
 
 - (void)setTitle:(NSString *)title {
