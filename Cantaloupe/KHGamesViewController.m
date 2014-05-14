@@ -10,6 +10,7 @@
 #import "AFNetworking.h"
 #import "KHGameViewCell.h"
 #import "KHDetailedGameViewController.h"
+#import "MBProgressHUD.h"
 
 @interface KHGamesViewController ()
 
@@ -44,6 +45,8 @@ static NSString *kGameCellIdentifier = @"gameCellIdentifier";
 }
 
 - (void)_requestGames {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
     NSString *url = [NSString stringWithFormat:@"http://itch.io/api/1/%@/my-games", self.key];
@@ -63,6 +66,7 @@ static NSString *kGameCellIdentifier = @"gameCellIdentifier";
         self.games = games;
         [self.collectionView reloadData];
         
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
         if (error.code == -1009) {
@@ -70,6 +74,7 @@ static NSString *kGameCellIdentifier = @"gameCellIdentifier";
             [alert show];
             return;
         }
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
     }];
 }
 
