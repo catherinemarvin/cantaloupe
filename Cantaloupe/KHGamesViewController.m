@@ -26,7 +26,6 @@ static NSString *kGameCellIdentifier = @"gameCellIdentifier";
     if (self) {
         self.key = key;
         [self.collectionView registerClass:[KHGameViewCell class] forCellWithReuseIdentifier:kGameCellIdentifier];
-        [self _requestGames];
     }
     return self;
 }
@@ -38,6 +37,10 @@ static NSString *kGameCellIdentifier = @"gameCellIdentifier";
     NSMutableDictionary *titleBarAttributes = [NSMutableDictionary dictionaryWithDictionary:[[UINavigationBar appearance] titleTextAttributes]];
     [titleBarAttributes setValue:[UIFont fontWithName:@"Lato-Regular" size:24.0f] forKey:NSFontAttributeName];
     [[UINavigationBar appearance] setTitleTextAttributes:titleBarAttributes];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self _requestGames];
 }
 
 - (void)_requestGames {
