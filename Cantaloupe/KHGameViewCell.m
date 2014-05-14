@@ -27,7 +27,7 @@
         
         [self.contentView addSubview:self.imageView];
         
-        self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, frame.origin.y / 2, frame.size.width, 20)];
+        self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.bounds.origin.y / 2, self.bounds.size.width, 20)];
         [self.contentView addSubview:self.titleLabel];
     }
     return self;

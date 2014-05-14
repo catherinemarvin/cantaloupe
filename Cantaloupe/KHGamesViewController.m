@@ -82,6 +82,7 @@ static NSString *kGameCellIdentifier = @"gameCellIdentifier";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     KHGameViewCell *cell = (KHGameViewCell *) [collectionView dequeueReusableCellWithReuseIdentifier:kGameCellIdentifier forIndexPath:indexPath];
     [cell setGameImage:[[self.games objectAtIndex:indexPath.row] valueForKey:@"cover_url"]];
+    [cell setTitle:[[self.games objectAtIndex:indexPath.row] valueForKey:@"title"]];
     
     return cell;
 }
