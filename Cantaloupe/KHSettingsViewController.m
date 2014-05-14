@@ -152,7 +152,9 @@ typedef NS_ENUM(NSUInteger, KHSettingsCells) {
             break;
         case KHSettingCellContact:
             [self _composeMail];
+            break;
         default:
+            [tableView deselectRowAtIndexPath:indexPath animated:NO];
             break;
     }
 }
