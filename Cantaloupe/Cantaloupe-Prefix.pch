@@ -17,5 +17,9 @@
     #import "CoreData+MagicalRecord.h"
     #import "UIColor+KHAdditions.h"
     #import "GAI.h"
+    #import "GAITracker.h"
+    #import "GAITrackedViewController.h"
     #import "GAIDictionaryBuilder.h"
+    #import "GAIFields.h"
+    #import "GAILogger.h"
 #endif

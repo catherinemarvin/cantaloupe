@@ -80,6 +80,13 @@ static NSString *kUserKey = @"kCantaloupeCurrentUser";
     self.tableView = tableView;
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    id tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIScreenName value:@"Login Screen"];
+    [tracker send:[[GAIDictionaryBuilder createAppView] build]];
+}
+
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
     CGRect frame = self.tableView.frame;
     frame.size.width = floorf(self.view.bounds.size.width - 2 * 20.0f);
