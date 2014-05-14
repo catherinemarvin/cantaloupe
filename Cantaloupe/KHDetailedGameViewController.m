@@ -25,6 +25,7 @@
     }
     return self;
 }
+
 - (void)loadView {
     [super loadView];
     self.navigationItem.title = [self.gameData objectForKey:@"title"];
@@ -38,6 +39,14 @@
     scrollView.contentSize = view.frame.size;
     
     self.view = scrollView;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    id tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIScreenName value:@"Detailed Game View Screen"];
+    [tracker send:[[GAIDictionaryBuilder createAppView] build]];
 }
 
 @end

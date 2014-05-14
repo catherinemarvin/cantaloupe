@@ -49,6 +49,13 @@ typedef NS_ENUM(NSUInteger, KHSettingsCells) {
     [self.tableView registerClass:[KHSettingsViewCell class] forCellReuseIdentifier:kSettingsCellIdentifier];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    id tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIScreenName value:@"Settings Screen"];
+    [tracker send:[[GAIDictionaryBuilder createAppView] build]];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
