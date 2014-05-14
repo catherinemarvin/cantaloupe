@@ -34,8 +34,6 @@ typedef NS_ENUM(NSInteger, KHTabViewControllerTag) {
     if (self) {
         self.key = key;
         
-//        self.gamesViewController = [[KHGamesViewController alloc] initWithStyle:UITableViewStylePlain key:key];
-        
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         
         self.gamesViewController = [[KHGamesViewController alloc] initWithCollectionViewLayout:layout key:key];
