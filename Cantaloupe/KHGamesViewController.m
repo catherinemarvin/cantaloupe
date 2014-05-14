@@ -16,6 +16,7 @@
 
 @property (nonatomic, strong) NSString *key;
 @property (nonatomic, strong) NSArray *games;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -27,6 +28,13 @@ static NSString *kGameCellIdentifier = @"gameCellIdentifier";
     if (self) {
         self.key = key;
         [self.collectionView registerClass:[KHGameViewCell class] forCellWithReuseIdentifier:kGameCellIdentifier];
+        
+        self.refreshControl = [[UIRefreshControl alloc] init];
+        [self.collectionView addSubview:self.refreshControl];
+        [self.refreshControl addTarget:self action:@selector(_requestGames) forControlEvents:UIControlEventValueChanged];
+        
+        [self.refreshControl beginRefreshing];
+        [self _requestGames];
     }
     return self;
 }
@@ -38,15 +46,10 @@ static NSString *kGameCellIdentifier = @"gameCellIdentifier";
     NSMutableDictionary *titleBarAttributes = [NSMutableDictionary dictionaryWithDictionary:[[UINavigationBar appearance] titleTextAttributes]];
     [titleBarAttributes setValue:[UIFont fontWithName:@"Lato-Regular" size:24.0f] forKey:NSFontAttributeName];
     [[UINavigationBar appearance] setTitleTextAttributes:titleBarAttributes];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [self _requestGames];
+    
 }
 
 - (void)_requestGames {
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
     NSString *url = [NSString stringWithFormat:@"http://itch.io/api/1/%@/my-games", self.key];
@@ -66,7 +69,8 @@ static NSString *kGameCellIdentifier = @"gameCellIdentifier";
         self.games = games;
         [self.collectionView reloadData];
         
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [self.refreshControl endRefreshing];
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
         if (error.code == -1009) {
@@ -74,7 +78,7 @@ static NSString *kGameCellIdentifier = @"gameCellIdentifier";
             [alert show];
             return;
         }
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [self.refreshControl endRefreshing];
     }];
 }
 
