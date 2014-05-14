@@ -43,8 +43,9 @@
         }
         
         self.coverView = [[UIImageView alloc] initWithImage:image];
+        self.coverView.contentMode = UIViewContentModeScaleAspectFill;
         self.coverView.frame = CGRectMake(0, 0, frame.size.width, 200.0f);
-        self.coverView.contentMode = UIViewContentModeScaleAspectFit;
+        [self.coverView setClipsToBounds:YES];
         [self addSubview:self.coverView];
         
         self.titleLabel = [[UILabel alloc] init];
