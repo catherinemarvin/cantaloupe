@@ -32,6 +32,7 @@ static NSString *kGameCellIdentifier = @"gameCellIdentifier";
 }
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
     self.navigationItem.title = NSLocalizedString(@"Games", nil);
     
     NSMutableDictionary *titleBarAttributes = [NSMutableDictionary dictionaryWithDictionary:[[UINavigationBar appearance] titleTextAttributes]];
