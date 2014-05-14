@@ -16,4 +16,6 @@
     #define MR_SHORTHAND
     #import "CoreData+MagicalRecord.h"
     #import "UIColor+KHAdditions.h"
+    #import "GAI.h"
+    #import "GAIDictionaryBuilder.h"
 #endif

@@ -22,7 +22,10 @@
     [MagicalRecord setErrorHandlerTarget:self action:@selector(_magicalRecordError:)];
     [MagicalRecord setupAutoMigratingCoreDataStack];
     
+    // Add analytics
     
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    [[GAI sharedInstance] trackerWithTrackingId:@"UA-50979066-1"];
     // Create and display view
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     

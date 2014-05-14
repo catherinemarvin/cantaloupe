@@ -18,6 +18,7 @@ PODS:
   - AFNetworking/UIKit (2.2.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - GoogleAnalytics-iOS-SDK (3.0.7)
   - JBChartView (2.3.0)
   - MagicalRecord (2.2):
     - MagicalRecord/Core
@@ -29,6 +30,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
+  - GoogleAnalytics-iOS-SDK (~> 3.0.7)
   - JBChartView (~> 2.3.0)
   - MagicalRecord (~> 2.0)
   - MBProgressHUD (~> 0.8)
@@ -38,6 +40,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 0121f4b69be3fa58d1ab317866e036e12ac9651d
+  GoogleAnalytics-iOS-SDK: 594702aaf93e6ee497140fd31e758c2e2fa44315
   JBChartView: 6eb2658e67e419940df91ab21a4369693ed89c30
   MagicalRecord: 95d49d74ef752cd52f6ad87bcb474817fc3978cf
   MBProgressHUD: 2bbc6f470111daf7f3eaa4eb12b8cbf01c4c0622
