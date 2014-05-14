@@ -94,4 +94,10 @@ static NSString *kGameCellIdentifier = @"gameCellIdentifier";
     [self.navigationController pushViewController:detailedView animated:YES];
 }
 
+#pragma mark - Collection View Delegate Flow Layout
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake(self.collectionView.bounds.size.width, 200.0f);
+}
+
 @end

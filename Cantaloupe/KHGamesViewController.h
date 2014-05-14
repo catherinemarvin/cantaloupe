@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KHGamesViewController : UICollectionViewController
+@interface KHGamesViewController : UICollectionViewController<UICollectionViewDelegateFlowLayout>
 
 - (id)initWithCollectionViewLayout:(UICollectionViewLayout *)layout key:(NSString *)key;
 

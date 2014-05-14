@@ -19,7 +19,9 @@
 
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        self.imageView = [[UIImageView alloc] init];
+        self.backgroundColor = [UIColor greenColor];
+        
+        self.imageView = [[UIImageView alloc] initWithFrame:self.bounds];
         self.imageView.contentMode = UIViewContentModeScaleAspectFill;
         [self.imageView setClipsToBounds:YES];
         
@@ -41,7 +43,7 @@
         image = [UIImage imageNamed:@"placeholder"];
     }
     self.imageView.image = image;
-    [self.imageView sizeToFit];
+    [self setNeedsDisplay];
 }
 
 - (void)setTitle:(NSString *)title {
