@@ -17,14 +17,14 @@
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *descriptionLabel;
 
-@property (nonatomic, strong) UIView *dividerLabel;
-
 @property (nonatomic, strong) UILabel *earningsLabel;
 @property (nonatomic, strong) UILabel *viewsLabel;
 @property (nonatomic, strong) UILabel *purchasesLabel;
 @property (nonatomic, strong) UILabel *downloadsLabel;
 
 @end
+
+static CGFloat kSideMargin = 10.0f;
 
 @implementation KHDetailedGameView
 
@@ -59,10 +59,6 @@
         self.descriptionLabel.textColor = [UIColor whiteColor];
         self.descriptionLabel.font = [UIFont fontWithName:@"Lato-Italic" size:14.0f];
         [self addSubview:self.descriptionLabel];
-        
-        self.dividerLabel = [[UIView alloc] init];
-        self.dividerLabel.backgroundColor = [UIColor whiteColor];
-        [self addSubview:self.dividerLabel];
         
         self.earningsLabel = [[UILabel alloc] init];
         self.earningsLabel.text = [NSString stringWithFormat: @"%@: %@", NSLocalizedString(@"Earnings", nil), [[data valueForKey:@"earnings"] valueForKey:@"amount_formatted"] ?: NSLocalizedString(@"None", @"Earnings: None")];
@@ -103,27 +99,20 @@
     [self.titleLabel sizeToFit];
     
     CGRect titleFrame = self.titleLabel.frame;
-    titleFrame.origin.x = self.coverView.frame.origin.x;
+    titleFrame.origin.x = self.coverView.frame.origin.x + kSideMargin;
     titleFrame.origin.y = self.coverView.frame.origin.y + self.coverView.frame.size.height + 10;
     self.titleLabel.frame = titleFrame;
     
     [self.descriptionLabel sizeToFit];
     CGRect descriptionFrame = self.descriptionLabel.frame;
-    descriptionFrame.origin.x = self.coverView.frame.origin.x;
+    descriptionFrame.origin.x = self.titleLabel.frame.origin.x;
     descriptionFrame.origin.y = self.titleLabel.frame.origin.y + self.titleLabel.frame.size.height + 10;
     self.descriptionLabel.frame = descriptionFrame;
     
-    CGRect dividerFrame = CGRectZero;
-    dividerFrame.origin.x = self.coverView.frame.origin.x;
-    dividerFrame.origin.y = self.descriptionLabel.frame.origin.y + self.descriptionLabel.frame.size.height + 5.0f;
-    dividerFrame.size.height = 1.0f;
-    dividerFrame.size.width = self.frame.size.width;
-    self.dividerLabel.frame = dividerFrame;
-    
     [self.earningsLabel sizeToFit];
     CGRect earningsFrame = self.earningsLabel.frame;
-    earningsFrame.origin.x = self.coverView.frame.origin.x;
-    earningsFrame.origin.y = self.dividerLabel.frame.origin.y + self.dividerLabel.frame.size.height + 5.0f;
+    earningsFrame.origin.x = self.titleLabel.frame.origin.x;
+    earningsFrame.origin.y = self.descriptionLabel.frame.origin.y + self.descriptionLabel.frame.size.height + 20.0f;
     self.earningsLabel.frame = earningsFrame;
     
     [self.viewsLabel sizeToFit];
