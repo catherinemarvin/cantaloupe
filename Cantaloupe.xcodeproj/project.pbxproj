@@ -63,7 +63,6 @@
 		6E8C796F18D977DF00741704 /* KHGamesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8C796E18D977DF00741704 /* KHGamesViewController.m */; };
 		6E94B62D18E7BE9500153B52 /* KHDetailedGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E94B62C18E7BE9500153B52 /* KHDetailedGameViewController.m */; };
 		6ECBBDE719233EA700D00E30 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 6ECBBDE619233EA700D00E30 /* placeholder.png */; };
-		6EE7FBCF18E557CA008AF5FF /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EE7FBCE18E557CA008AF5FF /* Reveal.framework */; };
 		6EE7FC7718E697B8008AF5FF /* KHGameViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE7FC7618E697B8008AF5FF /* KHGameViewCell.m */; };
 		80ECE71DA3B64FF1B774964C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF3C06EFF674E0381459280 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -169,7 +168,6 @@
 				6E4FD82918E144B500EC8B11 /* CoreData.framework in Frameworks */,
 				6E8C78E918D81C3500741704 /* CoreGraphics.framework in Frameworks */,
 				6E8C78EB18D81C3500741704 /* UIKit.framework in Frameworks */,
-				6EE7FBCF18E557CA008AF5FF /* Reveal.framework in Frameworks */,
 				6E8C78E718D81C3500741704 /* Foundation.framework in Frameworks */,
 				80ECE71DA3B64FF1B774964C /* libPods.a in Frameworks */,
 			);
