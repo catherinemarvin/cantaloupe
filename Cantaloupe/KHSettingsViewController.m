@@ -170,8 +170,9 @@ typedef NS_ENUM(NSUInteger, KHSettingsCells) {
 
 - (void)_composeMail {
     if (![MFMailComposeViewController canSendMail]) {
-        return;
+        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Sorry", nil) message:NSLocalizedString(@"Your account is not set up to send emails.", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"Ok", nil) otherButtonTitles:nil] show];
     }
+    
     MFMailComposeViewController *mailController = [[MFMailComposeViewController alloc] init];
     mailController.mailComposeDelegate = self;
     [mailController setToRecipients:@[@"k3vinhwang@gmail.com"]];
