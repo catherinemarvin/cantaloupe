@@ -10,11 +10,13 @@
 #import "KHGamesViewController.h"
 #import "KHSettingsViewController.h"
 #import "KHGraphsViewController.h"
+#import "KHNewsViewController.h"
 
 typedef NS_ENUM(NSInteger, KHTabViewControllerTag) {
     KHGamesViewControllerTag,
     KHSettingsViewControllerTag,
-    KHGraphsViewControllerTag
+    KHGraphsViewControllerTag,
+    KHNewsViewControllerTag
 };
 
 @interface KHTabBarController ()
@@ -23,6 +25,7 @@ typedef NS_ENUM(NSInteger, KHTabViewControllerTag) {
 @property (nonatomic, strong) KHGamesViewController *gamesViewController;
 @property (nonatomic, strong) KHSettingsViewController *settingsViewController;
 @property (nonatomic, strong) KHGraphsViewController *graphsViewController;
+@property (nonatomic, strong) KHNewsViewController *newsViewController;
 
 @end
 
@@ -49,8 +52,11 @@ typedef NS_ENUM(NSInteger, KHTabViewControllerTag) {
         self.graphsViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Graphs", nil) image:[UIImage imageNamed:@"graphsIcon"] tag:KHGraphsViewControllerTag];
         UINavigationController *graphsNav = [[UINavigationController alloc] initWithRootViewController:self.graphsViewController];
         
-        //NSArray *viewControllers = @[gamesNav, graphsNav, settingsNav];
-        NSArray *viewControllers = @[gamesNav, settingsNav];
+        self.newsViewController = [[KHNewsViewController alloc] init];
+        self.newsViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"News", nil) image:[UIImage imageNamed:@"newsIcon"] tag:KHNewsViewControllerTag];
+        UINavigationController *newsNav = [[UINavigationController alloc] initWithRootViewController:self.newsViewController];
+        
+        NSArray *viewControllers = @[gamesNav, graphsNav, settingsNav, newsNav];
         [self setViewControllers:viewControllers];
     }
     return self;

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		6E068B2F18DA742A00885A95 /* KHLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E068B2E18DA742A00885A95 /* KHLoginViewController.m */; };
+		6E089C2819417FED00B1B8A1 /* KHNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E089C2719417FED00B1B8A1 /* KHNewsViewController.m */; };
+		6E089C2A194189F100B1B8A1 /* newsIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E089C29194189F100B1B8A1 /* newsIcon.png */; };
+		6E089C2C194189FF00B1B8A1 /* newsIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E089C2B194189FF00B1B8A1 /* newsIcon@2x.png */; };
 		6E32C9F318EBCE7300156EAD /* KHSessionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E32C9F218EBCE7300156EAD /* KHSessionController.m */; };
 		6E32CA0518EBDCE300156EAD /* KHSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E32CA0418EBDCE300156EAD /* KHSettingsViewController.m */; };
 		6E32CA2718ED02A800156EAD /* KHSettingsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E32CA2618ED02A800156EAD /* KHSettingsViewCell.m */; };
@@ -81,6 +84,10 @@
 		6D4BEF05F9154C3798AA8603 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		6E068B2D18DA742A00885A95 /* KHLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHLoginViewController.h; sourceTree = "<group>"; };
 		6E068B2E18DA742A00885A95 /* KHLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHLoginViewController.m; sourceTree = "<group>"; };
+		6E089C2619417FED00B1B8A1 /* KHNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHNewsViewController.h; sourceTree = "<group>"; };
+		6E089C2719417FED00B1B8A1 /* KHNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHNewsViewController.m; sourceTree = "<group>"; };
+		6E089C29194189F100B1B8A1 /* newsIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newsIcon.png; sourceTree = "<group>"; };
+		6E089C2B194189FF00B1B8A1 /* newsIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "newsIcon@2x.png"; sourceTree = "<group>"; };
 		6E32C9F118EBCE7300156EAD /* KHSessionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHSessionController.h; sourceTree = "<group>"; };
 		6E32C9F218EBCE7300156EAD /* KHSessionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHSessionController.m; sourceTree = "<group>"; };
 		6E32CA0318EBDCE300156EAD /* KHSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHSettingsViewController.h; sourceTree = "<group>"; };
@@ -224,6 +231,8 @@
 				6E32CA0418EBDCE300156EAD /* KHSettingsViewController.m */,
 				6E8C796A18D9761000741704 /* KHTabBarController.h */,
 				6E8C796B18D9761000741704 /* KHTabBarController.m */,
+				6E089C2619417FED00B1B8A1 /* KHNewsViewController.h */,
+				6E089C2719417FED00B1B8A1 /* KHNewsViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -359,6 +368,8 @@
 				6E5A89631910AA670062355C /* gamesIcon@2x.png */,
 				6E5A89701910AC750062355C /* graphsIcon.png */,
 				6E5A89721910AC880062355C /* graphsIcon@2x.png */,
+				6E089C29194189F100B1B8A1 /* newsIcon.png */,
+				6E089C2B194189FF00B1B8A1 /* newsIcon@2x.png */,
 				6ECBBDE619233EA700D00E30 /* placeholder.png */,
 				6E5A89651910AA8B0062355C /* purchasesIcon.png */,
 				6E5A89671910AA9A0062355C /* purchasesIcon@2x.png */,
@@ -457,6 +468,7 @@
 				6E87707E190766EE007841EA /* Lato-HairlineItalic.ttf in Resources */,
 				6E87706E190766EE007841EA /* Lato-BoldItalic.ttf in Resources */,
 				6E5A896A1910AAB00062355C /* settingsIcon.png in Resources */,
+				6E089C2A194189F100B1B8A1 /* newsIcon.png in Resources */,
 				6E5A896C1910AAC00062355C /* settingsIcon@2x.png in Resources */,
 				6E877076190766EE007841EA /* Lato-Semibold.ttf in Resources */,
 				6E8C78F918D81C3500741704 /* Images.xcassets in Resources */,
@@ -470,6 +482,7 @@
 				6E877074190766EE007841EA /* Lato-BlackItalic.ttf in Resources */,
 				6E87706F190766EE007841EA /* Lato-HeavyItalic.ttf in Resources */,
 				6E87707C190766EE007841EA /* Lato-Light.ttf in Resources */,
+				6E089C2C194189FF00B1B8A1 /* newsIcon@2x.png in Resources */,
 				6E87707D190766EE007841EA /* Lato-Thin.ttf in Resources */,
 				6E87707B190766EE007841EA /* Lato-LightItalic.ttf in Resources */,
 				6E5A89711910AC750062355C /* graphsIcon.png in Resources */,
@@ -542,6 +555,7 @@
 				6E94B62D18E7BE9500153B52 /* KHDetailedGameViewController.m in Sources */,
 				6E5A89991912279A0062355C /* KHGraphDetailView.m in Sources */,
 				6E87708419078112007841EA /* UIColor+KHAdditions.m in Sources */,
+				6E089C2819417FED00B1B8A1 /* KHNewsViewController.m in Sources */,
 				6E83B46B18E8A81800EDE66A /* KHDetailedGameViewCell.m in Sources */,
 				6E5A89BA191496B30062355C /* KHGraphFooterView.m in Sources */,
 				6E5FC2341921EE4000875CE1 /* KHDetailedGameView.m in Sources */,
