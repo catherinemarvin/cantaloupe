@@ -18,10 +18,6 @@
 }
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Core data
-    [MagicalRecord setErrorHandlerTarget:self action:@selector(_magicalRecordError:)];
-    [MagicalRecord setupAutoMigratingCoreDataStack];
-    
     // Add analytics
     
     [GAI sharedInstance].trackUncaughtExceptions = YES;

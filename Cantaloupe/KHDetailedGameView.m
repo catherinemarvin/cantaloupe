@@ -116,17 +116,20 @@ static CGFloat kSideMargin = 10.0f;
     self.earningsLabel.frame = earningsFrame;
     
     [self.viewsLabel sizeToFit];
-    CGRect viewsFrame = earningsFrame;
+    CGRect viewsFrame = self.viewsLabel.frame;
+    viewsFrame.origin.x = CGRectGetMinX(earningsFrame);
     viewsFrame.origin.y = earningsFrame.origin.y + earningsFrame.size.height + 5.0f;
     self.viewsLabel.frame = viewsFrame;
     
     [self.purchasesLabel sizeToFit];
-    CGRect purchasesFrame = viewsFrame;
+    CGRect purchasesFrame = self.purchasesLabel.frame;
+    purchasesFrame.origin.x = CGRectGetMinX(earningsFrame);
     purchasesFrame.origin.y = viewsFrame.origin.y + viewsFrame.size.height + 5.0f;
     self.purchasesLabel.frame = purchasesFrame;
     
     [self.downloadsLabel sizeToFit];
-    CGRect downloadsFrame = purchasesFrame;
+    CGRect downloadsFrame = self.downloadsLabel.frame;
+    downloadsFrame.origin.x = CGRectGetMinX(earningsFrame);
     downloadsFrame.origin.y = purchasesFrame.origin.y + purchasesFrame.size.height + 5.0f;
     self.downloadsLabel.frame = downloadsFrame;
     

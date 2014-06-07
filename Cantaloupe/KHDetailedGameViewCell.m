@@ -23,6 +23,12 @@
     
     self.textLabel.text = title;
     self.detailTextLabel.text = [NSString stringWithFormat:@"%@", contents];
+    [self setNeedsLayout];
+}
+
+- (void)layoutSubviews {
+    [self.textLabel sizeToFit];
+    [self.detailTextLabel sizeToFit];
 }
 
 @end
