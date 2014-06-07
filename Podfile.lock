@@ -1,21 +1,21 @@
 PODS:
-  - AFNetworking (2.2.1):
+  - AFNetworking (2.2.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
     - AFNetworking/UIKit
-  - AFNetworking/NSURLConnection (2.2.1):
+  - AFNetworking/NSURLConnection (2.2.4):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.2.1):
+  - AFNetworking/NSURLSession (2.2.4):
     - AFNetworking/NSURLConnection
-  - AFNetworking/Reachability (2.2.1)
-  - AFNetworking/Security (2.2.1)
-  - AFNetworking/Serialization (2.2.1)
-  - AFNetworking/UIKit (2.2.1):
+  - AFNetworking/Reachability (2.2.4)
+  - AFNetworking/Security (2.2.4)
+  - AFNetworking/Serialization (2.2.4)
+  - AFNetworking/UIKit (2.2.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - GoogleAnalytics-iOS-SDK (3.0.7)
@@ -25,7 +25,7 @@ PODS:
   - MagicalRecord/Core (2.2)
   - MBProgressHUD (0.8)
   - Reachability (3.1.1)
-  - SSKeychain (1.2.1)
+  - SSKeychain (1.2.2)
   - SSPullToRefresh (1.2.0)
 
 DEPENDENCIES:
@@ -39,13 +39,13 @@ DEPENDENCIES:
   - SSPullToRefresh (~> 1.0)
 
 SPEC CHECKSUMS:
-  AFNetworking: 0121f4b69be3fa58d1ab317866e036e12ac9651d
-  GoogleAnalytics-iOS-SDK: 594702aaf93e6ee497140fd31e758c2e2fa44315
-  JBChartView: 6eb2658e67e419940df91ab21a4369693ed89c30
-  MagicalRecord: 95d49d74ef752cd52f6ad87bcb474817fc3978cf
-  MBProgressHUD: 2bbc6f470111daf7f3eaa4eb12b8cbf01c4c0622
-  Reachability: be4883bb93f31e38266ae3365e5600a317aae735
-  SSKeychain: d18926838c2e7cd342e2a49e9f869858e49f035a
-  SSPullToRefresh: ecdc6efdee5322bba8b57dc77c1263ef6b4170bf
+  AFNetworking: ab63e259fe91eef4519b371ef0a4955af0e73e64
+  GoogleAnalytics-iOS-SDK: bb285d8eef15a682f1b82971becd0d22edd0e53b
+  JBChartView: 862906563be9ff11c0a42fd2e6041fd4e7457c73
+  MagicalRecord: 2b471584fc9e3137f3d0a56967917baa4979e224
+  MBProgressHUD: c356980b0cd097f19acec959b49dca5eb8ec31be
+  Reachability: 8e9635e3cb4f98e7f825e51147f677ecc694d0e7
+  SSKeychain: cc48bd3ad24fcd9125adb9e0d23dd50b8bbd08b9
+  SSPullToRefresh: bb513a1ccbf08fdd67e4139bc1bbe3fc2ed34228
 
 COCOAPODS: 0.32.1
