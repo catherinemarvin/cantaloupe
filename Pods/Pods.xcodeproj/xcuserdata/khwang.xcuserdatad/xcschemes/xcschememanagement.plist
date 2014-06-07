@@ -19,6 +19,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-JXHTTP.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -44,6 +49,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-TMTumblrSDK.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -51,52 +61,6 @@
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>0608660A735D4C958873D3EF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>39FA7F2F032941BBA688B674</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>3B728753200C46B8B9703AB6</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>640A6094006C4B7B8D9D2E4B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>71C4FA6AE1E34C7DAD505E96</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>726B3624F60547968DC06E21</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>77EA3F466FEA41228357E3E2</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>9583B1F4687243629BC71833</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E654B095431441B08112E150</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
 </dict>
 </plist>

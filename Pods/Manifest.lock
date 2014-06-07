@@ -20,6 +20,7 @@ PODS:
     - AFNetworking/NSURLSession
   - GoogleAnalytics-iOS-SDK (3.0.7)
   - JBChartView (2.3.0)
+  - JXHTTP (1.0.0)
   - MagicalRecord (2.2):
     - MagicalRecord/Core
   - MagicalRecord/Core (2.2)
@@ -27,6 +28,21 @@ PODS:
   - Reachability (3.1.1)
   - SSKeychain (1.2.2)
   - SSPullToRefresh (1.2.0)
+  - TMTumblrSDK (1.0.8):
+    - TMTumblrSDK/Activity
+    - TMTumblrSDK/APIClient
+    - TMTumblrSDK/AppClient
+    - TMTumblrSDK/Core
+  - TMTumblrSDK/Activity (1.0.8)
+  - TMTumblrSDK/APIClient (1.0.8):
+    - JXHTTP (= 1.0.0)
+    - TMTumblrSDK/APIClient/Authentication
+  - TMTumblrSDK/APIClient/Authentication (1.0.8):
+    - JXHTTP (= 1.0.0)
+    - TMTumblrSDK/Core
+  - TMTumblrSDK/AppClient (1.0.8):
+    - TMTumblrSDK/Core
+  - TMTumblrSDK/Core (1.0.8)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
@@ -37,15 +53,18 @@ DEPENDENCIES:
   - Reachability (~> 3.0)
   - SSKeychain (~> 1.0)
   - SSPullToRefresh (~> 1.0)
+  - TMTumblrSDK
 
 SPEC CHECKSUMS:
   AFNetworking: ab63e259fe91eef4519b371ef0a4955af0e73e64
   GoogleAnalytics-iOS-SDK: bb285d8eef15a682f1b82971becd0d22edd0e53b
   JBChartView: 862906563be9ff11c0a42fd2e6041fd4e7457c73
+  JXHTTP: dd1fe9c6fa21e7b2be9724ef2be16c66aafc44b4
   MagicalRecord: 2b471584fc9e3137f3d0a56967917baa4979e224
   MBProgressHUD: c356980b0cd097f19acec959b49dca5eb8ec31be
   Reachability: 8e9635e3cb4f98e7f825e51147f677ecc694d0e7
   SSKeychain: cc48bd3ad24fcd9125adb9e0d23dd50b8bbd08b9
   SSPullToRefresh: bb513a1ccbf08fdd67e4139bc1bbe3fc2ed34228
+  TMTumblrSDK: b9fada23e88b42ade2b492a6db95bfb1dff6304b
 
-COCOAPODS: 0.32.1
+COCOAPODS: 0.33.1
