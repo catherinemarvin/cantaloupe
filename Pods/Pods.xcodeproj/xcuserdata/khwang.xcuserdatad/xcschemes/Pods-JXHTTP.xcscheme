@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2ECE294DC08744A581EC26A4"
+               BlueprintIdentifier = "BFC475D22E044925BEC9916F"
                BuildableName = "libPods-JXHTTP.a"
                BlueprintName = "Pods-JXHTTP"
                ReferencedContainer = "container:Pods.xcodeproj">
