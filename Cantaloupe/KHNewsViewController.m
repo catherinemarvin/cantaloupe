@@ -7,7 +7,6 @@
 //
 
 #import "KHNewsViewController.h"
-#import "TMAPIClient.h"
 
 @interface KHNewsViewController ()
 
