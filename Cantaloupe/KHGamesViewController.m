@@ -33,8 +33,6 @@ static NSString *kGameCellIdentifier = @"gameCellIdentifier";
         [self.collectionView addSubview:self.refreshControl];
         [self.refreshControl addTarget:self action:@selector(_requestGames) forControlEvents:UIControlEventValueChanged];
         
-        [self.refreshControl beginRefreshing];
-        [self _requestGames];
     }
     return self;
 }
@@ -47,6 +45,8 @@ static NSString *kGameCellIdentifier = @"gameCellIdentifier";
     [titleBarAttributes setValue:[UIFont fontWithName:@"Lato-Regular" size:24.0f] forKey:NSFontAttributeName];
     [[UINavigationBar appearance] setTitleTextAttributes:titleBarAttributes];
     
+    [self.refreshControl beginRefreshing];
+    [self _requestGames];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
