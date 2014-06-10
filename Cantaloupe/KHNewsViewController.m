@@ -44,4 +44,15 @@
     }];
 }
 
+#pragma mark - Collection View Data Source
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 0;
+}
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return 0;
+}
+
+#pragma mark - Collection View Delegate
+
 @end
