@@ -11,6 +11,8 @@
 
 @interface KHNewsViewController ()
 
+@property (nonatomic, strong) NSArray *posts;
+
 @end
 
 @implementation KHNewsViewController
@@ -34,6 +36,11 @@
     NSString *url = [NSString stringWithFormat:@"http://api.tumblr.com/v2/blog/itchio.tumblr.com/posts?api_key=%@", key];
     [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
+        
+        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+            self.posts = [[responseObject valueForKey:@"response"] valueForKey:@"posts"];
+        }
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
         if (error.code == -1009) {
