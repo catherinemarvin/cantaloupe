@@ -37,9 +37,9 @@
     [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
         
-        if ([responseObject isKindOfClass:[NSDictionary class]]) {
-            self.posts = [[responseObject valueForKey:@"response"] valueForKey:@"posts"];
-        }
+        NSDictionary *responseDict = (NSDictionary *)responseObject;
+        
+        self.posts = [responseDict valueForKeyPath:@"response.posts"];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
