@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KHNewsViewController : UICollectionViewController
+@interface KHNewsViewController : UICollectionViewController<UICollectionViewDelegateFlowLayout>
 
 @end

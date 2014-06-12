@@ -8,6 +8,7 @@
 
 #import "KHNewsViewController.h"
 #import "AFNetworking.h"
+#import "KHNewsViewCell.h"
 
 @interface KHNewsViewController ()
 
@@ -15,11 +16,14 @@
 
 @end
 
+static NSString *kNewsCellIdentifier = @"newsCellIdentifier";
+
 @implementation KHNewsViewController
 
 - (id)initWithCollectionViewLayout:(UICollectionViewLayout *)layout {
     self = [super initWithCollectionViewLayout:layout];
     if (self) {
+        [self.collectionView registerClass:[KHNewsViewCell class] forCellWithReuseIdentifier:kNewsCellIdentifier];
     }
     return self;
 }
@@ -53,12 +57,22 @@
 #pragma mark - Collection View Data Source
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 0;
+    return 1;
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 0;
+    return self.posts.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    KHNewsViewCell *cell = (KHNewsViewCell *) [collectionView dequeueReusableCellWithReuseIdentifier:kNewsCellIdentifier forIndexPath:indexPath];
+    [cell configureWithNews:[self.posts objectAtIndex:indexPath.row]];
+    return cell;
 }
 
 #pragma mark - Collection View Delegate
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake(self.collectionView.bounds.size.width, 200.0f);
+}
 
 @end
