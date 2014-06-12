@@ -196,6 +196,7 @@ static NSString *kUserKey = @"kCantaloupeCurrentUser";
             if (errors) {
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Sorry", nil) message:NSLocalizedString(@"Something went wrong.", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Ok", nil) otherButtonTitles:nil];
                 [alert show];
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
                 return;
             }
             NSString *key = [[responseDict valueForKey:@"key"] valueForKey:@"key"];
@@ -224,7 +225,6 @@ static NSString *kUserKey = @"kCantaloupeCurrentUser";
             if (error.code == -1004) {
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"No internet", nil) message:NSLocalizedString(@"Please connect to the Internet, then try again.", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Ok", nil) otherButtonTitles:nil];
                 [alert show];
-                return;
             }
             [MBProgressHUD hideHUDForView:self.view animated:YES];
         }];
