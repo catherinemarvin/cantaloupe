@@ -9,6 +9,7 @@
 #import "KHNewsViewController.h"
 #import "AFNetworking.h"
 #import "KHNewsViewCell.h"
+#import "KHDetailedNewsViewController.h"
 
 @interface KHNewsViewController ()
 
@@ -67,6 +68,15 @@ static NSString *kNewsCellIdentifier = @"newsCellIdentifier";
     KHNewsViewCell *cell = (KHNewsViewCell *) [collectionView dequeueReusableCellWithReuseIdentifier:kNewsCellIdentifier forIndexPath:indexPath];
     [cell configureWithNews:[self.posts objectAtIndex:indexPath.row]];
     return cell;
+}
+
+#pragma mark - UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSDictionary *news = [self.posts objectAtIndex:indexPath.row];
+    KHDetailedNewsViewController *detailed = [[KHDetailedNewsViewController alloc] initWithNews:news];
+    
+    [self.navigationController pushViewController:detailed animated:YES];
 }
 
 #pragma mark - Collection View Delegate
