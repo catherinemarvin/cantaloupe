@@ -21,6 +21,7 @@
 - (id)initWithNews:(NSDictionary *)news {
     if (self = [super init]) {
         self.news = news;
+        self.edgesForExtendedLayout = UIRectEdgeNone;
     }
     return self;
 }

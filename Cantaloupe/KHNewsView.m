@@ -41,7 +41,7 @@
     
     CGRect titleFrame = self.title.frame;
     titleFrame.origin.x = 0;
-    titleFrame.origin.y = 50;
+    titleFrame.origin.y = 0;
     self.title.frame = titleFrame;
     
     [self.text sizeToFit];
