@@ -32,6 +32,7 @@ static NSString *kNewsCellIdentifier = @"newsCellIdentifier";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationItem.title = NSLocalizedString(@"News", nil);
     [self _requestNews];
 }
 

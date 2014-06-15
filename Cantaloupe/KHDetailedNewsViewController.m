@@ -31,6 +31,8 @@
     KHNewsView *newsView = [[KHNewsView alloc] initWithFrame:[UIScreen mainScreen].bounds news:self.news];
     self.view = newsView;
     self.newsView = newsView;
+    
+    self.navigationItem.title = [self.news objectForKey:@"title"];
 }
 
 - (void)viewDidLoad
