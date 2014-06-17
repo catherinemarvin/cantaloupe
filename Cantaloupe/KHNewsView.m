@@ -30,6 +30,7 @@
         
         self.text = [[UILabel alloc] init];
         self.text.text = [self.news objectForKey:@"body"];
+        self.text.numberOfLines = 0;
         [self addSubview:self.text];
     }
     return self;
@@ -44,10 +45,11 @@
     titleFrame.origin.y = 0;
     self.title.frame = titleFrame;
     
-    [self.text sizeToFit];
     CGRect textFrame = self.text.frame;
     textFrame.origin.x = 0;
     textFrame.origin.y = CGRectGetHeight(titleFrame) + 10.0f;
+    textFrame.size.width = CGRectGetWidth(self.frame);
     self.text.frame = textFrame;
+    [self.text sizeToFit];
 }
 @end
