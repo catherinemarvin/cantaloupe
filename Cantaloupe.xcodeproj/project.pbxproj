@@ -68,6 +68,7 @@
 		6E8C796C18D9761000741704 /* KHTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8C796B18D9761000741704 /* KHTabBarController.m */; };
 		6E8C796F18D977DF00741704 /* KHGamesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8C796E18D977DF00741704 /* KHGamesViewController.m */; };
 		6E94B62D18E7BE9500153B52 /* KHDetailedGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E94B62C18E7BE9500153B52 /* KHDetailedGameViewController.m */; };
+		6EBB96AD19D14DC900BDCF33 /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBB96AC19D14DC900BDCF33 /* NewsView.swift */; };
 		6ECBBDE719233EA700D00E30 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 6ECBBDE619233EA700D00E30 /* placeholder.png */; };
 		6EE7FC7718E697B8008AF5FF /* KHGameViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE7FC7618E697B8008AF5FF /* KHGameViewCell.m */; };
 		80ECE71DA3B64FF1B774964C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF3C06EFF674E0381459280 /* libPods.a */; };
@@ -169,6 +170,7 @@
 		6E8C796E18D977DF00741704 /* KHGamesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHGamesViewController.m; sourceTree = "<group>"; };
 		6E94B62B18E7BE9500153B52 /* KHDetailedGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHDetailedGameViewController.h; sourceTree = "<group>"; };
 		6E94B62C18E7BE9500153B52 /* KHDetailedGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHDetailedGameViewController.m; sourceTree = "<group>"; };
+		6EBB96AC19D14DC900BDCF33 /* NewsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
 		6ECBBDE619233EA700D00E30 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		6EE7FBCE18E557CA008AF5FF /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		6EE7FC7518E697B8008AF5FF /* KHGameViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHGameViewCell.h; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 				6E089C86194AA32400B1B8A1 /* KHNewsView.h */,
 				6E089C87194AA32400B1B8A1 /* KHNewsView.m */,
 				6E036D7119D102CD003E565C /* NewsViewCell.swift */,
+				6EBB96AC19D14DC900BDCF33 /* NewsView.swift */,
 			);
 			name = News;
 			sourceTree = "<group>";
@@ -627,6 +630,7 @@
 				6E068B2F18DA742A00885A95 /* KHLoginViewController.m in Sources */,
 				6E089C8D194AA54500B1B8A1 /* KHDetailedNewsViewController.m in Sources */,
 				6E5A897C1910B4770062355C /* KHGraphsViewCell.m in Sources */,
+				6EBB96AD19D14DC900BDCF33 /* NewsView.swift in Sources */,
 				6E8C78F718D81C3500741704 /* KHAppDelegate.m in Sources */,
 				6E5A896F1910AB4B0062355C /* KHGraphsViewController.m in Sources */,
 				6E5A897F1910BD530062355C /* KHDetailedGraphViewController.m in Sources */,

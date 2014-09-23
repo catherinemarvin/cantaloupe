@@ -7,11 +7,11 @@
 //
 
 #import "KHDetailedNewsViewController.h"
-#import "KHNewsView.h"
+#import "Cantaloupe-Swift.h"
 
 @interface KHDetailedNewsViewController ()
 
-@property (nonatomic, strong) KHNewsView *newsView;
+@property (nonatomic, strong) NewsView *newsView;
 @property (nonatomic, strong) NSDictionary *news;
 
 @end
@@ -28,7 +28,7 @@
 
 - (void)loadView {
     [super loadView];
-    KHNewsView *newsView = [[KHNewsView alloc] initWithFrame:[UIScreen mainScreen].bounds news:self.news];
+    NewsView *newsView = [[NewsView alloc] initWithFrame:[UIScreen mainScreen].bounds news:self.news];
     self.view = newsView;
     self.newsView = newsView;
 }
