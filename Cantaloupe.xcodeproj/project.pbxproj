@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E036D7219D102CD003E565C /* NewsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E036D7119D102CD003E565C /* NewsViewCell.swift */; };
 		6E068B2F18DA742A00885A95 /* KHLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E068B2E18DA742A00885A95 /* KHLoginViewController.m */; };
 		6E089C2819417FED00B1B8A1 /* KHNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E089C2719417FED00B1B8A1 /* KHNewsViewController.m */; };
 		6E089C2A194189F100B1B8A1 /* newsIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E089C29194189F100B1B8A1 /* newsIcon.png */; };
@@ -85,6 +86,8 @@
 
 /* Begin PBXFileReference section */
 		6D4BEF05F9154C3798AA8603 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		6E036D7019D102CD003E565C /* Cantaloupe-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Cantaloupe-Bridging-Header.h"; sourceTree = "<group>"; };
+		6E036D7119D102CD003E565C /* NewsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewCell.swift; sourceTree = "<group>"; };
 		6E068B2D18DA742A00885A95 /* KHLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHLoginViewController.h; sourceTree = "<group>"; };
 		6E068B2E18DA742A00885A95 /* KHLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHLoginViewController.m; sourceTree = "<group>"; };
 		6E089C2619417FED00B1B8A1 /* KHNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHNewsViewController.h; sourceTree = "<group>"; };
@@ -312,6 +315,7 @@
 				6E089C84194961F600B1B8A1 /* KHNewsViewCell.m */,
 				6E089C86194AA32400B1B8A1 /* KHNewsView.h */,
 				6E089C87194AA32400B1B8A1 /* KHNewsView.m */,
+				6E036D7119D102CD003E565C /* NewsViewCell.swift */,
 			);
 			name = News;
 			sourceTree = "<group>";
@@ -399,6 +403,7 @@
 		6E8C78EC18D81C3500741704 /* Cantaloupe */ = {
 			isa = PBXGroup;
 			children = (
+				6E036D7019D102CD003E565C /* Cantaloupe-Bridging-Header.h */,
 				6E32C9F018EBCE4F00156EAD /* Helpers */,
 				6E8C78F818D81C3500741704 /* Images.xcassets */,
 				6E8C78F518D81C3500741704 /* KHAppDelegate.h */,
@@ -639,6 +644,7 @@
 				6E87708419078112007841EA /* UIColor+KHAdditions.m in Sources */,
 				6E089C2819417FED00B1B8A1 /* KHNewsViewController.m in Sources */,
 				6E83B46B18E8A81800EDE66A /* KHDetailedGameViewCell.m in Sources */,
+				6E036D7219D102CD003E565C /* NewsViewCell.swift in Sources */,
 				6E5A89BA191496B30062355C /* KHGraphFooterView.m in Sources */,
 				6E5FC2341921EE4000875CE1 /* KHDetailedGameView.m in Sources */,
 			);
@@ -760,6 +766,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -767,7 +774,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Cantaloupe/Cantaloupe-Prefix.pch";
 				INFOPLIST_FILE = "Cantaloupe/Cantaloupe-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Cantaloupe/Cantaloupe-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -779,6 +789,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -786,7 +797,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Cantaloupe/Cantaloupe-Prefix.pch";
 				INFOPLIST_FILE = "Cantaloupe/Cantaloupe-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Cantaloupe/Cantaloupe-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

@@ -10,29 +10,29 @@
 	<string>Cantaloupe</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>0607AB69-6AE8-472E-BD3B-160C6813B72D</key>
+		<key>C045C7FB93FAC768BD3C7B85049051A10D0162B0</key>
 		<string>ssh://github.com/khwang/cantaloupe.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Cantaloupe.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>0607AB69-6AE8-472E-BD3B-160C6813B72D</key>
+		<key>C045C7FB93FAC768BD3C7B85049051A10D0162B0</key>
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>ssh://github.com/khwang/cantaloupe.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>0607AB69-6AE8-472E-BD3B-160C6813B72D</string>
+	<string>C045C7FB93FAC768BD3C7B85049051A10D0162B0</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>0607AB69-6AE8-472E-BD3B-160C6813B72D</string>
+			<string>C045C7FB93FAC768BD3C7B85049051A10D0162B0</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Cantaloupe</string>
 		</dict>
