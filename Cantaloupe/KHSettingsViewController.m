@@ -7,9 +7,9 @@
 //
 
 #import "KHSettingsViewController.h"
-#import "KHSettingsViewCell.h"
 #import "KHSessionController.h"
 #import <MessageUI/MessageUI.h>
+#import "Cantaloupe-Swift.h"
 
 static NSString *kSettingsCellIdentifier = @"kSettingsCell";
 static CGFloat kSectionHeaderHeight = 30.0f;
@@ -46,7 +46,7 @@ typedef NS_ENUM(NSUInteger, KHSettingsCells) {
 {
     [super viewDidLoad];
     self.navigationItem.title = NSLocalizedString(@"Settings", nil);
-    [self.tableView registerClass:[KHSettingsViewCell class] forCellReuseIdentifier:kSettingsCellIdentifier];
+    [self.tableView registerClass:[SettingsViewCell class] forCellReuseIdentifier:kSettingsCellIdentifier];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -106,7 +106,7 @@ typedef NS_ENUM(NSUInteger, KHSettingsCells) {
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    KHSettingsViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSettingsCellIdentifier forIndexPath:indexPath];
+    SettingsViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSettingsCellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
     [self customizeCell:cell atIndexPath:indexPath];
@@ -114,7 +114,7 @@ typedef NS_ENUM(NSUInteger, KHSettingsCells) {
     return cell;
 }
 
-- (void)customizeCell:(KHSettingsViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+- (void)customizeCell:(SettingsViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     KHSettingsCells cellType = KHSettingCellNone;
     
     NSArray *backingData;
