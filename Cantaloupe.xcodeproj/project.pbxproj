@@ -32,6 +32,7 @@
 		6E5A89BA191496B30062355C /* KHGraphFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E5A89B9191496B30062355C /* KHGraphFooterView.m */; };
 		6E5FC4A519D3A457002730E2 /* SettingsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5FC4A419D3A457002730E2 /* SettingsViewCell.swift */; };
 		6E5FC4A919D3BA7C002730E2 /* DetailedGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5FC4A819D3BA7C002730E2 /* DetailedGameView.swift */; };
+		6E5FC4C519D52E61002730E2 /* GameViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5FC4C419D52E61002730E2 /* GameViewCell.swift */; };
 		6E87706E190766EE007841EA /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6E87705C190766EE007841EA /* Lato-BoldItalic.ttf */; };
 		6E87706F190766EE007841EA /* Lato-HeavyItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6E87705D190766EE007841EA /* Lato-HeavyItalic.ttf */; };
 		6E877070190766EE007841EA /* Lato-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6E87705E190766EE007841EA /* Lato-SemiboldItalic.ttf */; };
@@ -68,7 +69,6 @@
 		6E94B62D18E7BE9500153B52 /* KHDetailedGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E94B62C18E7BE9500153B52 /* KHDetailedGameViewController.m */; };
 		6EBB96AD19D14DC900BDCF33 /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBB96AC19D14DC900BDCF33 /* NewsView.swift */; };
 		6ECBBDE719233EA700D00E30 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 6ECBBDE619233EA700D00E30 /* placeholder.png */; };
-		6EE7FC7718E697B8008AF5FF /* KHGameViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE7FC7618E697B8008AF5FF /* KHGameViewCell.m */; };
 		80ECE71DA3B64FF1B774964C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF3C06EFF674E0381459280 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -120,6 +120,7 @@
 		6E5A89B9191496B30062355C /* KHGraphFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHGraphFooterView.m; sourceTree = "<group>"; };
 		6E5FC4A419D3A457002730E2 /* SettingsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewCell.swift; sourceTree = "<group>"; };
 		6E5FC4A819D3BA7C002730E2 /* DetailedGameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailedGameView.swift; sourceTree = "<group>"; };
+		6E5FC4C419D52E61002730E2 /* GameViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewCell.swift; sourceTree = "<group>"; };
 		6E87705C190766EE007841EA /* Lato-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BoldItalic.ttf"; sourceTree = "<group>"; };
 		6E87705D190766EE007841EA /* Lato-HeavyItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-HeavyItalic.ttf"; sourceTree = "<group>"; };
 		6E87705E190766EE007841EA /* Lato-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-SemiboldItalic.ttf"; sourceTree = "<group>"; };
@@ -165,8 +166,6 @@
 		6EBB96AC19D14DC900BDCF33 /* NewsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
 		6ECBBDE619233EA700D00E30 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		6EE7FBCE18E557CA008AF5FF /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
-		6EE7FC7518E697B8008AF5FF /* KHGameViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHGameViewCell.h; sourceTree = "<group>"; };
-		6EE7FC7618E697B8008AF5FF /* KHGameViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHGameViewCell.m; sourceTree = "<group>"; };
 		7FF3C06EFF674E0381459280 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -275,9 +274,8 @@
 		6E089C93194AAA1900B1B8A1 /* Games */ = {
 			isa = PBXGroup;
 			children = (
-				6EE7FC7518E697B8008AF5FF /* KHGameViewCell.h */,
-				6EE7FC7618E697B8008AF5FF /* KHGameViewCell.m */,
 				6E5FC4A819D3BA7C002730E2 /* DetailedGameView.swift */,
+				6E5FC4C419D52E61002730E2 /* GameViewCell.swift */,
 			);
 			name = Games;
 			sourceTree = "<group>";
@@ -619,7 +617,6 @@
 				6E8C78F318D81C3500741704 /* main.m in Sources */,
 				6E5FC4A919D3BA7C002730E2 /* DetailedGameView.swift in Sources */,
 				6E4FD82D18E1450600EC8B11 /* Cantaloupe.xcdatamodeld in Sources */,
-				6EE7FC7718E697B8008AF5FF /* KHGameViewCell.m in Sources */,
 				6E8C796F18D977DF00741704 /* KHGamesViewController.m in Sources */,
 				6E068B2F18DA742A00885A95 /* KHLoginViewController.m in Sources */,
 				6E089C8D194AA54500B1B8A1 /* KHDetailedNewsViewController.m in Sources */,
@@ -628,6 +625,7 @@
 				6E8C78F718D81C3500741704 /* KHAppDelegate.m in Sources */,
 				6E5A896F1910AB4B0062355C /* KHGraphsViewController.m in Sources */,
 				6E5A897F1910BD530062355C /* KHDetailedGraphViewController.m in Sources */,
+				6E5FC4C519D52E61002730E2 /* GameViewCell.swift in Sources */,
 				6E32CA0518EBDCE300156EAD /* KHSettingsViewController.m in Sources */,
 				6E8C796C18D9761000741704 /* KHTabBarController.m in Sources */,
 				6E94B62D18E7BE9500153B52 /* KHDetailedGameViewController.m in Sources */,
