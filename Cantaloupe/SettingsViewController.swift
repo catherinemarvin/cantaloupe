@@ -95,5 +95,51 @@ class SettingsViewController: UITableViewController {
         return CGFloat(kSectionHeaderHeight)
     }
     
-
+    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.01
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(kSettingsCellIdentifier, forIndexPath: indexPath) as SettingsViewCell
+        
+        self.customizeCell(cell, indexPath:indexPath)
+        return cell
+    }
+    
+    func customizeCell(cell: SettingsViewCell, indexPath:NSIndexPath) {
+        var cellType = SettingCell.None
+        
+        var backingData:Array<SettingCell>
+        
+        if (indexPath.section == 0) {
+            backingData = self.settingItems
+        } else if (indexPath.section == 1) {
+            backingData = self.userItems
+        } else if (indexPath.section == 2) {
+            backingData = self.helpItems
+        } else {
+            return
+        }
+        
+        let row = indexPath.row
+        if (row < backingData.count) {
+            cellType = backingData[row]
+        }
+        
+        switch cellType {
+        case .Logout:
+            cell.textLabel!.text = "Logout"
+            cell.tag = SettingCell.Logout.toRaw()
+            break
+        case .Username:
+            cell.textLabel!.text = "Username"
+            cell.detailTextLabel!.text = "My username here"
+            cell.tag = SettingCell.Username.toRaw()
+        case .Contact:
+            cell.textLabel!.text = "Contact"
+            cell.tag = SettingCell.Contact.toRaw()
+        default:
+            break
+        }
+    }
 }
