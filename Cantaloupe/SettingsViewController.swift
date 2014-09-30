@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MessageUI
 
-class SettingsViewController: UITableViewController {
+class SettingsViewController: UITableViewController, MFMailComposeViewControllerDelegate {
 
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -141,5 +142,38 @@ class SettingsViewController: UITableViewController {
         default:
             break
         }
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        
+        switch cell!.tag {
+        case SettingCell.Logout.toRaw():
+            NSLog("Logout")
+            break
+        case SettingCell.Contact.toRaw():
+            self.composeMail()
+            break
+        default:
+            tableView.deselectRowAtIndexPath(indexPath, animated: false)
+            break
+        }
+    }
+    
+    func composeMail() {
+        if (!MFMailComposeViewController.canSendMail()) {
+            let alert = UIAlertView(title: "Sorry", message: "Your account is not set up to send e-mails", delegate: nil, cancelButtonTitle: "Ok")
+            alert.show()
+        }
+        
+        let mailController = MFMailComposeViewController()
+        mailController.mailComposeDelegate = self
+        mailController.setToRecipients(["k3vinhwang@gmail.com"])
+        mailController.setSubject("Itch.io App Feedback")
+        self.presentViewController(mailController, animated: true, completion: nil)
+    }
+    
+    func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 }
