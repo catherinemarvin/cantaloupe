@@ -9,6 +9,7 @@
 #import "KHTabBarController.h"
 #import "KHGamesViewController.h"
 #import "KHSettingsViewController.h"
+#import "Cantaloupe-Swift.h"
 #import "KHGraphsViewController.h"
 #import "KHNewsViewController.h"
 
@@ -23,7 +24,7 @@ typedef NS_ENUM(NSInteger, KHTabViewControllerTag) {
 
 @property (nonatomic, strong) NSString *key;
 @property (nonatomic, strong) KHGamesViewController *gamesViewController;
-@property (nonatomic, strong) KHSettingsViewController *settingsViewController;
+@property (nonatomic, strong) SettingsViewController *settingsViewController;
 @property (nonatomic, strong) KHGraphsViewController *graphsViewController;
 @property (nonatomic, strong) KHNewsViewController *newsViewController;
 
@@ -44,7 +45,7 @@ typedef NS_ENUM(NSInteger, KHTabViewControllerTag) {
         UINavigationController *gamesNav = [[UINavigationController alloc] initWithRootViewController:self.gamesViewController];
         gamesNav.navigationBar.translucent = NO;
         
-        self.settingsViewController = [[KHSettingsViewController alloc] initWithStyle:UITableViewStyleGrouped];
+        self.settingsViewController = [[SettingsViewController alloc] initWithStyle:UITableViewStyleGrouped];
         self.settingsViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Settings", nil) image:[UIImage imageNamed:@"settingsIcon"] tag:KHSettingsViewControllerTag];
         UINavigationController *settingsNav = [[UINavigationController alloc] initWithRootViewController:self.settingsViewController];
         
