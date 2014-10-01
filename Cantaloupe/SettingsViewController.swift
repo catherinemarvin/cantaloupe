@@ -142,7 +142,7 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
             break
         case .Username:
             cell.textLabel!.text = "Username"
-//            cell.detailTextLabel!.text = "My username here"
+            cell.detailTextLabel!.text = "My username here"
             cell.tag = SettingCell.Username.toRaw()
         case .Contact:
             cell.textLabel!.text = "Contact"

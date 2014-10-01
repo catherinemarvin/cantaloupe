@@ -11,7 +11,7 @@ import UIKit
 class SettingsViewCell : UITableViewCell {
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        super.init(style: UITableViewCellStyle.Value1, reuseIdentifier: reuseIdentifier) // Ignore whatever value we get, use Value1 style.
         
         self.textLabel!.font = UIFont(name: "Lato-Regular", size: 16)
     }
