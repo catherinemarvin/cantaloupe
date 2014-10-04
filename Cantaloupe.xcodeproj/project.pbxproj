@@ -14,6 +14,7 @@
 		6E089C2C194189FF00B1B8A1 /* newsIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E089C2B194189FF00B1B8A1 /* newsIcon@2x.png */; };
 		6E089C8D194AA54500B1B8A1 /* KHDetailedNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E089C8C194AA54500B1B8A1 /* KHDetailedNewsViewController.m */; };
 		6E32C9F318EBCE7300156EAD /* KHSessionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E32C9F218EBCE7300156EAD /* KHSessionController.m */; };
+		6E4C098219DF9C9900F3D60A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4C098119DF9C9900F3D60A /* LoginViewController.swift */; };
 		6E4FD82918E144B500EC8B11 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4FD82818E144B500EC8B11 /* CoreData.framework */; };
 		6E4FD82D18E1450600EC8B11 /* Cantaloupe.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6E4FD82B18E1450600EC8B11 /* Cantaloupe.xcdatamodeld */; };
 		6E5A89621910AA490062355C /* gamesIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E5A89611910AA490062355C /* gamesIcon.png */; };
@@ -96,6 +97,7 @@
 		6E089C8C194AA54500B1B8A1 /* KHDetailedNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHDetailedNewsViewController.m; sourceTree = "<group>"; };
 		6E32C9F118EBCE7300156EAD /* KHSessionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHSessionController.h; sourceTree = "<group>"; };
 		6E32C9F218EBCE7300156EAD /* KHSessionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHSessionController.m; sourceTree = "<group>"; };
+		6E4C098119DF9C9900F3D60A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		6E4FD82818E144B500EC8B11 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		6E4FD82C18E1450600EC8B11 /* Cantaloupe.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Cantaloupe.xcdatamodel; sourceTree = "<group>"; };
 		6E5A89611910AA490062355C /* gamesIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gamesIcon.png; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 			children = (
 				6E068B2D18DA742A00885A95 /* KHLoginViewController.h */,
 				6E068B2E18DA742A00885A95 /* KHLoginViewController.m */,
+				6E4C098119DF9C9900F3D60A /* LoginViewController.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -614,6 +617,7 @@
 				6E32C9F318EBCE7300156EAD /* KHSessionController.m in Sources */,
 				6E8C78F318D81C3500741704 /* main.m in Sources */,
 				6E5FC4A919D3BA7C002730E2 /* DetailedGameView.swift in Sources */,
+				6E4C098219DF9C9900F3D60A /* LoginViewController.swift in Sources */,
 				6E4FD82D18E1450600EC8B11 /* Cantaloupe.xcdatamodeld in Sources */,
 				6E8C796F18D977DF00741704 /* KHGamesViewController.m in Sources */,
 				6E068B2F18DA742A00885A95 /* KHLoginViewController.m in Sources */,
