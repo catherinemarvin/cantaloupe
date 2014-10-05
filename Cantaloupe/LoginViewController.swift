@@ -48,7 +48,29 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UITableViewDat
     }
     
     override func loadView() {
+       let view = UIView(frame: UIScreen.mainScreen().applicationFrame)
+        view.backgroundColor = UIColor.whiteColor()
         
+        let xMargin = CGFloat(20)
+        let yMargin = CGFloat(20)
+        
+        let tableView = UITableView(frame: CGRectMake(xMargin, yMargin, floor(CGRectGetWidth(view.bounds) - 2 * xMargin), 132.0), style: UITableViewStyle.Grouped)
+        tableView.layer.cornerRadius = 10
+        tableView.separatorInset = UIEdgeInsetsZero
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
+        tableView.layer.borderWidth = 1
+        tableView.layer.borderColor = tableView.separatorColor.CGColor
+        tableView.backgroundColor = UIColor.clearColor()
+        tableView.scrollEnabled = false
+        view.addSubview(tableView)
+        
+        self.loginButton.frame = CGRectZero
+        view.addSubview(self.loginButton)
+        
+        self.view = view
+        self.tableView = tableView
     }
 
     override func viewDidLoad() {
