@@ -44,6 +44,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UITableViewDat
         self.loginButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         self.loginButton.setTitle("Login", forState: UIControlState.Normal)
         self.loginButton.addTarget(self, action: "loginTapped:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        self.tableView = UITableView(frame: CGRectZero, style: UITableViewStyle.Grouped)
         super.init()
     }
     
@@ -54,7 +56,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UITableViewDat
         let xMargin = CGFloat(20)
         let yMargin = CGFloat(20)
         
-        let tableView = UITableView(frame: CGRectMake(xMargin, yMargin, floor(CGRectGetWidth(view.bounds) - 2 * xMargin), 132.0), style: UITableViewStyle.Grouped)
+        let tableView = self.tableView
+        tableView.frame = CGRectMake(xMargin, yMargin, floor(CGRectGetWidth(view.bounds) - 2 * xMargin), 132.0)
         tableView.layer.cornerRadius = 10
         tableView.separatorInset = UIEdgeInsetsZero
         tableView.delegate = self
@@ -70,6 +73,85 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UITableViewDat
         view.addSubview(self.loginButton)
         
         self.view = view
-        self.tableView = tableView
+    }
+    
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        var frame = self.tableView.frame
+        frame.size.width = floor(CGRectGetWidth(self.view.bounds) - 2 * 20)
+        self.tableView.frame = frame
+        
+        var loginFrame = self.loginButton.frame
+        loginFrame.size.width = CGRectGetWidth(frame)
+        self.loginButton.frame = loginFrame
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 44
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0.01
+    }
+    
+    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView(frame: CGRectZero)
+    }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return UIView(frame: CGRectZero)
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifier, forIndexPath: indexPath) as UITableViewCell
+        
+        
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        
+        let xOffset = CGFloat(20)
+        
+        switch (indexPath.row) {
+        case 0:
+            self.usernameField.frame = CGRectMake(xOffset, CGRectGetMinY(cell.frame), CGRectGetWidth(tableView.frame) - 2 * xOffset, CGRectGetHeight(cell.frame))
+            cell.contentView.addSubview(self.usernameField)
+        case 1:
+            self.passwordField.frame = CGRectMake(xOffset, CGRectGetMinY(cell.frame), CGRectGetWidth(tableView.frame) - 2 * xOffset, CGRectGetHeight(cell.frame))
+            cell.contentView.addSubview(self.passwordField)
+        case 2:
+            self.loginButton.frame = CGRectMake(CGRectGetMinX(cell.frame), CGRectGetMinY(cell.frame), CGRectGetWidth(tableView.frame), CGRectGetHeight(cell.frame))
+            cell.contentView.addSubview(self.loginButton)
+        default:
+            break
+        }
+        cell.frame = CGRectMake(CGRectGetMinX(cell.frame), CGRectGetMinY(cell.frame), CGRectGetWidth(tableView.frame), CGRectGetHeight(cell.frame))
+        cell.contentView.frame = CGRectMake(CGRectGetMinX(cell.contentView.frame), CGRectGetMinY(cell.contentView.frame), CGRectGetWidth(tableView.frame), CGRectGetHeight(cell.contentView.frame))
+        return cell
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if (textField == self.usernameField) {
+            self.passwordField.becomeFirstResponder()
+            return false
+        } else {
+            textField.resignFirstResponder()
+            self.loginTapped()
+            return true
+        }
+    }
+    
+    func loginTapped() {
+        if (self.validateFields()) {
+            
+        }
+    }
+    
+    func validateFields() -> Bool {
     }
 }
