@@ -29,7 +29,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UITableViewDat
         self.usernameField.placeholder = "Username"
         self.usernameField.autocapitalizationType = UITextAutocapitalizationType.None
         self.usernameField.returnKeyType = UIReturnKeyType.Next
-        self.usernameField.delegate = self
         
         self.passwordField = UITextField()
         self.passwordField.font = UIFont(name: "Lato-Regular", size: 16)
@@ -37,16 +36,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UITableViewDat
         self.passwordField.secureTextEntry = true
         self.passwordField.autocapitalizationType = UITextAutocapitalizationType.None
         self.passwordField.returnKeyType = UIReturnKeyType.Go
-        self.passwordField.delegate = self
         
         self.loginButton = UIButton()
         self.loginButton.titleLabel!.font = UIFont(name: "Lato-Regular", size: 16)
         self.loginButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         self.loginButton.setTitle("Login", forState: UIControlState.Normal)
-        self.loginButton.addTarget(self, action: "loginTapped:", forControlEvents: UIControlEvents.TouchUpInside)
         
         self.tableView = UITableView(frame: CGRectZero, style: UITableViewStyle.Grouped)
+        
         super.init()
+        
+        self.usernameField.delegate = self
+        self.passwordField.delegate = self
+        self.loginButton.addTarget(self, action: "loginTapped:", forControlEvents: UIControlEvents.TouchUpInside)
     }
     
     override func loadView() {
@@ -153,5 +155,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UITableViewDat
     }
     
     func validateFields() -> Bool {
+        var error = ""
+        
+        if (self.usernameField.text == "" || self.passwordField.text == "") {
+            error = "Username and password cannot be blank."
+        }
+        
+        if (countElements(error) > 0) {
+            let alertController = UIAlertController(title: "Error", message: error, preferredStyle: .Alert)
+            let OKAction = UIAlertAction(title: "OK", style: .Default, handler: { action in println("Ok") })
+            alertController.addAction(OKAction)
+        }
+        return countElements(error) == 0
     }
 }
