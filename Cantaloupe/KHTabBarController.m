@@ -8,7 +8,6 @@
 
 #import "KHTabBarController.h"
 #import "KHGamesViewController.h"
-#import "KHSettingsViewController.h"
 #import "Cantaloupe-Swift.h"
 #import "KHGraphsViewController.h"
 #import "KHNewsViewController.h"
