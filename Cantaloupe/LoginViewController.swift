@@ -75,7 +75,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UITableViewDat
     }
     
     override func loadView() {
-       let view = UIView(frame: UIScreen.mainScreen().applicationFrame)
+        let view = UIView(frame: UIScreen.mainScreen().applicationFrame)
         view.backgroundColor = UIColor.whiteColor()
         
         let xMargin = CGFloat(20)
@@ -98,6 +98,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UITableViewDat
         view.addSubview(self.loginButton)
         
         self.view = view
+        
+        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: kCellIdentifier)
     }
     
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
