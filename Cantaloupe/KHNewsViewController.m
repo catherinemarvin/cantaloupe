@@ -8,8 +8,8 @@
 
 #import "KHNewsViewController.h"
 #import "AFNetworking.h"
+#import "KHNewsViewCell.h"
 #import "KHDetailedNewsViewController.h"
-#import "Cantaloupe-Swift.h"
 
 @interface KHNewsViewController ()
 
@@ -24,7 +24,7 @@ static NSString *kNewsCellIdentifier = @"newsCellIdentifier";
 - (id)initWithCollectionViewLayout:(UICollectionViewLayout *)layout {
     self = [super initWithCollectionViewLayout:layout];
     if (self) {
-        [self.collectionView registerClass:[NewsViewCell class] forCellWithReuseIdentifier:kNewsCellIdentifier];
+        [self.collectionView registerClass:[KHNewsViewCell class] forCellWithReuseIdentifier:kNewsCellIdentifier];
     }
     return self;
 }
@@ -66,11 +66,8 @@ static NSString *kNewsCellIdentifier = @"newsCellIdentifier";
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kNewsCellIdentifier forIndexPath:indexPath];
-    if ([cell isKindOfClass:[NewsViewCell class]]) {
-        NewsViewCell *newsCell = (NewsViewCell *)cell;
-        [newsCell configureWithNews:[self.posts objectAtIndex:indexPath.row]];
-    }
+    KHNewsViewCell *cell = (KHNewsViewCell *) [collectionView dequeueReusableCellWithReuseIdentifier:kNewsCellIdentifier forIndexPath:indexPath];
+    [cell configureWithNews:[self.posts objectAtIndex:indexPath.row]];
     return cell;
 }
 
