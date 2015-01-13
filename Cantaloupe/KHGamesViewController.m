@@ -8,9 +8,9 @@
 
 #import "KHGamesViewController.h"
 #import "AFNetworking.h"
+#import "KHGameViewCell.h"
 #import "KHDetailedGameViewController.h"
 #import "MBProgressHUD.h"
-#import "Cantaloupe-Swift.h"
 
 @interface KHGamesViewController ()
 
@@ -27,7 +27,7 @@ static NSString *kGameCellIdentifier = @"gameCellIdentifier";
     self = [super initWithCollectionViewLayout:layout];
     if (self) {
         self.key = key;
-        [self.collectionView registerClass:[GameViewCell class] forCellWithReuseIdentifier:kGameCellIdentifier];
+        [self.collectionView registerClass:[KHGameViewCell class] forCellWithReuseIdentifier:kGameCellIdentifier];
         
         self.refreshControl = [[UIRefreshControl alloc] init];
         [self.collectionView addSubview:self.refreshControl];
@@ -100,7 +100,7 @@ static NSString *kGameCellIdentifier = @"gameCellIdentifier";
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    GameViewCell *cell = (GameViewCell *) [collectionView dequeueReusableCellWithReuseIdentifier:kGameCellIdentifier forIndexPath:indexPath];
+    KHGameViewCell *cell = (KHGameViewCell *) [collectionView dequeueReusableCellWithReuseIdentifier:kGameCellIdentifier forIndexPath:indexPath];
     [cell setGameImage:[[self.games objectAtIndex:indexPath.row] valueForKey:@"cover_url"]];
     [cell setTitle:[[self.games objectAtIndex:indexPath.row] valueForKey:@"title"]];
     
