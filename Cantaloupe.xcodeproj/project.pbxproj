@@ -12,6 +12,7 @@
 		6E089C2819417FED00B1B8A1 /* KHNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E089C2719417FED00B1B8A1 /* KHNewsViewController.m */; };
 		6E089C2A194189F100B1B8A1 /* newsIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E089C29194189F100B1B8A1 /* newsIcon.png */; };
 		6E089C2C194189FF00B1B8A1 /* newsIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E089C2B194189FF00B1B8A1 /* newsIcon@2x.png */; };
+		6E089C85194961F600B1B8A1 /* KHNewsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E089C84194961F600B1B8A1 /* KHNewsViewCell.m */; };
 		6E089C88194AA32400B1B8A1 /* KHNewsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E089C87194AA32400B1B8A1 /* KHNewsView.m */; };
 		6E089C8D194AA54500B1B8A1 /* KHDetailedNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E089C8C194AA54500B1B8A1 /* KHDetailedNewsViewController.m */; };
 		6E32C9F318EBCE7300156EAD /* KHSessionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E32C9F218EBCE7300156EAD /* KHSessionController.m */; };
@@ -93,6 +94,8 @@
 		6E089C2719417FED00B1B8A1 /* KHNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHNewsViewController.m; sourceTree = "<group>"; };
 		6E089C29194189F100B1B8A1 /* newsIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newsIcon.png; sourceTree = "<group>"; };
 		6E089C2B194189FF00B1B8A1 /* newsIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "newsIcon@2x.png"; sourceTree = "<group>"; };
+		6E089C83194961F600B1B8A1 /* KHNewsViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHNewsViewCell.h; sourceTree = "<group>"; };
+		6E089C84194961F600B1B8A1 /* KHNewsViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHNewsViewCell.m; sourceTree = "<group>"; };
 		6E089C86194AA32400B1B8A1 /* KHNewsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHNewsView.h; sourceTree = "<group>"; };
 		6E089C87194AA32400B1B8A1 /* KHNewsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHNewsView.m; sourceTree = "<group>"; };
 		6E089C8B194AA54500B1B8A1 /* KHDetailedNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHDetailedNewsViewController.h; sourceTree = "<group>"; };
@@ -308,6 +311,8 @@
 		6E089C95194AAA3100B1B8A1 /* News */ = {
 			isa = PBXGroup;
 			children = (
+				6E089C83194961F600B1B8A1 /* KHNewsViewCell.h */,
+				6E089C84194961F600B1B8A1 /* KHNewsViewCell.m */,
 				6E089C86194AA32400B1B8A1 /* KHNewsView.h */,
 				6E089C87194AA32400B1B8A1 /* KHNewsView.m */,
 				6E036D7119D102CD003E565C /* NewsViewCell.swift */,
@@ -627,6 +632,7 @@
 				6E068B2F18DA742A00885A95 /* KHLoginViewController.m in Sources */,
 				6E089C8D194AA54500B1B8A1 /* KHDetailedNewsViewController.m in Sources */,
 				6E5A897C1910B4770062355C /* KHGraphsViewCell.m in Sources */,
+				6E089C85194961F600B1B8A1 /* KHNewsViewCell.m in Sources */,
 				6E8C78F718D81C3500741704 /* KHAppDelegate.m in Sources */,
 				6E5A896F1910AB4B0062355C /* KHGraphsViewController.m in Sources */,
 				6E5A897F1910BD530062355C /* KHDetailedGraphViewController.m in Sources */,
