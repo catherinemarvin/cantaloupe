@@ -23,29 +23,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UITableViewDat
         fatalError("init(coder:) has not been implemented")
     }
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
-        self.usernameField = UITextField()
-        self.usernameField.font = UIFont(name: "Lato-Regular", size: 16)
-        self.usernameField.placeholder = "Username"
-        self.usernameField.autocapitalizationType = UITextAutocapitalizationType.None
-        self.usernameField.returnKeyType = UIReturnKeyType.Next
-        
-        self.passwordField = UITextField()
-        self.passwordField.font = UIFont(name: "Lato-Regular", size: 16)
-        self.passwordField.placeholder = "Password"
-        self.passwordField.secureTextEntry = true
-        self.passwordField.autocapitalizationType = UITextAutocapitalizationType.None
-        self.passwordField.returnKeyType = UIReturnKeyType.Go
-        
-        self.loginButton = UIButton()
-        self.loginButton.titleLabel!.font = UIFont(name: "Lato-Regular", size: 16)
-        self.loginButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        self.loginButton.setTitle("Login", forState: UIControlState.Normal)
-        
-        self.tableView = UITableView(frame: CGRectZero, style: UITableViewStyle.Grouped)
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
-    
     override init() {
         self.usernameField = UITextField()
         self.usernameField.font = UIFont(name: "Lato-Regular", size: 16)
@@ -173,22 +150,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UITableViewDat
     
     func loginTapped() {
         if (self.validateFields()) {
-            MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-            
-            let manager = AFHTTPRequestOperationManager()
-            let username = self.usernameField.text
-            let parameters = [
-                "username" : username,
-                "password" : self.passwordField.text,
-                "source": "android"
-            ]
-            
-            manager.POST("http://itch.io/api/1/login", parameters: parameters, success: { (operation: AFHTTPRequestOperation!, responseObject:AnyObject!) -> Void in
-                println("JSON: " + responseObject.description)
-                },
-                failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
-                    println("Error: " + error.localizedDescription)
-            })
             
         }
     }

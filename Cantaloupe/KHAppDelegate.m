@@ -7,9 +7,9 @@
 //
 
 #import "KHAppDelegate.h"
+#import "KHLoginViewController.h"
 #import "KHSessionController.h"
 #import "KHTabBarController.h"
-#import "Cantaloupe-Swift.h"
 
 @implementation KHAppDelegate
 
@@ -38,7 +38,7 @@
     if (session.loggedIn) {
         mainController = [[KHTabBarController alloc] initWithKey:session.key];
     } else {
-        mainController = [[LoginViewController alloc] init];
+        mainController = [[KHLoginViewController alloc] init];
     }
     
     [session addObserver:self forKeyPath:@"loggedIn" options:0 context:nil];
@@ -61,7 +61,7 @@
     if ([keyPath isEqualToString:@"loggedIn"]) {
         if (![KHSessionController sharedInstance].loggedIn) {
             // If you logged out, quit everything and get dumped back to the login screen.
-            self.window.rootViewController = [[LoginViewController alloc] init];
+            self.window.rootViewController = [[KHLoginViewController alloc] init];
         }
     }
 }
