@@ -7,7 +7,7 @@
 //
 
 #import "KHDetailedGameViewController.h"
-#import "Cantaloupe-Swift.h"
+#import "KHDetailedGameView.h"
 
 @interface KHDetailedGameViewController ()
 
@@ -33,7 +33,7 @@
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
     scrollView.alwaysBounceVertical = YES;
     
-    DetailedGameView *view = [[DetailedGameView alloc] initWithFrame:scrollView.bounds data:self.gameData];
+    KHDetailedGameView *view = [[KHDetailedGameView alloc] initWithFrame:scrollView.bounds data:self.gameData];
     
     [scrollView addSubview:view];
     scrollView.contentSize = view.frame.size;
