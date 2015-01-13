@@ -27,7 +27,7 @@ class NewsView: UIView {
         }
         
         self.text = UILabel()
-        if let body = self.news!["body"] as? NSString {
+        if let body = self.news!["title"] as? NSString {
             self.text.text = body
         }
         self.text.numberOfLines = 0
