@@ -18,6 +18,10 @@ class GameViewCell: UICollectionViewCell {
         self.imageView.contentMode = UIViewContentMode.ScaleAspectFill
         self.imageView.clipsToBounds = true
         
+        let shadow = UIView(frame: self.imageView.bounds)
+        shadow.backgroundColor = UIColor.blackColor()
+        shadow.layer.opacity = 0.5
+        self.imageView.addSubview(shadow)
         
         self.titleLabel = UILabel()
         self.titleLabel.font = UIFont(name: "Lato-Regular", size: 16)
@@ -28,11 +32,6 @@ class GameViewCell: UICollectionViewCell {
         self.contentView.addSubview(self.imageView)
         self.contentView.addSubview(self.titleLabel)
         self.imageView.frame = self.bounds
-        let shadow = UIView(frame: self.imageView.bounds)
-        shadow.backgroundColor = UIColor.blackColor()
-        shadow.layer.opacity = 0.5
-        self.imageView.addSubview(shadow)
-        
         self.titleLabel.frame = CGRectMake(10, floor(CGRectGetMinY(self.bounds) / 2), CGRectGetWidth(self.bounds) - 10, 20)
     }
 
