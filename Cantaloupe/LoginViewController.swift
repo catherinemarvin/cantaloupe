@@ -43,8 +43,32 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UITableViewDat
         self.loginButton.setTitle("Login", forState: UIControlState.Normal)
         
         self.tableView = UITableView(frame: CGRectZero, style: UITableViewStyle.Grouped)
-        
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    override init() {
+        self.usernameField = UITextField()
+        self.usernameField.font = UIFont(name: "Lato-Regular", size: 16)
+        self.usernameField.placeholder = "Username"
+        self.usernameField.autocapitalizationType = UITextAutocapitalizationType.None
+        self.usernameField.returnKeyType = UIReturnKeyType.Next
+        
+        self.passwordField = UITextField()
+        self.passwordField.font = UIFont(name: "Lato-Regular", size: 16)
+        self.passwordField.placeholder = "Password"
+        self.passwordField.secureTextEntry = true
+        self.passwordField.autocapitalizationType = UITextAutocapitalizationType.None
+        self.passwordField.returnKeyType = UIReturnKeyType.Go
+        
+        self.loginButton = UIButton()
+        self.loginButton.titleLabel!.font = UIFont(name: "Lato-Regular", size: 16)
+        self.loginButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        self.loginButton.setTitle("Login", forState: UIControlState.Normal)
+        
+        self.tableView = UITableView(frame: CGRectZero, style: UITableViewStyle.Grouped)
+        
+        super.init()
+        
         self.usernameField.delegate = self
         self.passwordField.delegate = self
         self.loginButton.addTarget(self, action: "loginTapped:", forControlEvents: UIControlEvents.TouchUpInside)

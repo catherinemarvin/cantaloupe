@@ -38,7 +38,7 @@
     if (session.loggedIn) {
         mainController = [[KHTabBarController alloc] initWithKey:session.key];
     } else {
-        mainController = [[LoginViewController alloc] initWithNibName:nil bundle:nil];
+        mainController = [[LoginViewController alloc] init];
     }
     
     [session addObserver:self forKeyPath:@"loggedIn" options:0 context:nil];
@@ -61,7 +61,7 @@
     if ([keyPath isEqualToString:@"loggedIn"]) {
         if (![KHSessionController sharedInstance].loggedIn) {
             // If you logged out, quit everything and get dumped back to the login screen.
-            self.window.rootViewController = [[LoginViewController alloc] initWithNibName:nil bundle:nil];
+            self.window.rootViewController = [[LoginViewController alloc] init];
         }
     }
 }
