@@ -12,7 +12,7 @@
 
 @property (nonatomic, strong) NSDictionary *news;
 @property (nonatomic, strong) UILabel *titleLabel;
-@property (nonatomic, strong) UILabel *previewLabel;
+@property (nonatomic, strong) UIWebView *previewView;
 
 @end
 
@@ -28,11 +28,10 @@
         _titleLabel.numberOfLines = 0;
         [self.contentView addSubview:_titleLabel];
         
-        _previewLabel = [[UILabel alloc] init];
-        _previewLabel.font = [UIFont fontWithName:@"Lato-Regular" size:12.0f];
-        _previewLabel.numberOfLines = 4;
-        _previewLabel.textColor = [UIColor blackColor];
-        [self.contentView addSubview:_previewLabel];
+        _previewView = [[UIWebView alloc] init];
+        _previewView.userInteractionEnabled = NO;
+        _previewView.backgroundColor = [UIColor greenColor];
+        [self.contentView addSubview:_previewView];
         
         self.backgroundColor = [UIColor whiteColor];
         
@@ -47,9 +46,10 @@
         make.left.and.right.equalTo(self.contentView);
     }];
     
-    [self.previewLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.previewView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.titleLabel.mas_bottom).with.offset(10);
         make.left.and.right.equalTo(self.titleLabel);
+        make.bottom.equalTo(self);
     }];
 }
 
@@ -57,7 +57,9 @@
     self.news = news;
     
     self.titleLabel.text = [self.news objectForKey:@"title"];
-    self.previewLabel.text = [self.news objectForKey:@"body"];
+    
+    NSString *previewHtml = [self.news objectForKey:@"body"];
+    [self.previewView loadHTMLString:previewHtml baseURL:nil];
     [self setNeedsLayout];
 }
 
