@@ -11,6 +11,8 @@
 #import "KHSessionController.h"
 #import "KHTabBarController.h"
 
+static const int ddLogLevel = LOG_LEVEL_ALL;
+
 @implementation KHAppDelegate
 
 - (void)dealloc {
@@ -28,6 +30,12 @@
     [GAI sharedInstance].dryRun = YES;
     
 #endif
+    
+    // Setup CocoaLumberjack
+    [DDLog addLogger:[DDASLLogger sharedInstance]];
+    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    
+    [[DDTTYLogger sharedInstance] setColorsEnabled:YES];
     
     // Create and display view
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -47,12 +55,6 @@
     
     [self.window makeKeyAndVisible];
     return YES;
-}
-
-#pragma mark - MagicalRecord
-
-- (void)_magicalRecordError:(NSError *)error {
-    NSLog(@"Bad stuff: %@", [error description]);
 }
 
 #pragma mark - KVO

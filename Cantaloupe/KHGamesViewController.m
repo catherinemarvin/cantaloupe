@@ -21,6 +21,9 @@
 @end
 
 static NSString *kGameCellIdentifier = @"gameCellIdentifier";
+
+static const int ddLogLevel = LOG_LEVEL_ALL;
+
 @implementation KHGamesViewController
 
 - (id)initWithCollectionViewLayout:(UICollectionViewLayout *)layout key:(NSString *)key {
@@ -61,7 +64,7 @@ static NSString *kGameCellIdentifier = @"gameCellIdentifier";
     
     NSString *url = [NSString stringWithFormat:@"http://itch.io/api/1/%@/my-games", self.key];
     [manager POST:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
+        DDLogVerbose(@"JSON: %@", responseObject);
         
         NSDictionary *responseDict = (NSDictionary *)responseObject;
         
@@ -79,7 +82,7 @@ static NSString *kGameCellIdentifier = @"gameCellIdentifier";
         [self.refreshControl endRefreshing];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
+        DDLogError(@"Error: %@", error);
         if (error.code == -1009) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Sorry", nil) message:NSLocalizedString(@"Please connect to the Internet and try again", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Ok", nil) otherButtonTitles:nil];
             [alert show];

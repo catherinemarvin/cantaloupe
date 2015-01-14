@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6E036D7219D102CD003E565C /* NewsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E036D7119D102CD003E565C /* NewsViewCell.swift */; };
 		6E068B2F18DA742A00885A95 /* KHLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E068B2E18DA742A00885A95 /* KHLoginViewController.m */; };
 		6E089C2819417FED00B1B8A1 /* KHNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E089C2719417FED00B1B8A1 /* KHNewsViewController.m */; };
 		6E089C2A194189F100B1B8A1 /* newsIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E089C29194189F100B1B8A1 /* newsIcon.png */; };
@@ -86,7 +85,6 @@
 
 /* Begin PBXFileReference section */
 		34F50DC85B80C1E55B198BA0 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		6E036D7119D102CD003E565C /* NewsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewCell.swift; sourceTree = "<group>"; };
 		6E068B2D18DA742A00885A95 /* KHLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHLoginViewController.h; sourceTree = "<group>"; };
 		6E068B2E18DA742A00885A95 /* KHLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHLoginViewController.m; sourceTree = "<group>"; };
 		6E089C2619417FED00B1B8A1 /* KHNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHNewsViewController.h; sourceTree = "<group>"; };
@@ -315,7 +313,6 @@
 				6E089C84194961F600B1B8A1 /* KHNewsViewCell.m */,
 				6E089C86194AA32400B1B8A1 /* KHNewsView.h */,
 				6E089C87194AA32400B1B8A1 /* KHNewsView.m */,
-				6E036D7119D102CD003E565C /* NewsViewCell.swift */,
 			);
 			name = News;
 			sourceTree = "<group>";
@@ -652,7 +649,6 @@
 				6E87708419078112007841EA /* UIColor+KHAdditions.m in Sources */,
 				6E089C2819417FED00B1B8A1 /* KHNewsViewController.m in Sources */,
 				6E83B46B18E8A81800EDE66A /* KHDetailedGameViewCell.m in Sources */,
-				6E036D7219D102CD003E565C /* NewsViewCell.swift in Sources */,
 				6E5A89BA191496B30062355C /* KHGraphFooterView.m in Sources */,
 				6E5FC2341921EE4000875CE1 /* KHDetailedGameView.m in Sources */,
 			);
