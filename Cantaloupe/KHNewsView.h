@@ -10,6 +10,6 @@
 
 @interface KHNewsView : UIView
 
-- (id)initWithFrame:(CGRect)frame news:(NSDictionary *)news;
+- (id)initWithFrame:(CGRect)frame news:(NSString *)newsUrlString;
 
 @end

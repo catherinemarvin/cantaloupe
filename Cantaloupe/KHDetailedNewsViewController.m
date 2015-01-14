@@ -28,7 +28,9 @@
 
 - (void)loadView {
     [super loadView];
-    KHNewsView *newsView = [[KHNewsView alloc] initWithFrame:[UIScreen mainScreen].bounds news:self.news];
+    
+    NSString *postUrl = [self.news objectForKey:@"post_url"];
+    KHNewsView *newsView = [[KHNewsView alloc] initWithFrame:[UIScreen mainScreen].bounds news:postUrl];
     self.view = newsView;
     self.newsView = newsView;
 }
