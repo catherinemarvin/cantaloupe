@@ -71,6 +71,7 @@ static NSString *kNewsCellIdentifier = @"newsCellIdentifier";
     return cell;
 }
 
+
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -83,7 +84,14 @@ static NSString *kNewsCellIdentifier = @"newsCellIdentifier";
 #pragma mark - Collection View Delegate
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(self.collectionView.bounds.size.width, 200.0f);
+    
+    CGFloat width = CGRectGetWidth(self.collectionView.bounds);
+    CGFloat sideMargin = 20.0f;
+    return CGSizeMake(width - 2 * sideMargin, 200.0f);
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+    return 20.0f;
 }
 
 @end
