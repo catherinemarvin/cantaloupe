@@ -16,11 +16,9 @@
 
 @implementation KHNewsViewCell
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        self.textLabel.font = [UIFont fontWithName:@"Lato-Regular" size:14.0f];
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        self.textLabel.font = [UIFont fontWithName:@"Lato-Regular" size:16.0f];
     }
     return self;
 }
