@@ -10,8 +10,9 @@
 
 @interface KHNewsViewCell ()
 
-@property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) NSDictionary *news;
+@property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UILabel *previewLabel;
 
 @end
 
@@ -27,6 +28,12 @@
         _titleLabel.numberOfLines = 0;
         [self.contentView addSubview:_titleLabel];
         
+        _previewLabel = [[UILabel alloc] init];
+        _previewLabel.font = [UIFont fontWithName:@"Lato-Regular" size:12.0f];
+        _previewLabel.numberOfLines = 4;
+        _previewLabel.textColor = [UIColor blackColor];
+        [self.contentView addSubview:_previewLabel];
+        
         self.backgroundColor = [UIColor whiteColor];
         
         [self _initializeAutolayout];
@@ -37,8 +44,12 @@
 - (void)_initializeAutolayout {
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.contentView).with.offset(10);
-        make.left.equalTo(self.contentView);
-        make.right.equalTo(self.contentView);
+        make.left.and.right.equalTo(self.contentView);
+    }];
+    
+    [self.previewLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.titleLabel.mas_bottom).with.offset(10);
+        make.left.and.right.equalTo(self.titleLabel);
     }];
 }
 
@@ -46,6 +57,7 @@
     self.news = news;
     
     self.titleLabel.text = [self.news objectForKey:@"title"];
+    self.previewLabel.text = [self.news objectForKey:@"body"];
     [self setNeedsLayout];
 }
 
