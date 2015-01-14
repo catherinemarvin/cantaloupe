@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KHNewsViewCell : UICollectionViewCell
+@interface KHNewsViewCell : UITableViewCell
 
 - (void)configureWithNews:(NSDictionary *)news;
 

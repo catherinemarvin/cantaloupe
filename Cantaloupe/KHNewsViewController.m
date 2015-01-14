@@ -17,20 +17,20 @@
 
 @end
 
-static NSString *kNewsCellIdentifier = @"newsCellIdentifier";
+static NSString *KHkNewsCellIdentifier = @"newsCellIdentifier";
 
 @implementation KHNewsViewController
 
-- (id)initWithCollectionViewLayout:(UICollectionViewLayout *)layout {
-    self = [super initWithCollectionViewLayout:layout];
+- (instancetype)initWithStyle:(UITableViewStyle)style {
+    self = [super initWithStyle:style];
+    
     if (self) {
-        [self.collectionView registerClass:[KHNewsViewCell class] forCellWithReuseIdentifier:kNewsCellIdentifier];
+        [self.tableView registerClass:[KHNewsViewCell class] forCellReuseIdentifier:KHkNewsCellIdentifier];
     }
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = NSLocalizedString(@"News", nil);
     [self _requestNews];
@@ -56,43 +56,34 @@ static NSString *kNewsCellIdentifier = @"newsCellIdentifier";
     }];
 }
 
-#pragma mark - Collection View Data Source
+#pragma mark - UITableViewDataSource
 
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.posts.count;
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    KHNewsViewCell *cell = (KHNewsViewCell *) [collectionView dequeueReusableCellWithReuseIdentifier:kNewsCellIdentifier forIndexPath:indexPath];
-    [cell configureWithNews:[self.posts objectAtIndex:indexPath.row]];
-    [cell layoutIfNeeded];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KHkNewsCellIdentifier forIndexPath:indexPath];
+    
+    if ([cell isKindOfClass:[KHNewsViewCell class]]) {
+        KHNewsViewCell *newsCell = (KHNewsViewCell *)cell;
+        [newsCell configureWithNews:[self.posts objectAtIndex:indexPath.row]];
+        [newsCell layoutIfNeeded];
+    }
     return cell;
 }
 
+#pragma mark - UITableViewDelegate
 
-#pragma mark - UICollectionViewDelegate
-
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *news = [self.posts objectAtIndex:indexPath.row];
     KHDetailedNewsViewController *detailed = [[KHDetailedNewsViewController alloc] initWithNews:news];
     
     [self.navigationController pushViewController:detailed animated:YES];
-}
-
-#pragma mark - Collection View Delegate
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    CGFloat width = CGRectGetWidth(self.collectionView.bounds);
-    CGFloat sideMargin = 20.0f;
-    return CGSizeMake(width - 2 * sideMargin, 200.0f);
-}
-
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-    return 20.0f;
 }
 
 @end
