@@ -21,22 +21,25 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.titleLabel = [[UILabel alloc] init];
-        self.titleLabel.font = [UIFont fontWithName:@"Lato-Regular" size:16.0f];
-        self.titleLabel.textColor = [UIColor blackColor];
-        [self.contentView addSubview:self.titleLabel];
+        _titleLabel = [[UILabel alloc] init];
+        _titleLabel.font = [UIFont fontWithName:@"Lato-Regular" size:16.0f];
+        _titleLabel.textColor = [UIColor blackColor];
+        _titleLabel.numberOfLines = 0;
+        [self.contentView addSubview:_titleLabel];
         
         self.backgroundColor = [UIColor whiteColor];
+        
+        [self _initializeAutolayout];
     }
     return self;
 }
 
-- (void)layoutSubviews {
-    [self.titleLabel sizeToFit];
-    CGRect titleFrame = self.titleLabel.frame;
-    titleFrame.origin.x = 0;
-    titleFrame.origin.y = 0;
-    self.titleLabel.frame = titleFrame;
+- (void)_initializeAutolayout {
+    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.contentView).with.offset(10);
+        make.left.equalTo(self.contentView);
+        make.right.equalTo(self.contentView);
+    }];
 }
 
 - (void)configureWithNews:(NSDictionary *)news {

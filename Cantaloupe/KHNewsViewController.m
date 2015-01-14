@@ -68,6 +68,7 @@ static NSString *kNewsCellIdentifier = @"newsCellIdentifier";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     KHNewsViewCell *cell = (KHNewsViewCell *) [collectionView dequeueReusableCellWithReuseIdentifier:kNewsCellIdentifier forIndexPath:indexPath];
     [cell configureWithNews:[self.posts objectAtIndex:indexPath.row]];
+    [cell layoutIfNeeded];
     return cell;
 }
 
