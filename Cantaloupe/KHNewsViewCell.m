@@ -26,6 +26,7 @@
 }
 
 - (void)configureWithNews:(NSDictionary *)news {
+    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     self.news = news;
     
     self.textLabel.text = [self.news objectForKey:@"title"];
