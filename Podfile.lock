@@ -1,11 +1,11 @@
 PODS:
   - AFNetworking (2.2.4):
-    - AFNetworking/NSURLConnection
-    - AFNetworking/NSURLSession
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-    - AFNetworking/UIKit
+    - AFNetworking/NSURLConnection (= 2.2.4)
+    - AFNetworking/NSURLSession (= 2.2.4)
+    - AFNetworking/Reachability (= 2.2.4)
+    - AFNetworking/Security (= 2.2.4)
+    - AFNetworking/Serialization (= 2.2.4)
+    - AFNetworking/UIKit (= 2.2.4)
   - AFNetworking/NSURLConnection (2.2.4):
     - AFNetworking/Reachability
     - AFNetworking/Security
@@ -21,8 +21,9 @@ PODS:
   - GoogleAnalytics-iOS-SDK (3.0.7)
   - JBChartView (2.3.0)
   - MagicalRecord (2.2):
-    - MagicalRecord/Core
+    - MagicalRecord/Core (= 2.2)
   - MagicalRecord/Core (2.2)
+  - Masonry (0.6.0)
   - MBProgressHUD (0.8)
   - Reachability (3.1.1)
   - SSKeychain (1.2.2)
@@ -33,6 +34,7 @@ DEPENDENCIES:
   - GoogleAnalytics-iOS-SDK (~> 3.0.7)
   - JBChartView (~> 2.3.0)
   - MagicalRecord (~> 2.0)
+  - Masonry
   - MBProgressHUD (~> 0.8)
   - Reachability (~> 3.0)
   - SSKeychain (~> 1.0)
@@ -43,9 +45,10 @@ SPEC CHECKSUMS:
   GoogleAnalytics-iOS-SDK: bb285d8eef15a682f1b82971becd0d22edd0e53b
   JBChartView: 862906563be9ff11c0a42fd2e6041fd4e7457c73
   MagicalRecord: 2b471584fc9e3137f3d0a56967917baa4979e224
+  Masonry: 0bc111d6902e3a55ff8423bcbdf7155261806547
   MBProgressHUD: c356980b0cd097f19acec959b49dca5eb8ec31be
   Reachability: 8e9635e3cb4f98e7f825e51147f677ecc694d0e7
   SSKeychain: cc48bd3ad24fcd9125adb9e0d23dd50b8bbd08b9
   SSPullToRefresh: bb513a1ccbf08fdd67e4139bc1bbe3fc2ed34228
 
-COCOAPODS: 0.34.1
+COCOAPODS: 0.35.0
