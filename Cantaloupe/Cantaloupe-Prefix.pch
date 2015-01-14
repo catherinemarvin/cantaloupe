@@ -13,12 +13,19 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
-    #define MR_SHORTHAND
+
+    // Google analytics
+    #import <GoogleAnalytics-iOS-SDK/GAI.h>
+    #import <GoogleAnalytics-iOS-SDK/GAITracker.h>
+    #import <GoogleAnalytics-iOS-SDK/GAITrackedViewController.h>
+    #import <GoogleAnalytics-iOS-SDK/GAIDictionaryBuilder.h>
+    #import <GoogleAnalytics-iOS-SDK/GAIFields.h>
+    #import <GoogleAnalytics-iOS-SDK/GAILogger.h>
+
+    // Masonry
+    #import <Masonry/Masonry.h>
+
+    // Colors
     #import "UIColor+KHAdditions.h"
-    #import "GAI.h"
-    #import "GAITracker.h"
-    #import "GAITrackedViewController.h"
-    #import "GAIDictionaryBuilder.h"
-    #import "GAIFields.h"
-    #import "GAILogger.h"
+
 #endif
