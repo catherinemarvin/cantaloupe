@@ -8,15 +8,12 @@
 
 #import "KHDetailedGraphViewController.h"
 #import "JBLineChartView.h"
-#import "KHGraphDetailView.h"
-#import "KHGraphFooterView.h"
 
 @interface KHDetailedGraphViewController ()
 
 @property (nonatomic, strong) NSArray *graphData;
 
 @property (nonatomic, strong) JBLineChartView *graphView;
-@property (nonatomic, strong) KHGraphDetailView *detailView;
 
 @end
 
@@ -24,6 +21,19 @@
 
 - (id)initWithData:(NSArray *)graphData title:(NSString *)title {
     self = [super init];
+    
+#warning Remove me after I get some working data
+    
+    graphData = @[
+                  @{
+                      @"date" : @"2014-04-08",
+                      @"count" : @(1)
+                      },
+                  @{
+                      @"date" : @"2014-04-15",
+                      @"count" : @(4)
+                      }
+                  ];
     
     if (self) {
         self.graphData = graphData;
@@ -41,31 +51,13 @@
     UIView *view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     view.backgroundColor = [UIColor whiteColor];
     
-    self.graphView = [[JBLineChartView alloc] initWithFrame:CGRectMake(20, 120, view.bounds.size.width - 40, 100)];
+    self.graphView = [[JBLineChartView alloc] initWithFrame:view.bounds];
     self.graphView.delegate = self;
     self.graphView.dataSource = self;
-    self.graphView.mininumValue = 0.0f;
+    self.graphView.backgroundColor = [UIColor redColor];
     [view addSubview:self.graphView];
+    
     [self.graphView reloadData];
-    
-    self.detailView = [[KHGraphDetailView alloc] initWithFrame:CGRectMake(20, 220, view.bounds.size.width - 40, 40)];
-    self.detailView.hidden = YES;
-    [view addSubview:self.detailView];
-    
-    if (!self.graphData || [self.graphData count] == 0) {
-        UILabel *sorryLabel = [[UILabel alloc] initWithFrame:self.detailView.bounds];
-        sorryLabel.text = NSLocalizedString(@"Sorry, graph data is unavailable at this time.", nil);
-        sorryLabel.font = [UIFont fontWithName:@"Lato-Regular" size:20.0f];
-        [self.detailView addSubview:sorryLabel];
-    }
-    
-    KHGraphFooterView *footerView = [[KHGraphFooterView alloc] initWithFrame:CGRectMake(10.0f, ceil(self.view.bounds.size.height * 0.5) - ceil(20.0f * 0.5), self.view.bounds.size.width - (10.0f * 2), 75.0f)];
-    
-    footerView.backgroundColor = [UIColor blueColor];
-    footerView.leftLabel.text = @"Foo";
-    footerView.rightLabel.text = @"Bar";
-    footerView.sectionCount = [self.graphData count];
-    self.graphView.footerView = footerView;
     
     self.view = view;
 }
@@ -89,16 +81,6 @@
     NSDictionary *data = [self.graphData objectAtIndex:horizontalIndex];
     NSNumber *count = [data valueForKey:@"count"];
     return [count floatValue];
-}
-
-- (void)lineChartView:(JBLineChartView *)lineChartView didSelectLineAtIndex:(NSUInteger)lineIndex horizontalIndex:(NSUInteger)horizontalIndex touchPoint:(CGPoint)touchPoint {
-    self.detailView.hidden = NO;
-    NSNumber *valueNumber = [[self.graphData objectAtIndex:horizontalIndex] valueForKey:@"count"];
-    [self.detailView updateDetail:[valueNumber stringValue]];
-}
-
-- (void)didUnselectLineInLineChartView:(JBLineChartView *)lineChartView {
-    self.detailView.hidden = YES;
 }
 
 @end
