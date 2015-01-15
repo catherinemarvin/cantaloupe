@@ -61,6 +61,13 @@ typedef NS_ENUM(NSUInteger, KHGraphsCells) {
     [self.tableView registerClass:[KHGraphsViewCell class] forCellReuseIdentifier:kGraphsCellIdentifier];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    id tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIScreenName value:@"Graphcs Screen"];
+    [tracker send:[[GAIDictionaryBuilder createAppView] build]];
+}
+
 #pragma mark - UITableView protocols
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
