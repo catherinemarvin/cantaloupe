@@ -13,6 +13,8 @@
 
 static NSString *kGraphsCellIdentifier = @"kGraphsCell";
 
+static const int ddLogLevel = LOG_LEVEL_ALL;
+
 typedef NS_ENUM(NSUInteger, KHGraphsCells) {
     KHGraphsCellNone,
     KHGraphsCellPurchases,
@@ -135,7 +137,7 @@ typedef NS_ENUM(NSUInteger, KHGraphsCells) {
     NSString *url = [NSString stringWithFormat:@"http://itch.io/api/1/%@/my-games/graphs?num_days=30", self.key];
     
     [manager POST:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
+        DDLogInfo(@"JSON: %@", responseObject);
         
         NSDictionary *responseDict = (NSDictionary *)responseObject;
         
@@ -143,7 +145,7 @@ typedef NS_ENUM(NSUInteger, KHGraphsCells) {
         
     } failure:
      ^(AFHTTPRequestOperation *operation, NSError *error) {
-         NSLog(@"Error: %@", error);
+         DDLogError(@"Error: %@", error);
      }];
 }
 

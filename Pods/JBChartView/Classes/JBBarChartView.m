@@ -12,16 +12,24 @@
 CGFloat static const kJBBarChartViewBarBasePaddingMutliplier = 50.0f;
 CGFloat static const kJBBarChartViewUndefinedCachedHeight = -1.0f;
 CGFloat static const kJBBarChartViewStateAnimationDuration = 0.05f;
-CGFloat static const kJBBarChartViewPopOffset = 10.0f; // used to offset bars for 'pop' animations
+CGFloat static const kJBBarChartViewStatePopOffset = 10.0f;
 NSInteger static const kJBBarChartViewUndefinedBarIndex = -1;
 
 // Colors (JBChartView)
 static UIColor *kJBBarChartViewDefaultBarColor = nil;
 
+@interface JBChartView (Private)
+
+- (BOOL)hasMaximumValue;
+- (BOOL)hasMinimumValue;
+
+@end
+
 @interface JBBarChartView ()
 
 @property (nonatomic, strong) NSDictionary *chartDataDictionary; // key = column, value = height
 @property (nonatomic, strong) NSArray *barViews;
+@property (nonatomic, strong) NSArray *cachedBarViewHeights;
 @property (nonatomic, assign) CGFloat barPadding;
 @property (nonatomic, assign) CGFloat cachedMaxHeight;
 @property (nonatomic, assign) CGFloat cachedMinHeight;
@@ -34,10 +42,7 @@ static UIColor *kJBBarChartViewDefaultBarColor = nil;
 // View quick accessors
 - (CGFloat)availableHeight;
 - (CGFloat)normalizedHeightForRawHeight:(NSNumber*)rawHeight;
-- (CGFloat)minHeight;
-- (CGFloat)maxHeight;
 - (CGFloat)barWidth;
-- (CGFloat)popOffset;
 
 // Touch helpers
 - (NSInteger)barViewIndexForPoint:(CGPoint)point;
@@ -125,12 +130,12 @@ static UIColor *kJBBarChartViewDefaultBarColor = nil;
         NSUInteger dataCount = [self.dataSource numberOfBarsInBarChartView:self];
 
         // Build up the data collection
-        NSAssert([self.delegate respondsToSelector:@selector(barChartView:heightForBarViewAtAtIndex:)], @"JBBarChartView // delegate must implement - (CGFloat)barChartView:(JBBarChartView *)barChartView heightForBarViewAtAtIndex:(NSUInteger)index");
+        NSAssert([self.delegate respondsToSelector:@selector(barChartView:heightForBarViewAtIndex:)], @"JBBarChartView // delegate must implement - (CGFloat)barChartView:(JBBarChartView *)barChartView heightForBarViewAtIndex:(NSUInteger)index");
         NSMutableDictionary *dataDictionary = [NSMutableDictionary dictionary];
         for (NSUInteger index=0; index<dataCount; index++)
         {
-            CGFloat height = [self.delegate barChartView:self heightForBarViewAtAtIndex:index];
-            NSAssert(height >= 0, @"JBBarChartView // datasource function - (CGFloat)barChartView:(JBBarChartView *)barChartView heightForBarViewAtAtIndex:(NSUInteger)index must return a CGFloat >= 0");
+            CGFloat height = [self.delegate barChartView:self heightForBarViewAtIndex:index];
+            NSAssert(height >= 0, @"JBBarChartView // datasource function - (CGFloat)barChartView:(JBBarChartView *)barChartView heightForBarViewAtIndex:(NSUInteger)index must return a CGFloat >= 0");
             [dataDictionary setObject:[NSNumber numberWithFloat:height] forKey:[NSNumber numberWithInt:(int)index]];
         }
         self.chartDataDictionary = [NSDictionary dictionaryWithDictionary:dataDictionary];
@@ -140,9 +145,9 @@ static UIColor *kJBBarChartViewDefaultBarColor = nil;
      * Determines the padding between bars as a function of # of bars
      */
     dispatch_block_t createBarPadding = ^{
-        if ([self.dataSource respondsToSelector:@selector(barPaddingForBarChartView:)])
+        if ([self.delegate respondsToSelector:@selector(barPaddingForBarChartView:)])
         {
-            self.barPadding = [self.dataSource barPaddingForBarChartView:self];
+            self.barPadding = [self.delegate barPaddingForBarChartView:self];
         }
         else
         {
@@ -162,9 +167,12 @@ static UIColor *kJBBarChartViewDefaultBarColor = nil;
             [barView removeFromSuperview];
         }
         
+        self.cachedBarViewHeights = nil;
+        
         CGFloat xOffset = 0;
         NSUInteger index = 0;
         NSMutableArray *mutableBarViews = [NSMutableArray array];
+        NSMutableArray *mutableCachedBarViewHeights = [NSMutableArray array];
         for (NSNumber *key in [[self.chartDataDictionary allKeys] sortedArrayUsingSelector:@selector(compare:)])
         {
             UIView *barView = nil; // since all bars are visible at once, no need to cache this view
@@ -176,12 +184,27 @@ static UIColor *kJBBarChartViewDefaultBarColor = nil;
             else
             {
                 barView = [[UIView alloc] init];
-                barView.backgroundColor = kJBBarChartViewDefaultBarColor;
+                UIColor *backgroundColor = nil;
+
+                if ([self.delegate respondsToSelector:@selector(barChartView:colorForBarViewAtIndex:)])
+                {
+                    backgroundColor = [self.delegate barChartView:self colorForBarViewAtIndex:index];
+                    NSAssert(backgroundColor != nil, @"JBBarChartView // delegate function - (UIColor *)barChartView:(JBBarChartView *)barChartView colorForBarViewAtIndex:(NSUInteger)index must return a non-nil UIColor");
+                }
+                else
+                {
+                    backgroundColor = kJBBarChartViewDefaultBarColor;
+                }
+
+                barView.backgroundColor = backgroundColor;
             }
+            
+            barView.tag = index;
+
             CGFloat height = [self normalizedHeightForRawHeight:[self.chartDataDictionary objectForKey:key]];
-            CGFloat extensionHeight = height > 0.0 ? kJBBarChartViewPopOffset : 0.0;
-            barView.frame = CGRectMake(xOffset, self.bounds.size.height - height - self.footerView.frame.size.height + self.headerPadding, [self barWidth], height + extensionHeight - self.headerPadding);
+            barView.frame = CGRectMake(xOffset, self.bounds.size.height - height - self.footerView.frame.size.height, [self barWidth], height);
             [mutableBarViews addObject:barView];
+            [mutableCachedBarViewHeights addObject:[NSNumber numberWithFloat:height]];
 			
             // Add new bar
             if (self.footerView)
@@ -197,6 +220,7 @@ static UIColor *kJBBarChartViewDefaultBarColor = nil;
             index++;
         }
         self.barViews = [NSArray arrayWithArray:mutableBarViews];
+        self.cachedBarViewHeights = [NSArray arrayWithArray:mutableCachedBarViewHeights];
     };
     
     /*
@@ -211,12 +235,32 @@ static UIColor *kJBBarChartViewDefaultBarColor = nil;
             self.verticalSelectionView = nil;
         }
         
-        self.verticalSelectionView = [[JBChartVerticalSelectionView alloc] initWithFrame:CGRectMake(0, 0, [self barWidth], self.bounds.size.height - self.footerView.frame.size.height)];
+        CGFloat verticalSelectionViewHeight = self.bounds.size.height - self.headerView.frame.size.height - self.footerView.frame.size.height - self.headerPadding - self.footerPadding;
+        
+        if ([self.dataSource respondsToSelector:@selector(shouldExtendSelectionViewIntoHeaderPaddingForChartView:)])
+        {
+            if ([self.dataSource shouldExtendSelectionViewIntoHeaderPaddingForChartView:self])
+            {
+                verticalSelectionViewHeight += self.headerPadding;
+            }
+        }
+        
+        if ([self.dataSource respondsToSelector:@selector(shouldExtendSelectionViewIntoFooterPaddingForChartView:)])
+        {
+            if ([self.dataSource shouldExtendSelectionViewIntoFooterPaddingForChartView:self])
+            {
+                verticalSelectionViewHeight += self.footerPadding;
+            }
+        }
+
+        self.verticalSelectionView = [[JBChartVerticalSelectionView alloc] initWithFrame:CGRectMake(0, 0, [self barWidth], verticalSelectionViewHeight)];
         self.verticalSelectionView.alpha = 0.0;
         self.verticalSelectionView.hidden = !self.showsVerticalSelection;
-        if ([self.dataSource respondsToSelector:@selector(barSelectionColorForBarChartView:)])
+        if ([self.delegate respondsToSelector:@selector(barSelectionColorForBarChartView:)])
         {
-            self.verticalSelectionView.bgColor = [self.dataSource barSelectionColorForBarChartView:self];
+            UIColor *selectionViewBackgroundColor = [self.delegate barSelectionColorForBarChartView:self];
+            NSAssert(selectionViewBackgroundColor != nil, @"JBBarChartView // delegate function - (UIColor *)barSelectionColorForBarChartView:(JBBarChartView *)barChartView must return a non-nil UIColor");
+            self.verticalSelectionView.bgColor = selectionViewBackgroundColor;
         }
         
         // Add new selection bar
@@ -228,6 +272,8 @@ static UIColor *kJBBarChartViewDefaultBarColor = nil;
         {
             [self addSubview:self.verticalSelectionView];
         }
+        
+        self.verticalSelectionView.transform = self.inverted ? CGAffineTransformMakeScale(1.0, -1.0) : CGAffineTransformIdentity;
     };
     
     createDataDictionaries();
@@ -240,20 +286,20 @@ static UIColor *kJBBarChartViewDefaultBarColor = nil;
     self.footerView.frame = CGRectMake(self.bounds.origin.x, self.bounds.size.height - self.footerView.frame.size.height, self.bounds.size.width, self.footerView.frame.size.height);
 
     // Refresh state
-    [self setState:self.state animated:NO callback:nil force:YES];
+    [self setState:self.state animated:NO force:YES callback:nil];
 }
 
 #pragma mark - View Quick Accessors
 
 - (CGFloat)availableHeight
 {
-    return self.bounds.size.height - self.headerView.frame.size.height - self.footerView.frame.size.height - self.headerPadding;
+    return self.bounds.size.height - self.headerView.frame.size.height - self.footerView.frame.size.height - self.headerPadding - self.footerPadding;
 }
 
 - (CGFloat)normalizedHeightForRawHeight:(NSNumber*)rawHeight
 {
-    CGFloat minHeight = [self minHeight];
-    CGFloat maxHeight = [self maxHeight];
+    CGFloat minHeight = [self minimumValue];
+    CGFloat maxHeight = [self maximumValue];
     CGFloat value = [rawHeight floatValue];
     
     if ((maxHeight - minHeight) <= 0)
@@ -262,24 +308,6 @@ static UIColor *kJBBarChartViewDefaultBarColor = nil;
     }
     
     return ((value - minHeight) / (maxHeight - minHeight)) * [self availableHeight];
-}
-
-- (CGFloat)minHeight
-{
-    if (self.mininumValue != kJBChartViewUndefinedMinimumValue)
-    {
-        return MIN(self.mininumValue, self.cachedMinHeight);
-    }
-    return self.cachedMinHeight;
-}
-
-- (CGFloat)maxHeight
-{
-    if (self.maximumValue != kJBChartViewUndefinedMaximumValue)
-    {
-        return MAX(self.maximumValue, self.cachedMaxHeight);
-    }
-    return self.cachedMaxHeight;
 }
 
 - (CGFloat)barWidth
@@ -294,16 +322,68 @@ static UIColor *kJBBarChartViewDefaultBarColor = nil;
     return 0;
 }
 
-- (CGFloat)popOffset
-{
-    return self.bounds.size.height - self.footerView.frame.size.height;
-}
-
 #pragma mark - Setters
 
-- (void)setState:(JBChartViewState)state animated:(BOOL)animated callback:(void (^)())callback force:(BOOL)force
+- (void)setState:(JBChartViewState)state animated:(BOOL)animated force:(BOOL)force callback:(void (^)())callback
 {
-    [super setState:state animated:animated callback:callback force:force];
+    [super setState:state animated:animated force:force callback:callback];
+    
+    __weak JBBarChartView* weakSelf = self;
+    
+    void (^updateBarView)(UIView *barView, BOOL popBar);
+    
+    updateBarView = ^(UIView *barView, BOOL popBar) {
+        if (weakSelf.inverted)
+        {
+            if (weakSelf.state == JBChartViewStateExpanded)
+            {
+                if (popBar)
+                {
+                    barView.frame = CGRectMake(barView.frame.origin.x, weakSelf.headerView.frame.size.height + weakSelf.headerPadding, barView.frame.size.width, [[weakSelf.cachedBarViewHeights objectAtIndex:barView.tag] floatValue] + kJBBarChartViewStatePopOffset);
+                }
+                else
+                {
+                    barView.frame = CGRectMake(barView.frame.origin.x, weakSelf.headerView.frame.size.height + weakSelf.headerPadding, barView.frame.size.width, [[weakSelf.cachedBarViewHeights objectAtIndex:barView.tag] floatValue]);
+                }
+            }
+            else if (weakSelf.state == JBChartViewStateCollapsed)
+            {
+                if (popBar)
+                {
+                    barView.frame = CGRectMake(barView.frame.origin.x, weakSelf.headerView.frame.size.height + weakSelf.headerPadding, barView.frame.size.width, [[weakSelf.cachedBarViewHeights objectAtIndex:barView.tag] floatValue] + kJBBarChartViewStatePopOffset);
+                }
+                else
+                {
+                    barView.frame = CGRectMake(barView.frame.origin.x, weakSelf.headerView.frame.size.height + weakSelf.headerPadding, barView.frame.size.width, 0.0f);
+                }
+            }
+        }
+        else
+        {
+            if (weakSelf.state == JBChartViewStateExpanded)
+            {
+                if (popBar)
+                {
+                    barView.frame = CGRectMake(barView.frame.origin.x, weakSelf.bounds.size.height - weakSelf.footerView.frame.size.height - weakSelf.footerPadding - [[weakSelf.cachedBarViewHeights objectAtIndex:barView.tag] floatValue] - kJBBarChartViewStatePopOffset, barView.frame.size.width, [[weakSelf.cachedBarViewHeights objectAtIndex:barView.tag] floatValue] + kJBBarChartViewStatePopOffset);
+                }
+                else
+                {
+                    barView.frame = CGRectMake(barView.frame.origin.x, weakSelf.bounds.size.height - weakSelf.footerView.frame.size.height - weakSelf.footerPadding - [[weakSelf.cachedBarViewHeights objectAtIndex:barView.tag] floatValue], barView.frame.size.width, [[weakSelf.cachedBarViewHeights objectAtIndex:barView.tag] floatValue]);
+                }
+            }
+            else if (weakSelf.state == JBChartViewStateCollapsed)
+            {
+                if (popBar)
+                {
+                    barView.frame = CGRectMake(barView.frame.origin.x, weakSelf.bounds.size.height - weakSelf.footerView.frame.size.height - weakSelf.footerPadding - [[weakSelf.cachedBarViewHeights objectAtIndex:barView.tag] floatValue] - kJBBarChartViewStatePopOffset, barView.frame.size.width, [[weakSelf.cachedBarViewHeights objectAtIndex:barView.tag] floatValue] + kJBBarChartViewStatePopOffset);
+                }
+                else
+                {
+                    barView.frame = CGRectMake(barView.frame.origin.x, weakSelf.bounds.size.height, barView.frame.size.width, 0.0f);
+                }
+            }
+        }
+    };
     
     dispatch_block_t callbackCopy = [callback copy];
     
@@ -311,25 +391,16 @@ static UIColor *kJBBarChartViewDefaultBarColor = nil;
     {
         if (animated)
         {
-            CGFloat popOffset = [self popOffset];
-            
             NSUInteger index = 0;
             for (UIView *barView in self.barViews)
             {
                 [UIView animateWithDuration:kJBBarChartViewStateAnimationDuration delay:(kJBBarChartViewStateAnimationDuration * 0.5) * index options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-                    barView.frame = CGRectMake(barView.frame.origin.x, popOffset - barView.frame.size.height, barView.frame.size.width, barView.frame.size.height);
+                    updateBarView(barView, YES);
                 } completion:^(BOOL finished) {
                     [UIView animateWithDuration:kJBBarChartViewStateAnimationDuration delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-                        if (state == JBChartViewStateExpanded)
-                        {
-                            barView.frame = CGRectMake(barView.frame.origin.x, popOffset - barView.frame.size.height + kJBBarChartViewPopOffset, barView.frame.size.width, barView.frame.size.height);
-                        }
-                        else if (state == JBChartViewStateCollapsed)
-                        {
-                            barView.frame = CGRectMake(barView.frame.origin.x, self.bounds.size.height, barView.frame.size.width, barView.frame.size.height);
-                        }
+                        updateBarView(barView, NO);
                     } completion:^(BOOL lastBarFinished) {
-                        if (index == [self.barViews count] - 1)
+                        if ((NSUInteger)barView.tag == [self.barViews count] - 1)
                         {
                             if (callbackCopy)
                             {
@@ -345,14 +416,7 @@ static UIColor *kJBBarChartViewDefaultBarColor = nil;
         {
             for (UIView *barView in self.barViews)
             {
-                if (state == JBChartViewStateExpanded)
-                {
-                    barView.frame = CGRectMake(barView.frame.origin.x, (self.bounds.size.height + kJBBarChartViewPopOffset) - (barView.frame.size.height + self.footerView.frame.size.height), barView.frame.size.width, barView.frame.size.height);
-                }
-                else if (state == JBChartViewStateCollapsed)
-                {
-                    barView.frame = CGRectMake(barView.frame.origin.x, self.bounds.size.height, barView.frame.size.width, barView.frame.size.height);
-                }
+                updateBarView(barView, NO);
             }
             if (callbackCopy)
             {
@@ -371,7 +435,7 @@ static UIColor *kJBBarChartViewDefaultBarColor = nil;
 
 - (void)setState:(JBChartViewState)state animated:(BOOL)animated callback:(void (^)())callback
 {
-    [self setState:state animated:animated callback:callback force:NO];
+    [self setState:state animated:animated force:NO callback:callback];
 }
 
 #pragma mark - Getters
@@ -380,8 +444,7 @@ static UIColor *kJBBarChartViewDefaultBarColor = nil;
 {
     if(_cachedMinHeight == kJBBarChartViewUndefinedCachedHeight)
     {
-        // min height is min value across all goals and values
-        NSArray *chartValues = [[[self.chartDataDictionary allValues] arrayByAddingObjectsFromArray:[self.chartDataDictionary allValues]] sortedArrayUsingSelector:@selector(compare:)];
+        NSArray *chartValues = [[NSMutableArray arrayWithArray:[self.chartDataDictionary allValues]] sortedArrayUsingSelector:@selector(compare:)];
         _cachedMinHeight =  [[chartValues firstObject] floatValue];
     }
     return _cachedMinHeight;
@@ -391,29 +454,28 @@ static UIColor *kJBBarChartViewDefaultBarColor = nil;
 {
     if (_cachedMaxHeight == kJBBarChartViewUndefinedCachedHeight)
     {
-        // max height is max value across all goals and values
-        NSArray *chartValues = [[[self.chartDataDictionary allValues] arrayByAddingObjectsFromArray:[self.chartDataDictionary allValues]] sortedArrayUsingSelector:@selector(compare:)];
+        NSArray *chartValues = [[NSMutableArray arrayWithArray:[self.chartDataDictionary allValues]] sortedArrayUsingSelector:@selector(compare:)];
         _cachedMaxHeight =  [[chartValues lastObject] floatValue];
     }
     return _cachedMaxHeight;
 }
 
-- (CGFloat)mininumValue
+- (CGFloat)minimumValue
 {
-    if ([super mininumValue] == kJBChartViewUndefinedMinimumValue)
+    if ([self hasMinimumValue])
     {
-        return self.cachedMinHeight;
+        return fminf(self.cachedMinHeight, [super minimumValue]);
     }
-    return [super mininumValue];
+    return self.cachedMinHeight;
 }
 
 - (CGFloat)maximumValue
 {
-    if ([super maximumValue] == kJBChartViewUndefinedMaximumValue)
+    if ([self hasMaximumValue])
     {
-        return self.cachedMaxHeight;
+        return fmaxf(self.cachedMaxHeight, [super maximumValue]);
     }
-    return [super maximumValue];
+    return self.cachedMaxHeight;    
 }
 
 #pragma mark - Touch Helpers
@@ -472,6 +534,24 @@ static UIColor *kJBBarChartViewDefaultBarColor = nil;
     CGRect barViewFrame = barView.frame;
     CGRect selectionViewFrame = self.verticalSelectionView.frame;
     selectionViewFrame.origin.x = barViewFrame.origin.x;
+    selectionViewFrame.size.width = barViewFrame.size.width;
+    
+    if ([self.dataSource respondsToSelector:@selector(shouldExtendSelectionViewIntoHeaderPaddingForChartView:)])
+    {
+        if ([self.dataSource shouldExtendSelectionViewIntoHeaderPaddingForChartView:self])
+        {
+            selectionViewFrame.origin.y = self.headerView.frame.size.height;
+        }
+        else
+        {
+            selectionViewFrame.origin.y = self.headerView.frame.size.height + self.headerPadding;
+        }
+    }
+    else
+    {
+        selectionViewFrame.origin.y = self.headerView.frame.size.height + self.headerPadding;
+    }
+    
     self.verticalSelectionView.frame = selectionViewFrame;
     [self setVerticalSelectionViewVisible:YES animated:YES];
     
@@ -495,9 +575,9 @@ static UIColor *kJBBarChartViewDefaultBarColor = nil;
     
     [self setVerticalSelectionViewVisible:NO animated:YES];
     
-    if ([self.delegate respondsToSelector:@selector(didUnselectBarChartView:)])
+    if ([self.delegate respondsToSelector:@selector(didDeselectBarChartView:)])
     {
-        [self.delegate didUnselectBarChartView:self];
+        [self.delegate didDeselectBarChartView:self];
     }
 }
 

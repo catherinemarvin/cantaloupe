@@ -24,10 +24,7 @@ PODS:
   - CocoaLumberjack/Extensions (1.9.2):
     - CocoaLumberjack/Core
   - GoogleAnalytics-iOS-SDK (3.0.7)
-  - JBChartView (2.3.0)
-  - MagicalRecord (2.2):
-    - MagicalRecord/Core (= 2.2)
-  - MagicalRecord/Core (2.2)
+  - JBChartView (2.8.10)
   - Masonry (0.6.0)
   - MBProgressHUD (0.8)
   - Reachability (3.1.1)
@@ -38,8 +35,7 @@ DEPENDENCIES:
   - AFNetworking (~> 2.0)
   - CocoaLumberjack
   - GoogleAnalytics-iOS-SDK (~> 3.0.7)
-  - JBChartView (~> 2.3.0)
-  - MagicalRecord (~> 2.0)
+  - JBChartView (~> 2.8.9)
   - Masonry
   - MBProgressHUD (~> 0.8)
   - Reachability (~> 3.0)
@@ -50,8 +46,7 @@ SPEC CHECKSUMS:
   AFNetworking: ab63e259fe91eef4519b371ef0a4955af0e73e64
   CocoaLumberjack: 205769c032b5fef85b92472046bcc8b7e7c8a817
   GoogleAnalytics-iOS-SDK: bb285d8eef15a682f1b82971becd0d22edd0e53b
-  JBChartView: 862906563be9ff11c0a42fd2e6041fd4e7457c73
-  MagicalRecord: 2b471584fc9e3137f3d0a56967917baa4979e224
+  JBChartView: 50b221ef68d0934f5aea417a369a5b02167848a9
   Masonry: 0bc111d6902e3a55ff8423bcbdf7155261806547
   MBProgressHUD: c356980b0cd097f19acec959b49dca5eb8ec31be
   Reachability: 8e9635e3cb4f98e7f825e51147f677ecc694d0e7

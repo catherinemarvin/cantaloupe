@@ -8,14 +8,16 @@
 
 #import "JBChartView.h"
 
+// Numerics
 CGFloat const kJBChartViewDefaultAnimationDuration = 0.25f;
-CGFloat const kJBChartViewUndefinedMinimumValue = -1.0f;
-CGFloat const kJBChartViewUndefinedMaximumValue = -1.0f;
 
 // Color (JBChartSelectionView)
 static UIColor *kJBChartVerticalSelectionViewDefaultBgColor = nil;
 
 @interface JBChartView ()
+
+@property (nonatomic, assign) BOOL hasMaximumValue;
+@property (nonatomic, assign) BOOL hasMinimumValue;
 
 // Construction
 - (void)constructChartView;
@@ -59,8 +61,6 @@ static UIColor *kJBChartVerticalSelectionViewDefaultBgColor = nil;
 - (void)constructChartView
 {
     self.clipsToBounds = YES;
-    _mininumValue = kJBChartViewUndefinedMinimumValue;
-    _maximumValue = kJBChartViewUndefinedMaximumValue;
 }
 
 #pragma mark - Public
@@ -111,7 +111,7 @@ static UIColor *kJBChartVerticalSelectionViewDefaultBgColor = nil;
     [self reloadData];
 }
 
-- (void)setState:(JBChartViewState)state animated:(BOOL)animated callback:(void (^)())callback force:(BOOL)force
+- (void)setState:(JBChartViewState)state animated:(BOOL)animated force:(BOOL)force callback:(void (^)())callback
 {
     if ((_state == state) && !force)
     {
@@ -125,7 +125,7 @@ static UIColor *kJBChartVerticalSelectionViewDefaultBgColor = nil;
 
 - (void)setState:(JBChartViewState)state animated:(BOOL)animated callback:(void (^)())callback
 {
-    [self setState:state animated:animated callback:callback force:NO];
+    [self setState:state animated:animated force:NO callback:callback];
 }
 
 - (void)setState:(JBChartViewState)state animated:(BOOL)animated
@@ -138,16 +138,28 @@ static UIColor *kJBChartVerticalSelectionViewDefaultBgColor = nil;
     [self setState:state animated:NO];
 }
 
-- (void)setMininumValue:(CGFloat)mininumValue
+- (void)setMinimumValue:(CGFloat)minimumValue
 {
-    NSAssert(mininumValue >= 0, @"JBChartView // the minimumValue must be >= 0.");
-    _mininumValue = mininumValue;
+    NSAssert(minimumValue >= 0, @"JBChartView // the minimumValue must be >= 0.");
+    _minimumValue = minimumValue;
+    _hasMinimumValue = YES;
 }
 
 - (void)setMaximumValue:(CGFloat)maximumValue
 {
     NSAssert(maximumValue >= 0, @"JBChartView // the maximumValue must be >= 0.");
     _maximumValue = maximumValue;
+    _hasMaximumValue = YES;
+}
+
+- (void)resetMinimumValue
+{
+    _hasMinimumValue = NO; // clears min
+}
+
+- (void)resetMaximumValue
+{
+    _hasMaximumValue = NO; // clears max
 }
 
 @end
