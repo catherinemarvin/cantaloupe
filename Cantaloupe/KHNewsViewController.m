@@ -48,6 +48,7 @@ static const int ddLogLevel = LOG_LEVEL_ALL;
         NSDictionary *responseDict = (NSDictionary *)responseObject;
         
         self.posts = [responseDict valueForKeyPath:@"response.posts"];
+        [self.tableView reloadData];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
