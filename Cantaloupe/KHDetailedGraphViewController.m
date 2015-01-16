@@ -7,12 +7,13 @@
 //
 
 #import "KHDetailedGraphViewController.h"
+#import <BEMSimpleLineGraph/BEMSimpleLineGraphView.h>
 
-@interface KHDetailedGraphViewController ()
+@interface KHDetailedGraphViewController ()<BEMSimpleLineGraphDataSource, BEMSimpleLineGraphDelegate>
 
 @property (nonatomic, strong) NSArray *graphData;
 
-@property (nonatomic, strong) JBLineChartView *graphView;
+@property (nonatomic, strong) BEMSimpleLineGraphView *graphView;
 
 @end
 
@@ -50,34 +51,23 @@
     UIView *view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     view.backgroundColor = [UIColor whiteColor];
     
-    self.graphView = [[JBLineChartView alloc] initWithFrame:view.bounds];
+    self.graphView = [[BEMSimpleLineGraphView alloc] initWithFrame:view.bounds];
     self.graphView.delegate = self;
     self.graphView.dataSource = self;
     [view addSubview:self.graphView];
     
-    [self.graphView reloadData];
-    
     self.view = view;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self.graphView setState:JBChartViewStateExpanded];
-}
 
-#pragma mark - JBBarChartView
+#pragma mark - BEMSimpleLineGraphViewDataSource
 
-- (NSUInteger)numberOfLinesInLineChartView:(JBLineChartView *)lineChartView {
-    return 1;
-}
-
-- (NSUInteger)lineChartView:(JBLineChartView *)lineChartView numberOfVerticalValuesAtLineIndex:(NSUInteger)lineIndex {
-    
+- (NSInteger)numberOfPointsInLineGraph:(BEMSimpleLineGraphView *)graph {
     return [self.graphData count];
 }
 
-- (CGFloat)lineChartView:(JBLineChartView *)lineChartView verticalValueForHorizontalIndex:(NSUInteger)horizontalIndex atLineIndex:(NSUInteger)lineIndex {
-    NSDictionary *data = [self.graphData objectAtIndex:horizontalIndex];
+- (CGFloat)lineGraph:(BEMSimpleLineGraphView *)graph valueForPointAtIndex:(NSInteger)index {
+    NSDictionary *data = [self.graphData objectAtIndex:index];
     NSNumber *count = [data valueForKey:@"count"];
     return [count floatValue];
 }
