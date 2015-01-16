@@ -54,6 +54,7 @@
     
     self.graphView = [[BEMSimpleLineGraphView alloc] init];
     self.graphView.enableYAxisLabel = YES;
+    self.graphView.enablePopUpReport = YES;
     self.graphView.delegate = self;
     self.graphView.dataSource = self;
     [view addSubview:self.graphView];
