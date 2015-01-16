@@ -23,6 +23,7 @@ static NSString *kCellIdentifier = @"loginCell";
 static NSString *kKeychainServiceKey = @"com.khwang.Cantaloupe";
 static NSString *kUserKey = @"kCantaloupeCurrentUser";
 
+static const int ddLogLevel = LOG_LEVEL_ALL;
 
 @implementation KHLoginViewController
 
@@ -188,7 +189,7 @@ static NSString *kUserKey = @"kCantaloupeCurrentUser";
         NSString *username = [self.usernameField text];
         NSDictionary *parameters = @{@"username": username, @"password": [self.passwordField text], @"source": @"android"};
         [manager POST:@"http://itch.io/api/1/login" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            NSLog(@"JSON: %@", responseObject);
+            DDLogVerbose(@"JSON: %@", responseObject);
             NSDictionary *responseDict = (NSDictionary *) responseObject;
             
             NSArray *errors = [responseDict valueForKey:@"errors"];
@@ -215,12 +216,12 @@ static NSString *kUserKey = @"kCantaloupeCurrentUser";
                 // No error, save Core data perhaps?
                 
             } else {
-                NSLog(@"Failed to set key: %@", error.debugDescription);
+                DDLogError(@"Failed to set key: %@", error.debugDescription);
             }
             [MBProgressHUD hideHUDForView:self.view animated:YES];
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"Error: %@", error);
+            DDLogError(@"Error: %@", error);
             
             if (error.code == -1004) {
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"No internet", nil) message:NSLocalizedString(@"Please connect to the Internet, then try again.", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Ok", nil) otherButtonTitles:nil];

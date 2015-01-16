@@ -7,7 +7,6 @@
 //
 
 #import "KHDetailedGraphViewController.h"
-#import "JBLineChartView.h"
 
 @interface KHDetailedGraphViewController ()
 
@@ -54,7 +53,6 @@
     self.graphView = [[JBLineChartView alloc] initWithFrame:view.bounds];
     self.graphView.delegate = self;
     self.graphView.dataSource = self;
-    self.graphView.backgroundColor = [UIColor redColor];
     [view addSubview:self.graphView];
     
     [self.graphView reloadData];
@@ -74,7 +72,8 @@
 }
 
 - (NSUInteger)lineChartView:(JBLineChartView *)lineChartView numberOfVerticalValuesAtLineIndex:(NSUInteger)lineIndex {
-    return 1;
+    
+    return [self.graphData count];
 }
 
 - (CGFloat)lineChartView:(JBLineChartView *)lineChartView verticalValueForHorizontalIndex:(NSUInteger)horizontalIndex atLineIndex:(NSUInteger)lineIndex {

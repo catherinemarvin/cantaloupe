@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "JBLineChartView.h"
+#import <JBChartView/JBLineChartView.h>
 
 @interface KHDetailedGraphViewController : UIViewController<JBLineChartViewDataSource, JBLineChartViewDelegate>
 

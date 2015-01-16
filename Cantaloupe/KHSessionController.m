@@ -18,6 +18,7 @@
 
 static NSString *kKeychainServiceKey = @"com.khwang.Cantaloupe";
 static NSString *kUserKey = @"kCantaloupeCurrentUser";
+static const int ddLogLevel = LOG_LEVEL_ALL;
 
 @implementation KHSessionController
 
@@ -57,7 +58,7 @@ static NSString *kUserKey = @"kCantaloupeCurrentUser";
             success = YES;
             self.key = key;
         } else {
-            NSLog(@"Failed to query session key: %@", error.debugDescription);
+            DDLogError(@"Failed to query session key: %@", error.debugDescription);
         }
     }
     return success;
@@ -66,7 +67,7 @@ static NSString *kUserKey = @"kCantaloupeCurrentUser";
 - (void)logout {
     NSError *error;
     if (![SSKeychain deletePasswordForService:kKeychainServiceKey account:self.key error:&error] || error) {
-        NSLog(@"Failed to logout: %@", error.debugDescription);
+        DDLogError(@"Failed to logout: %@", error.debugDescription);
     }
     self.key = nil;
     self.loggedIn = NO;
