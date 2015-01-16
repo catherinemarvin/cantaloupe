@@ -51,11 +51,15 @@
     UIView *view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     view.backgroundColor = [UIColor whiteColor];
     
-    self.graphView = [[BEMSimpleLineGraphView alloc] initWithFrame:view.bounds];
+    self.graphView = [[BEMSimpleLineGraphView alloc] init];
     self.graphView.enableYAxisLabel = YES;
     self.graphView.delegate = self;
     self.graphView.dataSource = self;
     [view addSubview:self.graphView];
+    
+    [self.graphView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(view);
+    }];
     
     self.view = view;
 }
