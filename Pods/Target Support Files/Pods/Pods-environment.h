@@ -48,6 +48,12 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking_UIKit 2
 #define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit 4
 
+// BEMSimpleLineGraph
+#define COCOAPODS_POD_AVAILABLE_BEMSimpleLineGraph
+#define COCOAPODS_VERSION_MAJOR_BEMSimpleLineGraph 3
+#define COCOAPODS_VERSION_MINOR_BEMSimpleLineGraph 2
+#define COCOAPODS_VERSION_PATCH_BEMSimpleLineGraph 0
+
 // CocoaLumberjack
 #define COCOAPODS_POD_AVAILABLE_CocoaLumberjack
 #define COCOAPODS_VERSION_MAJOR_CocoaLumberjack 1
@@ -71,12 +77,6 @@
 #define COCOAPODS_VERSION_MAJOR_GoogleAnalytics_iOS_SDK 3
 #define COCOAPODS_VERSION_MINOR_GoogleAnalytics_iOS_SDK 0
 #define COCOAPODS_VERSION_PATCH_GoogleAnalytics_iOS_SDK 7
-
-// JBChartView
-#define COCOAPODS_POD_AVAILABLE_JBChartView
-#define COCOAPODS_VERSION_MAJOR_JBChartView 2
-#define COCOAPODS_VERSION_MINOR_JBChartView 8
-#define COCOAPODS_VERSION_PATCH_JBChartView 10
 
 // MBProgressHUD
 #define COCOAPODS_POD_AVAILABLE_MBProgressHUD

@@ -1,11 +1,11 @@
 PODS:
   - AFNetworking (2.2.4):
-    - AFNetworking/NSURLConnection (= 2.2.4)
-    - AFNetworking/NSURLSession (= 2.2.4)
-    - AFNetworking/Reachability (= 2.2.4)
-    - AFNetworking/Security (= 2.2.4)
-    - AFNetworking/Serialization (= 2.2.4)
-    - AFNetworking/UIKit (= 2.2.4)
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+    - AFNetworking/UIKit
   - AFNetworking/NSURLConnection (2.2.4):
     - AFNetworking/Reachability
     - AFNetworking/Security
@@ -18,13 +18,13 @@ PODS:
   - AFNetworking/UIKit (2.2.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - BEMSimpleLineGraph (3.2)
   - CocoaLumberjack (1.9.2):
-    - CocoaLumberjack/Extensions (= 1.9.2)
+    - CocoaLumberjack/Extensions
   - CocoaLumberjack/Core (1.9.2)
   - CocoaLumberjack/Extensions (1.9.2):
     - CocoaLumberjack/Core
   - GoogleAnalytics-iOS-SDK (3.0.7)
-  - JBChartView (2.8.10)
   - Masonry (0.6.0)
   - MBProgressHUD (0.8)
   - Reachability (3.1.1)
@@ -33,9 +33,9 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
+  - BEMSimpleLineGraph
   - CocoaLumberjack
   - GoogleAnalytics-iOS-SDK (~> 3.0.7)
-  - JBChartView (~> 2.8.9)
   - Masonry
   - MBProgressHUD (~> 0.8)
   - Reachability (~> 3.0)
@@ -44,13 +44,13 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: ab63e259fe91eef4519b371ef0a4955af0e73e64
+  BEMSimpleLineGraph: 68e349eb22320d1a21a29e390d0f67772f6f6f44
   CocoaLumberjack: 205769c032b5fef85b92472046bcc8b7e7c8a817
   GoogleAnalytics-iOS-SDK: bb285d8eef15a682f1b82971becd0d22edd0e53b
-  JBChartView: 50b221ef68d0934f5aea417a369a5b02167848a9
   Masonry: 0bc111d6902e3a55ff8423bcbdf7155261806547
   MBProgressHUD: c356980b0cd097f19acec959b49dca5eb8ec31be
   Reachability: 8e9635e3cb4f98e7f825e51147f677ecc694d0e7
   SSKeychain: cc48bd3ad24fcd9125adb9e0d23dd50b8bbd08b9
   SSPullToRefresh: bb513a1ccbf08fdd67e4139bc1bbe3fc2ed34228
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.34.1
