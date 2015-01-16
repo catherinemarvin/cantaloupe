@@ -129,6 +129,7 @@ typedef NS_ENUM(NSUInteger, KHGraphsCells) {
         KHDetailedGraphViewController *detailedGraphController = [[KHDetailedGraphViewController alloc] initWithData:data title:[key capitalizedString]];
         [self.navigationController pushViewController:detailedGraphController animated:YES];
     }
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 - (void)_requestGraphs {
