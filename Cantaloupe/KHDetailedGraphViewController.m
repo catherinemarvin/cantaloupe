@@ -22,19 +22,6 @@
 - (id)initWithData:(NSArray *)graphData title:(NSString *)title {
     self = [super init];
     
-#warning Remove me after I get some working data
-    
-    graphData = @[
-                  @{
-                      @"date" : @"2014-04-08",
-                      @"count" : @(1)
-                      },
-                  @{
-                      @"date" : @"2014-04-15",
-                      @"count" : @(4)
-                      }
-                  ];
-    
     if (self) {
         self.graphData = graphData;
         self.navigationItem.title = title;
