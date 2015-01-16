@@ -38,6 +38,7 @@
     if (self) {
         self.graphData = graphData;
         self.navigationItem.title = title;
+        self.edgesForExtendedLayout = UIRectEdgeNone;
     }
     
     return self;
