@@ -59,8 +59,10 @@
     self.graphView.dataSource = self;
     [view addSubview:self.graphView];
     
+    CGFloat padding = 20.0f;
+    UIEdgeInsets insets = UIEdgeInsetsMake(padding, padding, padding, padding);
     [self.graphView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(view);
+        make.edges.equalTo(view).with.insets(insets);
     }];
     
     self.view = view;
