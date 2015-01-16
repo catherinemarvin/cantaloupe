@@ -53,6 +53,7 @@
     view.backgroundColor = [UIColor whiteColor];
     
     self.graphView = [[BEMSimpleLineGraphView alloc] init];
+    self.graphView.labelFont = [UIFont fontWithName:@"Lato-Regular" size:14.0f];
     self.graphView.enableYAxisLabel = YES;
     self.graphView.enablePopUpReport = YES;
     self.graphView.delegate = self;
