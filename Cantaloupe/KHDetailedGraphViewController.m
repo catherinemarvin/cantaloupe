@@ -52,6 +52,7 @@
     view.backgroundColor = [UIColor whiteColor];
     
     self.graphView = [[BEMSimpleLineGraphView alloc] initWithFrame:view.bounds];
+    self.graphView.enableYAxisLabel = YES;
     self.graphView.delegate = self;
     self.graphView.dataSource = self;
     [view addSubview:self.graphView];
@@ -70,6 +71,12 @@
     NSDictionary *data = [self.graphData objectAtIndex:index];
     NSNumber *count = [data valueForKey:@"count"];
     return [count floatValue];
+}
+
+- (NSString *)lineGraph:(BEMSimpleLineGraphView *)graph labelOnXAxisForIndex:(NSInteger)index {
+    NSDictionary *data = [self.graphData objectAtIndex:index];
+    NSString *date = [data valueForKey:@"date"];
+    return date;
 }
 
 @end
