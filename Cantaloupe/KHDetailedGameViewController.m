@@ -8,10 +8,11 @@
 
 #import "KHDetailedGameViewController.h"
 #import "KHDetailedGameView.h"
+#import "KHGameInfo.h"
 
 @interface KHDetailedGameViewController ()
 
-@property (nonatomic, strong) NSDictionary *gameData;
+@property (nonatomic, strong) KHGameInfo *gameInfo;
 
 @end
 
@@ -19,21 +20,21 @@
 
 #pragma mark - UIViewController
 
-- (id)initWithData:(NSDictionary *)data {
+- (instancetype)initWithGameInfo:(KHGameInfo *)info {
     if (self = [super init]) {
-        self.gameData = data;
+        _gameInfo = info;
     }
     return self;
 }
 
 - (void)loadView {
     [super loadView];
-    self.navigationItem.title = [self.gameData objectForKey:@"title"];
+    self.navigationItem.title = [self.gameInfo titleString];
     
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
     scrollView.alwaysBounceVertical = YES;
     
-    KHDetailedGameView *view = [[KHDetailedGameView alloc] initWithFrame:scrollView.bounds data:self.gameData];
+    KHDetailedGameView *view = [[KHDetailedGameView alloc] initWithFrame:scrollView.bounds data:self.gameInfo];
     
     [scrollView addSubview:view];
     scrollView.contentSize = view.frame.size;

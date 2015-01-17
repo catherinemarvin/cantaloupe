@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class KHGameInfo;
+
 @interface KHDetailedGameView : UIView
 
-- (id)initWithFrame:(CGRect)frame data:(NSDictionary *)data;
+- (id)initWithFrame:(CGRect)frame data:(KHGameInfo *)data;
 
 @end

@@ -11,6 +11,7 @@
 #import "KHGameViewCell.h"
 #import "KHDetailedGameViewController.h"
 #import "MBProgressHUD.h"
+#import "KHGameInfo.h"
 
 @interface KHGamesViewController ()
 
@@ -113,7 +114,9 @@ static const int ddLogLevel = LOG_LEVEL_ALL;
 #pragma mark - Collection View Delegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    KHDetailedGameViewController *detailedView = [[KHDetailedGameViewController alloc] initWithData:[self.games objectAtIndex:indexPath.row]];
+    NSDictionary *rawInfo = [self.games objectAtIndex:indexPath.row];
+    KHGameInfo *gameInfo = [[KHGameInfo alloc] initWithGameDictionary:rawInfo];
+    KHDetailedGameViewController *detailedView = [[KHDetailedGameViewController alloc] initWithGameInfo:gameInfo];
     
     [self.navigationController pushViewController:detailedView animated:YES];
 }

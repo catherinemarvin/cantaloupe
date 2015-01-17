@@ -7,10 +7,11 @@
 //
 
 #import "KHDetailedGameView.h"
+#import "KHGameInfo.h"
 
 @interface KHDetailedGameView()
 
-@property (nonatomic, strong) NSDictionary *gameData;
+@property (nonatomic, strong) KHGameInfo *gameData;
 
 @property (nonatomic, strong) UIImageView *coverView;
 
@@ -29,27 +30,22 @@ static CGFloat KHkSideMargin = 10.0f;
 
 @implementation KHDetailedGameView
 
-- (id)initWithFrame:(CGRect)frame data:(NSDictionary *)data {
+- (instancetype)initWithFrame:(CGRect)frame data:(KHGameInfo *)data {
+    
     self = [super initWithFrame:frame];
     
     if (self) {
-        self.gameData = data;
+        _gameData = data;
         
         self.backgroundColor = [UIColor blackColor];
         
-        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[data valueForKey:@"cover_url"]]]];
-        
-        if (!image) {
-            image = [UIImage imageNamed:@"placeholder"];
-        }
-        
-        self.coverView = [[UIImageView alloc] initWithImage:image];
+        self.coverView = [[UIImageView alloc] initWithImage:[_gameData coverImage]];
         self.coverView.contentMode = UIViewContentModeScaleAspectFill;
         [self.coverView setClipsToBounds:YES];
         [self addSubview:self.coverView];
         
         self.titleLabel = [[UILabel alloc] init];
-        self.titleLabel.text = [data valueForKey:@"title"];
+        self.titleLabel.text = [_gameData titleString];
         self.titleLabel.textColor = [UIColor whiteColor];
         self.titleLabel.font = [UIFont fontWithName:@"Lato-Regular" size:16.0f];
         [self addSubview:self.titleLabel];
@@ -57,31 +53,34 @@ static CGFloat KHkSideMargin = 10.0f;
         _publishedLabel = [[UILabel alloc] init];
         
         self.descriptionLabel = [[UILabel alloc] init];
-        self.descriptionLabel.text = [data valueForKey:@"short_text"];
+        self.descriptionLabel.text = [_gameData shortDescription];
         self.descriptionLabel.textColor = [UIColor whiteColor];
         self.descriptionLabel.font = [UIFont fontWithName:@"Lato-Italic" size:14.0f];
         [self addSubview:self.descriptionLabel];
         
         self.earningsLabel = [[UILabel alloc] init];
-        self.earningsLabel.text = [NSString stringWithFormat: @"%@: %@", NSLocalizedString(@"Earnings", nil), [[data valueForKey:@"earnings"] valueForKey:@"amount_formatted"] ?: NSLocalizedString(@"None", @"Earnings: None")];
+        self.earningsLabel.text =
+        [NSString stringWithFormat: @"%@: %@",
+         NSLocalizedString(@"Earnings", nil),
+         [_gameData formattedEarnings]];
         self.earningsLabel.textColor = [UIColor whiteColor];
         self.earningsLabel.font = [UIFont fontWithName:@"Lato-Regular" size:12.0f];
         [self addSubview:self.earningsLabel];
         
         self.viewsLabel = [[UILabel alloc] init];
-        self.viewsLabel.text = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Views", nil), [data valueForKey:@"views_count"]];
+        self.viewsLabel.text = [NSString stringWithFormat:@"%@: %lu", NSLocalizedString(@"Views", nil), (unsigned long) [_gameData views]];
         self.viewsLabel.textColor = [UIColor whiteColor];
         self.viewsLabel.font = [UIFont fontWithName:@"Lato-Regular" size:12.0f];
         [self addSubview:self.viewsLabel];
         
         self.purchasesLabel = [[UILabel alloc] init];
-        self.purchasesLabel.text = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Purchases", nil), [data valueForKey:@"purchases_count"]];
+        self.purchasesLabel.text = [NSString stringWithFormat:@"%@: %lu", NSLocalizedString(@"Purchases", nil), (unsigned long)[_gameData purchases]];
         self.purchasesLabel.textColor = [UIColor whiteColor];
         self.purchasesLabel.font = [UIFont fontWithName:@"Lato-Regular" size:12.0f];
         [self addSubview:self.purchasesLabel];
         
         self.downloadsLabel = [[UILabel alloc] init];
-        self.downloadsLabel.text = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Downloads", nil), [data valueForKey:@"downloads_count"]];
+        self.downloadsLabel.text = [NSString stringWithFormat:@"%@: %lu", NSLocalizedString(@"Downloads", nil), (unsigned long)[_gameData downloads]];
         self.downloadsLabel.textColor = [UIColor whiteColor];
         self.downloadsLabel.font = [UIFont fontWithName:@"Lato-Regular" size:12.0f];
         [self addSubview:self.downloadsLabel];

@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class  KHGameInfo;
+
 @interface KHDetailedGameViewController : UIViewController
 
-- (id)initWithData:(NSDictionary *)data;
+- (id)initWithGameInfo:(KHGameInfo *)info NS_DESIGNATED_INITIALIZER;
 
 @end
