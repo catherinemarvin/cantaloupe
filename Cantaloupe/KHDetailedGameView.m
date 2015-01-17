@@ -15,6 +15,7 @@
 @property (nonatomic, strong) UIImageView *coverView;
 
 @property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UILabel *publishedLabel;
 @property (nonatomic, strong) UILabel *descriptionLabel;
 
 @property (nonatomic, strong) UILabel *earningsLabel;
@@ -52,6 +53,8 @@ static CGFloat KHkSideMargin = 10.0f;
         self.titleLabel.textColor = [UIColor whiteColor];
         self.titleLabel.font = [UIFont fontWithName:@"Lato-Regular" size:16.0f];
         [self addSubview:self.titleLabel];
+        
+        _publishedLabel = [[UILabel alloc] init];
         
         self.descriptionLabel = [[UILabel alloc] init];
         self.descriptionLabel.text = [data valueForKey:@"short_text"];
