@@ -11,8 +11,6 @@
 #import "KHSessionController.h"
 #import "KHTabBarController.h"
 
-static const int ddLogLevel = LOG_LEVEL_ALL;
-
 @implementation KHAppDelegate
 
 - (void)dealloc {
