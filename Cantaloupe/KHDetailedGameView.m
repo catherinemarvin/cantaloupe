@@ -24,7 +24,7 @@
 
 @end
 
-static CGFloat kSideMargin = 10.0f;
+static CGFloat KHkSideMargin = 10.0f;
 
 @implementation KHDetailedGameView
 
@@ -44,7 +44,6 @@ static CGFloat kSideMargin = 10.0f;
         
         self.coverView = [[UIImageView alloc] initWithImage:image];
         self.coverView.contentMode = UIViewContentModeScaleAspectFill;
-        self.coverView.frame = CGRectMake(0, 0, frame.size.width, 200.0f);
         [self.coverView setClipsToBounds:YES];
         [self addSubview:self.coverView];
         
@@ -83,56 +82,54 @@ static CGFloat kSideMargin = 10.0f;
         self.downloadsLabel.textColor = [UIColor whiteColor];
         self.downloadsLabel.font = [UIFont fontWithName:@"Lato-Regular" size:12.0f];
         [self addSubview:self.downloadsLabel];
+        
+        [self setNeedsUpdateConstraints];
     }
     return self;
 }
 
-#pragma mark - UIView
-
-- (void)layoutSubviews {
-    [super layoutSubviews];
+- (void)updateConstraints {
+    CGFloat coverHeight = 200.0f;
+    [self.coverView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.height.equalTo(@(coverHeight));
+        make.top.equalTo(self);
+        make.left.and.right.equalTo(self);
+    }];
     
-    CGRect coverViewFrame = self.coverView.frame;
-    coverViewFrame.origin.y = 10.0f;
-    self.coverView.frame = coverViewFrame;
+    CGFloat verticalOffset = 20.0f;
     
-    [self.titleLabel sizeToFit];
+    [self.titleLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self).with.offset(KHkSideMargin);
+        make.right.equalTo(self);
+        make.top.equalTo(self.coverView.mas_bottom).with.offset(verticalOffset);
+    }];
     
-    CGRect titleFrame = self.titleLabel.frame;
-    titleFrame.origin.x = self.coverView.frame.origin.x + kSideMargin;
-    titleFrame.origin.y = self.coverView.frame.origin.y + self.coverView.frame.size.height + 10;
-    self.titleLabel.frame = titleFrame;
+    [self.descriptionLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.left.and.right.equalTo(self.titleLabel);
+        make.top.equalTo(self.titleLabel.mas_bottom).with.offset(verticalOffset);
+    }];
     
-    [self.descriptionLabel sizeToFit];
-    CGRect descriptionFrame = self.descriptionLabel.frame;
-    descriptionFrame.origin.x = self.titleLabel.frame.origin.x;
-    descriptionFrame.origin.y = self.titleLabel.frame.origin.y + self.titleLabel.frame.size.height + 10;
-    self.descriptionLabel.frame = descriptionFrame;
+    [self.earningsLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.left.and.right.equalTo(self.titleLabel);
+        make.top.equalTo(self.descriptionLabel.mas_bottom).with.offset(verticalOffset);
+    }];
     
-    [self.earningsLabel sizeToFit];
-    CGRect earningsFrame = self.earningsLabel.frame;
-    earningsFrame.origin.x = self.titleLabel.frame.origin.x;
-    earningsFrame.origin.y = self.descriptionLabel.frame.origin.y + self.descriptionLabel.frame.size.height + 20.0f;
-    self.earningsLabel.frame = earningsFrame;
+    [self.viewsLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.left.and.right.equalTo(self.titleLabel);
+        make.top.equalTo(self.earningsLabel.mas_bottom);
+    }];
     
-    [self.viewsLabel sizeToFit];
-    CGRect viewsFrame = self.viewsLabel.frame;
-    viewsFrame.origin.x = CGRectGetMinX(earningsFrame);
-    viewsFrame.origin.y = earningsFrame.origin.y + earningsFrame.size.height + 5.0f;
-    self.viewsLabel.frame = viewsFrame;
+    [self.purchasesLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.left.and.right.equalTo(self.titleLabel);
+        make.top.equalTo(self.viewsLabel.mas_bottom);
+    }];
     
-    [self.purchasesLabel sizeToFit];
-    CGRect purchasesFrame = self.purchasesLabel.frame;
-    purchasesFrame.origin.x = CGRectGetMinX(earningsFrame);
-    purchasesFrame.origin.y = viewsFrame.origin.y + viewsFrame.size.height + 5.0f;
-    self.purchasesLabel.frame = purchasesFrame;
+    [self.downloadsLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.left.and.right.equalTo(self.titleLabel);
+        make.top.equalTo(self.purchasesLabel.mas_bottom);
+    }];
     
-    [self.downloadsLabel sizeToFit];
-    CGRect downloadsFrame = self.downloadsLabel.frame;
-    downloadsFrame.origin.x = CGRectGetMinX(earningsFrame);
-    downloadsFrame.origin.y = purchasesFrame.origin.y + purchasesFrame.size.height + 5.0f;
-    self.downloadsLabel.frame = downloadsFrame;
-    
+    [super updateConstraints];
 }
 
 @end
