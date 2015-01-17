@@ -10,4 +10,16 @@
 
 @interface KHGameInfo : NSObject
 
+- (instancetype)initWithGameDictionary:(NSDictionary *)dictionary NS_DESIGNATED_INITIALIZER;
+
+@property (nonatomic, strong, readonly) UIImage *coverImage;
+@property (nonatomic, strong, readonly) NSString *titleString;
+@property (nonatomic, strong, readonly) NSString *shortDescription;
+@property (nonatomic, strong, readonly) NSString *formattedEarnings;
+
+@property (nonatomic, assign, readonly) NSUInteger views;
+@property (nonatomic, assign, readonly) NSUInteger purchases;
+@property (nonatomic, assign, readonly) NSUInteger downloads;
+
+
 @end
