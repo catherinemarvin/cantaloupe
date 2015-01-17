@@ -12,4 +12,6 @@
 
 - (id)initWithData:(NSArray *)graphData title:(NSString *)title;
 
+@property (nonatomic, strong) NSString *analyticsTitle;
+
 @end

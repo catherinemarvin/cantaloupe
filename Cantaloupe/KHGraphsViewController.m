@@ -66,7 +66,7 @@ typedef NS_ENUM(NSUInteger, KHGraphsCells) {
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     id tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker set:kGAIScreenName value:@"Graphcs Screen"];
+    [tracker set:kGAIScreenName value:@"Graphs Screen"];
     [tracker send:[[GAIDictionaryBuilder createAppView] build]];
 }
 
@@ -127,9 +127,28 @@ typedef NS_ENUM(NSUInteger, KHGraphsCells) {
         NSArray *data = [self.graphData valueForKey:key];
         
         KHDetailedGraphViewController *detailedGraphController = [[KHDetailedGraphViewController alloc] initWithData:data title:[key capitalizedString]];
+        detailedGraphController.analyticsTitle = [self _analyticsTitleForGraphCell:cell.tag];
         [self.navigationController pushViewController:detailedGraphController animated:YES];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+}
+
+- (NSString *)_analyticsTitleForGraphCell:(KHGraphsCells)cellType {
+    switch (cellType) {
+        case KHGraphsCellDownloads: {
+            return @"Downloads Graph Screen";
+        }
+        case KHGraphsCellPurchases: {
+            return @"Purchases Graph Screen";
+        }
+        case KHGraphsCellViews: {
+            return @"Views Graph Screen";
+        }
+        case KHGraphsCellNone:
+        default: {
+            return @"Unknown Graph Screen";
+        }
+    }
 }
 
 - (void)_requestGraphs {
