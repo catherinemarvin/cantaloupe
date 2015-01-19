@@ -105,8 +105,13 @@ static const int ddLogLevel = LOG_LEVEL_ALL;
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     KHGameViewCell *cell = (KHGameViewCell *) [collectionView dequeueReusableCellWithReuseIdentifier:kGameCellIdentifier forIndexPath:indexPath];
-    [cell setGameImage:[[self.games objectAtIndex:indexPath.row] valueForKey:@"cover_url"]];
-    [cell setTitle:[[self.games objectAtIndex:indexPath.row] valueForKey:@"title"]];
+    id obj = [self.games objectAtIndex:indexPath.row];
+    if ([obj isKindOfClass:[NSDictionary class]]) {
+        NSDictionary *gameDictionary = (NSDictionary *)obj;
+        KHGameInfo *gameInfo = [[KHGameInfo alloc] initWithGameDictionary:gameDictionary];
+        [cell setGameImage:gameInfo.coverImage];
+        [cell setTitle:gameInfo.titleString];
+    }
     
     return cell;
 }

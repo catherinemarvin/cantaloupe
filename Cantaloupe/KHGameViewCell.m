@@ -37,15 +37,7 @@
     return self;
 }
 
-- (void)setGameImage:(NSString *)url {
-    
-    UIImage *image;
-    
-    if (url) {
-        image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:url]]];
-    } else {
-        image = [UIImage imageNamed:@"placeholder"];
-    }
+- (void)setGameImage:(UIImage *)image {
     self.imageView.image = image;
 }
 
