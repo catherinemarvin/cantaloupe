@@ -20,8 +20,11 @@
 @property (nonatomic, strong) UILabel *descriptionLabel;
 
 @property (nonatomic, strong) UIView *statsRow;
+@property (nonatomic, strong) UIView *viewsContainer;
 @property (nonatomic, strong) UILabel *viewsLabel;
+@property (nonatomic, strong) UIView *purchasesContainer;
 @property (nonatomic, strong) UILabel *purchasesLabel;
+@property (nonatomic, strong) UIView *downloadsContainer;
 @property (nonatomic, strong) UILabel *downloadsLabel;
 
 @property (nonatomic, strong) UILabel *earningsLabel;
@@ -62,23 +65,29 @@ static CGFloat KHkSideMargin = 10.0f;
         _statsRow = [[UIView alloc] init];
         [self addSubview:_statsRow];
         
+        _viewsContainer = [[UIView alloc] init];
+        [_statsRow addSubview:_viewsContainer];
         self.viewsLabel = [[UILabel alloc] init];
         self.viewsLabel.text = [NSString stringWithFormat:@"%@: %lu", NSLocalizedString(@"Views", nil), (unsigned long) [_gameData views]];
         self.viewsLabel.textColor = [UIColor whiteColor];
         self.viewsLabel.font = [UIFont fontWithName:@"Lato-Regular" size:12.0f];
-        [_statsRow addSubview:self.viewsLabel];
+        [_viewsContainer addSubview:self.viewsLabel];
         
+        _purchasesContainer = [[UIView alloc] init];
+        [_statsRow addSubview:_purchasesContainer];
         self.purchasesLabel = [[UILabel alloc] init];
         self.purchasesLabel.text = [NSString stringWithFormat:@"%@: %lu", NSLocalizedString(@"Purchases", nil), (unsigned long)[_gameData purchases]];
         self.purchasesLabel.textColor = [UIColor whiteColor];
         self.purchasesLabel.font = [UIFont fontWithName:@"Lato-Regular" size:12.0f];
-        [_statsRow addSubview:self.purchasesLabel];
+        [_purchasesContainer addSubview:self.purchasesLabel];
         
+        _downloadsContainer = [[UIView alloc] init];
+        [_statsRow addSubview:_downloadsContainer];
         self.downloadsLabel = [[UILabel alloc] init];
         self.downloadsLabel.text = [NSString stringWithFormat:@"%@: %lu", NSLocalizedString(@"Downloads", nil), (unsigned long)[_gameData downloads]];
         self.downloadsLabel.textColor = [UIColor whiteColor];
         self.downloadsLabel.font = [UIFont fontWithName:@"Lato-Regular" size:12.0f];
-        [_statsRow addSubview:self.downloadsLabel];
+        [_downloadsContainer addSubview:self.downloadsLabel];
         
         self.earningsLabel = [[UILabel alloc] init];
         self.earningsLabel.text =
