@@ -20,12 +20,18 @@
 @property (nonatomic, strong) UILabel *descriptionLabel;
 
 @property (nonatomic, strong) UIView *statsRow;
+
 @property (nonatomic, strong) UIView *viewsContainer;
 @property (nonatomic, strong) UILabel *viewsLabel;
+@property (nonatomic, strong) UILabel *viewsCountLabel;
+
 @property (nonatomic, strong) UIView *purchasesContainer;
 @property (nonatomic, strong) UILabel *purchasesLabel;
+@property (nonatomic, strong) UILabel *purchasesCountLabel;
+
 @property (nonatomic, strong) UIView *downloadsContainer;
 @property (nonatomic, strong) UILabel *downloadsLabel;
+@property (nonatomic, strong) UILabel *downloadsCountLabel;
 
 @property (nonatomic, strong) UILabel *earningsLabel;
 @end
@@ -68,10 +74,16 @@ static CGFloat KHkSideMargin = 10.0f;
         _viewsContainer = [[UIView alloc] init];
         [_statsRow addSubview:_viewsContainer];
         self.viewsLabel = [[UILabel alloc] init];
-        self.viewsLabel.text = [NSString stringWithFormat:@"%@: %lu", NSLocalizedString(@"Views", nil), (unsigned long) [_gameData views]];
+        self.viewsLabel.text = NSLocalizedString(@"Views", nil);
         self.viewsLabel.textColor = [UIColor whiteColor];
         self.viewsLabel.font = [UIFont fontWithName:@"Lato-Regular" size:12.0f];
         [_viewsContainer addSubview:self.viewsLabel];
+        
+        _viewsCountLabel = [[UILabel alloc] init];
+        _viewsCountLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long) [_gameData views]];
+        _viewsCountLabel.textColor = [UIColor whiteColor];
+        _viewsCountLabel.font = [UIFont fontWithName:@"Lato-Regular" size:12.0f];
+        [_viewsContainer addSubview:_viewsCountLabel];
         
         _purchasesContainer = [[UIView alloc] init];
         [_statsRow addSubview:_purchasesContainer];
@@ -129,9 +141,17 @@ static CGFloat KHkSideMargin = 10.0f;
         make.height.equalTo(self.purchasesLabel);
     }];
     
-    [self.viewsLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+    [self.viewsContainer mas_updateConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.statsRow);
         make.left.equalTo(self.statsRow);
+    }];
+    
+    [self.viewsLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.viewsContainer);
+    }];
+    
+    [self.viewsCountLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.viewsLabel.mas_bottom);
     }];
     
     [self.purchasesLabel mas_updateConstraints:^(MASConstraintMaker *make) {
