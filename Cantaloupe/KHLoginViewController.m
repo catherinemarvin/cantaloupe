@@ -189,7 +189,6 @@ static const int ddLogLevel = LOG_LEVEL_ALL;
         NSString *username = [self.usernameField text];
         NSDictionary *parameters = @{@"username": username, @"password": [self.passwordField text], @"source": @"android"};
         [manager POST:@"http://itch.io/api/1/login" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            DDLogVerbose(@"JSON: %@", responseObject);
             NSDictionary *responseDict = (NSDictionary *) responseObject;
             
             NSArray *errors = [responseDict valueForKey:@"errors"];

@@ -65,8 +65,6 @@ static const int ddLogLevel = LOG_LEVEL_ALL;
     
     NSString *url = [NSString stringWithFormat:@"http://itch.io/api/1/%@/my-games", self.key];
     [manager POST:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        DDLogVerbose(@"JSON: %@", responseObject);
-        
         NSDictionary *responseDict = (NSDictionary *)responseObject;
         
         NSArray *errors = [responseDict valueForKey:@"errors"];

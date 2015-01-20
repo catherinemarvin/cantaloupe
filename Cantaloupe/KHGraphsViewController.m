@@ -157,8 +157,6 @@ typedef NS_ENUM(NSUInteger, KHGraphsCells) {
     NSString *url = [NSString stringWithFormat:@"http://itch.io/api/1/%@/my-games/graphs?num_days=30", self.key];
     
     [manager POST:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        DDLogInfo(@"JSON: %@", responseObject);
-        
         NSDictionary *responseDict = (NSDictionary *)responseObject;
         
         self.graphData = responseDict;
