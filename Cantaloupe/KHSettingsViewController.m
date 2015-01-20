@@ -189,6 +189,7 @@ typedef NS_ENUM(NSUInteger, KHSettingsCells) {
     if (result == MFMailComposeResultSent) {
         completionBlock = ^() {
             [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Thank you", nil) message:NSLocalizedString(@"Thanks for the feedback.", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"Ok", nil) otherButtonTitles:nil] show];
+            
         };
         
     }

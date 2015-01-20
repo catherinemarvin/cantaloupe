@@ -19,11 +19,12 @@
 @property (nonatomic, strong) UILabel *publishedLabel;
 @property (nonatomic, strong) UILabel *descriptionLabel;
 
-@property (nonatomic, strong) UILabel *earningsLabel;
+@property (nonatomic, strong) UIView *statsRow;
 @property (nonatomic, strong) UILabel *viewsLabel;
 @property (nonatomic, strong) UILabel *purchasesLabel;
 @property (nonatomic, strong) UILabel *downloadsLabel;
 
+@property (nonatomic, strong) UILabel *earningsLabel;
 @end
 
 static CGFloat KHkSideMargin = 10.0f;
@@ -58,6 +59,27 @@ static CGFloat KHkSideMargin = 10.0f;
         self.descriptionLabel.font = [UIFont fontWithName:@"Lato-Italic" size:14.0f];
         [self addSubview:self.descriptionLabel];
         
+        _statsRow = [[UIView alloc] init];
+        [self addSubview:_statsRow];
+        
+        self.viewsLabel = [[UILabel alloc] init];
+        self.viewsLabel.text = [NSString stringWithFormat:@"%@: %lu", NSLocalizedString(@"Views", nil), (unsigned long) [_gameData views]];
+        self.viewsLabel.textColor = [UIColor whiteColor];
+        self.viewsLabel.font = [UIFont fontWithName:@"Lato-Regular" size:12.0f];
+        [_statsRow addSubview:self.viewsLabel];
+        
+        self.purchasesLabel = [[UILabel alloc] init];
+        self.purchasesLabel.text = [NSString stringWithFormat:@"%@: %lu", NSLocalizedString(@"Purchases", nil), (unsigned long)[_gameData purchases]];
+        self.purchasesLabel.textColor = [UIColor whiteColor];
+        self.purchasesLabel.font = [UIFont fontWithName:@"Lato-Regular" size:12.0f];
+        [_statsRow addSubview:self.purchasesLabel];
+        
+        self.downloadsLabel = [[UILabel alloc] init];
+        self.downloadsLabel.text = [NSString stringWithFormat:@"%@: %lu", NSLocalizedString(@"Downloads", nil), (unsigned long)[_gameData downloads]];
+        self.downloadsLabel.textColor = [UIColor whiteColor];
+        self.downloadsLabel.font = [UIFont fontWithName:@"Lato-Regular" size:12.0f];
+        [_statsRow addSubview:self.downloadsLabel];
+        
         self.earningsLabel = [[UILabel alloc] init];
         self.earningsLabel.text =
         [NSString stringWithFormat: @"%@: %@",
@@ -66,25 +88,6 @@ static CGFloat KHkSideMargin = 10.0f;
         self.earningsLabel.textColor = [UIColor whiteColor];
         self.earningsLabel.font = [UIFont fontWithName:@"Lato-Regular" size:12.0f];
         [self addSubview:self.earningsLabel];
-        
-        self.viewsLabel = [[UILabel alloc] init];
-        self.viewsLabel.text = [NSString stringWithFormat:@"%@: %lu", NSLocalizedString(@"Views", nil), (unsigned long) [_gameData views]];
-        self.viewsLabel.textColor = [UIColor whiteColor];
-        self.viewsLabel.font = [UIFont fontWithName:@"Lato-Regular" size:12.0f];
-        [self addSubview:self.viewsLabel];
-        
-        self.purchasesLabel = [[UILabel alloc] init];
-        self.purchasesLabel.text = [NSString stringWithFormat:@"%@: %lu", NSLocalizedString(@"Purchases", nil), (unsigned long)[_gameData purchases]];
-        self.purchasesLabel.textColor = [UIColor whiteColor];
-        self.purchasesLabel.font = [UIFont fontWithName:@"Lato-Regular" size:12.0f];
-        [self addSubview:self.purchasesLabel];
-        
-        self.downloadsLabel = [[UILabel alloc] init];
-        self.downloadsLabel.text = [NSString stringWithFormat:@"%@: %lu", NSLocalizedString(@"Downloads", nil), (unsigned long)[_gameData downloads]];
-        self.downloadsLabel.textColor = [UIColor whiteColor];
-        self.downloadsLabel.font = [UIFont fontWithName:@"Lato-Regular" size:12.0f];
-        [self addSubview:self.downloadsLabel];
-        
         [self setNeedsUpdateConstraints];
     }
     return self;
@@ -111,25 +114,31 @@ static CGFloat KHkSideMargin = 10.0f;
         make.top.equalTo(self.titleLabel.mas_bottom).with.offset(verticalOffset);
     }];
     
+    [self.statsRow mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.left.and.right.equalTo(self);
+        make.top.equalTo(self.descriptionLabel.mas_bottom);
+        make.height.equalTo(self.purchasesLabel);
+    }];
+    
+    [self.viewsLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.statsRow);
+        make.left.equalTo(self.statsRow);
+    }];
+    
+    [self.purchasesLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(self.statsRow);
+    }];
+    
+    [self.downloadsLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.statsRow);
+        make.right.equalTo(self.statsRow);
+    }];
+    
     [self.earningsLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.left.and.right.equalTo(self.titleLabel);
         make.top.equalTo(self.descriptionLabel.mas_bottom).with.offset(verticalOffset);
     }];
     
-    [self.viewsLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.left.and.right.equalTo(self.titleLabel);
-        make.top.equalTo(self.earningsLabel.mas_bottom);
-    }];
-    
-    [self.purchasesLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.left.and.right.equalTo(self.titleLabel);
-        make.top.equalTo(self.viewsLabel.mas_bottom);
-    }];
-    
-    [self.downloadsLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.left.and.right.equalTo(self.titleLabel);
-        make.top.equalTo(self.purchasesLabel.mas_bottom);
-    }];
     
     [super updateConstraints];
 }
