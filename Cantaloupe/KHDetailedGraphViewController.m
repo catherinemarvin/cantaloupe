@@ -8,6 +8,7 @@
 
 #import "KHDetailedGraphViewController.h"
 #import <BEMSimpleLineGraph/BEMSimpleLineGraphView.h>
+#import "KHGraphPoint.h"
 
 @interface KHDetailedGraphViewController ()<BEMSimpleLineGraphDataSource, BEMSimpleLineGraphDelegate>
 
@@ -75,11 +76,50 @@ static const NSInteger KHkNumberOfGraphDays = 30;
  
  The API doesn't return values for when dates have a value of 0 for anything, so it's up to us to manually insert them.
  
- 
- 
  **/
+
 - (void)_preprocessGraphData {
+    // First convert the NSDictionaries to KHGraphPoints for convenience
     
+    NSMutableArray *newData;
+    for (NSDictionary *dict in self.graphData) {
+        KHGraphPoint *graphPoint = [[KHGraphPoint alloc] initWithGraphDictionary:dict];
+        [newData addObject:graphPoint];
+    }
+    
+    // Now we need to fill in the missing gaps
+    
+    NSArray *expectedDates = [self _expectedGraphDates];
+    
+    self.graphData = newData;
+}
+
+/// @brief Returns an array of NSDates corresponding to the expected dates in this graph. There should be KhkNumberOfGraphDays entries
+- (NSArray *)_expectedGraphDates {
+    NSMutableArray *expected = [NSMutableArray array];
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:[[NSDate alloc] init]];
+    
+    [components setHour:-[components hour]];
+    [components setMinute:-[components minute]];
+    [components setSecond:-[components second]];
+    
+    NSDate *today = [calendar dateByAddingComponents:components toDate:[[NSDate alloc] init] options:0]; // today now refers to the start of today.
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *dateString = [formatter stringFromDate:today];
+    
+    [expected addObject:dateString];
+    
+    components = [[NSDateComponents alloc] init];
+    for (int i = 1; i < KHkNumberOfGraphDays; i++) {
+        [components setDay:-i];
+        NSDate *date = [calendar dateByAddingComponents:components toDate:today options:0];
+        NSString *string = [formatter stringFromDate:date];
+        [expected addObject:string];
+    }
+    return expected;
 }
 
 
