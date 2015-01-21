@@ -17,6 +17,8 @@
 
 @end
 
+static const NSInteger KHkNumberOfGraphDays = 30;
+
 @implementation KHDetailedGraphViewController
 
 - (id)initWithData:(NSArray *)graphData title:(NSString *)title {
@@ -46,14 +48,12 @@
     
     self.view = view;
     
-    if ([self.graphData count] > 0) {
-        [self _setupGraphView];
-    } else {
-        [self _setupEmptyView];
-    }
+    [self _setupGraphView];
 }
 
 - (void)_setupGraphView {
+    [self _preprocessGraphData];
+    
     self.graphView = [[BEMSimpleLineGraphView alloc] init];
     self.graphView.labelFont = [UIFont fontWithName:@"Lato-Regular" size:14.0f];
     self.graphView.enableYAxisLabel = YES;
@@ -69,18 +69,16 @@
     }];
 }
 
-- (void)_setupEmptyView {
-    UILabel *title = [[UILabel alloc] init];
-    title.font = [UIFont fontWithName:@"Lato-Regular" size:20.0f];
-    title.text = NSLocalizedString(@"Sorry, you don't have any graph data.", nil);
-    title.numberOfLines = 0;
-    title.textAlignment = NSTextAlignmentCenter;
-    [self.view addSubview:title];
-    
-    [title mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.equalTo(self.view);
-        make.width.equalTo(self.view);
-    }];
+/**
+ 
+ @brief Ensures that self.graphData is well-populated.
+ 
+ The API doesn't return values for when dates have a value of 0 for anything, so it's up to us to manually insert them.
+ 
+ 
+ 
+ **/
+- (void)_preprocessGraphData {
     
 }
 
