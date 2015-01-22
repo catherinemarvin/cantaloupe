@@ -151,7 +151,8 @@ static CGFloat KHkSideMargin = 10.0f;
     }];
     
     [self.statsRow mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.left.and.right.equalTo(self);
+        make.left.equalTo(self).with.offset(KHkSideMargin);
+        make.right.equalTo(self).with.offset(-KHkSideMargin);
         make.top.equalTo(self.descriptionLabel.mas_bottom);
         make.height.equalTo(self.viewsContainer);
     }];
@@ -164,11 +165,12 @@ static CGFloat KHkSideMargin = 10.0f;
     }];
     
     [self.viewsLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(self.viewsContainer);
+        make.left.and.right.equalTo(self.viewsContainer);
         make.top.equalTo(self.viewsContainer);
     }];
     
     [self.viewsCountLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.left.and.right.equalTo(self.viewsContainer);
         make.top.equalTo(self.viewsLabel.mas_bottom);
     }];
     
