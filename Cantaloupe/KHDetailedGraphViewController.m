@@ -57,7 +57,12 @@ static const NSInteger KHkNumberOfGraphDays = 30;
 - (void)_setupGraphView {
     self.graphView = [[BEMSimpleLineGraphView alloc] init];
     self.graphView.labelFont = [UIFont fontWithName:@"Lato-Regular" size:14.0f];
+    self.graphView.colorLine = [UIColor whiteColor];
+    self.graphView.colorXaxisLabel = [UIColor whiteColor];
+    self.graphView.colorYaxisLabel = [UIColor whiteColor];
+    self.graphView.widthLine = 3.0f;
     self.graphView.enableYAxisLabel = YES;
+    self.graphView.autoScaleYAxis = YES;
     self.graphView.enablePopUpReport = YES;
     self.graphView.enableReferenceAxisFrame = YES;
     self.graphView.enableReferenceXAxisLines = YES;
