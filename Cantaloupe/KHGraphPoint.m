@@ -47,11 +47,16 @@ static NSString *const KHkDateKey = @"date";
     if (!_date) {
         NSString *dateString = [self dateString];
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateStyle:NSDateFormatterShortStyle];
+        [formatter setDateFormat:@"yyyy-MM-dd"];
         _date = [formatter dateFromString:dateString];
     }
     return _date;
 }
 
+#pragma mark - Debugging
+
+- (NSString *)description {
+    return [NSString stringWithFormat:@"Date: %@, Count: %lu", [self dateString], (unsigned long)[self count]];
+}
 
 @end

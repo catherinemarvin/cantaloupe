@@ -81,7 +81,7 @@ static const NSInteger KHkNumberOfGraphDays = 30;
 - (void)_preprocessGraphData {
     // First convert the NSDictionaries to KHGraphPoints for convenience
     
-    NSMutableArray *newData;
+    NSMutableArray *newData = [NSMutableArray array];
     for (NSDictionary *dict in self.graphData) {
         KHGraphPoint *graphPoint = [[KHGraphPoint alloc] initWithGraphDictionary:dict];
         [newData addObject:graphPoint];
