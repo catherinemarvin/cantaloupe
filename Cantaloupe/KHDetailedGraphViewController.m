@@ -137,4 +137,8 @@ static const NSInteger KHkNumberOfGraphDays = 30;
     return [self.expectedDates objectAtIndex:index];
 }
 
+- (NSInteger)numberOfGapsBetweenLabelsOnLineGraph:(BEMSimpleLineGraphView *)graph {
+    return KHkNumberOfGraphDays;
+}
+
 @end
