@@ -133,12 +133,16 @@ static const NSInteger KHkNumberOfGraphDays = 30;
 }
 
 - (CGFloat)lineGraph:(BEMSimpleLineGraphView *)graph valueForPointAtIndex:(NSInteger)index {
-    if (index < [self.graphData count]) {
-        KHGraphPoint *data = [self.graphData objectAtIndex:index];
-        return [data count];
-    } else {
-        return 0;
+    if (index < [self.expectedDates count]) {
+        NSString *expectedDate = [self.expectedDates objectAtIndex:index];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"dateString == %@", expectedDate];
+        NSArray *matchingItems = [self.graphData filteredArrayUsingPredicate:predicate];
+        if ([matchingItems count] == 1) {
+            KHGraphPoint *data = [matchingItems firstObject];
+            return [data count];
+        }
     }
+    return 0;
 }
 
 - (NSString *)lineGraph:(BEMSimpleLineGraphView *)graph labelOnXAxisForIndex:(NSInteger)index {
