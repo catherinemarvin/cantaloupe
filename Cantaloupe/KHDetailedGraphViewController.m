@@ -13,6 +13,7 @@
 @interface KHDetailedGraphViewController ()<BEMSimpleLineGraphDataSource, BEMSimpleLineGraphDelegate>
 
 @property (nonatomic, strong) NSArray *graphData;
+@property (nonatomic, strong) NSArray *expectedDates;
 
 @property (nonatomic, strong) BEMSimpleLineGraphView *graphView;
 
@@ -26,9 +27,10 @@ static const NSInteger KHkNumberOfGraphDays = 30;
     self = [super init];
     
     if (self) {
-        self.graphData = graphData;
         self.navigationItem.title = title;
         self.edgesForExtendedLayout = UIRectEdgeNone;
+        _expectedDates = [self _expectedGraphDates];
+        [self _setGraphData:graphData];
     }
     
     return self;
@@ -53,8 +55,6 @@ static const NSInteger KHkNumberOfGraphDays = 30;
 }
 
 - (void)_setupGraphView {
-    [self _preprocessGraphData];
-    
     self.graphView = [[BEMSimpleLineGraphView alloc] init];
     self.graphView.labelFont = [UIFont fontWithName:@"Lato-Regular" size:14.0f];
     self.graphView.enableYAxisLabel = YES;
@@ -78,19 +78,14 @@ static const NSInteger KHkNumberOfGraphDays = 30;
  
  **/
 
-- (void)_preprocessGraphData {
+- (void)_setGraphData:(NSArray *)graphData {
     // First convert the NSDictionaries to KHGraphPoints for convenience
     
     NSMutableArray *newData = [NSMutableArray array];
-    for (NSDictionary *dict in self.graphData) {
+    for (NSDictionary *dict in graphData) {
         KHGraphPoint *graphPoint = [[KHGraphPoint alloc] initWithGraphDictionary:dict];
         [newData addObject:graphPoint];
     }
-    
-    // Now we need to fill in the missing gaps
-    
-    NSArray *expectedDates = [self _expectedGraphDates];
-    
     self.graphData = newData;
 }
 
@@ -117,7 +112,7 @@ static const NSInteger KHkNumberOfGraphDays = 30;
         [components setDay:-i];
         NSDate *date = [calendar dateByAddingComponents:components toDate:today options:0];
         NSString *string = [formatter stringFromDate:date];
-        [expected addObject:string];
+        [expected insertObject:string atIndex:0];
     }
     return expected;
 }
@@ -126,19 +121,20 @@ static const NSInteger KHkNumberOfGraphDays = 30;
 #pragma mark - BEMSimpleLineGraphViewDataSource
 
 - (NSInteger)numberOfPointsInLineGraph:(BEMSimpleLineGraphView *)graph {
-    return [self.graphData count];
+    return KHkNumberOfGraphDays;
 }
 
 - (CGFloat)lineGraph:(BEMSimpleLineGraphView *)graph valueForPointAtIndex:(NSInteger)index {
-    NSDictionary *data = [self.graphData objectAtIndex:index];
-    NSNumber *count = [data valueForKey:@"count"];
-    return [count floatValue];
+    if (index < [self.graphData count]) {
+        KHGraphPoint *data = [self.graphData objectAtIndex:index];
+        return [data count];
+    } else {
+        return 0;
+    }
 }
 
 - (NSString *)lineGraph:(BEMSimpleLineGraphView *)graph labelOnXAxisForIndex:(NSInteger)index {
-    NSDictionary *data = [self.graphData objectAtIndex:index];
-    NSString *date = [data valueForKey:@"date"];
-    return date;
+    return [self.expectedDates objectAtIndex:index];
 }
 
 @end
