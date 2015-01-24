@@ -36,6 +36,10 @@ static const int ddLogLevel = LOG_LEVEL_ALL;
     [super viewDidLoad];
     self.navigationItem.title = NSLocalizedString(@"News", nil);
     [self _requestNews];
+    
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(_requestNews) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = refreshControl;
 }
 
 - (void)_requestNews {
@@ -48,6 +52,7 @@ static const int ddLogLevel = LOG_LEVEL_ALL;
         
         self.posts = [responseDict valueForKeyPath:@"response.posts"];
         [self.tableView reloadData];
+        [self.refreshControl endRefreshing];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         DDLogError(@"Error: %@", error);
@@ -55,6 +60,7 @@ static const int ddLogLevel = LOG_LEVEL_ALL;
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Sorry", nil) message:NSLocalizedString(@"Please connect to the Internet and try again", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"Ok", nil) otherButtonTitles: nil];
             [alert show];
         }
+        [self.refreshControl endRefreshing];
     }];
 }
 
