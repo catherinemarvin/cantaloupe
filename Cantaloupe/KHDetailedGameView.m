@@ -78,12 +78,14 @@ static CGFloat KHkSideMargin = 10.0f;
         self.viewsLabel.text = NSLocalizedString(@"Views", nil);
         self.viewsLabel.textColor = [UIColor whiteColor];
         self.viewsLabel.font = [UIFont fontWithName:@"Lato-Regular" size:12.0f];
+        self.viewsLabel.textAlignment = NSTextAlignmentCenter;
         [_viewsContainer addSubview:self.viewsLabel];
         
         _viewsCountLabel = [[UILabel alloc] init];
         _viewsCountLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long) [_gameData views]];
         _viewsCountLabel.textColor = [UIColor whiteColor];
         _viewsCountLabel.font = [UIFont fontWithName:@"Lato-Regular" size:12.0f];
+        _viewsCountLabel.textAlignment = NSTextAlignmentCenter;
         [_viewsContainer addSubview:_viewsCountLabel];
         
         _purchasesContainer = [[UIView alloc] init];
@@ -93,12 +95,14 @@ static CGFloat KHkSideMargin = 10.0f;
         self.purchasesLabel.text = NSLocalizedString(@"Purchases", nil);
         self.purchasesLabel.textColor = [UIColor whiteColor];
         self.purchasesLabel.font = [UIFont fontWithName:@"Lato-Regular" size:12.0f];
+        self.purchasesLabel.textAlignment = NSTextAlignmentCenter;
         [_purchasesContainer addSubview:self.purchasesLabel];
         
         _purchasesCountLabel = [[UILabel alloc] init];
         _purchasesCountLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long) [_gameData purchases]];
         _purchasesCountLabel.textColor = [UIColor whiteColor];
         _purchasesCountLabel.font = [UIFont fontWithName:@"Lato-Regular" size:12.0f];
+        _purchasesCountLabel.textAlignment = NSTextAlignmentCenter;
         [_purchasesContainer addSubview:_purchasesCountLabel];
         
         _downloadsContainer = [[UIView alloc] init];
@@ -108,12 +112,14 @@ static CGFloat KHkSideMargin = 10.0f;
         self.downloadsLabel.text = NSLocalizedString(@"Downloads", nil);
         self.downloadsLabel.textColor = [UIColor whiteColor];
         self.downloadsLabel.font = [UIFont fontWithName:@"Lato-Regular" size:12.0f];
+        self.downloadsLabel.textAlignment = NSTextAlignmentCenter;
         [_downloadsContainer addSubview:self.downloadsLabel];
         
         _downloadsCountLabel = [[UILabel alloc] init];
         _downloadsCountLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long) [_gameData downloads]];
         _downloadsCountLabel.textColor = [UIColor whiteColor];
         _downloadsCountLabel.font = [UIFont fontWithName:@"Lato-Regular" size:12.0f];
+        _downloadsCountLabel.textAlignment = NSTextAlignmentCenter;
         [_downloadsContainer addSubview:_downloadsCountLabel];
         
         self.earningsLabel = [[UILabel alloc] init];
