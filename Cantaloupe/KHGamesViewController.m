@@ -58,6 +58,8 @@ static const int ddLogLevel = LOG_LEVEL_ALL;
     id tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"Games View Screen"];
     [tracker send:[[GAIDictionaryBuilder createAppView] build]];
+    
+    [self.collectionViewLayout invalidateLayout];
 }
 
 - (void)_requestGames {

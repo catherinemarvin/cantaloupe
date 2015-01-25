@@ -33,6 +33,7 @@
 		6E5FC2341921EE4000875CE1 /* KHDetailedGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E5FC2331921EE4000875CE1 /* KHDetailedGameView.m */; };
 		6E7290331A6AE8CC006748B3 /* KHGameInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7290321A6AE8CC006748B3 /* KHGameInfo.m */; };
 		6E7290361A6F60B1006748B3 /* KHGraphPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7290351A6F60B1006748B3 /* KHGraphPoint.m */; };
+		6E7290391A74C62C006748B3 /* KHSpringyCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7290381A74C62C006748B3 /* KHSpringyCollectionViewFlowLayout.m */; };
 		6E87706E190766EE007841EA /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6E87705C190766EE007841EA /* Lato-BoldItalic.ttf */; };
 		6E87706F190766EE007841EA /* Lato-HeavyItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6E87705D190766EE007841EA /* Lato-HeavyItalic.ttf */; };
 		6E877070190766EE007841EA /* Lato-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6E87705E190766EE007841EA /* Lato-SemiboldItalic.ttf */; };
@@ -124,6 +125,8 @@
 		6E7290321A6AE8CC006748B3 /* KHGameInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHGameInfo.m; sourceTree = "<group>"; };
 		6E7290341A6F60B1006748B3 /* KHGraphPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHGraphPoint.h; sourceTree = "<group>"; };
 		6E7290351A6F60B1006748B3 /* KHGraphPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHGraphPoint.m; sourceTree = "<group>"; };
+		6E7290371A74C62C006748B3 /* KHSpringyCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHSpringyCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		6E7290381A74C62C006748B3 /* KHSpringyCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHSpringyCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		6E87705C190766EE007841EA /* Lato-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BoldItalic.ttf"; sourceTree = "<group>"; };
 		6E87705D190766EE007841EA /* Lato-HeavyItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-HeavyItalic.ttf"; sourceTree = "<group>"; };
 		6E87705E190766EE007841EA /* Lato-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-SemiboldItalic.ttf"; sourceTree = "<group>"; };
@@ -233,6 +236,8 @@
 				6E94B62C18E7BE9500153B52 /* KHDetailedGameViewController.m */,
 				6E8C796D18D977DF00741704 /* KHGamesViewController.h */,
 				6E8C796E18D977DF00741704 /* KHGamesViewController.m */,
+				6E7290371A74C62C006748B3 /* KHSpringyCollectionViewFlowLayout.h */,
+				6E7290381A74C62C006748B3 /* KHSpringyCollectionViewFlowLayout.m */,
 			);
 			name = Games;
 			sourceTree = "<group>";
@@ -652,6 +657,7 @@
 				6E7290331A6AE8CC006748B3 /* KHGameInfo.m in Sources */,
 				6E87708419078112007841EA /* UIColor+KHAdditions.m in Sources */,
 				6E089C2819417FED00B1B8A1 /* KHNewsViewController.m in Sources */,
+				6E7290391A74C62C006748B3 /* KHSpringyCollectionViewFlowLayout.m in Sources */,
 				6E5FC2341921EE4000875CE1 /* KHDetailedGameView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
