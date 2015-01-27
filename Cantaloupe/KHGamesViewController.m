@@ -21,7 +21,10 @@
 
 @end
 
-static NSString *kGameCellIdentifier = @"gameCellIdentifier";
+static NSString *KHkGameCellIdentifier = @"gameCellIdentifier";
+static NSString *const KHkApiErrorKey = @"errors";
+static NSString *const KHkApiGamesKey = @"games";
+
 
 static const int ddLogLevel = LOG_LEVEL_ALL;
 
@@ -31,7 +34,7 @@ static const int ddLogLevel = LOG_LEVEL_ALL;
     self = [super initWithCollectionViewLayout:layout];
     if (self) {
         self.key = key;
-        [self.collectionView registerClass:[KHGameViewCell class] forCellWithReuseIdentifier:kGameCellIdentifier];
+        [self.collectionView registerClass:[KHGameViewCell class] forCellWithReuseIdentifier:KHkGameCellIdentifier];
         
         self.refreshControl = [[UIRefreshControl alloc] init];
         [self.collectionView addSubview:self.refreshControl];
@@ -69,14 +72,14 @@ static const int ddLogLevel = LOG_LEVEL_ALL;
     [manager POST:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *responseDict = (NSDictionary *)responseObject;
         
-        NSArray *errors = [responseDict valueForKey:@"errors"];
+        NSArray *errors = [responseDict valueForKey:KHkApiErrorKey];
         
         if (errors) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Sorry", nil) message:NSLocalizedString(@"Something went wrong.", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Ok", nil) otherButtonTitles:nil];
             [alert show];
             return;
         }
-        NSArray *games = [responseDict valueForKey:@"games"];
+        NSArray *games = [responseDict valueForKey:KHkApiGamesKey];
         self.games = games;
         [self.collectionView reloadData];
         
@@ -104,7 +107,7 @@ static const int ddLogLevel = LOG_LEVEL_ALL;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    KHGameViewCell *cell = (KHGameViewCell *) [collectionView dequeueReusableCellWithReuseIdentifier:kGameCellIdentifier forIndexPath:indexPath];
+    KHGameViewCell *cell = (KHGameViewCell *) [collectionView dequeueReusableCellWithReuseIdentifier:KHkGameCellIdentifier forIndexPath:indexPath];
     id obj = [self.games objectAtIndex:indexPath.row];
     if ([obj isKindOfClass:[NSDictionary class]]) {
         NSDictionary *gameDictionary = (NSDictionary *)obj;
@@ -129,7 +132,7 @@ static const int ddLogLevel = LOG_LEVEL_ALL;
 #pragma mark - Collection View Delegate Flow Layout
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(self.collectionView.bounds.size.width, 200.0f);
+    return CGSizeMake(CGRectGetWidth(self.collectionView.frame), 200.0f);
 }
 
 @end
