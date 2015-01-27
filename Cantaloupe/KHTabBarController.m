@@ -12,8 +12,6 @@
 #import "KHGraphsViewController.h"
 #import "KHNewsViewController.h"
 
-#import "KHSpringyCollectionViewFlowLayout.h"
-
 typedef NS_ENUM(NSInteger, KHTabViewControllerTag) {
     KHGamesViewControllerTag,
     KHSettingsViewControllerTag,
@@ -39,7 +37,7 @@ typedef NS_ENUM(NSInteger, KHTabViewControllerTag) {
     if (self) {
         self.key = key;
         
-        KHSpringyCollectionViewFlowLayout *layout = [[KHSpringyCollectionViewFlowLayout alloc] init];
+        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         
         self.gamesViewController = [[KHGamesViewController alloc] initWithCollectionViewLayout:layout key:key];
         self.gamesViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Games",nil) image:[UIImage imageNamed:@"gamesIcon"] tag:KHGamesViewControllerTag];
