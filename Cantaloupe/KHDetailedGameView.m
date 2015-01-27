@@ -159,7 +159,7 @@ static CGFloat KHkSideMargin = 10.0f;
     [self.statsRow mas_updateConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self).with.offset(KHkSideMargin);
         make.right.equalTo(self).with.offset(-KHkSideMargin);
-        make.top.equalTo(self.descriptionLabel.mas_bottom);
+        make.top.equalTo(self.descriptionLabel.mas_bottom).with.offset(10);
         make.height.equalTo(self.viewsContainer);
     }];
     
