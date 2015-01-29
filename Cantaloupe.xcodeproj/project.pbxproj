@@ -67,6 +67,9 @@
 		6E8C796C18D9761000741704 /* KHTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8C796B18D9761000741704 /* KHTabBarController.m */; };
 		6E8C796F18D977DF00741704 /* KHGamesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8C796E18D977DF00741704 /* KHGamesViewController.m */; };
 		6E94B62D18E7BE9500153B52 /* KHDetailedGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E94B62C18E7BE9500153B52 /* KHDetailedGameViewController.m */; };
+		6E9875501A7A21090042B3DD /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E98754F1A7A21090042B3DD /* logo@2x.png */; };
+		6E9875531A7A21130042B3DD /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E9875511A7A21130042B3DD /* logo.png */; };
+		6E9875541A7A21130042B3DD /* logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E9875521A7A21130042B3DD /* logo@3x.png */; };
 		6ECBBDE719233EA700D00E30 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 6ECBBDE619233EA700D00E30 /* placeholder.png */; };
 		6EE7FC7718E697B8008AF5FF /* KHGameViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE7FC7618E697B8008AF5FF /* KHGameViewCell.m */; };
 		80ECE71DA3B64FF1B774964C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF3C06EFF674E0381459280 /* libPods.a */; };
@@ -166,6 +169,9 @@
 		6E8C796E18D977DF00741704 /* KHGamesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHGamesViewController.m; sourceTree = "<group>"; };
 		6E94B62B18E7BE9500153B52 /* KHDetailedGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHDetailedGameViewController.h; sourceTree = "<group>"; };
 		6E94B62C18E7BE9500153B52 /* KHDetailedGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHDetailedGameViewController.m; sourceTree = "<group>"; };
+		6E98754F1A7A21090042B3DD /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
+		6E9875511A7A21130042B3DD /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		6E9875521A7A21130042B3DD /* logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@3x.png"; sourceTree = "<group>"; };
 		6ECBBDE619233EA700D00E30 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		6EE7FBCE18E557CA008AF5FF /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		6EE7FC7518E697B8008AF5FF /* KHGameViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHGameViewCell.h; sourceTree = "<group>"; };
@@ -444,7 +450,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		6EFE170818E295300000C6FE /* Images */ = {
+		6E98754D1A7A20EB0042B3DD /* Tab Bar */ = {
 			isa = PBXGroup;
 			children = (
 				6E5A89611910AA490062355C /* gamesIcon.png */,
@@ -453,11 +459,30 @@
 				6E5A89721910AC880062355C /* graphsIcon@2x.png */,
 				6E089C29194189F100B1B8A1 /* newsIcon.png */,
 				6E089C2B194189FF00B1B8A1 /* newsIcon@2x.png */,
-				6ECBBDE619233EA700D00E30 /* placeholder.png */,
 				6E5A89651910AA8B0062355C /* purchasesIcon.png */,
 				6E5A89671910AA9A0062355C /* purchasesIcon@2x.png */,
 				6E5A89691910AAB00062355C /* settingsIcon.png */,
 				6E5A896B1910AAC00062355C /* settingsIcon@2x.png */,
+			);
+			name = "Tab Bar";
+			sourceTree = "<group>";
+		};
+		6E98754E1A7A20FF0042B3DD /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				6E9875511A7A21130042B3DD /* logo.png */,
+				6E98754F1A7A21090042B3DD /* logo@2x.png */,
+				6E9875521A7A21130042B3DD /* logo@3x.png */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		6EFE170818E295300000C6FE /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				6E98754E1A7A20FF0042B3DD /* Login */,
+				6E98754D1A7A20EB0042B3DD /* Tab Bar */,
+				6ECBBDE619233EA700D00E30 /* placeholder.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -551,9 +576,11 @@
 			files = (
 				6E877072190766EE007841EA /* Lato-Italic.ttf in Resources */,
 				6ECBBDE719233EA700D00E30 /* placeholder.png in Resources */,
+				6E9875531A7A21130042B3DD /* logo.png in Resources */,
 				6E877071190766EE007841EA /* Lato-MediumItalic.ttf in Resources */,
 				6E8C78F118D81C3500741704 /* InfoPlist.strings in Resources */,
 				6E5A89621910AA490062355C /* gamesIcon.png in Resources */,
+				6E9875541A7A21130042B3DD /* logo@3x.png in Resources */,
 				6E5A89661910AA8B0062355C /* purchasesIcon.png in Resources */,
 				6E5A89681910AA9A0062355C /* purchasesIcon@2x.png in Resources */,
 				6E877075190766EE007841EA /* Lato-Bold.ttf in Resources */,
@@ -574,6 +601,7 @@
 				6E877074190766EE007841EA /* Lato-BlackItalic.ttf in Resources */,
 				6E87706F190766EE007841EA /* Lato-HeavyItalic.ttf in Resources */,
 				6E87707C190766EE007841EA /* Lato-Light.ttf in Resources */,
+				6E9875501A7A21090042B3DD /* logo@2x.png in Resources */,
 				6E089C2C194189FF00B1B8A1 /* newsIcon@2x.png in Resources */,
 				6E87707D190766EE007841EA /* Lato-Thin.ttf in Resources */,
 				6E87707B190766EE007841EA /* Lato-LightItalic.ttf in Resources */,
