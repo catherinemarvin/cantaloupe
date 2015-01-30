@@ -8,10 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KHLoginViewController : UIViewController<UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
-
-@property (nonatomic, strong) UITextField *usernameField;
-@property (nonatomic, strong) UITextField *passwordField;
-@property (nonatomic, strong) UIButton *loginButton;
+@interface KHLoginViewController : UIViewController
 
 @end

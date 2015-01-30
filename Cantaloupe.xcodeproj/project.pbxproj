@@ -70,6 +70,7 @@
 		6E9875501A7A21090042B3DD /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E98754F1A7A21090042B3DD /* logo@2x.png */; };
 		6E9875531A7A21130042B3DD /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E9875511A7A21130042B3DD /* logo.png */; };
 		6E9875541A7A21130042B3DD /* logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E9875521A7A21130042B3DD /* logo@3x.png */; };
+		6E9875581A7B57850042B3DD /* KHLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E9875571A7B57850042B3DD /* KHLoginView.m */; };
 		6ECBBDE719233EA700D00E30 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 6ECBBDE619233EA700D00E30 /* placeholder.png */; };
 		6EE7FC7718E697B8008AF5FF /* KHGameViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE7FC7618E697B8008AF5FF /* KHGameViewCell.m */; };
 		80ECE71DA3B64FF1B774964C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF3C06EFF674E0381459280 /* libPods.a */; };
@@ -172,6 +173,8 @@
 		6E98754F1A7A21090042B3DD /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
 		6E9875511A7A21130042B3DD /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		6E9875521A7A21130042B3DD /* logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@3x.png"; sourceTree = "<group>"; };
+		6E9875561A7B57850042B3DD /* KHLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHLoginView.h; sourceTree = "<group>"; };
+		6E9875571A7B57850042B3DD /* KHLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHLoginView.m; sourceTree = "<group>"; };
 		6ECBBDE619233EA700D00E30 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		6EE7FBCE18E557CA008AF5FF /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		6EE7FC7518E697B8008AF5FF /* KHGameViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHGameViewCell.h; sourceTree = "<group>"; };
@@ -209,6 +212,7 @@
 		6E068B3018DA76AE00885A95 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6E9875551A7B57710042B3DD /* Graphs */,
 				6E089C95194AAA3100B1B8A1 /* News */,
 				6E089C94194AAA2100B1B8A1 /* Graphs */,
 				6E089C93194AAA1900B1B8A1 /* Games */,
@@ -477,6 +481,15 @@
 			name = Login;
 			sourceTree = "<group>";
 		};
+		6E9875551A7B57710042B3DD /* Graphs */ = {
+			isa = PBXGroup;
+			children = (
+				6E9875561A7B57850042B3DD /* KHLoginView.h */,
+				6E9875571A7B57850042B3DD /* KHLoginView.m */,
+			);
+			name = Graphs;
+			sourceTree = "<group>";
+		};
 		6EFE170818E295300000C6FE /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -668,6 +681,7 @@
 				6E068B2F18DA742A00885A95 /* KHLoginViewController.m in Sources */,
 				6E089C8D194AA54500B1B8A1 /* KHDetailedNewsViewController.m in Sources */,
 				6E5A897C1910B4770062355C /* KHGraphsViewCell.m in Sources */,
+				6E9875581A7B57850042B3DD /* KHLoginView.m in Sources */,
 				6E089C85194961F600B1B8A1 /* KHNewsViewCell.m in Sources */,
 				6E7290361A6F60B1006748B3 /* KHGraphPoint.m in Sources */,
 				6E8C78F718D81C3500741704 /* KHAppDelegate.m in Sources */,

@@ -10,16 +10,17 @@
 #import "AFNetworking.h"
 #import "KHTabBarController.h"
 #import <QuartzCore/QuartzCore.h>
-#import "SSKeychain.h"
-#import "MBProgressHUD.h"
+#import <SSKeychain/SSKeychain.h>
+#import <MBProgressHUD/MBProgressHUD.h>
+#import "KHLoginView.h"
 
-@interface KHLoginViewController ()
+@interface KHLoginViewController ()<UITextFieldDelegate>
 
-@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, weak) UITextField *usernameField;
+@property (nonatomic, weak) UITextField *passwordField;
 
 @end
 
-static NSString *kCellIdentifier = @"loginCell";
 static NSString *kKeychainServiceKey = @"com.khwang.Cantaloupe";
 static NSString *kUserKey = @"kCantaloupeCurrentUser";
 
@@ -31,54 +32,20 @@ static const int ddLogLevel = LOG_LEVEL_ALL;
 {
     self = [super init];
     if (self) {
-        self.usernameField = [[UITextField alloc] initWithFrame:CGRectZero];
-        self.usernameField.font = [UIFont fontWithName:@"Lato-Regular" size:16.0f];
-        self.usernameField.placeholder = NSLocalizedString(@"Username", nil);
-        self.usernameField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-        self.usernameField.returnKeyType = UIReturnKeyNext;
-        self.usernameField.delegate = self;
         
-        self.passwordField = [[UITextField alloc] initWithFrame:CGRectZero];
-        self.passwordField.font = [UIFont fontWithName:@"Lato-Regular" size:16.0f];
-        self.passwordField.placeholder = NSLocalizedString(@"Password", nil);
-        self.passwordField.secureTextEntry = YES;
-        self.passwordField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-        self.passwordField.returnKeyType = UIReturnKeyGo;
-        self.passwordField.delegate = self;
-        
-        self.loginButton = [[UIButton alloc] initWithFrame:CGRectZero];
-        self.loginButton.titleLabel.font = [UIFont fontWithName:@"Lato-Regular" size:16.0f];
-        [self.loginButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [self.loginButton setTitle:@"Login" forState:UIControlStateNormal];
-        [self.loginButton addTarget:self action:@selector(loginTapped:) forControlEvents:UIControlEventTouchUpInside];
     }
     return self;
 }
 
 - (void)loadView {
-    UIView *view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
-    view.backgroundColor = [UIColor whiteColor];
+    KHLoginView *view = [[KHLoginView alloc] initWithFrame:[UIScreen mainScreen].applicationFrame];
+    view.usernameField.delegate = self;
+    view.passwordField.delegate = self;
     
-    CGFloat xMargin = 20.0f;
-    CGFloat yMargin = 20.0f;
-    
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(xMargin, yMargin, floorf(view.bounds.size.width - 2 * xMargin), 132.0f) style:UITableViewStyleGrouped];
-    tableView.layer.cornerRadius = 10.0f;
-    tableView.separatorInset = UIEdgeInsetsZero;
-    tableView.delegate = self;
-    tableView.dataSource = self;
-    tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-    tableView.layer.borderWidth = 1.0f;
-    tableView.layer.borderColor = tableView.separatorColor.CGColor;
-    tableView.backgroundColor = [UIColor clearColor];
-    tableView.scrollEnabled = NO;
-    [view addSubview:tableView];
-    
-    self.loginButton.frame = CGRectZero;
-    [view addSubview:self.loginButton];
+    self.usernameField = view.usernameField;
+    self.passwordField = view.passwordField;
     
     self.view = view;
-    self.tableView = tableView;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -86,80 +53,6 @@ static const int ddLogLevel = LOG_LEVEL_ALL;
     id tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"Login Screen"];
     [tracker send:[[GAIDictionaryBuilder createAppView] build]];
-}
-
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-    CGRect frame = self.tableView.frame;
-    frame.size.width = floorf(self.view.bounds.size.width - 2 * 20.0f);
-    self.tableView.frame = frame;
-    
-    CGRect loginFrame = self.loginButton.frame;
-    loginFrame.size.width = frame.size.width;
-    self.loginButton.frame = loginFrame;
-}
-
-#pragma mark - UITableViewDataSource
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-#pragma mark - UITableViewDelegate
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 44.0f;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 1;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 0.01f;
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-    return [[UIView alloc] initWithFrame:CGRectZero];
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    return [[UIView alloc] initWithFrame:CGRectZero];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kCellIdentifier];
-    }
-    
-    // Configure cell
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    CGFloat xOffset = 20.0f;
-    switch (indexPath.row) {
-        case 0:
-            self.usernameField.frame = CGRectMake(xOffset, cell.frame.origin.y, tableView.frame.size.width - 2 * xOffset, cell.frame.size.height);
-            [cell.contentView addSubview:self.usernameField];
-            break;
-        case 1:
-            self.passwordField.frame = CGRectMake(xOffset, cell.frame.origin.y, tableView.frame.size.width - 2 * xOffset, cell.frame.size.height);
-            [cell.contentView addSubview:self.passwordField];
-            break;
-        case 2:
-            self.loginButton.frame = CGRectMake(cell.frame.origin.x, cell.frame.origin.y, tableView.frame.size.width, cell.frame.size.height);
-            [cell.contentView addSubview:self.loginButton];
-            break;
-        default:
-            break;
-    }
-    cell.frame = CGRectMake(cell.frame.origin.x, cell.frame.origin.y, tableView.frame.size.width, cell.frame.size.height);
-    cell.contentView.frame = CGRectMake(cell.contentView.frame.origin.x, cell.contentView.frame.origin.y, tableView.frame.size.width, cell.contentView.frame.size.height);
-    return cell;
 }
 
 #pragma mark - UITextFieldDelegate
