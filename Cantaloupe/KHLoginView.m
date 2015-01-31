@@ -35,6 +35,11 @@
         _passwordField.returnKeyType = UIReturnKeyGo;
         [_formContainer addSubview:_passwordField];
         
+        _loginButton = [[UIButton alloc] init];
+        [_loginButton setTitle:NSLocalizedString(@"Sign in", nil) forState:UIControlStateNormal];
+        [_loginButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [_formContainer addSubview:_loginButton];
+        
         self.backgroundColor = [UIColor whiteColor];
         [self setNeedsUpdateConstraints];
     }
@@ -59,6 +64,11 @@
     [self.passwordField mas_updateConstraints:^(MASConstraintMaker *make) {
         make.left.and.right.equalTo(self.usernameField);
         make.top.equalTo(self.usernameField.mas_bottom);
+    }];
+    
+    [self.loginButton mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.left.and.right.equalTo(self.usernameField);
+        make.top.equalTo(self.passwordField.mas_bottom);
         make.bottom.equalTo(self.formContainer);
     }];
     [super updateConstraints];
