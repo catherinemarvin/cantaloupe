@@ -41,6 +41,7 @@ static const int ddLogLevel = LOG_LEVEL_ALL;
     KHLoginView *view = [[KHLoginView alloc] initWithFrame:[UIScreen mainScreen].applicationFrame];
     view.usernameField.delegate = self;
     view.passwordField.delegate = self;
+    [view.loginButton addTarget:self action:@selector(_loginTapped:) forControlEvents:UIControlEventTouchUpInside];
     
     self.usernameField = view.usernameField;
     self.passwordField = view.passwordField;
@@ -63,14 +64,14 @@ static const int ddLogLevel = LOG_LEVEL_ALL;
         return NO;
     } else {
         [textField resignFirstResponder];
-        [self loginTapped:nil];
+        [self _loginTapped:nil];
         return YES;
     }
 }
 
 #pragma mark - Button press
 
-- (void)loginTapped:(id)sender {
+- (void)_loginTapped:(id)sender {
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action" action:@"button_press" label:@"login" value:nil] build]];
     
