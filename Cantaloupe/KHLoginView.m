@@ -37,7 +37,8 @@
         
         _loginButton = [[UIButton alloc] init];
         [_loginButton setTitle:NSLocalizedString(@"Sign in", nil) forState:UIControlStateNormal];
-        [_loginButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [_loginButton setTitleColor:[UIColor textColor] forState:UIControlStateNormal];
+        [_loginButton setBackgroundColor:[UIColor linkColor]];
         [_formContainer addSubview:_loginButton];
         
         self.backgroundColor = [UIColor whiteColor];
