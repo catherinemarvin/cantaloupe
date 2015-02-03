@@ -75,9 +75,9 @@
         make.right.equalTo(self).with.offset(-margin);
         
         if (self.loginFormVisible) {
-            self.formPositionConstraint = make.centerY.equalTo(self);
+            self.formPositionConstraint = make.centerY.equalTo(self.mas_centerY);
         } else {
-            self.formPositionConstraint = make.centerY.equalTo(@(-1000));
+            self.formPositionConstraint = make.bottom.equalTo(self.mas_top);
         }
     }];
     
@@ -105,6 +105,8 @@
 
 - (void)animate {
     self.loginFormVisible = YES;
+    
+    [self.formPositionConstraint uninstall];
     
     [UIView animateWithDuration:0.7f
                           delay:0.0f
