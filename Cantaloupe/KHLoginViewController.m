@@ -19,6 +19,8 @@
 @property (nonatomic, weak) UITextField *usernameField;
 @property (nonatomic, weak) UITextField *passwordField;
 
+@property (nonatomic, strong) KHLoginView *loginView;
+
 @end
 
 static NSString *kKeychainServiceKey = @"com.khwang.Cantaloupe";
@@ -46,6 +48,7 @@ static const int ddLogLevel = LOG_LEVEL_ALL;
     self.usernameField = view.usernameField;
     self.passwordField = view.passwordField;
     
+    self.loginView = view;
     self.view = view;
 }
 
@@ -54,6 +57,8 @@ static const int ddLogLevel = LOG_LEVEL_ALL;
     id tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"Login Screen"];
     [tracker send:[[GAIDictionaryBuilder createAppView] build]];
+    
+    [self.loginView animate];
 }
 
 #pragma mark - UITextFieldDelegate

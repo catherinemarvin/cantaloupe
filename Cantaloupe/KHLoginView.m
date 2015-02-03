@@ -14,12 +14,17 @@
 @property (nonatomic, strong) UIView *usernameSpacer;
 @property (nonatomic, strong) UIView *passwordSpacer;
 
+@property (nonatomic, assign) BOOL loginFormVisible;
+@property (nonatomic, strong) MASConstraint *formPositionConstraint;
+
 @end
 
 @implementation KHLoginView
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
+        _loginFormVisible = NO;
+        
         _formContainer = [[UIView alloc] init];
         _formContainer.backgroundColor = [UIColor whiteColor];
         [self addSubview:_formContainer];
@@ -68,7 +73,12 @@
     [self.formContainer mas_updateConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self).with.offset(margin);
         make.right.equalTo(self).with.offset(-margin);
-        make.centerY.equalTo(self);
+        
+        if (self.loginFormVisible) {
+            self.formPositionConstraint = make.centerY.equalTo(self);
+        } else {
+            self.formPositionConstraint = make.centerY.equalTo(@(-1000));
+        }
     }];
     
     [self.usernameField mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -91,6 +101,21 @@
         make.height.equalTo(@(verticalHeight));
     }];
     [super updateConstraints];
+}
+
+- (void)animate {
+    self.loginFormVisible = YES;
+    
+    [UIView animateWithDuration:0.7f
+                          delay:0.0f
+         usingSpringWithDamping:0.8f
+          initialSpringVelocity:0.0f
+                        options:0
+                     animations:^{
+                         [self setNeedsUpdateConstraints];
+                         [self layoutIfNeeded];
+                     }
+                     completion:nil];
 }
 
 @end

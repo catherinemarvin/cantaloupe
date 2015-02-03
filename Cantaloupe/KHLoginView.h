@@ -14,4 +14,6 @@
 @property (nonatomic, strong, readonly) UITextField *passwordField;
 @property (nonatomic, strong, readonly) UIButton *loginButton;
 
+- (void)animate;
+
 @end
