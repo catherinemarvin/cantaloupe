@@ -10,6 +10,7 @@
 #import "KHGraphsViewCell.h"
 #import "AFNetworking.h"
 #import "KHDetailedGraphViewController.h"
+#import "KHGraphDataSource.h"
 
 static NSString *kGraphsCellIdentifier = @"kGraphsCell";
 

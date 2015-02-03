@@ -30,6 +30,7 @@
 		6E5A89731910AC880062355C /* graphsIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E5A89721910AC880062355C /* graphsIcon@2x.png */; };
 		6E5A897C1910B4770062355C /* KHGraphsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E5A897B1910B4770062355C /* KHGraphsViewCell.m */; };
 		6E5A897F1910BD530062355C /* KHDetailedGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E5A897E1910BD530062355C /* KHDetailedGraphViewController.m */; };
+		6E5B3F411A81416D0091A556 /* KHGraphDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E5B3F401A81416D0091A556 /* KHGraphDataSource.m */; };
 		6E5FC2341921EE4000875CE1 /* KHDetailedGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E5FC2331921EE4000875CE1 /* KHDetailedGameView.m */; };
 		6E7290331A6AE8CC006748B3 /* KHGameInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7290321A6AE8CC006748B3 /* KHGameInfo.m */; };
 		6E7290361A6F60B1006748B3 /* KHGraphPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7290351A6F60B1006748B3 /* KHGraphPoint.m */; };
@@ -122,6 +123,8 @@
 		6E5A897B1910B4770062355C /* KHGraphsViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHGraphsViewCell.m; sourceTree = "<group>"; };
 		6E5A897D1910BD530062355C /* KHDetailedGraphViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHDetailedGraphViewController.h; sourceTree = "<group>"; };
 		6E5A897E1910BD530062355C /* KHDetailedGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHDetailedGraphViewController.m; sourceTree = "<group>"; };
+		6E5B3F3F1A81416D0091A556 /* KHGraphDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHGraphDataSource.h; sourceTree = "<group>"; };
+		6E5B3F401A81416D0091A556 /* KHGraphDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHGraphDataSource.m; sourceTree = "<group>"; };
 		6E5FC2321921EE4000875CE1 /* KHDetailedGameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHDetailedGameView.h; sourceTree = "<group>"; };
 		6E5FC2331921EE4000875CE1 /* KHDetailedGameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHDetailedGameView.m; sourceTree = "<group>"; };
 		6E7290311A6AE8CC006748B3 /* KHGameInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHGameInfo.h; sourceTree = "<group>"; };
@@ -254,6 +257,8 @@
 				6E5A897E1910BD530062355C /* KHDetailedGraphViewController.m */,
 				6E5A896D1910AB4B0062355C /* KHGraphsViewController.h */,
 				6E5A896E1910AB4B0062355C /* KHGraphsViewController.m */,
+				6E5B3F3F1A81416D0091A556 /* KHGraphDataSource.h */,
+				6E5B3F401A81416D0091A556 /* KHGraphDataSource.m */,
 			);
 			name = Graphs;
 			sourceTree = "<group>";
@@ -686,6 +691,7 @@
 				6E7290361A6F60B1006748B3 /* KHGraphPoint.m in Sources */,
 				6E8C78F718D81C3500741704 /* KHAppDelegate.m in Sources */,
 				6E5A896F1910AB4B0062355C /* KHGraphsViewController.m in Sources */,
+				6E5B3F411A81416D0091A556 /* KHGraphDataSource.m in Sources */,
 				6E5A897F1910BD530062355C /* KHDetailedGraphViewController.m in Sources */,
 				6E089C88194AA32400B1B8A1 /* KHNewsView.m in Sources */,
 				6E32CA0518EBDCE300156EAD /* KHSettingsViewController.m in Sources */,
