@@ -11,8 +11,11 @@
 @interface KHLoginView()
 
 @property (nonatomic, strong) UIView *formContainer;
+@property (nonatomic, strong) UIView *usernameSpacer;
+@property (nonatomic, strong) UIView *passwordSpacer;
 
 @end
+
 @implementation KHLoginView
 
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -29,6 +32,10 @@
         _usernameField.backgroundColor = [UIColor colorFromHexString:@"F2F2F2"];
         [_formContainer addSubview:_usernameField];
         
+        _usernameSpacer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
+        [_usernameField setLeftViewMode:UITextFieldViewModeAlways];
+        [_usernameField setLeftView:_usernameSpacer];
+        
         _passwordField = [[UITextField alloc] init];
         _passwordField.font = [UIFont fontWithName:@"Lato-Regular" size:16.0f];
         _passwordField.placeholder = NSLocalizedString(@"Password", nil);
@@ -37,6 +44,10 @@
         _passwordField.returnKeyType = UIReturnKeyGo;
         _passwordField.backgroundColor = [UIColor colorFromHexString:@"F2F2F2"];
         [_formContainer addSubview:_passwordField];
+        
+        _passwordSpacer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
+        [_passwordField setLeftViewMode:UITextFieldViewModeAlways];
+        [_passwordField setLeftView:_passwordSpacer];
         
         _loginButton = [[UIButton alloc] init];
         [_loginButton setTitle:NSLocalizedString(@"Sign in", nil) forState:UIControlStateNormal];
