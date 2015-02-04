@@ -9,13 +9,19 @@
 #import "KHDetailedGraphViewController.h"
 #import <BEMSimpleLineGraph/BEMSimpleLineGraphView.h>
 #import "KHGraphPoint.h"
+#import "KHGraphDataManager.h"
+#import "KHGraphDataManagerDelegate.h"
 
-@interface KHDetailedGraphViewController ()<BEMSimpleLineGraphDataSource, BEMSimpleLineGraphDelegate>
+@interface KHDetailedGraphViewController ()<BEMSimpleLineGraphDataSource, BEMSimpleLineGraphDelegate, KHGraphDataManagerDelegate>
 
 @property (nonatomic, strong) NSArray *graphData;
 @property (nonatomic, strong) NSArray *expectedDates;
 
 @property (nonatomic, strong) BEMSimpleLineGraphView *graphView;
+
+@property (nonatomic, strong) NSString *key;
+@property (nonatomic, assign) KHGraphType graphType;
+@property (nonatomic, strong) KHGraphDataManager *dataManager;
 
 @end
 
@@ -23,23 +29,30 @@ static const NSInteger KHkNumberOfGraphDays = 30;
 
 @implementation KHDetailedGraphViewController
 
-- (id)initWithData:(NSArray *)graphData title:(NSString *)title {
+- (instancetype)initWithGraphType:(KHGraphType)graphType key:(NSString *)key {
     self = [super init];
     
     if (self) {
-        self.navigationItem.title = title;
-        self.edgesForExtendedLayout = UIRectEdgeNone;
+        _graphType = graphType;
+        _key = key;
         _expectedDates = [self _expectedGraphDates];
-        [self _setGraphData:graphData];
+        _dataManager = [[KHGraphDataManager alloc] initWithKey:key delegate:self];
+        
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+        
     }
-    
     return self;
+    
+}
+
+- (void)viewDidLoad {
+    [self.dataManager requestGraphData];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     id tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker set:kGAIScreenName value:self.analyticsTitle];
+    [tracker set:kGAIScreenName value:[self _graphTypeToAnalyticsTitle:self.graphType]];
     [tracker send:[[GAIDictionaryBuilder createAppView] build]];
 }
 
@@ -78,25 +91,6 @@ static const NSInteger KHkNumberOfGraphDays = 30;
     }];
 }
 
-/**
- 
- @brief Ensures that self.graphData is well-populated.
- 
- The API doesn't return values for when dates have a value of 0 for anything, so it's up to us to manually insert them.
- 
- **/
-
-- (void)_setGraphData:(NSArray *)graphData {
-    // First convert the NSDictionaries to KHGraphPoints for convenience
-    
-    NSMutableArray *newData = [NSMutableArray array];
-    for (NSDictionary *dict in graphData) {
-        KHGraphPoint *graphPoint = [[KHGraphPoint alloc] initWithGraphDictionary:dict];
-        [newData addObject:graphPoint];
-    }
-    self.graphData = newData;
-}
-
 /// @brief Returns an array of NSDates corresponding to the expected dates in this graph. There should be KhkNumberOfGraphDays entries
 - (NSArray *)_expectedGraphDates {
     NSMutableArray *expected = [NSMutableArray array];
@@ -125,6 +119,14 @@ static const NSInteger KHkNumberOfGraphDays = 30;
     return expected;
 }
 
+#pragma mark - KHGraphDataManagerDelegate
+
+- (void)receivedGraphData:(NSDictionary *)graphData {
+    NSString *key = [self.dataManager graphTypeToResponseKey:self.graphType];
+    self.graphData = [graphData objectForKey:key];
+    [self.graphView reloadGraph];
+}
+
 
 #pragma mark - BEMSimpleLineGraphViewDataSource
 
@@ -151,6 +153,30 @@ static const NSInteger KHkNumberOfGraphDays = 30;
 
 - (NSInteger)numberOfGapsBetweenLabelsOnLineGraph:(BEMSimpleLineGraphView *)graph {
     return KHkNumberOfGraphDays;
+}
+
+#pragma mark - Analytics
+
+- (NSString *)_graphTypeToAnalyticsTitle:(KHGraphType)graphType {
+    switch (graphType) {
+        case KHGraphTypeDownloads: {
+            return @"Downloads Graph Screen";
+            break;
+        }
+        case KHGraphTypePurchases: {
+            return @"Purchases Graph Screen";
+            break;
+        }
+        case KHGraphTypeViews: {
+            return @"Views Graph Screen";
+            break;
+        }
+            
+        default: {
+            return @"Unknown Graph Screen";
+            break;
+        }
+    }
 }
 
 @end

@@ -8,26 +8,16 @@
 
 #import "KHGraphsViewController.h"
 #import "KHGraphsViewCell.h"
-#import "AFNetworking.h"
 #import "KHDetailedGraphViewController.h"
 #import "KHGraphDataSource.h"
+#import "KHGraphDataManager.h"
 
-static NSString *kGraphsCellIdentifier = @"kGraphsCell";
-
-static const int ddLogLevel = LOG_LEVEL_ALL;
-
-typedef NS_ENUM(NSUInteger, KHGraphsCells) {
-    KHGraphsCellNone,
-    KHGraphsCellPurchases,
-    KHGraphsCellViews,
-    KHGraphsCellDownloads
-};
+static NSString *KHkGraphsCellIdentifier = @"kGraphsCell";
 
 @interface KHGraphsViewController ()
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSString *key;
-@property (nonatomic, strong) NSDictionary *graphData;
 
 @end
 
@@ -44,7 +34,6 @@ typedef NS_ENUM(NSUInteger, KHGraphsCells) {
     self = [super init];
     if (self) {
         self.key = key;
-        [self _requestGraphs];
     }
     return self;
 }
@@ -61,7 +50,7 @@ typedef NS_ENUM(NSUInteger, KHGraphsCells) {
 {
     [super viewDidLoad];
     self.navigationItem.title = NSLocalizedString(@"Graphs", nil);
-    [self.tableView registerClass:[KHGraphsViewCell class] forCellReuseIdentifier:kGraphsCellIdentifier];
+    [self.tableView registerClass:[KHGraphsViewCell class] forCellReuseIdentifier:KHkGraphsCellIdentifier];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -83,7 +72,7 @@ typedef NS_ENUM(NSUInteger, KHGraphsCells) {
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    KHGraphsViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kGraphsCellIdentifier forIndexPath:indexPath];
+    KHGraphsViewCell *cell = [tableView dequeueReusableCellWithIdentifier:KHkGraphsCellIdentifier forIndexPath:indexPath];
     
     [self customizeCell:cell atIndexPath:indexPath];
     return cell;
@@ -94,79 +83,25 @@ typedef NS_ENUM(NSUInteger, KHGraphsCells) {
     
     if (row == 0) {
         cell.textLabel.text = NSLocalizedString(@"Purchases", nil);
-        cell.tag = KHGraphsCellPurchases;
+        cell.tag = KHGraphTypePurchases;
         
     } else if (row == 1) {
         cell.textLabel.text = NSLocalizedString(@"Views", nil);
-        cell.tag = KHGraphsCellViews;
+        cell.tag = KHGraphTypeViews;
         
     } else if (row == 2) {
         cell.textLabel.text = NSLocalizedString(@"Downloads", nil);
-        cell.tag = KHGraphsCellDownloads;
+        cell.tag = KHGraphTypeDownloads;
     }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
-    NSString *key;
-    switch (cell.tag) {
-        case KHGraphsCellPurchases:
-            key = @"purchases";
-            break;
-        case KHGraphsCellViews:
-            key = @"views";
-            break;
-        case KHGraphsCellDownloads:
-            key = @"downloads";
-            break;
-        default:
-            break;
-    }
+    KHDetailedGraphViewController *detailedGraphController = [[KHDetailedGraphViewController alloc] initWithGraphType:cell.tag key:self.key];
+    [self.navigationController pushViewController:detailedGraphController animated:YES];
     
-    if (key) {
-        NSArray *data = [self.graphData valueForKey:key];
-        
-        KHDetailedGraphViewController *detailedGraphController = [[KHDetailedGraphViewController alloc] initWithData:data title:[key capitalizedString]];
-        detailedGraphController.analyticsTitle = [self _analyticsTitleForGraphCell:cell.tag];
-        [self.navigationController pushViewController:detailedGraphController animated:YES];
-    }
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-
-- (NSString *)_analyticsTitleForGraphCell:(KHGraphsCells)cellType {
-    switch (cellType) {
-        case KHGraphsCellDownloads: {
-            return @"Downloads Graph Screen";
-        }
-        case KHGraphsCellPurchases: {
-            return @"Purchases Graph Screen";
-        }
-        case KHGraphsCellViews: {
-            return @"Views Graph Screen";
-        }
-        case KHGraphsCellNone:
-        default: {
-            return @"Unknown Graph Screen";
-        }
-    }
-}
-
-- (void)_requestGraphs {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    
-    NSString *url = [NSString stringWithFormat:@"http://itch.io/api/1/%@/my-games/graphs?num_days=30", self.key];
-    
-    [manager POST:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSDictionary *responseDict = (NSDictionary *)responseObject;
-        
-        self.graphData = responseDict;
-        
-    } failure:
-     ^(AFHTTPRequestOperation *operation, NSError *error) {
-         DDLogError(@"Error: %@", error);
-     }];
-}
-
 
 @end

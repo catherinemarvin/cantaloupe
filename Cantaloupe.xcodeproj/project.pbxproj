@@ -31,6 +31,7 @@
 		6E5A897C1910B4770062355C /* KHGraphsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E5A897B1910B4770062355C /* KHGraphsViewCell.m */; };
 		6E5A897F1910BD530062355C /* KHDetailedGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E5A897E1910BD530062355C /* KHDetailedGraphViewController.m */; };
 		6E5B3F411A81416D0091A556 /* KHGraphDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E5B3F401A81416D0091A556 /* KHGraphDataSource.m */; };
+		6E5B3F551A8202CE0091A556 /* KHGraphDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E5B3F541A8202CE0091A556 /* KHGraphDataManager.m */; };
 		6E5FC2341921EE4000875CE1 /* KHDetailedGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E5FC2331921EE4000875CE1 /* KHDetailedGameView.m */; };
 		6E7290331A6AE8CC006748B3 /* KHGameInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7290321A6AE8CC006748B3 /* KHGameInfo.m */; };
 		6E7290361A6F60B1006748B3 /* KHGraphPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7290351A6F60B1006748B3 /* KHGraphPoint.m */; };
@@ -125,6 +126,9 @@
 		6E5A897E1910BD530062355C /* KHDetailedGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHDetailedGraphViewController.m; sourceTree = "<group>"; };
 		6E5B3F3F1A81416D0091A556 /* KHGraphDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHGraphDataSource.h; sourceTree = "<group>"; };
 		6E5B3F401A81416D0091A556 /* KHGraphDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHGraphDataSource.m; sourceTree = "<group>"; };
+		6E5B3F531A8202CE0091A556 /* KHGraphDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHGraphDataManager.h; sourceTree = "<group>"; };
+		6E5B3F541A8202CE0091A556 /* KHGraphDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHGraphDataManager.m; sourceTree = "<group>"; };
+		6E5B3F561A8205790091A556 /* KHGraphDataManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHGraphDataManagerDelegate.h; sourceTree = "<group>"; };
 		6E5FC2321921EE4000875CE1 /* KHDetailedGameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHDetailedGameView.h; sourceTree = "<group>"; };
 		6E5FC2331921EE4000875CE1 /* KHDetailedGameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHDetailedGameView.m; sourceTree = "<group>"; };
 		6E7290311A6AE8CC006748B3 /* KHGameInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHGameInfo.h; sourceTree = "<group>"; };
@@ -344,6 +348,24 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		6E5B3F511A8202B80091A556 /* Data Managers */ = {
+			isa = PBXGroup;
+			children = (
+				6E5B3F521A8202C20091A556 /* Graphs */,
+			);
+			name = "Data Managers";
+			sourceTree = "<group>";
+		};
+		6E5B3F521A8202C20091A556 /* Graphs */ = {
+			isa = PBXGroup;
+			children = (
+				6E5B3F531A8202CE0091A556 /* KHGraphDataManager.h */,
+				6E5B3F541A8202CE0091A556 /* KHGraphDataManager.m */,
+				6E5B3F561A8205790091A556 /* KHGraphDataManagerDelegate.h */,
+			);
+			name = Graphs;
+			sourceTree = "<group>";
+		};
 		6E7290301A6AE8A6006748B3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -417,6 +439,7 @@
 		6E8C78EC18D81C3500741704 /* Cantaloupe */ = {
 			isa = PBXGroup;
 			children = (
+				6E5B3F511A8202B80091A556 /* Data Managers */,
 				6E32C9F018EBCE4F00156EAD /* Helpers */,
 				6E8C78F818D81C3500741704 /* Images.xcassets */,
 				6E8C78F518D81C3500741704 /* KHAppDelegate.h */,
@@ -697,6 +720,7 @@
 				6E32CA0518EBDCE300156EAD /* KHSettingsViewController.m in Sources */,
 				6E8C796C18D9761000741704 /* KHTabBarController.m in Sources */,
 				6E94B62D18E7BE9500153B52 /* KHDetailedGameViewController.m in Sources */,
+				6E5B3F551A8202CE0091A556 /* KHGraphDataManager.m in Sources */,
 				6E7290331A6AE8CC006748B3 /* KHGameInfo.m in Sources */,
 				6E87708419078112007841EA /* UIColor+KHAdditions.m in Sources */,
 				6E089C2819417FED00B1B8A1 /* KHNewsViewController.m in Sources */,

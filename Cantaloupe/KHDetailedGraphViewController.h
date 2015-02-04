@@ -7,11 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KHGraphDataManager.h"
 
 @interface KHDetailedGraphViewController : UIViewController
 
-- (id)initWithData:(NSArray *)graphData title:(NSString *)title;
-
-@property (nonatomic, strong) NSString *analyticsTitle;
+- (instancetype)initWithGraphType:(KHGraphType)graphType key:(NSString *)key;
 
 @end
