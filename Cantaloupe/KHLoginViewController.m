@@ -111,6 +111,7 @@ static const int ddLogLevel = LOG_LEVEL_ALL;
     UIEdgeInsets contentInsets = UIEdgeInsetsZero;
     self.scrollView.contentInset = contentInsets;
     self.scrollView.scrollIndicatorInsets = contentInsets;
+    [self.scrollView setContentOffset:CGPointZero];
 }
 
 #pragma mark - Button press
