@@ -9,7 +9,6 @@
 #import "KHGraphsViewController.h"
 #import "KHGraphsViewCell.h"
 #import "KHDetailedGraphViewController.h"
-#import "KHGraphDataSource.h"
 #import "KHGraphDataManager.h"
 
 static NSString *KHkGraphsCellIdentifier = @"kGraphsCell";
@@ -98,10 +97,33 @@ static NSString *KHkGraphsCellIdentifier = @"kGraphsCell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
-    KHDetailedGraphViewController *detailedGraphController = [[KHDetailedGraphViewController alloc] initWithGraphType:cell.tag key:self.key];
+    KHGraphType graphType = (KHGraphType)cell.tag;
+    
+    KHDetailedGraphViewController *detailedGraphController = [[KHDetailedGraphViewController alloc] initWithGraphType:graphType key:self.key];
+    detailedGraphController.title = [self _titleForGraphType:graphType];
     [self.navigationController pushViewController:detailedGraphController animated:YES];
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (NSString *)_titleForGraphType:(KHGraphType)graphType {
+    switch (graphType) {
+        case KHGraphTypeDownloads:
+            return NSLocalizedString(@"Count", nil);
+            break;
+        case KHGraphTypeViews: {
+            return NSLocalizedString(@"Views", nil);
+            break;
+        }
+        case KHGraphTypePurchases: {
+            return NSLocalizedString(@"Purchases", nil);
+        }
+            
+        default: {
+            return NSLocalizedString(@"Graph", nil);
+            break;
+        }
+    }
 }
 
 @end
