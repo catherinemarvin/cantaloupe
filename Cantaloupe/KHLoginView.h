@@ -13,6 +13,7 @@
 @property (nonatomic, strong, readonly) UITextField *usernameField;
 @property (nonatomic, strong, readonly) UITextField *passwordField;
 @property (nonatomic, strong, readonly) UIButton *loginButton;
+@property (nonatomic, strong, readonly) UIView *formContainer;
 
 - (void)animate;
 

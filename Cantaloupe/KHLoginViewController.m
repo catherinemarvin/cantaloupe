@@ -19,6 +19,7 @@
 @property (nonatomic, weak) UITextField *usernameField;
 @property (nonatomic, weak) UITextField *passwordField;
 
+@property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) KHLoginView *loginView;
 
 @end
@@ -40,6 +41,8 @@ static const int ddLogLevel = LOG_LEVEL_ALL;
 }
 
 - (void)loadView {
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:[UIScreen mainScreen].applicationFrame];
+    scrollView.backgroundColor = [UIColor darkBackgroundColor];
     KHLoginView *view = [[KHLoginView alloc] initWithFrame:[UIScreen mainScreen].applicationFrame];
     view.usernameField.delegate = self;
     view.passwordField.delegate = self;
@@ -48,8 +51,18 @@ static const int ddLogLevel = LOG_LEVEL_ALL;
     self.usernameField = view.usernameField;
     self.passwordField = view.passwordField;
     
+    
+    [scrollView addSubview:view];
+    
     self.loginView = view;
-    self.view = view;
+    self.scrollView = scrollView;
+    self.view = scrollView;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -72,6 +85,32 @@ static const int ddLogLevel = LOG_LEVEL_ALL;
         [self _loginTapped:nil];
         return YES;
     }
+}
+
+#pragma mark - UIKeyboardNotifications
+
+- (void)_keyboardWillShow:(NSNotification *)notification {
+    NSDictionary *info = [notification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0, 0, kbSize.height, 0);
+    self.scrollView.contentInset = contentInsets;
+    self.scrollView.scrollIndicatorInsets = contentInsets;
+    
+    CGRect aRect = self.view.frame;
+    aRect.size.height -= kbSize.height;
+    
+    CGPoint bottomPoint = CGPointMake(0, CGRectGetMaxY(self.loginView.formContainer.frame));
+    if (!CGRectContainsPoint(aRect, bottomPoint)) {
+        CGPoint contentOffset = CGPointMake(0, CGRectGetMinY(self.loginView.formContainer.frame) / 2);
+        [self.scrollView setContentOffset:contentOffset];
+    }
+}
+
+- (void)_keyboardWillHide:(NSNotification *)notification {
+    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
+    self.scrollView.contentInset = contentInsets;
+    self.scrollView.scrollIndicatorInsets = contentInsets;
 }
 
 #pragma mark - Button press
