@@ -11,8 +11,6 @@ devices([
 
 languages([
   'en-US',
-  'de-DE',
-  'it-IT'
 ])
 
 # Where should the resulting screenshots be stored?
