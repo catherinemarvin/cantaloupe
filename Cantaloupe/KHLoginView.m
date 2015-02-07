@@ -33,6 +33,7 @@
         _usernameField.font = [UIFont fontWithName:@"Lato-Regular" size:16.0f];
         _usernameField.placeholder = NSLocalizedString(@"Username", nil);
         _usernameField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+        _usernameField.autocorrectionType = UITextAutocorrectionTypeNo;
         _usernameField.returnKeyType = UIReturnKeyNext;
         _usernameField.backgroundColor = [UIColor colorFromHexString:@"F2F2F2"];
         [_formContainer addSubview:_usernameField];
