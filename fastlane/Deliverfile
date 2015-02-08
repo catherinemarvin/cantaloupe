@@ -33,7 +33,7 @@ ipa do
     # Attention: When you return a valid ipa file, this file will get uploaded and released
     # If you only want to upload app metadata, remove the complete ipa block.
 
-    system("cd ..; ipa build --verbose") # build your project using Shenzhen
+    system("cd ..; ipa build") # build your project using Shenzhen
     "../cantaloupe.ipa" # Tell 'Deliver' where it can find the finished ipa file
 end
 
