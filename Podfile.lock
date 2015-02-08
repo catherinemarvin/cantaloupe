@@ -1,11 +1,11 @@
 PODS:
   - AFNetworking (2.2.4):
-    - AFNetworking/NSURLConnection
-    - AFNetworking/NSURLSession
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-    - AFNetworking/UIKit
+    - AFNetworking/NSURLConnection (= 2.2.4)
+    - AFNetworking/NSURLSession (= 2.2.4)
+    - AFNetworking/Reachability (= 2.2.4)
+    - AFNetworking/Security (= 2.2.4)
+    - AFNetworking/Serialization (= 2.2.4)
+    - AFNetworking/UIKit (= 2.2.4)
   - AFNetworking/NSURLConnection (2.2.4):
     - AFNetworking/Reachability
     - AFNetworking/Security
@@ -20,7 +20,7 @@ PODS:
     - AFNetworking/NSURLSession
   - BEMSimpleLineGraph (3.2)
   - CocoaLumberjack (1.9.2):
-    - CocoaLumberjack/Extensions
+    - CocoaLumberjack/Extensions (= 1.9.2)
   - CocoaLumberjack/Core (1.9.2)
   - CocoaLumberjack/Extensions (1.9.2):
     - CocoaLumberjack/Core
@@ -53,4 +53,4 @@ SPEC CHECKSUMS:
   SSKeychain: cc48bd3ad24fcd9125adb9e0d23dd50b8bbd08b9
   SSPullToRefresh: bb513a1ccbf08fdd67e4139bc1bbe3fc2ed34228
 
-COCOAPODS: 0.34.1
+COCOAPODS: 0.35.0
