@@ -14,6 +14,7 @@
 		6E089C85194961F600B1B8A1 /* KHNewsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E089C84194961F600B1B8A1 /* KHNewsViewCell.m */; };
 		6E089C88194AA32400B1B8A1 /* KHNewsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E089C87194AA32400B1B8A1 /* KHNewsView.m */; };
 		6E089C8D194AA54500B1B8A1 /* KHDetailedNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E089C8C194AA54500B1B8A1 /* KHDetailedNewsViewController.m */; };
+		6E3175E71AAAAB1E00BF9708 /* KHMyGamesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3175E61AAAAB1E00BF9708 /* KHMyGamesViewController.m */; };
 		6E32C9F318EBCE7300156EAD /* KHSessionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E32C9F218EBCE7300156EAD /* KHSessionController.m */; };
 		6E32CA0518EBDCE300156EAD /* KHSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E32CA0418EBDCE300156EAD /* KHSettingsViewController.m */; };
 		6E32CA2718ED02A800156EAD /* KHSettingsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E32CA2618ED02A800156EAD /* KHSettingsViewCell.m */; };
@@ -101,6 +102,8 @@
 		6E089C87194AA32400B1B8A1 /* KHNewsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHNewsView.m; sourceTree = "<group>"; };
 		6E089C8B194AA54500B1B8A1 /* KHDetailedNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHDetailedNewsViewController.h; sourceTree = "<group>"; };
 		6E089C8C194AA54500B1B8A1 /* KHDetailedNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHDetailedNewsViewController.m; sourceTree = "<group>"; };
+		6E3175E51AAAAB1E00BF9708 /* KHMyGamesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHMyGamesViewController.h; sourceTree = "<group>"; };
+		6E3175E61AAAAB1E00BF9708 /* KHMyGamesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHMyGamesViewController.m; sourceTree = "<group>"; };
 		6E32C9F118EBCE7300156EAD /* KHSessionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHSessionController.h; sourceTree = "<group>"; };
 		6E32C9F218EBCE7300156EAD /* KHSessionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHSessionController.m; sourceTree = "<group>"; };
 		6E32CA0318EBDCE300156EAD /* KHSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHSettingsViewController.h; sourceTree = "<group>"; };
@@ -322,6 +325,23 @@
 			name = News;
 			sourceTree = "<group>";
 		};
+		6E3175E31AAAAB0000BF9708 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				6E3175E41AAAAB0A00BF9708 /* My Games */,
+			);
+			name = Modules;
+			sourceTree = "<group>";
+		};
+		6E3175E41AAAAB0A00BF9708 /* My Games */ = {
+			isa = PBXGroup;
+			children = (
+				6E3175E51AAAAB1E00BF9708 /* KHMyGamesViewController.h */,
+				6E3175E61AAAAB1E00BF9708 /* KHMyGamesViewController.m */,
+			);
+			name = "My Games";
+			sourceTree = "<group>";
+		};
 		6E32C9F018EBCE4F00156EAD /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -434,6 +454,7 @@
 		6E8C78EC18D81C3500741704 /* Cantaloupe */ = {
 			isa = PBXGroup;
 			children = (
+				6E3175E31AAAAB0000BF9708 /* Modules */,
 				6E5B3F511A8202B80091A556 /* Data Managers */,
 				6E32C9F018EBCE4F00156EAD /* Helpers */,
 				6E8C78F818D81C3500741704 /* Images.xcassets */,
@@ -696,6 +717,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E32C9F318EBCE7300156EAD /* KHSessionController.m in Sources */,
+				6E3175E71AAAAB1E00BF9708 /* KHMyGamesViewController.m in Sources */,
 				6E8C78F318D81C3500741704 /* main.m in Sources */,
 				6E32CA2718ED02A800156EAD /* KHSettingsViewCell.m in Sources */,
 				6E4FD82D18E1450600EC8B11 /* Cantaloupe.xcdatamodeld in Sources */,
