@@ -15,6 +15,8 @@
 		6E089C88194AA32400B1B8A1 /* KHNewsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E089C87194AA32400B1B8A1 /* KHNewsView.m */; };
 		6E089C8D194AA54500B1B8A1 /* KHDetailedNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E089C8C194AA54500B1B8A1 /* KHDetailedNewsViewController.m */; };
 		6E3175E71AAAAB1E00BF9708 /* KHMyGamesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3175E61AAAAB1E00BF9708 /* KHMyGamesViewController.m */; };
+		6E3175EC1AAABA8A00BF9708 /* KHMyGamesDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3175EB1AAABA8A00BF9708 /* KHMyGamesDataSource.m */; };
+		6E3175F01AAABB3000BF9708 /* KHMyGamesService.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3175EF1AAABB3000BF9708 /* KHMyGamesService.m */; };
 		6E32C9F318EBCE7300156EAD /* KHSessionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E32C9F218EBCE7300156EAD /* KHSessionController.m */; };
 		6E32CA0518EBDCE300156EAD /* KHSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E32CA0418EBDCE300156EAD /* KHSettingsViewController.m */; };
 		6E32CA2718ED02A800156EAD /* KHSettingsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E32CA2618ED02A800156EAD /* KHSettingsViewCell.m */; };
@@ -104,6 +106,11 @@
 		6E089C8C194AA54500B1B8A1 /* KHDetailedNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHDetailedNewsViewController.m; sourceTree = "<group>"; };
 		6E3175E51AAAAB1E00BF9708 /* KHMyGamesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHMyGamesViewController.h; sourceTree = "<group>"; };
 		6E3175E61AAAAB1E00BF9708 /* KHMyGamesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHMyGamesViewController.m; sourceTree = "<group>"; };
+		6E3175EA1AAABA8A00BF9708 /* KHMyGamesDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHMyGamesDataSource.h; sourceTree = "<group>"; };
+		6E3175EB1AAABA8A00BF9708 /* KHMyGamesDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHMyGamesDataSource.m; sourceTree = "<group>"; };
+		6E3175EE1AAABB3000BF9708 /* KHMyGamesService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHMyGamesService.h; sourceTree = "<group>"; };
+		6E3175EF1AAABB3000BF9708 /* KHMyGamesService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHMyGamesService.m; sourceTree = "<group>"; };
+		6E3175F11AAABB8800BF9708 /* KHMyGamesServiceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHMyGamesServiceDelegate.h; sourceTree = "<group>"; };
 		6E32C9F118EBCE7300156EAD /* KHSessionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHSessionController.h; sourceTree = "<group>"; };
 		6E32C9F218EBCE7300156EAD /* KHSessionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHSessionController.m; sourceTree = "<group>"; };
 		6E32CA0318EBDCE300156EAD /* KHSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHSettingsViewController.h; sourceTree = "<group>"; };
@@ -336,10 +343,39 @@
 		6E3175E41AAAAB0A00BF9708 /* My Games */ = {
 			isa = PBXGroup;
 			children = (
+				6E3175ED1AAABB2500BF9708 /* Service */,
+				6E3175E91AAABA7C00BF9708 /* Data Source */,
+				6E3175E81AAABA7600BF9708 /* View */,
+			);
+			name = "My Games";
+			sourceTree = "<group>";
+		};
+		6E3175E81AAABA7600BF9708 /* View */ = {
+			isa = PBXGroup;
+			children = (
 				6E3175E51AAAAB1E00BF9708 /* KHMyGamesViewController.h */,
 				6E3175E61AAAAB1E00BF9708 /* KHMyGamesViewController.m */,
 			);
-			name = "My Games";
+			name = View;
+			sourceTree = "<group>";
+		};
+		6E3175E91AAABA7C00BF9708 /* Data Source */ = {
+			isa = PBXGroup;
+			children = (
+				6E3175EA1AAABA8A00BF9708 /* KHMyGamesDataSource.h */,
+				6E3175EB1AAABA8A00BF9708 /* KHMyGamesDataSource.m */,
+			);
+			name = "Data Source";
+			sourceTree = "<group>";
+		};
+		6E3175ED1AAABB2500BF9708 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				6E3175EE1AAABB3000BF9708 /* KHMyGamesService.h */,
+				6E3175EF1AAABB3000BF9708 /* KHMyGamesService.m */,
+				6E3175F11AAABB8800BF9708 /* KHMyGamesServiceDelegate.h */,
+			);
+			name = Service;
 			sourceTree = "<group>";
 		};
 		6E32C9F018EBCE4F00156EAD /* Helpers */ = {
@@ -734,11 +770,13 @@
 				6E5A897F1910BD530062355C /* KHDetailedGraphViewController.m in Sources */,
 				6E089C88194AA32400B1B8A1 /* KHNewsView.m in Sources */,
 				6E32CA0518EBDCE300156EAD /* KHSettingsViewController.m in Sources */,
+				6E3175F01AAABB3000BF9708 /* KHMyGamesService.m in Sources */,
 				6E8C796C18D9761000741704 /* KHTabBarController.m in Sources */,
 				6E94B62D18E7BE9500153B52 /* KHDetailedGameViewController.m in Sources */,
 				6E5B3F551A8202CE0091A556 /* KHGraphDataManager.m in Sources */,
 				6E7290331A6AE8CC006748B3 /* KHGameInfo.m in Sources */,
 				6E87708419078112007841EA /* UIColor+KHAdditions.m in Sources */,
+				6E3175EC1AAABA8A00BF9708 /* KHMyGamesDataSource.m in Sources */,
 				6E089C2819417FED00B1B8A1 /* KHNewsViewController.m in Sources */,
 				6E5FC2341921EE4000875CE1 /* KHDetailedGameView.m in Sources */,
 			);
