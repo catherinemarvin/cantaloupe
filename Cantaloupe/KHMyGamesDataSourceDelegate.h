@@ -10,4 +10,10 @@
 
 @protocol KHMyGamesDataSourceDelegate <NSObject>
 
+/// @brief Called when the data source updates itself
+- (void)gamesFetched;
+
+/// @brief Called to indicate some kind of error
+- (void)gameFetchError:(NSError *)error;
+
 @end
