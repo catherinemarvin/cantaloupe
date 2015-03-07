@@ -7,7 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "KHMyGamesServiceDelegate.h"
 
 @interface KHMyGamesService : NSObject
+
+- (instancetype)initWithDelegate:(id<KHMyGamesServiceDelegate>)delegate;
+
+/// @brief Request the current user's games
+- (void)requestGames;
 
 @end

@@ -10,4 +10,6 @@
 
 @interface KHMyGamesDataSource : NSObject
 
+- (NSInteger)count;
+
 @end

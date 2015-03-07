@@ -10,4 +10,13 @@
 
 @protocol KHMyGamesServiceDelegate <NSObject>
 
+/// @brief API Errors
+- (void)gamesFetchErrors:(NSArray *)errors;
+
+/// @brief NSError
+- (void)gamesFetchError:(NSError *)error;
+
+/// @brief Array of KHGameInfo objects
+- (void)gamesFetched:(NSArray *)games;
+
 @end

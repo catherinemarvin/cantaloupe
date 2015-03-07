@@ -8,6 +8,23 @@
 
 #import "KHMyGamesDataSource.h"
 
+// Networking
+
+static NSString *const KHkMyGamesUrl = @"http://itch.io/api/1/%@/my-games";
+
+@interface KHMyGamesDataSource()
+
+@property (nonatomic, strong) NSString *key;
+
+@end
+
 @implementation KHMyGamesDataSource
+
+- (instancetype)init {
+    if (self = [super init]) {
+        
+    }
+    return self;
+}
 
 @end
