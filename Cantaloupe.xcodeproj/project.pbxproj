@@ -111,6 +111,7 @@
 		6E3175EE1AAABB3000BF9708 /* KHMyGamesService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHMyGamesService.h; sourceTree = "<group>"; };
 		6E3175EF1AAABB3000BF9708 /* KHMyGamesService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHMyGamesService.m; sourceTree = "<group>"; };
 		6E3175F11AAABB8800BF9708 /* KHMyGamesServiceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHMyGamesServiceDelegate.h; sourceTree = "<group>"; };
+		6E3175F21AAAC20500BF9708 /* KHMyGamesDataSourceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHMyGamesDataSourceDelegate.h; sourceTree = "<group>"; };
 		6E32C9F118EBCE7300156EAD /* KHSessionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHSessionController.h; sourceTree = "<group>"; };
 		6E32C9F218EBCE7300156EAD /* KHSessionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHSessionController.m; sourceTree = "<group>"; };
 		6E32CA0318EBDCE300156EAD /* KHSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHSettingsViewController.h; sourceTree = "<group>"; };
@@ -364,6 +365,7 @@
 			children = (
 				6E3175EA1AAABA8A00BF9708 /* KHMyGamesDataSource.h */,
 				6E3175EB1AAABA8A00BF9708 /* KHMyGamesDataSource.m */,
+				6E3175F21AAAC20500BF9708 /* KHMyGamesDataSourceDelegate.h */,
 			);
 			name = "Data Source";
 			sourceTree = "<group>";

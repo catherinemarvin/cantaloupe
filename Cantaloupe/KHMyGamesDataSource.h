@@ -8,8 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+#import "KHMyGamesDataSourceDelegate.h"
+
 @interface KHMyGamesDataSource : NSObject
 
+- (instancetype)initWithDelegate:(id<KHMyGamesDataSourceDelegate>)delegate;
+
+- (void)requestGames;
 - (NSInteger)count;
 
 @end

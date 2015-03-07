@@ -8,23 +8,49 @@
 
 #import "KHMyGamesDataSource.h"
 
-// Networking
+// Games Service
+#import "KHMyGamesService.h"
 
-static NSString *const KHkMyGamesUrl = @"http://itch.io/api/1/%@/my-games";
+@interface KHMyGamesDataSource()<KHMyGamesServiceDelegate>
 
-@interface KHMyGamesDataSource()
-
-@property (nonatomic, strong) NSString *key;
+@property (nonatomic, strong) KHMyGamesService *service;
+@property (nonatomic, strong) NSArray *games;
+@property (nonatomic, weak) id<KHMyGamesDataSourceDelegate>delegate;
 
 @end
 
 @implementation KHMyGamesDataSource
 
-- (instancetype)init {
+- (instancetype)initWithDelegate:(id<KHMyGamesDataSourceDelegate>)delegate {
     if (self = [super init]) {
-        
+        _delegate = delegate;
+        _service = [[KHMyGamesService alloc] initWithDelegate:self];
+        _games = [NSArray array];
     }
     return self;
+}
+
+- (void)requestGames {
+    [self.service requestGames];
+}
+
+- (NSInteger)count {
+    return [self.games count];
+}
+
+#pragma mark - KHMYGamesServiceDelegate
+
+- (void)gamesFetched:(NSArray *)games {
+    self.games = games;
+    [self.delegate gamesFetched];
+}
+
+- (void)gamesFetchError:(NSError *)error {
+    [self.delegate gameFetchError:error];
+}
+
+- (void)gamesFetchErrors:(NSArray *)errors {
+    NSLog(@"ItchIO API error");
 }
 
 @end
