@@ -7,31 +7,24 @@
 //
 
 #import "KHMyGamesViewController.h"
+#import "KHGameViewCell.h"
 
 @interface KHMyGamesViewController ()
 
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
+
 @end
+
+static NSString *KHkGameCellIdentifier = @"gameCellIdentifier";
 
 @implementation KHMyGamesViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+- (instancetype)init {
+    if (self = [super init]) {
+        _refreshControl = [[UIRefreshControl alloc] init];
+        [_refreshControl addTarget:self action:@selector(_refresh) forControlEvents:UIControlEventValueChanged];
+    }
+    return self;
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
