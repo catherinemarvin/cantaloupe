@@ -9,6 +9,7 @@
 // Views
 #import "KHMyGamesViewController.h"
 #import "KHGameViewCell.h"
+#import "KHDetailedGameViewController.h"
 
 // Data Source
 #import "KHMyGamesDataSource.h"
@@ -80,6 +81,12 @@ static NSString *KHkGameCellIdentifier = @"gameCellIdentifier";
 }
 
 #pragma mark - UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    KHGameInfo *gameInfo = [self.dataSource infoAtIndex:indexPath.row];
+    KHDetailedGameViewController *vc = [[KHDetailedGameViewController alloc] initWithGameInfo:gameInfo];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 #pragma mark - UICollectionViewDelegateFlowLayout
 
