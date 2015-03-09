@@ -66,7 +66,10 @@
 - (void)_setupUI {
     NSMutableDictionary *titleBarDictionary = [NSMutableDictionary dictionaryWithDictionary:[[UINavigationBar appearance] titleTextAttributes]];
     [titleBarDictionary setValue:[UIFont regularWithSize:24.0f] forKey:NSFontAttributeName];
-    [[UINavigationBar appearance] setTitleTextAttributes:titleBarDictionary];
+    [titleBarDictionary setValue:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
+    UINavigationBar *appearance = [UINavigationBar appearance];
+    [appearance setTitleTextAttributes:titleBarDictionary];
+    [appearance setBarTintColor:[UIColor colorFromHexString:@"fa5c5c"]];
 }
 
 #pragma mark - KVO
