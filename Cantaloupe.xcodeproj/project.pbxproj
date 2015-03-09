@@ -69,7 +69,6 @@
 		6E8C790A18D81C3500741704 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6E8C790818D81C3500741704 /* InfoPlist.strings */; };
 		6E8C790C18D81C3500741704 /* CantaloupeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8C790B18D81C3500741704 /* CantaloupeTests.m */; };
 		6E8C796C18D9761000741704 /* KHTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8C796B18D9761000741704 /* KHTabBarController.m */; };
-		6E8C796F18D977DF00741704 /* KHGamesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8C796E18D977DF00741704 /* KHGamesViewController.m */; };
 		6E94B62D18E7BE9500153B52 /* KHDetailedGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E94B62C18E7BE9500153B52 /* KHDetailedGameViewController.m */; };
 		6E9875501A7A21090042B3DD /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E98754F1A7A21090042B3DD /* logo@2x.png */; };
 		6E9875531A7A21130042B3DD /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E9875511A7A21130042B3DD /* logo.png */; };
@@ -181,8 +180,6 @@
 		6E8C790B18D81C3500741704 /* CantaloupeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CantaloupeTests.m; sourceTree = "<group>"; };
 		6E8C796A18D9761000741704 /* KHTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHTabBarController.h; sourceTree = "<group>"; };
 		6E8C796B18D9761000741704 /* KHTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHTabBarController.m; sourceTree = "<group>"; };
-		6E8C796D18D977DF00741704 /* KHGamesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHGamesViewController.h; sourceTree = "<group>"; };
-		6E8C796E18D977DF00741704 /* KHGamesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHGamesViewController.m; sourceTree = "<group>"; };
 		6E94B62B18E7BE9500153B52 /* KHDetailedGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHDetailedGameViewController.h; sourceTree = "<group>"; };
 		6E94B62C18E7BE9500153B52 /* KHDetailedGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHDetailedGameViewController.m; sourceTree = "<group>"; };
 		6E98754F1A7A21090042B3DD /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
@@ -256,8 +253,6 @@
 			children = (
 				6E94B62B18E7BE9500153B52 /* KHDetailedGameViewController.h */,
 				6E94B62C18E7BE9500153B52 /* KHDetailedGameViewController.m */,
-				6E8C796D18D977DF00741704 /* KHGamesViewController.h */,
-				6E8C796E18D977DF00741704 /* KHGamesViewController.m */,
 			);
 			name = Games;
 			sourceTree = "<group>";
@@ -760,7 +755,6 @@
 				6E32CA2718ED02A800156EAD /* KHSettingsViewCell.m in Sources */,
 				6E4FD82D18E1450600EC8B11 /* Cantaloupe.xcdatamodeld in Sources */,
 				6EE7FC7718E697B8008AF5FF /* KHGameViewCell.m in Sources */,
-				6E8C796F18D977DF00741704 /* KHGamesViewController.m in Sources */,
 				6E068B2F18DA742A00885A95 /* KHLoginViewController.m in Sources */,
 				6E089C8D194AA54500B1B8A1 /* KHDetailedNewsViewController.m in Sources */,
 				6E5A897C1910B4770062355C /* KHGraphsViewCell.m in Sources */,

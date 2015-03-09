@@ -7,7 +7,7 @@
 //
 
 #import "KHTabBarController.h"
-#import "KHGamesViewController.h"
+#import "KHMyGamesViewController.h"
 #import "KHSettingsViewController.h"
 #import "KHGraphsViewController.h"
 #import "KHNewsViewController.h"
@@ -22,7 +22,7 @@ typedef NS_ENUM(NSInteger, KHTabViewControllerTag) {
 @interface KHTabBarController ()
 
 @property (nonatomic, strong) NSString *key;
-@property (nonatomic, strong) KHGamesViewController *gamesViewController;
+@property (nonatomic, strong) KHMyGamesViewController *gamesViewController;
 @property (nonatomic, strong) KHSettingsViewController *settingsViewController;
 @property (nonatomic, strong) KHGraphsViewController *graphsViewController;
 @property (nonatomic, strong) KHNewsViewController *newsViewController;
@@ -39,7 +39,7 @@ typedef NS_ENUM(NSInteger, KHTabViewControllerTag) {
         
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         
-        self.gamesViewController = [[KHGamesViewController alloc] initWithCollectionViewLayout:layout key:key];
+        self.gamesViewController = [[KHMyGamesViewController alloc] init];
         self.gamesViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Games",nil) image:[UIImage imageNamed:@"gamesIcon"] tag:KHGamesViewControllerTag];
         UINavigationController *gamesNav = [[UINavigationController alloc] initWithRootViewController:self.gamesViewController];
         gamesNav.navigationBar.translucent = NO;
