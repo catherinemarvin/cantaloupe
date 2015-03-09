@@ -6,8 +6,15 @@
 //  Copyright (c) 2014 Kevin Hwang. All rights reserved.
 //
 
+// Views
 #import "KHGameViewCell.h"
+
+// Models
 #import "KHGameInfo.h"
+
+// Helpers
+#import <Masonry.h>
+#import "UIFont+KHAdditions.h"
 
 @interface KHGameViewCell()
 
@@ -20,22 +27,32 @@
 
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        self.imageView = [[UIImageView alloc] initWithFrame:self.bounds];
-        self.imageView.contentMode = UIViewContentModeScaleAspectFill;
-        [self.imageView setClipsToBounds:YES];
-        UIView *shadow = [[UIView alloc] initWithFrame:self.imageView.bounds];
-        shadow.backgroundColor = [UIColor blackColor];
-        [shadow.layer setOpacity:0.5];
-        [self.imageView addSubview:shadow];
+        _imageView = [[UIImageView alloc] init];
+        _imageView.contentMode = UIViewContentModeScaleAspectFill;
+        [self.contentView addSubview:_imageView];
         
-        [self.contentView addSubview:self.imageView];
+        _titleLabel = [[UILabel alloc] init];
+        _titleLabel.font = [UIFont regularWithSize:14.0f];
+        _titleLabel.textColor = [UIColor whiteColor];
+        [self.contentView addSubview:_titleLabel];
         
-        self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, floorf(self.bounds.origin.y / 2), self.bounds.size.width - 10.0f, 20)];
-        self.titleLabel.font = [UIFont fontWithName:@"Lato-Regular" size:16.0f];
-        self.titleLabel.textColor = [UIColor whiteColor];
-        [self.contentView addSubview:self.titleLabel];
+        [self _initializeAutolayout];
     }
     return self;
+}
+
+- (void)_initializeAutolayout {
+    [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.and.right.equalTo(self.contentView);
+        make.top.equalTo(self.contentView);
+        make.bottom.equalTo(self.titleLabel.mas_top);
+    }];
+    
+    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.imageView.mas_bottom);
+        make.left.and.right.equalTo(self.contentView);
+        make.bottom.equalTo(self.contentView);
+    }];
 }
 
 - (void)configureWithGameInfo:(KHGameInfo *)gameInfo {
