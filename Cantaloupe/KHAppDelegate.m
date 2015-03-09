@@ -64,6 +64,8 @@
 }
 
 - (void)_setupUI {
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+
     UINavigationBar *navBarAppearance = [UINavigationBar appearance];
     
     NSMutableDictionary *titleBarDictionary = [NSMutableDictionary dictionaryWithDictionary:[navBarAppearance titleTextAttributes]];
