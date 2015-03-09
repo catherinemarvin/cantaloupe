@@ -37,8 +37,6 @@ typedef NS_ENUM(NSInteger, KHTabViewControllerTag) {
     if (self) {
         self.key = key;
         
-        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-        
         self.gamesViewController = [[KHMyGamesViewController alloc] init];
         self.gamesViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Games",nil) image:[UIImage imageNamed:@"gamesIcon"] tag:KHGamesViewControllerTag];
         UINavigationController *gamesNav = [[UINavigationController alloc] initWithRootViewController:self.gamesViewController];

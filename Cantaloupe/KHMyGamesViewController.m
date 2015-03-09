@@ -92,4 +92,8 @@ static NSString *KHkGameCellIdentifier = @"gameCellIdentifier";
     [self.collectionView reloadData];
 }
 
+- (void)gameFetchError:(NSError *)error {
+    
+}
+
 @end
