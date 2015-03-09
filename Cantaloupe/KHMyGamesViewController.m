@@ -47,6 +47,7 @@ static NSString *KHkGameCellIdentifier = @"gameCellIdentifier";
     [self.collectionView registerClass:[KHGameViewCell class] forCellWithReuseIdentifier:KHkGameCellIdentifier];
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
+    self.collectionView.backgroundColor = [UIColor colorFromHexString:@"222222"];
     [self.view addSubview:self.collectionView];
 }
 
