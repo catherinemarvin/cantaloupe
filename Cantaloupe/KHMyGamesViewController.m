@@ -13,7 +13,7 @@
 // Data Source
 #import "KHMyGamesDataSource.h"
 
-@interface KHMyGamesViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, KHMyGamesDataSourceDelegate>
+@interface KHMyGamesViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout,  KHMyGamesDataSourceDelegate>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
@@ -41,7 +41,8 @@ static NSString *KHkGameCellIdentifier = @"gameCellIdentifier";
 }
 
 - (void)_setupCollectionView {
-    self.collectionView = [[UICollectionView alloc] initWithFrame:[UIScreen mainScreen].bounds collectionViewLayout:[[UICollectionViewFlowLayout alloc] init]];
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    self.collectionView = [[UICollectionView alloc] initWithFrame:[UIScreen mainScreen].bounds collectionViewLayout:layout];
     [self.collectionView registerClass:[KHGameViewCell class] forCellWithReuseIdentifier:KHkGameCellIdentifier];
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
@@ -72,13 +73,21 @@ static NSString *KHkGameCellIdentifier = @"gameCellIdentifier";
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:KHkGameCellIdentifier forIndexPath:indexPath];
     if ([cell isKindOfClass:[KHGameViewCell class]]) {
         KHGameViewCell *gameCell = (KHGameViewCell *)cell;
-#warning TODO: Configure cell with KHGameInfo from data source
-        
+        KHGameInfo *info = [self.dataSource infoAtIndex:indexPath.row];
+        [gameCell configureWithGameInfo:info];
     }
     return cell;
 }
 
 #pragma mark - UICollectionViewDelegate
+
+#pragma mark - UICollectionViewDelegateFlowLayout
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    CGFloat sideLength = 100;
+    return CGSizeMake(sideLength, sideLength);
+}
+
 
 #pragma mark - UIRefreshControl
 

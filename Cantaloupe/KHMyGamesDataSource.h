@@ -10,11 +10,15 @@
 
 #import "KHMyGamesDataSourceDelegate.h"
 
+@class KHGameInfo;
+
 @interface KHMyGamesDataSource : NSObject
 
 - (instancetype)initWithDelegate:(id<KHMyGamesDataSourceDelegate>)delegate;
 
 - (void)requestGames;
+
 - (NSInteger)count;
+- (KHGameInfo *)infoAtIndex:(NSInteger)index;
 
 @end

@@ -38,6 +38,10 @@
     return [self.games count];
 }
 
+- (KHGameInfo *)infoAtIndex:(NSInteger)index {
+    return self.games[index];
+}
+
 #pragma mark - KHMYGamesServiceDelegate
 
 - (void)gamesFetched:(NSArray *)games {

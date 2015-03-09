@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class KHGameInfo;
+
 @interface KHGameViewCell : UICollectionViewCell
 
-- (void)setGameImage:(UIImage *)image;
-- (void)setTitle:(NSString *)title;
+- (void)configureWithGameInfo:(KHGameInfo *)gameInfo;
 
 @end

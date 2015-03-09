@@ -7,6 +7,7 @@
 //
 
 #import "KHGameViewCell.h"
+#import "KHGameInfo.h"
 
 @interface KHGameViewCell()
 
@@ -37,12 +38,9 @@
     return self;
 }
 
-- (void)setGameImage:(UIImage *)image {
-    self.imageView.image = image;
-}
-
-- (void)setTitle:(NSString *)title {
-    self.titleLabel.text = title;
+- (void)configureWithGameInfo:(KHGameInfo *)gameInfo {
+    self.imageView.image = gameInfo.coverImage;
+    self.titleLabel.text = gameInfo.titleString;
 }
 
 @end
