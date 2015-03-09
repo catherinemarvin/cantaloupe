@@ -11,6 +11,9 @@
 #import "KHSessionController.h"
 #import "KHTabBarController.h"
 
+// Appearance
+#import "UIFont+KHAdditions.h"
+
 @implementation KHAppDelegate
 
 - (void)dealloc {
@@ -35,8 +38,13 @@
     
     [[DDTTYLogger sharedInstance] setColorsEnabled:YES];
     
+    // Set appearances
+    [self _setupUI];
+    
     // Create and display view
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    
     
     KHSessionController *session = [KHSessionController sharedInstance];
     
@@ -53,6 +61,12 @@
     
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (void)_setupUI {
+    NSMutableDictionary *titleBarDictionary = [NSMutableDictionary dictionaryWithDictionary:[[UINavigationBar appearance] titleTextAttributes]];
+    [titleBarDictionary setValue:[UIFont regularWithSize:24.0f] forKey:NSFontAttributeName];
+    [[UINavigationBar appearance] setTitleTextAttributes:titleBarDictionary];
 }
 
 #pragma mark - KVO
