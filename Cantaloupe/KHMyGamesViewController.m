@@ -48,6 +48,7 @@ static NSString *KHkGameCellIdentifier = @"gameCellIdentifier";
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     self.collectionView.backgroundColor = [UIColor colorFromHexString:@"222222"];
+    self.collectionView.alwaysBounceVertical = YES;
     [self.view addSubview:self.collectionView];
 }
 
@@ -119,6 +120,7 @@ static NSString *KHkGameCellIdentifier = @"gameCellIdentifier";
 
 - (void)gamesFetched {
     [self.collectionView reloadData];
+    [self.refreshControl endRefreshing];
 }
 
 - (void)gameFetchError:(NSError *)error {
