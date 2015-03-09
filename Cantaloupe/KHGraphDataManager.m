@@ -7,32 +7,43 @@
 //
 
 #import "KHGraphDataManager.h"
-#import <AFNetworking/AFNetworking.h>
+
+// Model
 #import "KHGraphPoint.h"
+
+// Networking
+#import <AFNetworking/AFNetworking.h>
+
+// Helper
+#import "KHSessionController.h"
 
 @interface KHGraphDataManager()
 
-@property (nonatomic, strong) NSString *key;
+@property (nonatomic, assign) NSInteger numberOfDays;
 @property (nonatomic, weak) id<KHGraphDataManagerDelegate> delegate;
 
 @end
 
 static const int ddLogLevel = LOG_LEVEL_ALL;
 
+static const NSInteger KHkDefaultNumberOfDays = 30;
+
 @implementation KHGraphDataManager
 
-- (instancetype)initWithKey:(NSString *)key delegate:(id<KHGraphDataManagerDelegate>)delegate {
+- (instancetype)initWithDelegate:(id<KHGraphDataManagerDelegate>)delegate {
     if (self = [super init]) {
-        _key = key;
         _delegate = delegate;
+        _numberOfDays = KHkDefaultNumberOfDays;
     }
     return self;
 }
 
 - (void)requestGraphData {
+    NSString *key = [KHSessionController sharedInstance].key;
+                     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
-    NSString *url = [NSString stringWithFormat:@"http://itch.io/api/1/%@/my-games/graphs?num_days=30", self.key];
+    NSString *url = [NSString stringWithFormat:@"http://itch.io/api/1/%@/my-games/graphs?num_days=30", key];
     
     [manager POST:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *responseDict = (NSDictionary *)responseObject;

@@ -25,8 +25,6 @@
 
 @end
 
-static const NSInteger KHkNumberOfGraphDays = 30;
-
 @implementation KHDetailedGraphViewController
 
 - (instancetype)initWithGraphType:(KHGraphType)graphType key:(NSString *)key {
@@ -35,8 +33,8 @@ static const NSInteger KHkNumberOfGraphDays = 30;
     if (self) {
         _graphType = graphType;
         _key = key;
+        _dataManager = [[KHGraphDataManager alloc] initWithDelegate:self];
         _expectedDates = [self _expectedGraphDates];
-        _dataManager = [[KHGraphDataManager alloc] initWithKey:key delegate:self];
         
         self.edgesForExtendedLayout = UIRectEdgeNone;
         
@@ -93,7 +91,7 @@ static const NSInteger KHkNumberOfGraphDays = 30;
     }];
 }
 
-/// @brief Returns an array of NSDates corresponding to the expected dates in this graph. There should be KhkNumberOfGraphDays entries
+/// @brief Returns an array of NSDates corresponding to the expected dates in this graph.
 - (NSArray *)_expectedGraphDates {
     NSMutableArray *expected = [NSMutableArray array];
     
@@ -112,7 +110,7 @@ static const NSInteger KHkNumberOfGraphDays = 30;
     [expected addObject:dateString];
     
     components = [[NSDateComponents alloc] init];
-    for (int i = 1; i < KHkNumberOfGraphDays; i++) {
+    for (int i = 1; i < self.dataManager.numberOfDays; i++) {
         [components setDay:-i];
         NSDate *date = [calendar dateByAddingComponents:components toDate:today options:0];
         NSString *string = [formatter stringFromDate:date];
@@ -133,7 +131,7 @@ static const NSInteger KHkNumberOfGraphDays = 30;
 #pragma mark - BEMSimpleLineGraphViewDataSource
 
 - (NSInteger)numberOfPointsInLineGraph:(BEMSimpleLineGraphView *)graph {
-    return KHkNumberOfGraphDays;
+    return self.dataManager.numberOfDays;
 }
 
 - (CGFloat)lineGraph:(BEMSimpleLineGraphView *)graph valueForPointAtIndex:(NSInteger)index {
@@ -154,7 +152,7 @@ static const NSInteger KHkNumberOfGraphDays = 30;
 }
 
 - (NSInteger)numberOfGapsBetweenLabelsOnLineGraph:(BEMSimpleLineGraphView *)graph {
-    return KHkNumberOfGraphDays;
+    return self.dataManager.numberOfDays;
 }
 
 #pragma mark - Analytics

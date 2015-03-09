@@ -18,9 +18,12 @@ typedef NS_ENUM(NSUInteger, KHGraphType) {
 
 @interface KHGraphDataManager : NSObject
 
-- (instancetype)initWithKey:(NSString *)key delegate:(id<KHGraphDataManagerDelegate>) delegate NS_DESIGNATED_INITIALIZER;
+@property (nonatomic, assign, readonly) NSInteger numberOfDays;
+
+- (instancetype)initWithDelegate:(id<KHGraphDataManagerDelegate>)delegate NS_DESIGNATED_INITIALIZER;
 
 - (void)requestGraphData;
+
 - (NSString *)graphTypeToResponseKey:(KHGraphType)graphType;
 
 @end
