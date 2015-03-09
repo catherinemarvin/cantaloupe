@@ -64,12 +64,21 @@
 }
 
 - (void)_setupUI {
-    NSMutableDictionary *titleBarDictionary = [NSMutableDictionary dictionaryWithDictionary:[[UINavigationBar appearance] titleTextAttributes]];
+    UINavigationBar *navBarAppearance = [UINavigationBar appearance];
+    
+    NSMutableDictionary *titleBarDictionary = [NSMutableDictionary dictionaryWithDictionary:[navBarAppearance titleTextAttributes]];
     [titleBarDictionary setValue:[UIFont regularWithSize:24.0f] forKey:NSFontAttributeName];
     [titleBarDictionary setValue:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
-    UINavigationBar *appearance = [UINavigationBar appearance];
-    [appearance setTitleTextAttributes:titleBarDictionary];
-    [appearance setBarTintColor:[UIColor colorFromHexString:@"fa5c5c"]];
+    
+    [navBarAppearance setTitleTextAttributes:titleBarDictionary];
+    [navBarAppearance setBarTintColor:[UIColor colorFromHexString:@"fa5c5c"]];
+    [navBarAppearance setTintColor:[UIColor whiteColor]];
+    
+    UIBarButtonItem *barButtonAppearance = [UIBarButtonItem appearance];
+    NSMutableDictionary *barButtonDictionary = [NSMutableDictionary dictionaryWithDictionary:[barButtonAppearance titleTextAttributesForState:UIControlStateNormal]];
+    [barButtonDictionary setValue:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
+    
+    [barButtonAppearance setTitleTextAttributes:barButtonDictionary forState:UIControlStateNormal];
 }
 
 #pragma mark - KVO
