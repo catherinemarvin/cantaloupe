@@ -56,6 +56,8 @@ static NSString *KHkGameCellIdentifier = @"gameCellIdentifier";
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(_refresh) forControlEvents:UIControlEventValueChanged];
     [self.collectionView addSubview:self.refreshControl];
+    self.refreshControl.tintColor = [UIColor whiteColor];
+    [self.refreshControl beginRefreshing];
 }
 
 - (void)_setupNavigationBar {
