@@ -7,14 +7,15 @@
 //
 
 #import "KHLoginViewController.h"
-#import "AFNetworking.h"
-#import "KHTabBarController.h"
-#import <QuartzCore/QuartzCore.h>
-#import <SSKeychain/SSKeychain.h>
-#import <MBProgressHUD/MBProgressHUD.h>
+// Views
 #import "KHLoginView.h"
+#import "KHTabBarController.h"
+#import <MBProgressHUD/MBProgressHUD.h>
 
-@interface KHLoginViewController ()<UITextFieldDelegate>
+// Data Manager
+#import "KHLoginManager.h"
+
+@interface KHLoginViewController ()<UITextFieldDelegate, KHLoginManagerDelegate>
 
 @property (nonatomic, weak) UITextField *usernameField;
 @property (nonatomic, weak) UITextField *passwordField;

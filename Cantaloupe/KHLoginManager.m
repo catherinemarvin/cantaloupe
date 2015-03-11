@@ -8,56 +8,46 @@
 
 #import "KHLoginManager.h"
 
-// Networking
-#import <AFNetworking.h>
+// Service
+#import "KHLoginService.h"
 
-@interface KHLoginManager()
+// SessionManager
+#import "KHSessionController.h"
+
+@interface KHLoginManager()<KHLoginServiceDelegate>
 
 @property (nonatomic, weak) id<KHLoginManagerDelegate>delegate;
+@property (nonatomic, strong) KHLoginService *loginService;
 
 @end
-
-static NSString *const KHkLoginApiEndpoint = @"http://itch.io/api/1/login";
-static NSString *const KhkUsernameKey = @"username";
-static NSString *const KhkPasswordKey = @"password";
-
-// Itch API requires the source be android
-static NSString *const KhkSourceKey = @"source";
-static NSString *const KhkSourceValue = @"android";
-
-static NSString *const KhkResponseErrorsKey = @"errors";
-static NSString *const KhkResponseKeyKey = @"key";
 
 @implementation KHLoginManager
 
 - (instancetype)initWithDelegate:(id<KHLoginManagerDelegate>)delegate {
     if (self = [super init]) {
         _delegate = delegate;
+        _loginService = [[KHLoginService alloc] initWithDelegate:self];
     }
     return self;
 }
 
 - (void)loginWithUsername:(NSString *)username password:(NSString *)password {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setValue:username forKey:KhkUsernameKey];
-    [params setValue:password forKey:KhkPasswordKey];
-    [params setValue:KhkSourceValue forKey:KhkSourceKey];
-    [manager POST:KHkLoginApiEndpoint parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        if ([responseObject isKindOfClass:[NSDictionary class]]) {
-            NSDictionary *responseDict = (NSDictionary *)responseObject;
-            NSArray *errors = [responseDict valueForKey:KhkResponseErrorsKey];
-            
-            if (errors) {
-                [self.delegate loginFailedWithErrors:errors];
-                return;
-            }
-            NSString *key = [[responseDict valueForKey:KhkResponseKeyKey] valueForKey:KhkResponseKeyKey];
-            [self.delegate loginCompletedWithKey:key];
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self.delegate loginFailedWithError:error];
-    }];
+    [self.loginService loginWithUsername:username password:password];
+}
+
+#pragma mark - KHLoginServiceDelegate
+
+- (void)loginSucceededWithKey:(NSString *)key {
+    [KHSessionController sharedInstance].key = key;
+    [self.delegate loginCompletedWithKey:key];
+}
+
+- (void)loginFailedWithError:(NSError *)error {
+    [self.delegate loginFailedWithError:error];
+}
+
+- (void)loginFailedWithErrors:(NSArray *)errors {
+    [self.delegate loginFailedWithErrors:errors];
 }
 
 @end

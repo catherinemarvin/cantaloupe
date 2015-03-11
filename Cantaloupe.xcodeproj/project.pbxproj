@@ -76,6 +76,7 @@
 		6E9875541A7A21130042B3DD /* logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E9875521A7A21130042B3DD /* logo@3x.png */; };
 		6E9875581A7B57850042B3DD /* KHLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E9875571A7B57850042B3DD /* KHLoginView.m */; };
 		6E9CCCD51AAFE76C003D7630 /* KHLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E9CCCD41AAFE76C003D7630 /* KHLoginManager.m */; };
+		6EB6B24A1AAFF5DA00AEBA90 /* KHLoginService.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EB6B2491AAFF5DA00AEBA90 /* KHLoginService.m */; };
 		6ECBBDE719233EA700D00E30 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 6ECBBDE619233EA700D00E30 /* placeholder.png */; };
 		6EE7FC7718E697B8008AF5FF /* KHGameViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE7FC7618E697B8008AF5FF /* KHGameViewCell.m */; };
 		80ECE71DA3B64FF1B774964C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF3C06EFF674E0381459280 /* libPods.a */; };
@@ -194,6 +195,9 @@
 		6E9CCCD31AAFE76C003D7630 /* KHLoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHLoginManager.h; sourceTree = "<group>"; };
 		6E9CCCD41AAFE76C003D7630 /* KHLoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHLoginManager.m; sourceTree = "<group>"; };
 		6E9CCCD71AAFE7A9003D7630 /* KHLoginManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHLoginManagerDelegate.h; sourceTree = "<group>"; };
+		6EB6B2481AAFF5DA00AEBA90 /* KHLoginService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHLoginService.h; sourceTree = "<group>"; };
+		6EB6B2491AAFF5DA00AEBA90 /* KHLoginService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHLoginService.m; sourceTree = "<group>"; };
+		6EB6B24B1AAFF5EA00AEBA90 /* KHLoginServiceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHLoginServiceDelegate.h; sourceTree = "<group>"; };
 		6ECBBDE619233EA700D00E30 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		6EE7FBCE18E557CA008AF5FF /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		6EE7FC7518E697B8008AF5FF /* KHGameViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHGameViewCell.h; sourceTree = "<group>"; };
@@ -560,6 +564,7 @@
 		6E9CCCD01AAFE6F8003D7630 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				6EB6B2471AAFF5D000AEBA90 /* Service */,
 				6E9CCCD21AAFE759003D7630 /* Data Manager */,
 				6E9CCCD11AAFE6FD003D7630 /* Views */,
 			);
@@ -585,6 +590,16 @@
 				6E9CCCD71AAFE7A9003D7630 /* KHLoginManagerDelegate.h */,
 			);
 			name = "Data Manager";
+			sourceTree = "<group>";
+		};
+		6EB6B2471AAFF5D000AEBA90 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				6EB6B2481AAFF5DA00AEBA90 /* KHLoginService.h */,
+				6EB6B2491AAFF5DA00AEBA90 /* KHLoginService.m */,
+				6EB6B24B1AAFF5EA00AEBA90 /* KHLoginServiceDelegate.h */,
+			);
+			name = Service;
 			sourceTree = "<group>";
 		};
 		6EFE170818E295300000C6FE /* Images */ = {
@@ -797,6 +812,7 @@
 				6E3175EC1AAABA8A00BF9708 /* KHMyGamesDataSource.m in Sources */,
 				6E089C2819417FED00B1B8A1 /* KHNewsViewController.m in Sources */,
 				6E5FC2341921EE4000875CE1 /* KHDetailedGameView.m in Sources */,
+				6EB6B24A1AAFF5DA00AEBA90 /* KHLoginService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
