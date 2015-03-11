@@ -75,6 +75,7 @@
 		6E9875531A7A21130042B3DD /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E9875511A7A21130042B3DD /* logo.png */; };
 		6E9875541A7A21130042B3DD /* logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E9875521A7A21130042B3DD /* logo@3x.png */; };
 		6E9875581A7B57850042B3DD /* KHLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E9875571A7B57850042B3DD /* KHLoginView.m */; };
+		6E9CCCD51AAFE76C003D7630 /* KHLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E9CCCD41AAFE76C003D7630 /* KHLoginManager.m */; };
 		6ECBBDE719233EA700D00E30 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 6ECBBDE619233EA700D00E30 /* placeholder.png */; };
 		6EE7FC7718E697B8008AF5FF /* KHGameViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EE7FC7618E697B8008AF5FF /* KHGameViewCell.m */; };
 		80ECE71DA3B64FF1B774964C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF3C06EFF674E0381459280 /* libPods.a */; };
@@ -190,6 +191,9 @@
 		6E9875521A7A21130042B3DD /* logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@3x.png"; sourceTree = "<group>"; };
 		6E9875561A7B57850042B3DD /* KHLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHLoginView.h; sourceTree = "<group>"; };
 		6E9875571A7B57850042B3DD /* KHLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHLoginView.m; sourceTree = "<group>"; };
+		6E9CCCD31AAFE76C003D7630 /* KHLoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHLoginManager.h; sourceTree = "<group>"; };
+		6E9CCCD41AAFE76C003D7630 /* KHLoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHLoginManager.m; sourceTree = "<group>"; };
+		6E9CCCD71AAFE7A9003D7630 /* KHLoginManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHLoginManagerDelegate.h; sourceTree = "<group>"; };
 		6ECBBDE619233EA700D00E30 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		6EE7FBCE18E557CA008AF5FF /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		6EE7FC7518E697B8008AF5FF /* KHGameViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHGameViewCell.h; sourceTree = "<group>"; };
@@ -227,7 +231,6 @@
 		6E068B3018DA76AE00885A95 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				6E9875551A7B57710042B3DD /* Graphs */,
 				6E089C95194AAA3100B1B8A1 /* News */,
 				6E089C94194AAA2100B1B8A1 /* Graphs */,
 				6E089C93194AAA1900B1B8A1 /* Games */,
@@ -244,7 +247,6 @@
 				6E089C8F194AA9D700B1B8A1 /* Graphs */,
 				6E8C796A18D9761000741704 /* KHTabBarController.h */,
 				6E8C796B18D9761000741704 /* KHTabBarController.m */,
-				6E089C90194AA9EE00B1B8A1 /* Login */,
 				6E089C92194AAA0100B1B8A1 /* News */,
 				6E089C91194AA9F500B1B8A1 /* Settings */,
 			);
@@ -269,15 +271,6 @@
 				6E5A896E1910AB4B0062355C /* KHGraphsViewController.m */,
 			);
 			name = Graphs;
-			sourceTree = "<group>";
-		};
-		6E089C90194AA9EE00B1B8A1 /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				6E068B2D18DA742A00885A95 /* KHLoginViewController.h */,
-				6E068B2E18DA742A00885A95 /* KHLoginViewController.m */,
-			);
-			name = Login;
 			sourceTree = "<group>";
 		};
 		6E089C91194AA9F500B1B8A1 /* Settings */ = {
@@ -334,6 +327,7 @@
 		6E3175E31AAAAB0000BF9708 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				6E9CCCD01AAFE6F8003D7630 /* Login */,
 				6E3175E41AAAAB0A00BF9708 /* My Games */,
 			);
 			name = Modules;
@@ -563,13 +557,34 @@
 			name = Login;
 			sourceTree = "<group>";
 		};
-		6E9875551A7B57710042B3DD /* Graphs */ = {
+		6E9CCCD01AAFE6F8003D7630 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				6E9CCCD21AAFE759003D7630 /* Data Manager */,
+				6E9CCCD11AAFE6FD003D7630 /* Views */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		6E9CCCD11AAFE6FD003D7630 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				6E9875561A7B57850042B3DD /* KHLoginView.h */,
 				6E9875571A7B57850042B3DD /* KHLoginView.m */,
+				6E068B2D18DA742A00885A95 /* KHLoginViewController.h */,
+				6E068B2E18DA742A00885A95 /* KHLoginViewController.m */,
 			);
-			name = Graphs;
+			name = Views;
+			sourceTree = "<group>";
+		};
+		6E9CCCD21AAFE759003D7630 /* Data Manager */ = {
+			isa = PBXGroup;
+			children = (
+				6E9CCCD31AAFE76C003D7630 /* KHLoginManager.h */,
+				6E9CCCD41AAFE76C003D7630 /* KHLoginManager.m */,
+				6E9CCCD71AAFE7A9003D7630 /* KHLoginManagerDelegate.h */,
+			);
+			name = "Data Manager";
 			sourceTree = "<group>";
 		};
 		6EFE170818E295300000C6FE /* Images */ = {
@@ -772,6 +787,7 @@
 				6E5A897F1910BD530062355C /* KHDetailedGraphViewController.m in Sources */,
 				6E089C88194AA32400B1B8A1 /* KHNewsView.m in Sources */,
 				6E32CA0518EBDCE300156EAD /* KHSettingsViewController.m in Sources */,
+				6E9CCCD51AAFE76C003D7630 /* KHLoginManager.m in Sources */,
 				6E3175F01AAABB3000BF9708 /* KHMyGamesService.m in Sources */,
 				6E8C796C18D9761000741704 /* KHTabBarController.m in Sources */,
 				6E94B62D18E7BE9500153B52 /* KHDetailedGameViewController.m in Sources */,
