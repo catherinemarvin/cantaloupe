@@ -18,8 +18,6 @@
 @property (nonatomic, strong) NSArray *expectedDates;
 
 @property (nonatomic, strong) BEMSimpleLineGraphView *graphView;
-
-@property (nonatomic, strong) NSString *key;
 @property (nonatomic, assign) KHGraphType graphType;
 @property (nonatomic, strong) KHGraphDataManager *dataManager;
 
@@ -27,23 +25,21 @@
 
 @implementation KHDetailedGraphViewController
 
-- (instancetype)initWithGraphType:(KHGraphType)graphType key:(NSString *)key {
+- (instancetype)initWithGraphType:(KHGraphType)graphType {
     self = [super init];
     
     if (self) {
         _graphType = graphType;
-        _key = key;
         _dataManager = [[KHGraphDataManager alloc] initWithDelegate:self];
         _expectedDates = [self _expectedGraphDates];
         
         self.edgesForExtendedLayout = UIRectEdgeNone;
-        
     }
     return self;
-    
 }
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
     [self.dataManager requestGraphData];
 }
 

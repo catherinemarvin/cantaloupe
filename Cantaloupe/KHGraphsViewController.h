@@ -10,6 +10,4 @@
 
 @interface KHGraphsViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
-- (id)initWithKey:(NSString *)key;
-
 @end

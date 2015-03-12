@@ -11,6 +11,6 @@
 
 @interface KHDetailedGraphViewController : UIViewController
 
-- (instancetype)initWithGraphType:(KHGraphType)graphType key:(NSString *)key;
+- (instancetype)initWithGraphType:(KHGraphType)graphType;
 
 @end

@@ -16,7 +16,6 @@ static NSString *KHkGraphsCellIdentifier = @"kGraphsCell";
 @interface KHGraphsViewController ()
 
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) NSString *key;
 
 @end
 
@@ -29,10 +28,9 @@ static NSString *KHkGraphsCellIdentifier = @"kGraphsCell";
     self.tableView.dataSource = nil;
 }
 
-- (id)initWithKey:(NSString *)key {
-    self = [super init];
-    if (self) {
-        self.key = key;
+- (instancetype)init {
+    if (self = [super init]) {
+        
     }
     return self;
 }
@@ -99,7 +97,7 @@ static NSString *KHkGraphsCellIdentifier = @"kGraphsCell";
     
     KHGraphType graphType = (KHGraphType)cell.tag;
     
-    KHDetailedGraphViewController *detailedGraphController = [[KHDetailedGraphViewController alloc] initWithGraphType:graphType key:self.key];
+    KHDetailedGraphViewController *detailedGraphController = [[KHDetailedGraphViewController alloc] initWithGraphType:graphType];
     detailedGraphController.title = [self _titleForGraphType:graphType];
     [self.navigationController pushViewController:detailedGraphController animated:YES];
     

@@ -50,7 +50,7 @@
     
     UIViewController *mainController;
     if (session.loggedIn) {
-        mainController = [[KHTabBarController alloc] initWithKey:session.key];
+        mainController = [[KHTabBarController alloc] init];
     } else {
         mainController = [[KHLoginViewController alloc] init];
     }

@@ -21,7 +21,6 @@ typedef NS_ENUM(NSInteger, KHTabViewControllerTag) {
 
 @interface KHTabBarController ()
 
-@property (nonatomic, strong) NSString *key;
 @property (nonatomic, strong) KHMyGamesViewController *gamesViewController;
 @property (nonatomic, strong) KHSettingsViewController *settingsViewController;
 @property (nonatomic, strong) KHGraphsViewController *graphsViewController;
@@ -31,12 +30,9 @@ typedef NS_ENUM(NSInteger, KHTabViewControllerTag) {
 
 @implementation KHTabBarController
 
-- (id)initWithKey:(NSString *)key;
-{
+- (instancetype)init {
     self = [super init];
     if (self) {
-        self.key = key;
-        
         self.gamesViewController = [[KHMyGamesViewController alloc] init];
         self.gamesViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Games",nil) image:[UIImage imageNamed:@"gamesIcon"] tag:KHGamesViewControllerTag];
         UINavigationController *gamesNav = [[UINavigationController alloc] initWithRootViewController:self.gamesViewController];
@@ -46,7 +42,7 @@ typedef NS_ENUM(NSInteger, KHTabViewControllerTag) {
         self.settingsViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Settings", nil) image:[UIImage imageNamed:@"settingsIcon"] tag:KHSettingsViewControllerTag];
         UINavigationController *settingsNav = [[UINavigationController alloc] initWithRootViewController:self.settingsViewController];
         
-        self.graphsViewController = [[KHGraphsViewController alloc] initWithKey:self.key];
+        self.graphsViewController = [[KHGraphsViewController alloc] init];
         self.graphsViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Graphs", nil) image:[UIImage imageNamed:@"graphsIcon"] tag:KHGraphsViewControllerTag];
         UINavigationController *graphsNav = [[UINavigationController alloc] initWithRootViewController:self.graphsViewController];
         
