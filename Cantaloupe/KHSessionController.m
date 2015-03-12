@@ -65,7 +65,8 @@ static const int ddLogLevel = LOG_LEVEL_ALL;
 
 - (void)logout {
     NSError *error;
-    if (![SSKeychain deletePasswordForService:kKeychainServiceKey account:self.key error:&error] || error) {
+    NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:kUserKey];
+    if (![SSKeychain deletePasswordForService:kKeychainServiceKey account:username error:&error] || error) {
         DDLogError(@"Failed to logout: %@", error.debugDescription);
     }
     self.key = nil;
