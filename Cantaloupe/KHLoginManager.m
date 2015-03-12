@@ -45,7 +45,24 @@ static NSString *const KhkUserKey = @"kCantaloupeCurrentUser";
 
 - (void)loginWithUsername:(NSString *)username password:(NSString *)password {
     self.username = username;
-    [self.loginService loginWithUsername:username password:password];
+    if ([self _validateUsername:username password:password]) {
+        [self.loginService loginWithUsername:username password:password];
+    } else {
+        [self _blankFields];
+    }
+}
+
+- (BOOL)_validateUsername:(NSString *)username password:(NSString *)password {
+    if ([username isEqualToString:@""] || [password isEqualToString:@""]) {
+        return NO;
+    }
+    return YES;
+}
+
+- (void)_blankFields {
+    NSString *title = NSLocalizedString(@"Sorry", nil);
+    NSString *description = NSLocalizedString(@"Username and password cannot be blank.", nil);
+    [self.delegate loginFailedWithErrorTitle:title errorDescription:description];
 }
 
 #pragma mark - KHLoginServiceDelegate
@@ -71,9 +88,22 @@ static NSString *const KhkUserKey = @"kCantaloupeCurrentUser";
 }
 
 - (void)loginFailedWithError:(NSError *)error {
+    DDLogError(@"Error: %@", error.debugDescription);
+    if (error.code == NSURLErrorCannotConnectToHost) {
+        [self.delegate loginFailedWithErrorTitle:NSLocalizedString(@"No Internet", nil) errorDescription:NSLocalizedString(@"Please connect to the Internet, then try again.", nil)];
+    } else {
+        [self _genericLoginFailed];
+    }
 }
 
 - (void)loginFailedWithErrors:(NSArray *)errors {
+    DDLogError(@"Errors: %@", errors);
+    [self _genericLoginFailed];
+}
+
+- (void)_genericLoginFailed {
+    [self.delegate loginFailedWithErrorTitle:NSLocalizedString(@"Sorry", nil) errorDescription:NSLocalizedString(@"Something went wrong", nil)];
+    
 }
 
 @end
