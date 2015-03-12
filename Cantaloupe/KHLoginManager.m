@@ -103,7 +103,6 @@ static NSString *const KhkUserKey = @"kCantaloupeCurrentUser";
 
 - (void)_genericLoginFailed {
     [self.delegate loginFailedWithErrorTitle:NSLocalizedString(@"Sorry", nil) errorDescription:NSLocalizedString(@"Something went wrong", nil)];
-    
 }
 
 @end

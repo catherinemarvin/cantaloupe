@@ -31,8 +31,6 @@
 static NSString *kKeychainServiceKey = @"com.khwang.Cantaloupe";
 static NSString *kUserKey = @"kCantaloupeCurrentUser";
 
-static const int ddLogLevel = LOG_LEVEL_ALL;
-
 @implementation KHLoginViewController
 
 - (id)init
