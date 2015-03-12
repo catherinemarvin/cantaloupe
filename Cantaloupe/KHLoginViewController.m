@@ -141,23 +141,6 @@ static const int ddLogLevel = LOG_LEVEL_ALL;
             }
             NSString *key = [[responseDict valueForKey:@"key"] valueForKey:@"key"];
             
-            KHTabBarController *controller = [[KHTabBarController alloc] initWithKey:key];
-            [self presentViewController:controller animated:YES completion:nil];
-            
-            // Save in defaults
-            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            [defaults setObject:username forKey:kUserKey];
-            [defaults synchronize];
-            // Save key in keychain so we don't have to relogin.
-            
-            NSError *error = nil;
-            if ([SSKeychain setPassword:key forService:kKeychainServiceKey account:username error:&error] && !error) {
-                // No error, save Core data perhaps?
-                
-            } else {
-                DDLogError(@"Failed to set key: %@", error.debugDescription);
-            }
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             DDLogError(@"Error: %@", error);
@@ -166,7 +149,6 @@ static const int ddLogLevel = LOG_LEVEL_ALL;
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"No internet", nil) message:NSLocalizedString(@"Please connect to the Internet, then try again.", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Ok", nil) otherButtonTitles:nil];
                 [alert show];
             }
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
         }];
     }
 }
@@ -184,6 +166,22 @@ static const int ddLogLevel = LOG_LEVEL_ALL;
     }
     
     return error == nil;
+}
+
+#pragma mark - KHLoginManagerDelegate
+
+- (void)loginCompleted {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    KHTabBarController *controller = [[KHTabBarController alloc] init];
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
+- (void)loginFailedWithError:(NSError *)error {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+}
+
+- (void)loginFailedWithErrors:(NSArray *)errors {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
 }
 
 @end

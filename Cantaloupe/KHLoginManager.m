@@ -14,12 +14,24 @@
 // SessionManager
 #import "KHSessionController.h"
 
+// Keychain
+#import <SSKeychain.h>
+
+// Logging
+
+static const int ddLogLevel = LOG_LEVEL_ALL;
+
 @interface KHLoginManager()<KHLoginServiceDelegate>
 
 @property (nonatomic, weak) id<KHLoginManagerDelegate>delegate;
 @property (nonatomic, strong) KHLoginService *loginService;
 
+@property (nonatomic, strong) NSString *username;
+
 @end
+
+static NSString *const KHkKeychainServiceKey = @"com.khwang.Cantaloupe";
+static NSString *const KhkUserKey = @"kCantaloupeCurrentUser";
 
 @implementation KHLoginManager
 
@@ -32,22 +44,36 @@
 }
 
 - (void)loginWithUsername:(NSString *)username password:(NSString *)password {
+    self.username = username;
     [self.loginService loginWithUsername:username password:password];
 }
 
 #pragma mark - KHLoginServiceDelegate
 
 - (void)loginSucceededWithKey:(NSString *)key {
+    // Save to session controller
     [KHSessionController sharedInstance].key = key;
-    [self.delegate loginCompletedWithKey:key];
+    
+    // Save username in defaults
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:self.username forKey:KhkUserKey];
+    [defaults synchronize];
+    
+    // Save key in keychain
+    NSError *error = nil;
+    if ([SSKeychain setPassword:key forService:KHkKeychainServiceKey account:self.username error:&error]) {
+    } else {
+        DDLogError(@"Failed to set key: %@", error.debugDescription);
+    }
+    
+    
+    [self.delegate loginCompleted];
 }
 
 - (void)loginFailedWithError:(NSError *)error {
-    [self.delegate loginFailedWithError:error];
 }
 
 - (void)loginFailedWithErrors:(NSArray *)errors {
-    [self.delegate loginFailedWithErrors:errors];
 }
 
 @end

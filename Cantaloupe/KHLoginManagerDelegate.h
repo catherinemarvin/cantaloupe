@@ -10,8 +10,7 @@
 
 @protocol KHLoginManagerDelegate <NSObject>
 
-- (void)loginCompletedWithKey:(NSString *)key;
-- (void)loginFailedWithError:(NSError *)error;
-- (void)loginFailedWithErrors:(NSArray *)errors;
+- (void)loginCompleted;
+- (void)loginFailedWithErrorTitle:(NSString *)title errorDescription:(NSString *)errorDescription;
 
 @end
