@@ -51,32 +51,6 @@
     [tracker send:[[GAIDictionaryBuilder createAppView] build]];
 }
 
-- (void)_setupGraphView {
-    self.graphView = [[BEMSimpleLineGraphView alloc] init];
-    self.graphView.labelFont = [UIFont fontWithName:@"Lato-Regular" size:14.0f];
-    self.graphView.colorLine = [UIColor redColor];
-    self.graphView.colorBottom = [UIColor whiteColor];
-    self.graphView.colorTop = [UIColor whiteColor];
-    self.graphView.colorXaxisLabel = [UIColor colorFromHexString:@"222"];
-    self.graphView.colorYaxisLabel = [UIColor colorFromHexString:@"222"];
-    self.graphView.widthLine = 3.0f;
-    self.graphView.enableYAxisLabel = YES;
-    self.graphView.autoScaleYAxis = YES;
-    self.graphView.enablePopUpReport = YES;
-    self.graphView.enableReferenceAxisFrame = YES;
-    self.graphView.enableReferenceXAxisLines = YES;
-    self.graphView.enableReferenceYAxisLines = YES;
-    self.graphView.delegate = self;
-    self.graphView.dataSource = self;
-    [self.view addSubview:self.graphView];
-    
-    CGFloat padding = 20.0f;
-    UIEdgeInsets insets = UIEdgeInsetsMake(padding, padding, padding, padding);
-    [self.graphView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view).with.insets(insets);
-    }];
-}
-
 /// @brief Returns an array of NSDates corresponding to the expected dates in this graph.
 - (NSArray *)_expectedGraphDates {
     NSMutableArray *expected = [NSMutableArray array];
@@ -105,10 +79,40 @@
     return expected;
 }
 
+#pragma mark - Lazy Instantiation
+
+- (BEMSimpleLineGraphView *)graphView {
+    if (!_graphView) {
+        _graphView = [[BEMSimpleLineGraphView alloc] init];
+        _graphView.labelFont = [UIFont fontWithName:@"Lato-Regular" size:14.0f];
+        _graphView.colorLine = [UIColor redColor];
+        _graphView.colorBottom = [UIColor whiteColor];
+        _graphView.colorTop = [UIColor whiteColor];
+        _graphView.colorXaxisLabel = [UIColor colorFromHexString:@"222"];
+        _graphView.colorYaxisLabel = [UIColor colorFromHexString:@"222"];
+        _graphView.widthLine = 3.0f;
+        _graphView.enableYAxisLabel = YES;
+        _graphView.autoScaleYAxis = YES;
+        _graphView.enablePopUpReport = YES;
+        _graphView.enableReferenceAxisFrame = YES;
+        _graphView.enableReferenceXAxisLines = YES;
+        _graphView.enableReferenceYAxisLines = YES;
+        _graphView.delegate = self;
+        _graphView.dataSource = self;
+        [self.view addSubview:_graphView];
+        
+        CGFloat padding = 20.0f;
+        UIEdgeInsets insets = UIEdgeInsetsMake(padding, padding, padding, padding);
+        [_graphView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(self.view).with.insets(insets);
+        }];
+    }
+    return _graphView;
+}
+
 #pragma mark - KHGraphDataManagerDelegate
 
 - (void)receivedGraphData:(NSDictionary *)graphData {
-    [self _setupGraphView];
     NSString *key = [self.dataManager graphTypeToResponseKey:self.graphType];
     self.graphData = [graphData objectForKey:key];
     [self.graphView reloadGraph];
