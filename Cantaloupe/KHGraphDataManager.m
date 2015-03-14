@@ -26,7 +26,7 @@
 
 static const int ddLogLevel = LOG_LEVEL_ALL;
 
-static const NSInteger KHkDefaultNumberOfDays = 30;
+static const NSInteger KHkDefaultNumberOfDays = 7;
 
 @implementation KHGraphDataManager
 
