@@ -40,6 +40,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
     [self.dataManager requestGraphData];
 }
 
@@ -48,17 +49,6 @@
     id tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:[self _graphTypeToAnalyticsTitle:self.graphType]];
     [tracker send:[[GAIDictionaryBuilder createAppView] build]];
-}
-
-#pragma mark - UIViewController
-
-- (void)loadView {
-    UIView *view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    view.backgroundColor = [UIColor whiteColor];
-    
-    self.view = view;
-    
-    [self _setupGraphView];
 }
 
 - (void)_setupGraphView {
@@ -118,6 +108,7 @@
 #pragma mark - KHGraphDataManagerDelegate
 
 - (void)receivedGraphData:(NSDictionary *)graphData {
+    [self _setupGraphView];
     NSString *key = [self.dataManager graphTypeToResponseKey:self.graphType];
     self.graphData = [graphData objectForKey:key];
     [self.graphView reloadGraph];
