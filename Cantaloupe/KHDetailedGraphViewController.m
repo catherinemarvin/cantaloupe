@@ -85,7 +85,7 @@
     if (!_graphView) {
         _graphView = [[BEMSimpleLineGraphView alloc] init];
         _graphView.labelFont = [UIFont fontWithName:@"Lato-Regular" size:14.0f];
-        _graphView.colorLine = [UIColor redColor];
+        _graphView.colorLine = [UIColor colorFromHexString:@"DD4A4A"];
         _graphView.colorBottom = [UIColor whiteColor];
         _graphView.colorTop = [UIColor whiteColor];
         _graphView.colorXaxisLabel = [UIColor colorFromHexString:@"222"];
