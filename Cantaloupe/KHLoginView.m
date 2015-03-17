@@ -11,8 +11,13 @@
 @interface KHLoginView()
 
 @property (nonatomic, strong) UIView *formContainer;
+@property (nonatomic, strong) UIView *header;
+@property (nonatomic, strong) UILabel *headerLabel;
+@property (nonatomic, strong) UIView *divider;
 @property (nonatomic, strong) UIView *usernameSpacer;
 @property (nonatomic, strong) UIView *passwordSpacer;
+@property (nonatomic, strong) UITextField *usernameField;
+@property (nonatomic, strong) UITextField *passwordField;
 
 @property (nonatomic, assign) BOOL loginFormVisible;
 @property (nonatomic, strong) MASConstraint *formPositionConstraint;
@@ -28,6 +33,17 @@
         _formContainer = [[UIView alloc] init];
         _formContainer.backgroundColor = [UIColor whiteColor];
         [self addSubview:_formContainer];
+        
+        _header = [[UIView alloc] init];
+        [_formContainer addSubview:_header];
+        
+        _headerLabel = [[UILabel alloc] init];
+        _headerLabel.text = NSLocalizedString(@"Login", nil);
+        [_header addSubview:_headerLabel];
+        
+        _divider = [[UIView alloc] init];
+        _divider.backgroundColor = [UIColor grayColor];
+        [_formContainer addSubview:_divider];
         
         _usernameField = [[UITextField alloc] init];
         _usernameField.font = [UIFont fontWithName:@"Lato-Regular" size:16.0f];
@@ -82,10 +98,27 @@
         }
     }];
     
+    [self.header mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.formContainer);
+        make.left.and.right.equalTo(self.formContainer);
+        make.bottom.equalTo(self.headerLabel.mas_bottom);
+    }];
+    
+    [self.headerLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.header);
+        make.left.equalTo(self.header).with.offset(margin);
+    }];
+    
+    [self.divider mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.left.and.right.equalTo(self.formContainer);
+        make.top.equalTo(self.header.mas_bottom);
+        make.height.mas_equalTo(1);
+    }];
+    
     [self.usernameField mas_updateConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.formContainer).with.offset(margin);
         make.right.equalTo(self.formContainer).with.offset(-margin);
-        make.top.equalTo(self.formContainer).with.offset(margin);
+        make.top.equalTo(self.divider).with.offset(margin);
         make.height.equalTo(@(verticalHeight));
     }];
     
