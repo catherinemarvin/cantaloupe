@@ -17,9 +17,13 @@
 @property (nonatomic, strong) UIView *header;
 @property (nonatomic, strong) UILabel *headerLabel;
 @property (nonatomic, strong) UIView *divider;
+
+@property (nonatomic, strong) UILabel *usernameLabel;
 @property (nonatomic, strong) UIView *usernameSpacer;
-@property (nonatomic, strong) UIView *passwordSpacer;
 @property (nonatomic, strong) UITextField *usernameField;
+
+@property (nonatomic, strong) UILabel *passwordLabel;
+@property (nonatomic, strong) UIView *passwordSpacer;
 @property (nonatomic, strong) UITextField *passwordField;
 
 @property (nonatomic, assign) BOOL loginFormVisible;
@@ -49,9 +53,13 @@
         _divider.backgroundColor = [UIColor colorFromHexString:@"D1D1D1"];
         [_formContainer addSubview:_divider];
         
+        _usernameLabel = [[UILabel alloc] init];
+        _usernameLabel.font = [UIFont regularWithSize:16];
+        _usernameLabel.text = NSLocalizedString(@"Username", nil);
+        [_formContainer addSubview:_usernameLabel];
+        
         _usernameField = [[UITextField alloc] init];
         _usernameField.font = [UIFont fontWithName:@"Lato-Regular" size:16.0f];
-        _usernameField.placeholder = NSLocalizedString(@"Username", nil);
         _usernameField.autocapitalizationType = UITextAutocapitalizationTypeNone;
         _usernameField.autocorrectionType = UITextAutocorrectionTypeNo;
         _usernameField.returnKeyType = UIReturnKeyNext;
@@ -62,9 +70,13 @@
         [_usernameField setLeftViewMode:UITextFieldViewModeAlways];
         [_usernameField setLeftView:_usernameSpacer];
         
+        _passwordLabel = [[UILabel alloc] init];
+        _passwordLabel.font = [UIFont regularWithSize:16.0f];
+        _passwordLabel.text = NSLocalizedString(@"Password", nil);
+        [_formContainer addSubview:_passwordLabel];
+        
         _passwordField = [[UITextField alloc] init];
         _passwordField.font = [UIFont fontWithName:@"Lato-Regular" size:16.0f];
-        _passwordField.placeholder = NSLocalizedString(@"Password", nil);
         _passwordField.secureTextEntry = YES;
         _passwordField.autocapitalizationType = UITextAutocapitalizationTypeNone;
         _passwordField.returnKeyType = UIReturnKeyGo;
@@ -91,6 +103,7 @@
 - (void)updateConstraints {
     CGFloat margin = 10.f;
     CGFloat verticalHeight = 44.0f;
+    
     [self.formContainer mas_updateConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self).with.offset(margin);
         make.right.equalTo(self).with.offset(-margin);
@@ -119,16 +132,27 @@
         make.height.mas_equalTo(1);
     }];
     
-    [self.usernameField mas_updateConstraints:^(MASConstraintMaker *make) {
+    [self.usernameLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.formContainer).with.offset(margin);
         make.right.equalTo(self.formContainer).with.offset(-margin);
         make.top.equalTo(self.divider).with.offset(margin);
+    }];
+    
+    [self.usernameField mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.formContainer).with.offset(margin);
+        make.right.equalTo(self.formContainer).with.offset(-margin);
+        make.top.equalTo(self.usernameLabel.mas_bottom).with.offset(margin);
         make.height.equalTo(@(verticalHeight));
+    }];
+    
+    [self.passwordLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.left.and.right.equalTo(self.usernameField);
+        make.top.equalTo(self.usernameField.mas_bottom).with.offset(margin);
     }];
     
     [self.passwordField mas_updateConstraints:^(MASConstraintMaker *make) {
         make.left.and.right.equalTo(self.usernameField);
-        make.top.equalTo(self.usernameField.mas_bottom).with.offset(margin);
+        make.top.equalTo(self.passwordLabel.mas_bottom).with.offset(margin);
         make.height.equalTo(@(verticalHeight));
     }];
     
