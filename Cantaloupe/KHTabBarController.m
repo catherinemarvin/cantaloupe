@@ -50,7 +50,7 @@ typedef NS_ENUM(NSInteger, KHTabViewControllerTag) {
         self.newsViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"News", nil) image:[UIImage imageNamed:@"newsIcon"] tag:KHNewsViewControllerTag];
         UINavigationController *newsNav = [[UINavigationController alloc] initWithRootViewController:self.newsViewController];
         
-        NSArray *viewControllers = @[gamesNav, graphsNav, settingsNav, newsNav];
+        NSArray *viewControllers = @[gamesNav, graphsNav, newsNav, settingsNav];
         [self setViewControllers:viewControllers];
     }
     return self;
