@@ -8,6 +8,9 @@
 
 #import "KHLoginView.h"
 
+// Fonts
+#import "UIFont+KHAdditions.h"
+
 @interface KHLoginView()
 
 @property (nonatomic, strong) UIView *formContainer;
@@ -39,10 +42,11 @@
         
         _headerLabel = [[UILabel alloc] init];
         _headerLabel.text = NSLocalizedString(@"Login", nil);
+        _headerLabel.font = [UIFont boldWithSize:16];
         [_header addSubview:_headerLabel];
         
         _divider = [[UIView alloc] init];
-        _divider.backgroundColor = [UIColor grayColor];
+        _divider.backgroundColor = [UIColor colorFromHexString:@"D1D1D1"];
         [_formContainer addSubview:_divider];
         
         _usernameField = [[UITextField alloc] init];
@@ -101,7 +105,7 @@
     [self.header mas_updateConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.formContainer);
         make.left.and.right.equalTo(self.formContainer);
-        make.bottom.equalTo(self.headerLabel.mas_bottom);
+        make.height.equalTo(self.headerLabel).multipliedBy(2);
     }];
     
     [self.headerLabel mas_updateConstraints:^(MASConstraintMaker *make) {
