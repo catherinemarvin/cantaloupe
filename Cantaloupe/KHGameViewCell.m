@@ -19,7 +19,10 @@
 @interface KHGameViewCell()
 
 @property (nonatomic, strong) UIImageView *imageView;
+
+@property (nonatomic, strong) UIView *footer;
 @property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UILabel *descriptionLabel;
 
 @end
 
@@ -31,10 +34,19 @@
         _imageView.contentMode = UIViewContentModeScaleAspectFill;
         [self.contentView addSubview:_imageView];
         
+        _footer = [[UIView alloc] init];
+        _footer.backgroundColor = [UIColor whiteColor];
+        [self.contentView addSubview:_footer];
+        
         _titleLabel = [[UILabel alloc] init];
         _titleLabel.font = [UIFont regularWithSize:12.0f];
         _titleLabel.textColor = [UIColor colorFromHexString:@"aaaaaa"];
-        [self.contentView addSubview:_titleLabel];
+        [_footer addSubview:_titleLabel];
+        
+        _descriptionLabel = [[UILabel alloc] init];
+        _descriptionLabel.font = [UIFont regularWithSize:12.0f];
+        _descriptionLabel.text = @"Game description";
+        [_footer addSubview:_descriptionLabel];
         
         [self _initializeAutolayout];
     }
@@ -45,13 +57,22 @@
     [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.and.right.equalTo(self.contentView);
         make.top.equalTo(self.contentView);
-        make.bottom.equalTo(self.titleLabel.mas_top);
+        make.bottom.equalTo(self.footer.mas_top);
+    }];
+    
+    [self.footer mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.contentView);
+        make.left.and.right.equalTo(self.contentView);
     }];
     
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.imageView.mas_bottom);
-        make.left.and.right.equalTo(self.contentView);
-        make.bottom.equalTo(self.contentView);
+        make.top.equalTo(self.footer);
+        make.left.and.right.equalTo(self.footer);
+    }];
+    
+    [self.descriptionLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.titleLabel.mas_bottom);
+        make.left.and.right.equalTo(self.titleLabel);
     }];
 }
 
