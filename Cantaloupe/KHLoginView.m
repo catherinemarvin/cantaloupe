@@ -42,6 +42,7 @@
         _backgroundImage = [[UIImageView alloc] init];
         _backgroundImage.image = [UIImage imageNamed:@"login_background.jpg"];
         _backgroundImage.contentMode = UIViewContentModeScaleAspectFill;
+        _backgroundImage.userInteractionEnabled = YES;
         [self addSubview:_backgroundImage];
         
         _formContainer = [[UIView alloc] init];
