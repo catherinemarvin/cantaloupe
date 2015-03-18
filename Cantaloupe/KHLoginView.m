@@ -55,6 +55,7 @@
         _formContainer.backgroundColor = [UIColor whiteColor];
         [_backgroundImage addSubview:_formContainer];
         
+        
         _header = [[UIView alloc] init];
         [_formContainer addSubview:_header];
         

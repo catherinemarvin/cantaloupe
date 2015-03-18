@@ -101,21 +101,10 @@ static NSString *KHkGameCellIdentifier = @"gameCellIdentifier";
 #pragma mark - UICollectionViewDelegateFlowLayout
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat sideLength = 125;
-    return CGSizeMake(sideLength, sideLength);
-}
-
-- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    CGFloat inset = 20.0f;
-    return UIEdgeInsetsMake(inset, inset, inset, inset);
-}
-
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
-    return 15.0f;
-}
-
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-    return 15.0f;
+    CGFloat width = CGRectGetWidth(collectionView.bounds);
+    CGFloat height = 300;
+    
+    return CGSizeMake(width, height);
 }
 
 #pragma mark - UIRefreshControl
