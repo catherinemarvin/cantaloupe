@@ -13,6 +13,8 @@
 
 @interface KHLoginView()
 
+@property (nonatomic, strong) UIImageView *backgroundImage;
+
 @property (nonatomic, strong) UIView *formContainer;
 @property (nonatomic, strong) UIView *header;
 @property (nonatomic, strong) UILabel *headerLabel;
@@ -37,9 +39,14 @@
     if (self = [super initWithFrame:frame]) {
         _loginFormVisible = NO;
         
+        _backgroundImage = [[UIImageView alloc] init];
+        _backgroundImage.image = [UIImage imageNamed:@"login_background.jpg"];
+        _backgroundImage.contentMode = UIViewContentModeScaleAspectFill;
+        [self addSubview:_backgroundImage];
+        
         _formContainer = [[UIView alloc] init];
         _formContainer.backgroundColor = [UIColor whiteColor];
-        [self addSubview:_formContainer];
+        [_backgroundImage addSubview:_formContainer];
         
         _header = [[UIView alloc] init];
         [_formContainer addSubview:_header];
@@ -94,7 +101,6 @@
         [_loginButton setBackgroundColor:[UIColor linkColor]];
         [_formContainer addSubview:_loginButton];
         
-        self.backgroundColor = [UIColor darkBackgroundColor];
         [self setNeedsUpdateConstraints];
     }
     return self;
@@ -104,14 +110,18 @@
     CGFloat margin = 10.f;
     CGFloat verticalHeight = 44.0f;
     
+    [self.backgroundImage mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self);
+    }];
+    
     [self.formContainer mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self).with.offset(margin);
-        make.right.equalTo(self).with.offset(-margin);
+        make.left.equalTo(self.backgroundImage).with.offset(margin);
+        make.right.equalTo(self.backgroundImage).with.offset(-margin);
         
         if (self.loginFormVisible) {
-            self.formPositionConstraint = make.centerY.equalTo(self.mas_centerY);
+            self.formPositionConstraint = make.centerY.equalTo(self.backgroundImage.mas_centerY);
         } else {
-            self.formPositionConstraint = make.bottom.equalTo(self.mas_top);
+            self.formPositionConstraint = make.bottom.equalTo(self.backgroundImage.mas_top);
         }
     }];
     
