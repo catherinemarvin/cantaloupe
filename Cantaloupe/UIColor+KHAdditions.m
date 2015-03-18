@@ -69,10 +69,6 @@
     return [self colorFromHexString:@"dadada"];
 }
 
-+ (UIColor *)darkBackgroundColor {
-    return [self colorFromHexString:@"7a6b6e"];
-}
-
 + (UIColor *)darkBackgroundTextColor {
     return [self colorFromHexString:@"ffffff"];
 }

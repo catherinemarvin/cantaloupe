@@ -44,8 +44,8 @@ static NSString *kUserKey = @"kCantaloupeCurrentUser";
 
 - (void)loadView {
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:[UIScreen mainScreen].applicationFrame];
-    scrollView.backgroundColor = [UIColor darkBackgroundColor];
-    KHLoginView *view = [[KHLoginView alloc] initWithFrame:[UIScreen mainScreen].applicationFrame];
+    
+    KHLoginView *view = [[KHLoginView alloc] initWithFrame:scrollView.bounds];
     view.usernameField.delegate = self;
     view.passwordField.delegate = self;
     [view.loginButton addTarget:self action:@selector(_loginTapped:) forControlEvents:UIControlEventTouchUpInside];

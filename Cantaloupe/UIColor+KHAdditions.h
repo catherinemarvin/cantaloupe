@@ -18,7 +18,6 @@
 + (UIColor *)textColor;
 + (UIColor *)subtextColor;
 + (UIColor *)borderColor;
-+ (UIColor *)darkBackgroundColor;
 + (UIColor *)darkBackgroundTextColor;
 + (UIColor *)linkColor;
 + (UIColor *)buyColor;
