@@ -15,6 +15,8 @@
 
 @property (nonatomic, strong) UIImageView *backgroundImage;
 
+@property (nonatomic, strong) UIImageView *logo;
+
 @property (nonatomic, strong) UIView *formContainer;
 @property (nonatomic, strong) UIView *header;
 @property (nonatomic, strong) UILabel *headerLabel;
@@ -44,6 +46,10 @@
         _backgroundImage.contentMode = UIViewContentModeScaleAspectFill;
         _backgroundImage.userInteractionEnabled = YES;
         [self addSubview:_backgroundImage];
+        
+        _logo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"login_logo"]];
+        _logo.contentMode = UIViewContentModeScaleAspectFit;
+        [_backgroundImage addSubview:_logo];
         
         _formContainer = [[UIView alloc] init];
         _formContainer.backgroundColor = [UIColor whiteColor];
@@ -113,6 +119,11 @@
     
     [self.backgroundImage mas_updateConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self);
+    }];
+    
+    [self.logo mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.backgroundImage);
+        make.top.equalTo(self.backgroundImage).with.offset(margin);
     }];
     
     [self.formContainer mas_updateConstraints:^(MASConstraintMaker *make) {
