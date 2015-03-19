@@ -52,12 +52,18 @@
         [_footer addSubview:_descriptionLabel];
         
         _priceLabel = [[UILabel alloc] init];
+        _priceLabel.textColor = [UIColor whiteColor];
+        _priceLabel.backgroundColor = [UIColor colorFromHexString:@"24C091"];
         [_footer addSubview:_priceLabel];
         
         _viewsLabel = [[UILabel alloc] init];
+        _viewsLabel.backgroundColor = [UIColor colorFromHexString:@"DADADA"];
+        _viewsLabel.textColor = [UIColor grayColor];
         [_footer addSubview:_viewsLabel];
         
         _downloadsLabel = [[UILabel alloc] init];
+        _downloadsLabel.backgroundColor = [UIColor colorFromHexString:@"DADADA"];
+        _downloadsLabel.textColor = [UIColor grayColor];
         [_footer addSubview:_downloadsLabel];
         
         [self _initializeAutolayout];
