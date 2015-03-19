@@ -57,6 +57,7 @@
         _priceLabel.backgroundColor = [UIColor colorFromHexString:@"24C091"];
         _priceLabel.layer.cornerRadius = cornerRadius;
         _priceLabel.layer.masksToBounds = YES;
+        _priceLabel.font = [UIFont regularWithSize:14.0f];
         [_footer addSubview:_priceLabel];
         
         _viewsLabel = [[UILabel alloc] init];
@@ -64,6 +65,7 @@
         _viewsLabel.textColor = [UIColor grayColor];
         _viewsLabel.layer.cornerRadius = cornerRadius;
         _viewsLabel.layer.masksToBounds = YES;
+        _viewsLabel.font = [UIFont regularWithSize:14.0f];
         [_footer addSubview:_viewsLabel];
         
         _downloadsLabel = [[UILabel alloc] init];
@@ -71,6 +73,7 @@
         _downloadsLabel.textColor = [UIColor grayColor];
         _downloadsLabel.layer.cornerRadius = cornerRadius;
         _downloadsLabel.layer.masksToBounds = YES;
+        _downloadsLabel.font = [UIFont regularWithSize:14.0f];
         [_footer addSubview:_downloadsLabel];
         
         [self _initializeAutolayout];
