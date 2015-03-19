@@ -20,6 +20,8 @@
 @property (nonatomic, assign, readonly) NSUInteger views;
 @property (nonatomic, assign, readonly) NSUInteger purchases;
 @property (nonatomic, assign, readonly) NSUInteger downloads;
+@property (nonatomic, assign, readonly) NSUInteger priceInCents;
+@property (nonatomic, strong, readonly) NSString *priceString;
 
 
 @end

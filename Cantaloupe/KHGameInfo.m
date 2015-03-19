@@ -20,6 +20,9 @@
 @property (nonatomic, assign) NSUInteger views;
 @property (nonatomic, assign) NSUInteger purchases;
 @property (nonatomic, assign) NSUInteger downloads;
+@property (nonatomic, assign) NSUInteger priceInCents;
+@property (nonatomic, strong) NSString *priceString;
+
 @end
 
 static NSString* const KHkCoverKey = @"cover_url";
@@ -30,6 +33,7 @@ static NSString *const KHkFormattedEarningsKey = @"amount_formatted";
 static NSString *const KHkViewsKey = @"views_count";
 static NSString *const KHkPurchasesKey = @"purchases_count";
 static NSString *const KHkDownloadsKey = @"downloads_count";
+static NSString *const KhkPriceKey = @"min_price";
 
 
 @implementation KHGameInfo
@@ -97,6 +101,28 @@ static NSString *const KHkDownloadsKey = @"downloads_count";
         _downloads = [[self.dictionary valueForKey:KHkDownloadsKey] unsignedIntegerValue];
     }
     return _downloads;
+}
+
+- (NSUInteger)priceInCents {
+    if (!_priceInCents) {
+        _priceInCents = [[self.dictionary valueForKey:KhkPriceKey] unsignedIntegerValue];
+    }
+    return _priceInCents;
+}
+
+- (NSString *)priceString {
+    if (!_priceString) {
+        NSNumber *numberInCents = [NSNumber numberWithInteger:self.priceInCents];
+        NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+        [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+        [numberFormatter setMultiplier:@0.01];
+        
+        // http://objectivetoast.com/2014/05/05/nsnumberformatter-and-objective-c-types/
+        // Ensure that the number to format has a floating-point Objective-C type
+        NSNumber *floatingPointNumberInCents = @([numberInCents floatValue]);
+        _priceString = [numberFormatter stringFromNumber:floatingPointNumberInCents];
+    }
+    return _priceString;
 }
 
 @end
