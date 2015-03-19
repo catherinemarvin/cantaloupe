@@ -45,7 +45,6 @@
         
         _descriptionLabel = [[UILabel alloc] init];
         _descriptionLabel.font = [UIFont regularWithSize:12.0f];
-        _descriptionLabel.text = @"Game description";
         [_footer addSubview:_descriptionLabel];
         
         [self _initializeAutolayout];
@@ -79,6 +78,7 @@
 - (void)configureWithGameInfo:(KHGameInfo *)gameInfo {
     self.imageView.image = gameInfo.coverImage;
     self.titleLabel.text = gameInfo.titleString;
+    self.descriptionLabel.text = gameInfo.shortDescription;
 }
 
 @end
