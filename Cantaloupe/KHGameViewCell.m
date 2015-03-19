@@ -51,19 +51,26 @@
         _descriptionLabel.font = [UIFont regularWithSize:12.0f];
         [_footer addSubview:_descriptionLabel];
         
+        CGFloat cornerRadius = 5.0f;
         _priceLabel = [[UILabel alloc] init];
         _priceLabel.textColor = [UIColor whiteColor];
         _priceLabel.backgroundColor = [UIColor colorFromHexString:@"24C091"];
+        _priceLabel.layer.cornerRadius = cornerRadius;
+        _priceLabel.layer.masksToBounds = YES;
         [_footer addSubview:_priceLabel];
         
         _viewsLabel = [[UILabel alloc] init];
         _viewsLabel.backgroundColor = [UIColor colorFromHexString:@"DADADA"];
         _viewsLabel.textColor = [UIColor grayColor];
+        _viewsLabel.layer.cornerRadius = cornerRadius;
+        _viewsLabel.layer.masksToBounds = YES;
         [_footer addSubview:_viewsLabel];
         
         _downloadsLabel = [[UILabel alloc] init];
         _downloadsLabel.backgroundColor = [UIColor colorFromHexString:@"DADADA"];
         _downloadsLabel.textColor = [UIColor grayColor];
+        _downloadsLabel.layer.cornerRadius = cornerRadius;
+        _downloadsLabel.layer.masksToBounds = YES;
         [_footer addSubview:_downloadsLabel];
         
         [self _initializeAutolayout];
