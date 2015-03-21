@@ -21,6 +21,8 @@
 @property (nonatomic, strong) UIImageView *imageView;
 
 @property (nonatomic, strong) UIView *footer;
+
+@property (nonatomic, strong) UIView *textContainer;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *descriptionLabel;
 
@@ -42,14 +44,18 @@
         _footer.backgroundColor = [UIColor whiteColor];
         [self.contentView addSubview:_footer];
         
+        _textContainer = [[UIView alloc] init];
+        [_footer addSubview:_textContainer];
+        
         _titleLabel = [[UILabel alloc] init];
-        _titleLabel.font = [UIFont regularWithSize:12.0f];
+        _titleLabel.font = [UIFont regularWithSize:20.0f];
         _titleLabel.textColor = [UIColor colorFromHexString:@"aaaaaa"];
-        [_footer addSubview:_titleLabel];
+        [_textContainer addSubview:_titleLabel];
+        
         
         _descriptionLabel = [[UILabel alloc] init];
-        _descriptionLabel.font = [UIFont regularWithSize:12.0f];
-        [_footer addSubview:_descriptionLabel];
+        _descriptionLabel.font = [UIFont regularWithSize:16.0f];
+        [_textContainer addSubview:_descriptionLabel];
         
         CGFloat cornerRadius = 5.0f;
         _priceLabel = [[UILabel alloc] init];
@@ -57,24 +63,24 @@
         _priceLabel.backgroundColor = [UIColor colorFromHexString:@"24C091"];
         _priceLabel.layer.cornerRadius = cornerRadius;
         _priceLabel.layer.masksToBounds = YES;
-        _priceLabel.font = [UIFont regularWithSize:14.0f];
-        [_footer addSubview:_priceLabel];
+        _priceLabel.font = [UIFont regularWithSize:10.0f];
+        [_textContainer addSubview:_priceLabel];
         
         _viewsLabel = [[UILabel alloc] init];
         _viewsLabel.backgroundColor = [UIColor colorFromHexString:@"DADADA"];
         _viewsLabel.textColor = [UIColor grayColor];
         _viewsLabel.layer.cornerRadius = cornerRadius;
         _viewsLabel.layer.masksToBounds = YES;
-        _viewsLabel.font = [UIFont regularWithSize:14.0f];
-        [_footer addSubview:_viewsLabel];
+        _viewsLabel.font = [UIFont regularWithSize:10.0f];
+        [_textContainer addSubview:_viewsLabel];
         
         _downloadsLabel = [[UILabel alloc] init];
         _downloadsLabel.backgroundColor = [UIColor colorFromHexString:@"DADADA"];
         _downloadsLabel.textColor = [UIColor grayColor];
         _downloadsLabel.layer.cornerRadius = cornerRadius;
         _downloadsLabel.layer.masksToBounds = YES;
-        _downloadsLabel.font = [UIFont regularWithSize:14.0f];
-        [_footer addSubview:_downloadsLabel];
+        _downloadsLabel.font = [UIFont regularWithSize:10.0f];
+        [_textContainer addSubview:_downloadsLabel];
         
         [self _initializeAutolayout];
     }
@@ -89,16 +95,25 @@
     }];
     
     [self.footer mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.contentView);
         make.left.and.right.equalTo(self.contentView);
+        make.bottom.equalTo(self.contentView);
+        make.top.equalTo(self.imageView.mas_bottom);
+        make.height.equalTo(self.textContainer);
     }];
     
     CGFloat sideMargin = 20.0f;
     
-    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.footer);
-        make.right.equalTo(self.footer);
+    [_textContainer mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.footer).with.offset(sideMargin);
+        make.right.equalTo(self.footer).with.offset(-sideMargin);
+        make.top.equalTo(self.footer);
+        make.bottom.equalTo(self.priceLabel).with.offset(sideMargin);
+    }];
+    
+    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.textContainer);
+        make.top.equalTo(self.textContainer);
+        make.right.equalTo(self.textContainer);
     }];
     
     [self.descriptionLabel mas_makeConstraints:^(MASConstraintMaker *make) {
