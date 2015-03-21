@@ -93,9 +93,12 @@
         make.left.and.right.equalTo(self.contentView);
     }];
     
+    CGFloat sideMargin = 20.0f;
+    
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.footer);
-        make.left.and.right.equalTo(self.footer);
+        make.right.equalTo(self.footer);
+        make.left.equalTo(self.footer).with.offset(sideMargin);
     }];
     
     [self.descriptionLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -108,14 +111,15 @@
         make.left.equalTo(self.titleLabel);
     }];
     
+    CGFloat smallSpacing = 10.0f;
     [self.viewsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.priceLabel);
-        make.left.equalTo(self.priceLabel.mas_right);
+        make.left.equalTo(self.priceLabel.mas_right).with.offset(smallSpacing);
     }];
     
     [self.downloadsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.priceLabel);
-        make.left.equalTo(self.viewsLabel.mas_right);
+        make.left.equalTo(self.viewsLabel.mas_right).with.offset(smallSpacing);
     }];
 }
 
