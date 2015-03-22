@@ -138,7 +138,7 @@
     CGFloat sidePadding = 5;
     CGFloat topPadding = 2;
     [self.priceLabelContainer mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.descriptionLabel.mas_bottom);
+        make.top.equalTo(self.descriptionLabel.mas_bottom).with.offset(sidePadding);
         make.left.equalTo(self.titleLabel);
         make.top.equalTo(self.priceLabel).with.offset(-topPadding);
         make.bottom.equalTo(self.priceLabel).with.offset(topPadding);
