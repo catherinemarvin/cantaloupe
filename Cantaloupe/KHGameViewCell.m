@@ -121,7 +121,7 @@
         make.left.equalTo(self.footer).with.offset(sideMargin);
         make.right.equalTo(self.footer).with.offset(-sideMargin);
         make.top.equalTo(self.footer);
-        make.bottom.equalTo(self.priceLabel).with.offset(sideMargin);
+        make.bottom.equalTo(self.priceLabelContainer).with.offset(sideMargin);
     }];
     
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -135,32 +135,48 @@
         make.left.and.right.equalTo(self.titleLabel);
     }];
     
+    CGFloat sidePadding = 5;
+    CGFloat topPadding = 2;
     [self.priceLabelContainer mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.descriptionLabel.mas_bottom);
         make.left.equalTo(self.titleLabel);
+        make.top.equalTo(self.priceLabel).with.offset(-topPadding);
+        make.bottom.equalTo(self.priceLabel).with.offset(topPadding);
+        make.left.equalTo(self.priceLabel).with.offset(-sidePadding);
+        make.right.equalTo(self.priceLabel).with.offset(sidePadding);
     }];
     
     [self.priceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.priceLabelContainer);
+        make.center.equalTo(self.priceLabelContainer);
     }];
     
     CGFloat smallSpacing = 10.0f;
     [self.viewsLabelContainer mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.priceLabelContainer);
         make.left.equalTo(self.priceLabelContainer.mas_right).with.offset(smallSpacing);
+        
+        make.top.equalTo(self.viewsLabel).with.offset(-topPadding);
+        make.bottom.equalTo(self.viewsLabel).with.offset(topPadding);
+        make.left.equalTo(self.viewsLabel).with.offset(-sidePadding);
+        make.right.equalTo(self.viewsLabel).with.offset(sidePadding);
     }];
     
     [self.viewsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.viewsLabelContainer);
+        make.center.equalTo(self.viewsLabelContainer);
     }];
     
     [self.downloadslabelContainer mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.priceLabelContainer);
         make.left.equalTo(self.viewsLabelContainer.mas_right).with.offset(smallSpacing);
+        
+        make.top.equalTo(self.downloadsLabel).with.offset(-topPadding);
+        make.bottom.equalTo(self.downloadsLabel).with.offset(topPadding);
+        make.left.equalTo(self.downloadsLabel).with.offset(-sidePadding);
+        make.right.equalTo(self.downloadsLabel).with.offset(sidePadding);
     }];
     
     [self.downloadsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.downloadslabelContainer);
+        make.center.equalTo(self.downloadslabelContainer);
     }];
 }
 
