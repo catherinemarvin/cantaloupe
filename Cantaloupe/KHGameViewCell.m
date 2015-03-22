@@ -54,12 +54,12 @@
         
         _titleLabel = [[UILabel alloc] init];
         _titleLabel.font = [UIFont regularWithSize:20.0f];
-        _titleLabel.textColor = [UIColor colorFromHexString:@"aaaaaa"];
         [_textContainer addSubview:_titleLabel];
         
         
         _descriptionLabel = [[UILabel alloc] init];
-        _descriptionLabel.font = [UIFont regularWithSize:16.0f];
+        _descriptionLabel.font = [UIFont regularWithSize:14.0f];
+        _descriptionLabel.textColor = [UIColor colorFromHexString:@"aaaaaa"];
         [_textContainer addSubview:_descriptionLabel];
         
         CGFloat cornerRadius = 5.0f;

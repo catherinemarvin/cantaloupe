@@ -102,7 +102,7 @@ static NSString *KHkGameCellIdentifier = @"gameCellIdentifier";
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat width = CGRectGetWidth(collectionView.bounds);
-    CGFloat height = 300;
+    CGFloat height = 350;
     
     return CGSizeMake(width, height);
 }
