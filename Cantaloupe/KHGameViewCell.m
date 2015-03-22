@@ -27,8 +27,13 @@
 @property (nonatomic, strong) UILabel *descriptionLabel;
 
 @property (nonatomic, strong) UILabel *priceLabel;
+@property (nonatomic, strong) UIView *priceLabelContainer;
+
 @property (nonatomic, strong) UILabel *viewsLabel;
+@property (nonatomic, strong) UIView *viewsLabelContainer;
+
 @property (nonatomic, strong) UILabel *downloadsLabel;
+@property (nonatomic, strong) UIView *downloadslabelContainer;
 
 @end
 
@@ -58,29 +63,38 @@
         [_textContainer addSubview:_descriptionLabel];
         
         CGFloat cornerRadius = 5.0f;
+        _priceLabelContainer = [[UIView alloc] init];
+        _priceLabelContainer.backgroundColor = [UIColor colorFromHexString:@"24C091"];
+        _priceLabelContainer.layer.cornerRadius = cornerRadius;
+        _priceLabelContainer.layer.masksToBounds = YES;
+        [_textContainer addSubview:_priceLabelContainer];
+        
         _priceLabel = [[UILabel alloc] init];
         _priceLabel.textColor = [UIColor whiteColor];
-        _priceLabel.backgroundColor = [UIColor colorFromHexString:@"24C091"];
-        _priceLabel.layer.cornerRadius = cornerRadius;
-        _priceLabel.layer.masksToBounds = YES;
         _priceLabel.font = [UIFont regularWithSize:10.0f];
-        [_textContainer addSubview:_priceLabel];
+        [_priceLabelContainer addSubview:_priceLabel];
+        
+        _viewsLabelContainer = [[UIView alloc] init];
+        _viewsLabelContainer.backgroundColor = [UIColor colorFromHexString:@"DADADA"];
+        _viewsLabelContainer.layer.cornerRadius = cornerRadius;
+        _viewsLabelContainer.layer.masksToBounds = YES;
+        [_textContainer addSubview:_viewsLabelContainer];
         
         _viewsLabel = [[UILabel alloc] init];
-        _viewsLabel.backgroundColor = [UIColor colorFromHexString:@"DADADA"];
         _viewsLabel.textColor = [UIColor grayColor];
-        _viewsLabel.layer.cornerRadius = cornerRadius;
-        _viewsLabel.layer.masksToBounds = YES;
         _viewsLabel.font = [UIFont regularWithSize:10.0f];
-        [_textContainer addSubview:_viewsLabel];
+        [_viewsLabelContainer addSubview:_viewsLabel];
+        
+        _downloadslabelContainer = [[UIView alloc] init];
+        _downloadslabelContainer.backgroundColor = [UIColor colorFromHexString:@"DADADA"];
+        _downloadslabelContainer.layer.cornerRadius = cornerRadius;
+        _downloadslabelContainer.layer.masksToBounds = YES;
+        [_textContainer addSubview:_downloadslabelContainer];
         
         _downloadsLabel = [[UILabel alloc] init];
-        _downloadsLabel.backgroundColor = [UIColor colorFromHexString:@"DADADA"];
         _downloadsLabel.textColor = [UIColor grayColor];
-        _downloadsLabel.layer.cornerRadius = cornerRadius;
-        _downloadsLabel.layer.masksToBounds = YES;
         _downloadsLabel.font = [UIFont regularWithSize:10.0f];
-        [_textContainer addSubview:_downloadsLabel];
+        [_downloadslabelContainer addSubview:_downloadsLabel];
         
         [self _initializeAutolayout];
     }
@@ -121,20 +135,32 @@
         make.left.and.right.equalTo(self.titleLabel);
     }];
     
-    [self.priceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.priceLabelContainer mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.descriptionLabel.mas_bottom);
         make.left.equalTo(self.titleLabel);
     }];
     
+    [self.priceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.priceLabelContainer);
+    }];
+    
     CGFloat smallSpacing = 10.0f;
+    [self.viewsLabelContainer mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.priceLabelContainer);
+        make.left.equalTo(self.priceLabelContainer.mas_right).with.offset(smallSpacing);
+    }];
+    
     [self.viewsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.priceLabel);
-        make.left.equalTo(self.priceLabel.mas_right).with.offset(smallSpacing);
+        make.edges.equalTo(self.viewsLabelContainer);
+    }];
+    
+    [self.downloadslabelContainer mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.priceLabelContainer);
+        make.left.equalTo(self.viewsLabelContainer.mas_right).with.offset(smallSpacing);
     }];
     
     [self.downloadsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.priceLabel);
-        make.left.equalTo(self.viewsLabel.mas_right).with.offset(smallSpacing);
+        make.edges.equalTo(self.downloadslabelContainer);
     }];
 }
 
