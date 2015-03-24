@@ -41,7 +41,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+    [self _setupBar];
+    
     [self.dataManager requestGraphData];
+}
+
+- (void)_setupBar {
+    UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(_refresh:)];
+    self.navigationItem.rightBarButtonItem = button;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -110,6 +117,12 @@
         }];
     }
     return _graphView;
+}
+
+#pragma mark - Button Presses
+
+- (void)_refresh:(id)sender {
+    [self.dataManager requestGraphData];
 }
 
 #pragma mark - KHGraphDataManagerDelegate
