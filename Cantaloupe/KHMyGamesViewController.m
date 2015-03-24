@@ -57,13 +57,6 @@ static NSString *KHkGameCellIdentifier = @"gameCellIdentifier";
     [self.refreshControl addTarget:self action:@selector(_refresh) forControlEvents:UIControlEventValueChanged];
     [self.collectionView addSubview:self.refreshControl];
     self.refreshControl.tintColor = [UIColor whiteColor];
-    
-    // UIRefreshControl seems to be buggy when beginRefreshing is called and not setting the tintColor properly.
-    // http://stackoverflow.com/questions/19026351/ios-7-uirefreshcontrol-tintcolor-not-working-for-beginrefreshing
-    
-    [self.collectionView setContentOffset:CGPointMake(0, -1.0f) animated:NO];
-    [self.collectionView setContentOffset:CGPointMake(0, -CGRectGetHeight(self.refreshControl.frame)) animated:YES];
-    [self.refreshControl beginRefreshing];
 }
 
 - (void)_setupNavigationBar {
