@@ -47,7 +47,7 @@ static NSString *KHkGameCellIdentifier = @"gameCellIdentifier";
     [self.collectionView registerClass:[KHGameViewCell class] forCellWithReuseIdentifier:KHkGameCellIdentifier];
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
-    self.collectionView.backgroundColor = [UIColor colorFromHexString:@"222222"];
+    self.collectionView.backgroundColor = [UIColor whiteColor];
     self.collectionView.alwaysBounceVertical = YES;
     [self.view addSubview:self.collectionView];
 }
@@ -56,7 +56,6 @@ static NSString *KHkGameCellIdentifier = @"gameCellIdentifier";
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(_refresh) forControlEvents:UIControlEventValueChanged];
     [self.collectionView addSubview:self.refreshControl];
-    self.refreshControl.tintColor = [UIColor whiteColor];
 }
 
 - (void)_setupNavigationBar {
