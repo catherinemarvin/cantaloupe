@@ -58,7 +58,7 @@
     [tracker send:[[GAIDictionaryBuilder createAppView] build]];
 }
 
-/// @brief Returns an array of NSDates corresponding to the expected dates in this graph.
+/// @brief Returns an array of dates as strings corresponding to the expected dates in this graph.
 - (NSArray *)_expectedGraphDates {
     NSMutableArray *expected = [NSMutableArray array];
     
