@@ -71,7 +71,7 @@
     
     NSDate *today = [calendar dateByAddingComponents:components toDate:[[NSDate alloc] init] options:0]; // today now refers to the start of today.
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"MM-dd"];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
     NSString *dateString = [formatter stringFromDate:today];
     
     [expected addObject:dateString];
