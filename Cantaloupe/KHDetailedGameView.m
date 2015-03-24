@@ -14,6 +14,7 @@
 @property (nonatomic, strong) KHGameInfo *gameData;
 
 @property (nonatomic, strong) UIImageView *coverView;
+@property (nonatomic, strong) UIImageView *coverCircle;
 
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *publishedLabel;
@@ -53,6 +54,13 @@ static CGFloat KHkSideMargin = 10.0f;
         self.coverView.contentMode = UIViewContentModeScaleAspectFill;
         [self.coverView setClipsToBounds:YES];
         [self addSubview:self.coverView];
+        
+        _coverCircle = [[UIImageView alloc] initWithImage:[_gameData coverImage]];
+        _coverCircle.contentMode = UIViewContentModeScaleAspectFill;
+        _coverCircle.layer.borderColor = [UIColor whiteColor].CGColor;
+        _coverCircle.layer.borderWidth = 1.0f;
+        _coverCircle.layer.masksToBounds = YES;
+        [_coverView addSubview:_coverCircle];
         
         self.titleLabel = [[UILabel alloc] init];
         self.titleLabel.text = [_gameData titleString];
@@ -141,6 +149,12 @@ static CGFloat KHkSideMargin = 10.0f;
         make.height.equalTo(@(coverHeight));
         make.top.equalTo(self);
         make.left.and.right.equalTo(self);
+    }];
+    
+    CGFloat sideLength = 100.0f;
+    [self.coverCircle mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.width.and.height.mas_equalTo(sideLength);
+        make.center.equalTo(self.coverView);
     }];
     
     CGFloat verticalOffset = 20.0f;
