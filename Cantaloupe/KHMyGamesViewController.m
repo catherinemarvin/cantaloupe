@@ -70,6 +70,11 @@ static NSString *KHkGameCellIdentifier = @"gameCellIdentifier";
     self.navigationItem.title = NSLocalizedString(@"My Games", nil);
 }
 
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+    self.collectionView.contentInset = UIEdgeInsetsMake(0, 0, [self.bottomLayoutGuide length], 0);
+}
+
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
