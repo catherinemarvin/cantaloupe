@@ -36,7 +36,6 @@ typedef NS_ENUM(NSInteger, KHTabViewControllerTag) {
         self.gamesViewController = [[KHMyGamesViewController alloc] init];
         self.gamesViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Games",nil) image:[UIImage imageNamed:@"gamesIcon"] tag:KHGamesViewControllerTag];
         UINavigationController *gamesNav = [[UINavigationController alloc] initWithRootViewController:self.gamesViewController];
-        gamesNav.navigationBar.translucent = NO;
         
         self.settingsViewController = [[KHSettingsViewController alloc] initWithStyle:UITableViewStyleGrouped];
         self.settingsViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Settings", nil) image:[UIImage imageNamed:@"settingsIcon"] tag:KHSettingsViewControllerTag];

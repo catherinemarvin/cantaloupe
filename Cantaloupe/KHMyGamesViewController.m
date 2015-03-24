@@ -72,7 +72,7 @@ static NSString *KHkGameCellIdentifier = @"gameCellIdentifier";
 
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
-    self.collectionView.contentInset = UIEdgeInsetsMake(0, 0, [self.bottomLayoutGuide length], 0);
+    self.collectionView.contentInset = UIEdgeInsetsMake([self.topLayoutGuide length], 0, [self.bottomLayoutGuide length], 0);
 }
 
 #pragma mark - UICollectionViewDataSource
