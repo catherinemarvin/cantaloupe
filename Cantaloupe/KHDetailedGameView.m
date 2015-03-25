@@ -14,6 +14,7 @@
 @property (nonatomic, strong) KHGameInfo *gameData;
 
 @property (nonatomic, strong) UIImageView *coverView;
+@property (nonatomic, strong) UIVisualEffectView *blurEffectView;
 @property (nonatomic, strong) UIImageView *coverCircle;
 
 @property (nonatomic, strong) UILabel *titleLabel;
@@ -54,6 +55,13 @@ static CGFloat KHkSideMargin = 10.0f;
         self.coverView.contentMode = UIViewContentModeScaleAspectFill;
         [self.coverView setClipsToBounds:YES];
         [self addSubview:self.coverView];
+        
+        _blurEffectView = ({
+            UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+            UIVisualEffectView *blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+            blurEffectView;
+        });
+        [self.coverView addSubview:_blurEffectView];
         
         _coverCircle = [[UIImageView alloc] initWithImage:[_gameData coverImage]];
         _coverCircle.contentMode = UIViewContentModeScaleAspectFill;
@@ -149,6 +157,10 @@ static CGFloat KHkSideMargin = 10.0f;
         make.height.equalTo(@(coverHeight));
         make.top.equalTo(self);
         make.left.and.right.equalTo(self);
+    }];
+    
+    [self.blurEffectView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.coverView);
     }];
     
     CGFloat sideLength = 100.0f;
