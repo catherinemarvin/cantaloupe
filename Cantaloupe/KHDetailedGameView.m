@@ -81,6 +81,7 @@ static CGFloat KHkSideMargin = 10.0f;
             label.textColor = [UIColor whiteColor];
             label.font = [UIFont regularWithSize:16.0f];
             label.textAlignment = NSTextAlignmentCenter;
+            [label setContentHuggingPriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisVertical];
             
             label;
         });
@@ -94,6 +95,7 @@ static CGFloat KHkSideMargin = 10.0f;
             label.textColor = [UIColor whiteColor];
             label.font = [UIFont italicWithSize:14.0f];
             label.textAlignment = NSTextAlignmentCenter;
+            [label setContentHuggingPriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisVertical];
             label;
         });
         [_coverView addSubview:_descriptionLabel];
@@ -189,7 +191,7 @@ static CGFloat KHkSideMargin = 10.0f;
     
     [self.titleLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.coverView);
-        make.top.equalTo(self.coverCircle.mas_bottom);
+        make.top.equalTo(self.coverCircle.mas_bottom).with.offset(coverPadding);
         make.left.and.right.equalTo(self.coverView);
     }];
     
