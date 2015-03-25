@@ -10,6 +10,7 @@
 
 static NSString *const KHkRegularFontName = @"Lato-Regular";
 static NSString *const KhkBoldFontName = @"Lato-Bold";
+static NSString *const KhkItalicFontName = @"Lato-Italic";
 
 @implementation UIFont (KHAdditions)
 
@@ -19,6 +20,10 @@ static NSString *const KhkBoldFontName = @"Lato-Bold";
 
 + (UIFont *)boldWithSize:(CGFloat)size {
     return [UIFont fontWithName:KhkBoldFontName size:size];
+}
+
++ (UIFont *)italicWithSize:(CGFloat)size {
+    return [UIFont fontWithName:KhkItalicFontName size:size];
 }
 
 @end

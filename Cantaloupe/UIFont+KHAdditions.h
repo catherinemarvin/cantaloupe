@@ -12,5 +12,6 @@
 
 + (UIFont *)regularWithSize:(CGFloat)size;
 + (UIFont *)boldWithSize:(CGFloat)size;
++ (UIFont *)italicWithSize:(CGFloat)size;
 
 @end
