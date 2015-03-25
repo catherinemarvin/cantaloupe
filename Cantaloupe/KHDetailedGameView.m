@@ -7,7 +7,12 @@
 //
 
 #import "KHDetailedGameView.h"
+
+// Models
 #import "KHGameInfo.h"
+
+// Font
+#import "UIFont+KHAdditions.h"
 
 @interface KHDetailedGameView()
 
@@ -16,10 +21,10 @@
 @property (nonatomic, strong) UIImageView *coverView;
 @property (nonatomic, strong) UIVisualEffectView *blurEffectView;
 @property (nonatomic, strong) UIImageView *coverCircle;
-
 @property (nonatomic, strong) UILabel *titleLabel;
-@property (nonatomic, strong) UILabel *publishedLabel;
 @property (nonatomic, strong) UILabel *descriptionLabel;
+
+@property (nonatomic, strong) UILabel *publishedLabel;
 
 @property (nonatomic, strong) UIView *statsRow;
 
@@ -70,19 +75,28 @@ static CGFloat KHkSideMargin = 10.0f;
         _coverCircle.layer.masksToBounds = YES;
         [_coverView addSubview:_coverCircle];
         
-        self.titleLabel = [[UILabel alloc] init];
-        self.titleLabel.text = [_gameData titleString];
-        self.titleLabel.textColor = [UIColor whiteColor];
-        self.titleLabel.font = [UIFont fontWithName:@"Lato-Regular" size:16.0f];
-        [self addSubview:self.titleLabel];
+        _titleLabel = ({
+            UILabel *label = [[UILabel alloc] init];
+            label.text = [_gameData titleString];
+            label.textColor = [UIColor whiteColor];
+            label.font = [UIFont regularWithSize:16.0f];
+            label.textAlignment = NSTextAlignmentCenter;
+            
+            label;
+        });
+        [_coverView addSubview:_titleLabel];
         
         _publishedLabel = [[UILabel alloc] init];
         
-        self.descriptionLabel = [[UILabel alloc] init];
-        self.descriptionLabel.text = [_gameData shortDescription];
-        self.descriptionLabel.textColor = [UIColor whiteColor];
-        self.descriptionLabel.font = [UIFont fontWithName:@"Lato-Italic" size:14.0f];
-        [self addSubview:self.descriptionLabel];
+        _descriptionLabel = ({
+            UILabel *label = [[UILabel alloc] init];
+            label.text = [_gameData shortDescription];
+            label.textColor = [UIColor whiteColor];
+            label.font = [UIFont italicWithSize:14.0f];
+            label.textAlignment = NSTextAlignmentCenter;
+            label;
+        });
+        [_coverView addSubview:_descriptionLabel];
         
         _statsRow = [[UIView alloc] init];
         [self addSubview:_statsRow];
@@ -152,40 +166,42 @@ static CGFloat KHkSideMargin = 10.0f;
 }
 
 - (void)updateConstraints {
-    CGFloat coverHeight = 200.0f;
+    CGFloat coverPadding = 20.0f;
+    
     [self.coverView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.height.equalTo(@(coverHeight));
         make.top.equalTo(self);
         make.left.and.right.equalTo(self);
+        make.bottom.equalTo(self.descriptionLabel).with.offset(coverPadding);
     }];
     
     [self.blurEffectView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.coverView);
     }];
     
+    
     CGFloat sideLength = 100.0f;
     [self.coverCircle mas_updateConstraints:^(MASConstraintMaker *make) {
         make.width.and.height.mas_equalTo(sideLength);
-        make.center.equalTo(self.coverView);
+        make.top.equalTo(self.coverView).with.offset(coverPadding);
+        make.centerX.equalTo(self.coverView);
     }];
     
-    CGFloat verticalOffset = 20.0f;
     
     [self.titleLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self).with.offset(KHkSideMargin);
-        make.right.equalTo(self);
-        make.top.equalTo(self.coverView.mas_bottom).with.offset(verticalOffset);
+        make.centerX.equalTo(self.coverView);
+        make.top.equalTo(self.coverCircle.mas_bottom);
+        make.left.and.right.equalTo(self.coverView);
     }];
     
     [self.descriptionLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.left.and.right.equalTo(self.titleLabel);
-        make.top.equalTo(self.titleLabel.mas_bottom).with.offset(verticalOffset);
+        make.top.equalTo(self.titleLabel.mas_bottom);
     }];
     
     [self.statsRow mas_updateConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self).with.offset(KHkSideMargin);
         make.right.equalTo(self).with.offset(-KHkSideMargin);
-        make.top.equalTo(self.descriptionLabel.mas_bottom).with.offset(10);
+        make.top.equalTo(self.coverView.mas_bottom).with.offset(10);
         make.height.equalTo(self.viewsContainer);
     }];
     
@@ -241,7 +257,7 @@ static CGFloat KHkSideMargin = 10.0f;
     
     [self.earningsLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.left.and.right.equalTo(self.titleLabel);
-        make.top.equalTo(self.statsRow.mas_bottom).with.offset(verticalOffset);
+        make.top.equalTo(self.statsRow.mas_bottom).with.offset(20);
     }];
     
     
