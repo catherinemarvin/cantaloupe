@@ -12,6 +12,6 @@
 
 @interface KHDetailedGameView : UIView
 
-- (id)initWithFrame:(CGRect)frame data:(KHGameInfo *)data;
+- (instancetype)initWithGameInfo:(KHGameInfo *)gameInfo NS_DESIGNATED_INITIALIZER;
 
 @end

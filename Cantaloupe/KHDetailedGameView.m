@@ -47,12 +47,12 @@ static CGFloat KHkSideMargin = 10.0f;
 
 @implementation KHDetailedGameView
 
-- (instancetype)initWithFrame:(CGRect)frame data:(KHGameInfo *)data {
-    
-    self = [super initWithFrame:frame];
+- (instancetype)initWithGameInfo:(KHGameInfo *)gameInfo {
+
+    self = [super init];
     
     if (self) {
-        _gameData = data;
+        _gameData = gameInfo;
         
         self.backgroundColor = [UIColor whiteColor];
         

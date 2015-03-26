@@ -23,24 +23,21 @@
 - (instancetype)initWithGameInfo:(KHGameInfo *)info {
     if (self = [super init]) {
         _gameInfo = info;
+        self.edgesForExtendedLayout = UIRectEdgeNone;
     }
     return self;
 }
 
-- (void)loadView {
-    [super loadView];
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
     self.navigationItem.title = [self.gameInfo titleString];
+    KHDetailedGameView *view = [[KHDetailedGameView alloc] initWithGameInfo:self.gameInfo];
+    [self.view addSubview:view];
     
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
-    scrollView.backgroundColor = [UIColor whiteColor];
-    scrollView.alwaysBounceVertical = YES;
-    
-    KHDetailedGameView *view = [[KHDetailedGameView alloc] initWithFrame:scrollView.bounds data:self.gameInfo];
-    
-    [scrollView addSubview:view];
-    scrollView.contentSize = view.frame.size;
-    
-    self.view = scrollView;
+    [view mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
