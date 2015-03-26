@@ -40,7 +40,6 @@
 @property (nonatomic, strong) UIImageView *downloadsIcon;
 @property (nonatomic, strong) UILabel *downloadsCountLabel;
 
-@property (nonatomic, strong) UILabel *earningsLabel;
 @end
 
 static CGFloat KHkSideMargin = 10.0f;
@@ -142,14 +141,6 @@ static CGFloat KHkSideMargin = 10.0f;
         _downloadsCountLabel.textAlignment = NSTextAlignmentCenter;
         [_downloadsContainer addSubview:_downloadsCountLabel];
         
-        self.earningsLabel = [[UILabel alloc] init];
-        self.earningsLabel.text =
-        [NSString stringWithFormat: @"%@: %@",
-         NSLocalizedString(@"Earnings", nil),
-         [_gameData formattedEarnings]];
-        self.earningsLabel.textColor = [UIColor whiteColor];
-        self.earningsLabel.font = [UIFont fontWithName:@"Lato-Regular" size:12.0f];
-        [self addSubview:self.earningsLabel];
         [self setNeedsUpdateConstraints];
     }
     return self;
@@ -244,12 +235,6 @@ static CGFloat KHkSideMargin = 10.0f;
         make.left.and.right.equalTo(self.downloadsContainer);
         make.top.equalTo(self.downloadsIcon.mas_bottom);
     }];
-    
-    [self.earningsLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.left.and.right.equalTo(self.titleLabel);
-        make.top.equalTo(self.statsRow.mas_bottom).with.offset(20);
-    }];
-    
     
     [super updateConstraints];
 }
