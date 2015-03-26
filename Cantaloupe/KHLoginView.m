@@ -55,7 +55,6 @@
         _formContainer.backgroundColor = [UIColor whiteColor];
         [_backgroundImage addSubview:_formContainer];
         
-        
         _header = [[UIView alloc] init];
         [_formContainer addSubview:_header];
         
@@ -78,7 +77,9 @@
         _usernameField.autocapitalizationType = UITextAutocapitalizationTypeNone;
         _usernameField.autocorrectionType = UITextAutocorrectionTypeNo;
         _usernameField.returnKeyType = UIReturnKeyNext;
-        _usernameField.backgroundColor = [UIColor colorFromHexString:@"F2F2F2"];
+        _usernameField.backgroundColor = [UIColor whiteColor];
+        _usernameField.layer.borderColor = [UIColor colorFromHexString:@"F2F2F2"].CGColor;
+        _usernameField.layer.borderWidth = 2.0f;
         [_formContainer addSubview:_usernameField];
         
         _usernameSpacer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
@@ -95,7 +96,9 @@
         _passwordField.secureTextEntry = YES;
         _passwordField.autocapitalizationType = UITextAutocapitalizationTypeNone;
         _passwordField.returnKeyType = UIReturnKeyGo;
-        _passwordField.backgroundColor = [UIColor colorFromHexString:@"F2F2F2"];
+        _passwordField.backgroundColor = [UIColor whiteColor];
+        _passwordField.layer.borderColor = [UIColor colorFromHexString:@"F2F2F2"].CGColor;
+        _passwordField.layer.borderWidth = 2.0f;
         [_formContainer addSubview:_passwordField];
         
         _passwordSpacer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
@@ -124,7 +127,7 @@
     
     [self.logo mas_updateConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.backgroundImage);
-        make.top.equalTo(self.backgroundImage).with.offset(margin);
+        make.top.equalTo(self.backgroundImage).with.offset(20);
     }];
     
     [self.formContainer mas_updateConstraints:^(MASConstraintMaker *make) {
