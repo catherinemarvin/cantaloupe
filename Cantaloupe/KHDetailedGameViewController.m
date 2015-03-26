@@ -32,6 +32,7 @@
     self.navigationItem.title = [self.gameInfo titleString];
     
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
+    scrollView.backgroundColor = [UIColor whiteColor];
     scrollView.alwaysBounceVertical = YES;
     
     KHDetailedGameView *view = [[KHDetailedGameView alloc] initWithFrame:scrollView.bounds data:self.gameInfo];
