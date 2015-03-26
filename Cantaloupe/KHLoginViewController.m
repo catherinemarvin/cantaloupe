@@ -43,7 +43,7 @@ static NSString *kUserKey = @"kCantaloupeCurrentUser";
 }
 
 - (void)loadView {
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:[UIScreen mainScreen].applicationFrame];
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
     KHLoginView *view = [[KHLoginView alloc] initWithFrame:scrollView.bounds];
     view.usernameField.delegate = self;
