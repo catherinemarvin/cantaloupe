@@ -43,14 +43,14 @@ DEPENDENCIES:
   - SSPullToRefresh (~> 1.0)
 
 SPEC CHECKSUMS:
-  AFNetworking: ab63e259fe91eef4519b371ef0a4955af0e73e64
-  BEMSimpleLineGraph: 68e349eb22320d1a21a29e390d0f67772f6f6f44
-  CocoaLumberjack: 205769c032b5fef85b92472046bcc8b7e7c8a817
-  GoogleAnalytics-iOS-SDK: bb285d8eef15a682f1b82971becd0d22edd0e53b
-  Masonry: 0bc111d6902e3a55ff8423bcbdf7155261806547
-  MBProgressHUD: c356980b0cd097f19acec959b49dca5eb8ec31be
-  Reachability: 8e9635e3cb4f98e7f825e51147f677ecc694d0e7
-  SSKeychain: cc48bd3ad24fcd9125adb9e0d23dd50b8bbd08b9
-  SSPullToRefresh: bb513a1ccbf08fdd67e4139bc1bbe3fc2ed34228
+  AFNetworking: caca0799b310f0c3bf1fc1af45145fc96972bcab
+  BEMSimpleLineGraph: 25676aef045e470b04ea0534e18a9c87c32a9cdf
+  CocoaLumberjack: 628fca2e88ef06f7cf6817309aa405f325d9a6fa
+  GoogleAnalytics-iOS-SDK: 8737363000dd5ba8ba20efd90bcfb730ca22bc2d
+  Masonry: 695dcee5cf90504cc83d85c40e0bd3f4376ed583
+  MBProgressHUD: 8688c331cb64702283be37ab8d7d329cdd25f251
+  Reachability: dd9aa4fb6667b9f787690a74f53cb7634ce99893
+  SSKeychain: 88767e903ee8d274ed380e364d96b7a101235286
+  SSPullToRefresh: d32c6af9cfcfbc737265cd9ff8848c29c1aa5b5d
 
 COCOAPODS: 0.35.0
