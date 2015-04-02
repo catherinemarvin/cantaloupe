@@ -112,7 +112,7 @@
         make.left.and.right.equalTo(self.contentView);
         make.bottom.equalTo(self.contentView);
         make.top.equalTo(self.imageView.mas_bottom);
-        make.height.equalTo(self.textContainer);
+        make.height.equalTo(self.textContainer).with.offset(10);
     }];
     
     CGFloat sideMargin = 20.0f;
@@ -120,7 +120,7 @@
     [_textContainer mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.footer).with.offset(sideMargin);
         make.right.equalTo(self.footer).with.offset(-sideMargin);
-        make.top.equalTo(self.footer);
+        make.top.equalTo(self.footer).with.offset(10);
         make.bottom.equalTo(self.priceLabelContainer).with.offset(sideMargin);
     }];
     
