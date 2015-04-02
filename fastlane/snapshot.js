@@ -18,6 +18,7 @@ target.tap({x:148.50, y:213.50});
 target.delay(5);
 captureLocalizedScreenshot('1-detailedgame');
 target.frontMostApp().tabBar().buttons()["Graphs"].tap();
+target.frontMostApp().mainWindow().tableViews()[0].tapWithOptions({tapOffset:{x:0.23, y:0.26}});
 target.delay(5);
 captureLocalizedScreenshot('2-graph');
 target.frontMostApp().tabBar().buttons()["News"].tap();
