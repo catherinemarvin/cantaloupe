@@ -43,7 +43,7 @@ static const NSInteger KHkDefaultNumberOfDays = 7;
                      
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
-    NSString *url = [NSString stringWithFormat:@"http://itch.io/api/1/%@/my-games/graphs?num_days=%ld", key, self.numberOfDays];
+    NSString *url = [NSString stringWithFormat:@"https://itch.io/api/1/%@/my-games/graphs?num_days=%ld", key, self.numberOfDays];
     
     [manager POST:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *responseDict = (NSDictionary *)responseObject;

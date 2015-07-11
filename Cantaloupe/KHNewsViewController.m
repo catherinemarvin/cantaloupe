@@ -45,7 +45,7 @@ static const int ddLogLevel = LOG_LEVEL_ALL;
 - (void)_requestNews {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSString *key = @"nadyVe3mHbqHOtDnYU3H5lI44MDWS2k8rPJdLakyVKh8k1fgmc";
-    NSString *url = [NSString stringWithFormat:@"http://api.tumblr.com/v2/blog/itchio.tumblr.com/posts?api_key=%@", key];
+    NSString *url = [NSString stringWithFormat:@"https://api.tumblr.com/v2/blog/itchio.tumblr.com/posts?api_key=%@", key];
     [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSDictionary *responseDict = (NSDictionary *)responseObject;

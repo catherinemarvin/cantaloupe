@@ -17,7 +17,7 @@
 
 @end
 
-static NSString *const KHkLoginApiEndpoint = @"http://itch.io/api/1/login";
+static NSString *const KHkLoginApiEndpoint = @"https://itch.io/api/1/login";
 static NSString *const KhkUsernameKey = @"username";
 static NSString *const KhkPasswordKey = @"password";
 

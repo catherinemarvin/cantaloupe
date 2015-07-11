@@ -21,7 +21,7 @@
 
 @end
 
-static NSString *const KHkMyGamesUrl = @"http://itch.io/api/1/%@/my-games";
+static NSString *const KHkMyGamesUrl = @"https://itch.io/api/1/%@/my-games";
 static NSString *const KhkApiErrorKey = @"errors";
 static NSString *const KhkApiGamesKey = @"games";
 
